@@ -1,9 +1,16 @@
 site_name: Gambit Scheme
 
+repo_url: https://github.com/gambit/gambit
+repo_name: gambit/gambit
+edit_uri: edit/master/docs/
+
+
 theme:
   name: material
   logo: assets/gambit.png
   favicon: assets/favicon.ico
+  icon:
+    repo: fontawesome/brands/github
   features:
     - navigation.tabs
     - navigation.indexes
@@ -33,3 +40,5 @@ markdown_extensions:
 plugins:
   - search
   - social
+  - git-revision-date-localized:
+      enable_creation_date: true
