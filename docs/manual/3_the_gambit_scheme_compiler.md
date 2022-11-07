@@ -37,7 +37,7 @@ in interactive mode.
 
 Like the interpreter, the compiler will examine the initialization file unless
 the `-f` option is specified. Runtime options are explained in [Runtime
-options](#runtime_options).
+options](../4_runtime_options).
 
 ## Batch mode
 
