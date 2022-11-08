@@ -42,6 +42,7 @@ nav:
           - manual/scheme_extensions/extensions_to_standard_procedures.md
           - manual/scheme_extensions/extensions_to_standard_special_forms.md
           - manual/scheme_extensions/miscellaneous_extensions.md
+          - manual/scheme_extensions/undocumented_extensions.md
       - Modules:
           - manual/modules/index.md
       - Built-in data types:
