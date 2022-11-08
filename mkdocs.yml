@@ -4,6 +4,32 @@ repo_url: https://github.com/gambit/gambit
 repo_name: gambit/gambit
 edit_uri: edit/master/docs/
 
+nav:
+  - Manual:
+      - manual/index.md
+      - The Gambit System:
+          - manual/the_gambit_system/index.md
+          - manual/the_gambit_system/accessing_the_system_files.md
+      - The Gambit Scheme Interpreter:
+          - manual/gsi/index.md
+          - manual/gsi/interactive_mode.md
+          - manual/gsi/batch_mode.md
+          - manual/gsi/module_management_mode.md
+          - manual/gsi/customization.md
+          - manual/gsi/process_exit_status.md
+          - manual/gsi/scheme_scripts.md
+      - The Gambit Scheme Compiler:
+          - manual/gsc/index.md
+      - Runtime options:
+          - manual/runtime_options/index.md
+      - Debugging:
+          - manual/debugging/index.md
+          - manual/debugging/debugging_model.md
+          - manual/debugging/debugging_commands.md
+          - manual/debugging/debugging_example.md
+          - manual/debugging/procedures_related_to_debugging.md
+          - manual/debugging/console_line_editing.md
+          - manual/debugging/emacs_interface.md
 
 theme:
   name: material
@@ -14,7 +40,7 @@ theme:
   features:
     - navigation.tabs
     - navigation.indexes
-    - navigation.sections
+    # - navigation.sections
     - navigation.expand
     - toc.follow
   palette:
@@ -35,6 +61,8 @@ markdown_extensions:
       anchor_linenums: true
   - pymdownx.inlinehilite
   - pymdownx.snippets
+  - admonition
+  - pymdownx.details
   - pymdownx.superfences
 
 plugins:
