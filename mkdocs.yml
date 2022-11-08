@@ -53,6 +53,13 @@ nav:
           - manual/modules/compiling_modules.md
       - Built-in data types:
           - manual/built_in_data_types/index.md
+          - manual/built_in_data_types/numbers.md
+          - manual/built_in_data_types/booleans.md
+          - manual/built_in_data_types/pairs_and_lists.md
+          - manual/built_in_data_types/symbols_and_keywords.md
+          - manual/built_in_data_types/characters_and_strings.md
+          - manual/built_in_data_types/vectors.md
+          - manual/built_in_data_types/homogeneous_numeric_vectors.md
       - Records:
           - manual/records/index.md
       - Threads:
