@@ -141,12 +141,12 @@ and command line arguments to the interpreter.
 
 ### Compiling scripts
 
-A script file can be compiled using the Gambit Scheme compiler (see section The
-Gambit Scheme compiler) into a standalone executable. The script line will
-provide information to the compiler on which language to use. The script line
-also provides information on which runtime options to use when executing the
-compiled script. This is useful to set the default runtime options of an
-executable program.
+A script file can be compiled using the Gambit Scheme compiler (see section [The
+Gambit Scheme compiler](/manual/gsc)) into a standalone executable. The script
+line will provide information to the compiler on which language to use. The
+script line also provides information on which runtime options to use when
+executing the compiled script. This is useful to set the default runtime options
+of an executable program.
 
 The compiled script will be executed similarly to an interpreted script (i.e.
 the list of command line arguments returned by the `command-line` procedure and

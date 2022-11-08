@@ -7,10 +7,10 @@ edit_uri: edit/master/docs/
 nav:
   - Manual:
       - manual/index.md
-      - The Gambit System:
+      - The Gambit system:
           - manual/the_gambit_system/index.md
           - manual/the_gambit_system/accessing_the_system_files.md
-      - The Gambit Scheme Interpreter:
+      - The Gambit Scheme interpreter:
           - manual/gsi/index.md
           - manual/gsi/interactive_mode.md
           - manual/gsi/batch_mode.md
@@ -18,8 +18,13 @@ nav:
           - manual/gsi/customization.md
           - manual/gsi/process_exit_status.md
           - manual/gsi/scheme_scripts.md
-      - The Gambit Scheme Compiler:
+      - The Gambit Scheme compiler:
           - manual/gsc/index.md
+          - manual/gsc/interactive_mode.md
+          - manual/gsc/customization.md
+          - manual/gsc/batch_mode.md
+          - manual/gsc/link_files.md
+          - manual/gsc/procedures.md
       - Runtime options:
           - manual/runtime_options/index.md
       - Debugging:
@@ -27,9 +32,35 @@ nav:
           - manual/debugging/debugging_model.md
           - manual/debugging/debugging_commands.md
           - manual/debugging/debugging_example.md
-          - manual/debugging/procedures_related_to_debugging.md
+          - manual/debugging/procedures.md
           - manual/debugging/console_line_editing.md
           - manual/debugging/emacs_interface.md
+      - Scheme extensions:
+          - manual/scheme_extensions/index.md
+      - Modules:
+          - manual/modules/index.md
+      - Built-in data types:
+          - manual/built_in_data_types/index.md
+      - Records:
+          - manual/records/index.md
+      - Threads:
+          - manual/threads/index.md
+      - Dynamic environment:
+          - manual/dynamic_environment/index.md
+      - Exceptions:
+          - manual/exceptions/index.md
+      - Host environment:
+          - manual/host_environment/index.md
+      - I/O and ports:
+          - manual/io_and_ports/index.md
+      - Lexical syntax and readtables:
+          - manual/lexical_syntax_and_readtables/index.md
+      - C-interface:
+          - manual/c_interface/index.md
+      - System limitations:
+          - manual/system_limitations/index.md
+      - Copyright and license:
+          - manual/copyright_and_license/index.md
 
 theme:
   name: material
@@ -41,7 +72,7 @@ theme:
     - navigation.tabs
     - navigation.indexes
     # - navigation.sections
-    - navigation.expand
+    # - navigation.expand
     - toc.follow
   palette:
     # Palette toggle for light mode
