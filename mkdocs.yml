@@ -5,6 +5,8 @@ repo_name: gambit/gambit
 edit_uri: edit/master/docs/
 
 nav:
+  - Home:
+      - index.md
   - Manual:
       - manual/index.md
       - The Gambit system:
@@ -37,6 +39,9 @@ nav:
           - manual/debugging/emacs_interface.md
       - Scheme extensions:
           - manual/scheme_extensions/index.md
+          - manual/scheme_extensions/extensions_to_standard_procedures.md
+          - manual/scheme_extensions/extensions_to_standard_special_forms.md
+          - manual/scheme_extensions/miscellaneous_extensions.md
       - Modules:
           - manual/modules/index.md
       - Built-in data types:
@@ -61,6 +66,8 @@ nav:
           - manual/system_limitations/index.md
       - Copyright and license:
           - manual/copyright_and_license/index.md
+  - How-tos:
+      - howtos/index.md
 
 theme:
   name: material
