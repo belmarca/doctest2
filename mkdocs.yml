@@ -45,6 +45,12 @@ nav:
           - manual/scheme_extensions/undocumented_extensions.md
       - Modules:
           - manual/modules/index.md
+          - manual/modules/legacy_modules.md
+          - manual/modules/primitive_modules.md
+          - manual/modules/primitive_procedures.md
+          - manual/modules/r7rs_compatible_modules.md
+          - manual/modules/installing_modules.md
+          - manual/modules/compiling_modules.md
       - Built-in data types:
           - manual/built_in_data_types/index.md
       - Records:
