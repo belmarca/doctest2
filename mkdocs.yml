@@ -60,6 +60,7 @@ nav:
           - manual/built_in_data_types/characters_and_strings.md
           - manual/built_in_data_types/vectors.md
           - manual/built_in_data_types/homogeneous_numeric_vectors.md
+          - manual/built_in_data_types/hashing_and_weak_references.md
       - Records:
           - manual/records/index.md
       - Threads:
