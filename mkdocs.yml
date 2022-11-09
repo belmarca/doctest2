@@ -65,6 +65,15 @@ nav:
           - manual/records/index.md
       - Threads:
           - manual/threads/index.md
+          - manual/threads/introduction.md
+          - manual/threads/thread_objects.md
+          - manual/threads/mutex_objects.md
+          - manual/threads/condvar_objects.md
+          - manual/threads/fairness.md
+          - manual/threads/memory_coherency.md
+          - manual/threads/timeouts.md
+          - manual/threads/primordial_thread.md
+          - manual/threads/procedures.md
       - Dynamic environment:
           - manual/dynamic_environment/index.md
       - Exceptions:
@@ -96,6 +105,7 @@ theme:
     # - navigation.sections
     # - navigation.expand
     - toc.follow
+    - content.code.annotate
   palette:
     # Palette toggle for light mode
     - scheme: default
@@ -117,6 +127,8 @@ markdown_extensions:
   - admonition
   - pymdownx.details
   - pymdownx.superfences
+  - attr_list
+  - md_in_html
 
 plugins:
   - search
