@@ -2,6 +2,8 @@
 title: Extensions to standard special forms
 ---
 
+# Extensions to standard special forms
+
 #### lambda
 #### define
 

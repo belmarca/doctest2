@@ -2,6 +2,8 @@
 title: Interactive mode
 ---
 
+# Interactive mode
+
 In interactive mode a read-eval-print loop (REPL) is started for the user to
 interact with the interpreter. At each iteration of this loop the interpreter
 displays a prompt, reads a command and executes it. The commands can be

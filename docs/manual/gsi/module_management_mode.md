@@ -2,6 +2,8 @@
 title: Module management mode
 ---
 
+# Module management mode
+
 Package management operations are executed using the command line options
 `-install`, `-uninstall`, and `-update` which respectively install, uninstall
 and update packages. Package installation is explained in detail in Modules, but

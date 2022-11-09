@@ -2,6 +2,8 @@
 title: R7RS compatible modules
 ---
 
+# R7RS compatible modules
+
 The R7RS Scheme standard specifies a modularization approach based on the
 concept of library. A library is defined using the `define-library` form. This
 form is implemented as a macro that expands into the constructs used by

@@ -2,6 +2,8 @@
 title: Console line-editing
 ---
 
+# Console line-editing
+
 The console implements a simple Scheme-friendly line-editing user-interface that
 is enabled by default. It offers parentheses balancing, a history of previous
 commands, symbol completion, and several emacs-compatible keyboard commands. The

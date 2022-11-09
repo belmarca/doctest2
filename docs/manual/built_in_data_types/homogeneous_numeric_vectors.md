@@ -2,6 +2,8 @@
 title: Homogeneous numeric vectors
 ---
 
+# Homogeneous numeric vectors
+
 Homogeneous vectors are vectors containing raw numbers of the same type (signed
 or unsigned exact integers or inexact reals). There are 10 types of homogeneous
 vectors:

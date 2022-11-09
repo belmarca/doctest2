@@ -2,6 +2,8 @@
 title: Compiling modules
 ---
 
+# Compiling modules
+
 When `gsc` finds a command line argument that is the name of a module found on
 the list of module search order directories (after an automatic installation if
 that is appropriate) that module's main source code file will be compiled.

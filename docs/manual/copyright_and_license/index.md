@@ -2,6 +2,8 @@
 title: Copyright and license
 ---
 
+# Copyright and license
+
 The Gambit system release v4.9.4 is Copyright © 1994-2022 by Marc Feeley, all
 rights reserved. The Gambit system release v4.9.4 is licensed under two
 licenses: the Apache License, Version 2.0, and the GNU LESSER GENERAL PUBLIC

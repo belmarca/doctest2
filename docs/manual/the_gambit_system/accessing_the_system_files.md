@@ -2,6 +2,8 @@
 title: Accessing the system files
 ---
 
+# Accessing the system files
+
 Files related to Gambit, such as executables, libraries and header files, are
 stored in multiple Gambit installation directories. Gambit may be installed on a
 system according to two different installation models.

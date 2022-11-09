@@ -2,6 +2,8 @@
 title: Emacs interface
 ---
 
+# Emacs interface
+
 Gambit comes with the Emacs package `gambit.el` which provides a nice
 environment for running Gambit from within the Emacs editor. This package
 filters the standard output of the Gambit process and when it intercepts a

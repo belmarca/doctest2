@@ -2,6 +2,8 @@
 title: Timeouts
 ---
 
+# Timeouts
+
 All synchronization primitives which take a `timeout` parameter accept three types
 of values as a timeout, with the following meaning:
 

@@ -2,6 +2,8 @@
 title: Miscellaneous extensions
 ---
 
+# Miscellaneous extensions
+
 #### subvector
 
 ```scheme

@@ -2,6 +2,8 @@
 title: Introduction
 ---
 
+# Introduction
+
 Multithreading is a paradigm that is well suited for building complex systems
 such as: servers, GUIs, and high-level operating systems. Gambit's thread system
 offers mechanisms for creating threads of execution and for synchronizing them.

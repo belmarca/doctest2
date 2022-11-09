@@ -2,6 +2,8 @@
 title: Process exit status
 ---
 
+# Process exit status
+
 The status is zero when the interpreter exits normally and is nonzero when the
 interpreter exits due to an error. Here is the meaning of the exit statuses:
 

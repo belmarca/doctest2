@@ -2,6 +2,8 @@
 title: Debugging example
 ---
 
+# Debugging example
+
 Here is a sample interaction with `gsi`:
 
 ```shell

@@ -2,6 +2,8 @@
 title: Memory coherency
 ---
 
+# Memory coherency
+
 Read and write operations on the store (such as reading and writing a variable,
 an element of a vector or a string) are not atomic. It is an error for a thread
 to write a location in the store while some other thread reads or writes that

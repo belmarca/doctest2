@@ -2,6 +2,8 @@
 title: Batch mode
 ---
 
+# Batch mode
+
 In batch mode the command line arguments denote modules and files to execute,
 REPL interactions to start (`-` option), and expressions to be evaluated (`-e`
 option). Those options can be interspersed with the search directories, modules,

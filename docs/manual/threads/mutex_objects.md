@@ -2,6 +2,8 @@
 title: Mutex objects
 ---
 
+# Mutex objects
+
 A mutex can be in one of four states: `locked` (either `owned` or `not owned`)
 and `unlocked` (either `abandoned` or `not abandoned`).
 

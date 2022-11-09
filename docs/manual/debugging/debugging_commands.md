@@ -2,6 +2,8 @@
 title: Debugging commands
 ---
 
+# Debugging commands
+
 In addition to expressions, the REPL accepts the following special "comma"
 commands:
 

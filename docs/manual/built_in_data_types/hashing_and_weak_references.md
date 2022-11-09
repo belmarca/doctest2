@@ -2,6 +2,8 @@
 title: Hashing and weak references
 ---
 
+# Hashing and weak references
+
 ## Hashing
 
 #### object->serial-number

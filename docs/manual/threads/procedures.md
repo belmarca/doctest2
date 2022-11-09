@@ -2,6 +2,8 @@
 title: Procedures
 ---
 
+# Procedures
+
 #### current-thread
 
 ```scheme

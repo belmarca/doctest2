@@ -2,6 +2,8 @@
 title: Procedures specific to the compiler
 ---
 
+# Procedures specific to the compiler
+
 The Gambit Scheme compiler features the following procedures that are not
 available in the Gambit Scheme interpreter.
 

@@ -2,6 +2,8 @@
 title: Fairness
 ---
 
+# Fairness
+
 In various situations the scheduler must select one thread from a set of threads
 (e.g. which thread to run when a running thread blocks or expires its quantum,
 which thread to unblock when a mutex becomes unlocked or a condition variable is

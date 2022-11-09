@@ -2,6 +2,8 @@
 title: System limitations
 ---
 
+# System limitations
+
 - On some systems floating point overflows will cause the program to terminate
   with a floating point exception.
 - On some systems floating point operations involving `+nan.0` `+inf.0`,

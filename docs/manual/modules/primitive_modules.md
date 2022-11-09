@@ -2,6 +2,8 @@
 title: Primitive modules
 ---
 
+# Primitive modules
+
 ## Module forms
 
 #### ##demand-module

@@ -2,6 +2,8 @@
 title: Scheme scripts
 ---
 
+# Scheme scripts
+
 The load procedure treats specially files that begin with the two characters
 `#!` and `@;`. Such files are called script files and the first line is called
 the script line. In addition to indicating that the file is a script, the script

@@ -2,6 +2,8 @@
 title: Undocumented extensions
 ---
 
+# Undocumented extensions
+
 The procedures in this section are not yet documented.
 
 #### make-thread-group

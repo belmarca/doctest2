@@ -2,6 +2,8 @@
 title: Customization
 ---
 
+# Customization
+
 There are two ways to customize the interpreter. When the interpreter starts off
 it tries to execute a `(load "~~lib/gambext")` (for an explanation of how file
 names are interpreted see Host environment). An error is not signaled when the

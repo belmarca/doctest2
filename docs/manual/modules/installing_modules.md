@@ -2,6 +2,8 @@
 title: Installing modules
 ---
 
+# Installing modules
+
 When a module is imported, the processing of the `import` form must locate and
 read the source code of the module at macro expansion time to determine which
 names are exported and to what they are mapped. The list of module search

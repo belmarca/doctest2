@@ -2,6 +2,8 @@
 title: Modules
 ---
 
+# Modules
+
 Gambit supports multiple modularization approaches and constructs: legacy
 modules, primitive modules and R7RS compatible modules. These are described in
 that order, which corresponds to increased abstraction level. Unless there is a

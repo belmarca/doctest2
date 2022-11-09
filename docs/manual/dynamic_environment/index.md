@@ -2,6 +2,8 @@
 title: Dynamic environment
 ---
 
+# Dynamic environment
+
 The dynamic environment is the structure which allows the system to find the
 value returned by the standard procedures `current-input-port` and
 `current-output-port`. The standard procedures `with-input-from-file` and

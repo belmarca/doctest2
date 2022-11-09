@@ -2,6 +2,8 @@
 title: Characters and strings
 ---
 
+# Characters and strings
+
 Gambit supports the Unicode character encoding standard. Scheme characters can
 be any of the characters whose Unicode encoding is in the range `0` to
 `#x10ffff` (inclusive) but not in the range `#xd800` to `#xdfff`. Source code

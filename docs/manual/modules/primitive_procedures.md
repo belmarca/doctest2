@@ -2,6 +2,8 @@
 title: Primitive procedures
 ---
 
+# Primitive procedures
+
 !!! bug "This documentation needs work, cleanup or clarification."
 
 Identifiers with a `##` prefix are not valid identifiers according to RnRS. This

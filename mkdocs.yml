@@ -84,6 +84,7 @@ nav:
           - manual/io_and_ports/index.md
       - Lexical syntax and readtables:
           - manual/lexical_syntax_and_readtables/index.md
+          - manual/lexical_syntax_and_readtables/readtables.md
       - C-interface:
           - manual/c_interface/index.md
       - System limitations:
@@ -122,11 +123,12 @@ theme:
 markdown_extensions:
   - pymdownx.highlight:
       anchor_linenums: true
+      use_pygments: false
   - pymdownx.inlinehilite
   - pymdownx.snippets
+  - pymdownx.superfences
   - admonition
   - pymdownx.details
-  - pymdownx.superfences
   - attr_list
   - md_in_html
 
@@ -135,3 +137,19 @@ plugins:
   - social
   - git-revision-date-localized:
       enable_creation_date: true
+  # - print-site:
+  #     exclude:
+  #       - howtows/*
+
+extra_css:
+  - js/codemirror/lib/codemirror.css
+  - css/UI.css
+
+extra_javascript:
+  - js/codemirror/lib/codemirror.js
+  - js/codemirror/addon/edit/matchbrackets.js
+  - js/codemirror/keymap/emacs.js
+  - js/codemirror/mode/scheme/scheme.js
+  - js/UI.js
+  - js/VM.min.js
+  - js/browserfs.min.js

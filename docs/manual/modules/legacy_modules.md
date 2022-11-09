@@ -2,6 +2,8 @@
 title: Legacy modules
 ---
 
+# Legacy modules
+
 The legacy way of modularizing code, which was popular up to R5RS, is still
 supported by Gambit. It consists of using the `load` procedure and the `include`
 form. We discuss it first to introduce some useful terms and explain the

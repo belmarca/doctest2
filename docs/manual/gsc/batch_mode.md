@@ -2,6 +2,8 @@
 title: Batch mode
 ---
 
+# Batch mode
+
 In batch mode `gsc` accepts on the command line 3 types of non-options which are
 processed from left to right: search directories, modules, and files. Search
 directories are added to the list of module search order directories. Every

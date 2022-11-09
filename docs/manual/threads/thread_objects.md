@@ -2,6 +2,8 @@
 title: Thread objects
 ---
 
+# Thread objects
+
 A running thread is a thread that is currently executing. A runnable thread is a
 thread that is ready to execute or running. A thread is blocked if it is waiting
 for a mutex to become unlocked, an I/O operation to become possible, the end of

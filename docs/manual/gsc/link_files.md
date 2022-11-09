@@ -2,6 +2,8 @@
 title: Link files
 ---
 
+# Link files
+
 Gambit can be used to create programs and libraries of Scheme modules. This
 section explains the steps required to do so and the role played by the link
 files.

@@ -2,6 +2,8 @@
 title: Numbers
 ---
 
+# Numbers
+
 ## Extensions to numeric procedures
 
 #### =
