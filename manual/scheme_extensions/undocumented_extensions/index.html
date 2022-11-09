@@ -1,0 +1,6950 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../../../assets/favicon.ico">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.9">
+    
+    
+      
+        <title>Undocumented extensions - Gambit Scheme</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.20d9efc8.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.08040f6c.min.css">
+        
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../js/codemirror/lib/codemirror.css">
+    
+      <link rel="stylesheet" href="../../../css/UI.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Undocumented extensions - Gambit Scheme" >
+      
+        <meta  property="og:description"  content="None" >
+      
+        <meta  property="og:image"  content="./assets/images/social/manual/scheme_extensions/undocumented_extensions.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="None" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Undocumented extensions - Gambit Scheme" >
+      
+        <meta  name="twitter:description"  content="None" >
+      
+        <meta  name="twitter:image"  content="./assets/images/social/manual/scheme_extensions/undocumented_extensions.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#undocumented-extensions" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Gambit Scheme" class="md-header__button md-logo" aria-label="Gambit Scheme" data-md-component="logo">
+      
+  <img src="../../../assets/gambit.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Gambit Scheme
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Undocumented extensions
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+          
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/gambit/gambit" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    gambit/gambit
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        Home
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../" class="md-tabs__link md-tabs__link--active">
+        Manual
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../howtos/" class="md-tabs__link">
+        How-tos
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Gambit Scheme" class="md-nav__button md-logo" aria-label="Gambit Scheme" data-md-component="logo">
+      
+  <img src="../../../assets/gambit.png" alt="logo">
+
+    </a>
+    Gambit Scheme
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/gambit/gambit" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    gambit/gambit
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../..">Home</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Home" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Home
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../">Manual</a>
+          
+            <label for="__nav_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Manual" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Manual
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" type="checkbox" id="__nav_2_2" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../the_gambit_system/">The Gambit system</a>
+          
+            <label for="__nav_2_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="The Gambit system" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          The Gambit system
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../the_gambit_system/accessing_the_system_files/" class="md-nav__link">
+        Accessing the system files
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" type="checkbox" id="__nav_2_3" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../gsi/">The Gambit Scheme interpreter</a>
+          
+            <label for="__nav_2_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="The Gambit Scheme interpreter" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          The Gambit Scheme interpreter
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gsi/interactive_mode/" class="md-nav__link">
+        Interactive mode
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gsi/batch_mode/" class="md-nav__link">
+        Batch mode
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gsi/module_management_mode/" class="md-nav__link">
+        Module management mode
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gsi/customization/" class="md-nav__link">
+        Customization
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gsi/process_exit_status/" class="md-nav__link">
+        Process exit status
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gsi/scheme_scripts/" class="md-nav__link">
+        Scheme scripts
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4" type="checkbox" id="__nav_2_4" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../gsc/">The Gambit Scheme compiler</a>
+          
+            <label for="__nav_2_4">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="The Gambit Scheme compiler" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_4">
+          <span class="md-nav__icon md-icon"></span>
+          The Gambit Scheme compiler
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gsc/interactive_mode/" class="md-nav__link">
+        Interactive mode
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gsc/customization/" class="md-nav__link">
+        Customization
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gsc/batch_mode/" class="md-nav__link">
+        Batch mode
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gsc/link_files/" class="md-nav__link">
+        Link files
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gsc/procedures/" class="md-nav__link">
+        Procedures specific to the compiler
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5" type="checkbox" id="__nav_2_5" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../runtime_options/">Runtime options</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Runtime options" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_5">
+          <span class="md-nav__icon md-icon"></span>
+          Runtime options
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6" type="checkbox" id="__nav_2_6" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../debugging/">Debugging</a>
+          
+            <label for="__nav_2_6">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Debugging" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_6">
+          <span class="md-nav__icon md-icon"></span>
+          Debugging
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../debugging/debugging_model/" class="md-nav__link">
+        Debugging model
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../debugging/debugging_commands/" class="md-nav__link">
+        Debugging commands
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../debugging/debugging_example/" class="md-nav__link">
+        Debugging example
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../debugging/procedures/" class="md-nav__link">
+        Procedures related to debugging
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../debugging/console_line_editing/" class="md-nav__link">
+        Console line-editing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../debugging/emacs_interface/" class="md-nav__link">
+        Emacs interface
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_7" type="checkbox" id="__nav_2_7" checked>
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../">Scheme extensions</a>
+          
+            <label for="__nav_2_7">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Scheme extensions" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_7">
+          <span class="md-nav__icon md-icon"></span>
+          Scheme extensions
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../extensions_to_standard_procedures/" class="md-nav__link">
+        Extensions to standard procedures
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../extensions_to_standard_special_forms/" class="md-nav__link">
+        Extensions to standard special forms
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../miscellaneous_extensions/" class="md-nav__link">
+        Miscellaneous extensions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Undocumented extensions
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Undocumented extensions
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#make-thread-group" class="md-nav__link">
+    make-thread-group
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-group" class="md-nav__link">
+    thread-group?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-group-name" class="md-nav__link">
+    thread-group-name
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-group-parent" class="md-nav__link">
+    thread-group-parent
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-group-resume" class="md-nav__link">
+    thread-group-resume!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-group-suspend" class="md-nav__link">
+    thread-group-suspend!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-group-terminate" class="md-nav__link">
+    thread-group-terminate!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-group-thread-group-list" class="md-nav__link">
+    thread-group-&gt;thread-group-list
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-group-thread-group-vector" class="md-nav__link">
+    thread-group-&gt;thread-group-vector
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-group-thread-list" class="md-nav__link">
+    thread-group-&gt;thread-list
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-group-thread-vector" class="md-nav__link">
+    thread-group-&gt;thread-vector
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-group-specific" class="md-nav__link">
+    thread-group-specific
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-group-specific-set" class="md-nav__link">
+    thread-group-specific-set!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-state" class="md-nav__link">
+    thread-state
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-state-uninitialized" class="md-nav__link">
+    thread-state-uninitialized?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-state-initialized" class="md-nav__link">
+    thread-state-initialized?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-state-running" class="md-nav__link">
+    thread-state-running?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-state-running-processor" class="md-nav__link">
+    thread-state-running-processor
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-state-waiting" class="md-nav__link">
+    thread-state-waiting?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-state-waiting-for" class="md-nav__link">
+    thread-state-waiting-for
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-state-waiting-timeout" class="md-nav__link">
+    thread-state-waiting-timeout
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-state-normally-terminated" class="md-nav__link">
+    thread-state-normally-terminated?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-state-normally-terminated-result" class="md-nav__link">
+    thread-state-normally-terminated-result
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-state-abnormally-terminated" class="md-nav__link">
+    thread-state-abnormally-terminated?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-state-abnormally-terminated-reason" class="md-nav__link">
+    thread-state-abnormally-terminated-reason
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#top" class="md-nav__link">
+    top
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-interrupt" class="md-nav__link">
+    thread-interrupt!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-suspend" class="md-nav__link">
+    thread-suspend!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-resume" class="md-nav__link">
+    thread-resume!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-thread-group" class="md-nav__link">
+    thread-thread-group
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#define-type-of-thread" class="md-nav__link">
+    define-type-of-thread
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-init" class="md-nav__link">
+    thread-init!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#initialized-thread-exception" class="md-nav__link">
+    initialized-thread-exception?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#initialized-thread-exception-procedure" class="md-nav__link">
+    initialized-thread-exception-procedure
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#initialized-thread-exception-arguments" class="md-nav__link">
+    initialized-thread-exception-arguments
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uninitialized-thread-exception" class="md-nav__link">
+    uninitialized-thread-exception?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uninitialized-thread-exception-procedure" class="md-nav__link">
+    uninitialized-thread-exception-procedure
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uninitialized-thread-exception-arguments" class="md-nav__link">
+    uninitialized-thread-exception-arguments
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inactive-thread-exception" class="md-nav__link">
+    inactive-thread-exception?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inactive-thread-exception-procedure" class="md-nav__link">
+    inactive-thread-exception-procedure
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inactive-thread-exception-arguments" class="md-nav__link">
+    inactive-thread-exception-arguments
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rpc-remote-error-exception" class="md-nav__link">
+    rpc-remote-error-exception?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rpc-remote-error-exception-procedure" class="md-nav__link">
+    rpc-remote-error-exception-procedure
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rpc-remote-error-exception-arguments" class="md-nav__link">
+    rpc-remote-error-exception-arguments
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rpc-remote-error-exception-message" class="md-nav__link">
+    rpc-remote-error-exception-message
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#invalid-utf8-encoding-exception" class="md-nav__link">
+    invalid-utf8-encoding-exception?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#invalid-utf8-encoding-exception-procedure" class="md-nav__link">
+    invalid-utf8-encoding-exception-procedure
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#invalid-utf8-encoding-exception-arguments" class="md-nav__link">
+    invalid-utf8-encoding-exception-arguments
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#module-not-found-exception" class="md-nav__link">
+    module-not-found-exception?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#module-not-found-exception-procedure" class="md-nav__link">
+    module-not-found-exception-procedure
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#module-not-found-exception-arguments" class="md-nav__link">
+    module-not-found-exception-arguments
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#processor" class="md-nav__link">
+    processor?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#current-processor" class="md-nav__link">
+    current-processor
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#processor-id" class="md-nav__link">
+    processor-id
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#timeout-time" class="md-nav__link">
+    timeout-&gt;time
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#current-second" class="md-nav__link">
+    current-second
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#current-jiffy" class="md-nav__link">
+    current-jiffy
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#jiffies-per-second" class="md-nav__link">
+    jiffies-per-second
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get-environment-variable" class="md-nav__link">
+    get-environment-variable
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get-environment-variables" class="md-nav__link">
+    get-environment-variables
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#executable-path" class="md-nav__link">
+    executable-path
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#command-name" class="md-nav__link">
+    command-name
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#command-args" class="md-nav__link">
+    command-args
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#script-file" class="md-nav__link">
+    script-file
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#script-directory" class="md-nav__link">
+    script-directory
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#open-dummy" class="md-nav__link">
+    open-dummy
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#port-settings-set" class="md-nav__link">
+    port-settings-set!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#port-io-exception-handler-set" class="md-nav__link">
+    port-io-exception-handler-set!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#input-port-bytes-buffered" class="md-nav__link">
+    input-port-bytes-buffered
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#input-port-characters-buffered" class="md-nav__link">
+    input-port-characters-buffered
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nonempty-input-port-character-buffer-exception" class="md-nav__link">
+    nonempty-input-port-character-buffer-exception?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nonempty-input-port-character-buffer-exception-arguments" class="md-nav__link">
+    nonempty-input-port-character-buffer-exception-arguments
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nonempty-input-port-character-buffer-exception-procedure" class="md-nav__link">
+    nonempty-input-port-character-buffer-exception-procedure
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#repl-input-port" class="md-nav__link">
+    repl-input-port
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#repl-output-port" class="md-nav__link">
+    repl-output-port
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#repl-error-port" class="md-nav__link">
+    repl-error-port
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#console-port" class="md-nav__link">
+    console-port
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#current-user-interrupt-handler" class="md-nav__link">
+    current-user-interrupt-handler
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#default-user-interrupt-handler" class="md-nav__link">
+    default-user-interrupt-handler
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#defer-user-interrupts" class="md-nav__link">
+    defer-user-interrupts
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#primordial-exception-handler" class="md-nav__link">
+    primordial-exception-handler
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#err-code-string" class="md-nav__link">
+    err-code-&gt;string
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#foreign" class="md-nav__link">
+    foreign?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#foreign-tags" class="md-nav__link">
+    foreign-tags
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#foreign-address" class="md-nav__link">
+    foreign-address
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#foreign-release" class="md-nav__link">
+    foreign-release!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#foreign-released" class="md-nav__link">
+    foreign-released?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#invalid-hash-number-exception" class="md-nav__link">
+    invalid-hash-number-exception?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#invalid-hash-number-exception-procedure" class="md-nav__link">
+    invalid-hash-number-exception-procedure
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#invalid-hash-number-exception-arguments" class="md-nav__link">
+    invalid-hash-number-exception-arguments
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tcp-client-local-socket-info" class="md-nav__link">
+    tcp-client-local-socket-info
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tcp-client-peer-socket-info" class="md-nav__link">
+    tcp-client-peer-socket-info
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tcp-client-self-socket-info" class="md-nav__link">
+    tcp-client-self-socket-info
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tcp-server-socket-info" class="md-nav__link">
+    tcp-server-socket-info
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#socket-info" class="md-nav__link">
+    socket-info?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#socket-info-address" class="md-nav__link">
+    socket-info-address
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#socket-info-family" class="md-nav__link">
+    socket-info-family
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#socket-info-port-number" class="md-nav__link">
+    socket-info-port-number
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#system-version" class="md-nav__link">
+    system-version
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#system-version-string" class="md-nav__link">
+    system-version-string
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#system-type" class="md-nav__link">
+    system-type
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#system-type-string" class="md-nav__link">
+    system-type-string
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configure-command-string" class="md-nav__link">
+    configure-command-string
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#system-stamp" class="md-nav__link">
+    system-stamp
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#future" class="md-nav__link">
+    future
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#touch" class="md-nav__link">
+    touch
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tty" class="md-nav__link">
+    tty?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tty-history" class="md-nav__link">
+    tty-history
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tty-history-set" class="md-nav__link">
+    tty-history-set!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tty-history-max-length-set" class="md-nav__link">
+    tty-history-max-length-set!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tty-paren-balance-duration-set" class="md-nav__link">
+    tty-paren-balance-duration-set!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tty-text-attributes-set" class="md-nav__link">
+    tty-text-attributes-set!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tty-mode-set" class="md-nav__link">
+    tty-mode-set!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tty-type-set" class="md-nav__link">
+    tty-type-set!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#with-input-from-port" class="md-nav__link">
+    with-input-from-port
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#with-output-to-port" class="md-nav__link">
+    with-output-to-port
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#input-port-char-position" class="md-nav__link">
+    input-port-char-position
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#output-port-char-position" class="md-nav__link">
+    output-port-char-position
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#open-event-queue" class="md-nav__link">
+    open-event-queue
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#main" class="md-nav__link">
+    main
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dead-end" class="md-nav__link">
+    dead-end
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#poll-point" class="md-nav__link">
+    poll-point
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#define-record-type" class="md-nav__link">
+    define-record-type
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#define-type" class="md-nav__link">
+    define-type
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#this-source-file" class="md-nav__link">
+    this-source-file
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#receive" class="md-nav__link">
+    receive
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#define-values" class="md-nav__link">
+    define-values
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#define-module-alias" class="md-nav__link">
+    define-module-alias
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#r7rs-guard" class="md-nav__link">
+    r7rs-guard
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#case-lambda" class="md-nav__link">
+    case-lambda
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#syntax-case" class="md-nav__link">
+    syntax-case
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#syntax" class="md-nav__link">
+    syntax
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#datum-syntax" class="md-nav__link">
+    datum-&gt;syntax
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#syntax-datum" class="md-nav__link">
+    syntax-&gt;datum
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#syntax-list" class="md-nav__link">
+    syntax-&gt;list
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#syntax-vector" class="md-nav__link">
+    syntax-&gt;vector
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#length" class="md-nav__link">
+    length+
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#carcdr" class="md-nav__link">
+    car+cdr
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#first" class="md-nav__link">
+    first
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#second" class="md-nav__link">
+    second
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#third" class="md-nav__link">
+    third
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fourth" class="md-nav__link">
+    fourth
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fifth" class="md-nav__link">
+    fifth
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixth" class="md-nav__link">
+    sixth
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#seventh" class="md-nav__link">
+    seventh
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eighth" class="md-nav__link">
+    eighth
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ninth" class="md-nav__link">
+    ninth
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tenth" class="md-nav__link">
+    tenth
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#not-pair" class="md-nav__link">
+    not-pair?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#null-list" class="md-nav__link">
+    null-list?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#proper-list" class="md-nav__link">
+    proper-list?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#circular-list" class="md-nav__link">
+    circular-list?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dotted-list" class="md-nav__link">
+    dotted-list?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#filter" class="md-nav__link">
+    filter
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#remove" class="md-nav__link">
+    remove
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#remq" class="md-nav__link">
+    remq
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concatenate" class="md-nav__link">
+    concatenate
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concatenate_1" class="md-nav__link">
+    concatenate!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list" class="md-nav__link">
+    list=
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list-set" class="md-nav__link">
+    list-set
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list-set_1" class="md-nav__link">
+    list-set!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fold" class="md-nav__link">
+    fold
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fold-right" class="md-nav__link">
+    fold-right
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iota" class="md-nav__link">
+    iota
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#circular-list_1" class="md-nav__link">
+    circular-list
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cons" class="md-nav__link">
+    cons*
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list-copy" class="md-nav__link">
+    list-copy
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list-tabulate" class="md-nav__link">
+    list-tabulate
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#make-list" class="md-nav__link">
+    make-list
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reverse" class="md-nav__link">
+    reverse!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#append-reverse" class="md-nav__link">
+    append-reverse
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#append-reverse_1" class="md-nav__link">
+    append-reverse!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xcons" class="md-nav__link">
+    xcons
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#take" class="md-nav__link">
+    take
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#drop" class="md-nav__link">
+    drop
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#last" class="md-nav__link">
+    last
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#last-pair" class="md-nav__link">
+    last-pair
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list-sort" class="md-nav__link">
+    list-sort
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list-sort_1" class="md-nav__link">
+    list-sort!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#finite" class="md-nav__link">
+    finite?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#infinite" class="md-nav__link">
+    infinite?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nan" class="md-nav__link">
+    nan?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#acosh" class="md-nav__link">
+    acosh
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#asinh" class="md-nav__link">
+    asinh
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#atanh" class="md-nav__link">
+    atanh
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cosh" class="md-nav__link">
+    cosh
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sinh" class="md-nav__link">
+    sinh
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tanh" class="md-nav__link">
+    tanh
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conjugate" class="md-nav__link">
+    conjugate
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bits" class="md-nav__link">
+    bits
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bits-list" class="md-nav__link">
+    bits-&gt;list
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list-bits" class="md-nav__link">
+    list-&gt;bits
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bits-vector" class="md-nav__link">
+    bits-&gt;vector
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vector-bits" class="md-nav__link">
+    vector-&gt;bits
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixinfix" class="md-nav__link">
+    six.infix
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#six" class="md-nav__link">
+    six.!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixx" class="md-nav__link">
+    six.!x
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixx_1" class="md-nav__link">
+    six.&amp;x
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixx_2" class="md-nav__link">
+    six.**x
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixx_3" class="md-nav__link">
+    six.*x
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixx_4" class="md-nav__link">
+    six.++x
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixx_5" class="md-nav__link">
+    six.+x
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#six-x" class="md-nav__link">
+    six.--x
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#six-x_1" class="md-nav__link">
+    six.-x
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixarrow" class="md-nav__link">
+    six.arrow
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixasyncx" class="md-nav__link">
+    six.asyncx
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixawaitx" class="md-nav__link">
+    six.awaitx
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixbreak" class="md-nav__link">
+    six.break
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixcall" class="md-nav__link">
+    six.call
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixcase" class="md-nav__link">
+    six.case
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixclause" class="md-nav__link">
+    six.clause
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixcompound" class="md-nav__link">
+    six.compound
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixcons" class="md-nav__link">
+    six.cons
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixcontinue" class="md-nav__link">
+    six.continue
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixdefine-procedure" class="md-nav__link">
+    six.define-procedure
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixdefine-variable" class="md-nav__link">
+    six.define-variable
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixdo-while" class="md-nav__link">
+    six.do-while
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixdot" class="md-nav__link">
+    six.dot
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixfor" class="md-nav__link">
+    six.for
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixgoto" class="md-nav__link">
+    six.goto
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixfrom-import" class="md-nav__link">
+    six.from-import
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixfrom-import-" class="md-nav__link">
+    six.from-import-*
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixidentifier" class="md-nav__link">
+    six.identifier
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixif" class="md-nav__link">
+    six.if
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#siximport" class="md-nav__link">
+    six.import
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixindex" class="md-nav__link">
+    six.index
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixlabel" class="md-nav__link">
+    six.label
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixlist" class="md-nav__link">
+    six.list
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixliteral" class="md-nav__link">
+    six.literal
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixmake-array" class="md-nav__link">
+    six.make-array
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixnew" class="md-nav__link">
+    six.new
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixnull" class="md-nav__link">
+    six.null
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixprocedure" class="md-nav__link">
+    six.procedure
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixprocedure-body" class="md-nav__link">
+    six.procedure-body
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixreturn" class="md-nav__link">
+    six.return
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixswitch" class="md-nav__link">
+    six.switch
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixtypeofx" class="md-nav__link">
+    six.typeofx
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixwhile" class="md-nav__link">
+    six.while
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixxy" class="md-nav__link">
+    six.x!==y
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixxy_1" class="md-nav__link">
+    six.x!=y
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixxy_2" class="md-nav__link">
+    six.x%=y
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixxy_3" class="md-nav__link">
+    six.x%y
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixxy_4" class="md-nav__link">
+    six.x&amp;&amp;y
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixxy_5" class="md-nav__link">
+    six.x&amp;=y
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixxy_6" class="md-nav__link">
+    six.x&amp;y
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixxy_7" class="md-nav__link">
+    six.x**=y
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixxy_8" class="md-nav__link">
+    six.x**y
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixxy_9" class="md-nav__link">
+    six.x*=y
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixxy_10" class="md-nav__link">
+    six.x*y
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixxy_11" class="md-nav__link">
+    six.x@=y
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixxy_12" class="md-nav__link">
+    six.x@y
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixx_6" class="md-nav__link">
+    six.x++
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixxy_13" class="md-nav__link">
+    six.x+=y
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixxy_14" class="md-nav__link">
+    six.x+y
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixxy_15" class="md-nav__link">
+    |six.x,y|
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixx-" class="md-nav__link">
+    six.x--
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixx-y" class="md-nav__link">
+    six.x-=y
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixx-y_1" class="md-nav__link">
+    six.x-y
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixxy_16" class="md-nav__link">
+    six.x//=y
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixxy_17" class="md-nav__link">
+    six.x//y
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixxy_18" class="md-nav__link">
+    six.x/=y
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixxy_19" class="md-nav__link">
+    six.x/y
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixx-y_2" class="md-nav__link">
+    six.x:-y
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixxy_20" class="md-nav__link">
+    six.x:=y
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixxy_21" class="md-nav__link">
+    six.x:y
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixxy_22" class="md-nav__link">
+    six.x&lt;&lt;=y
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixxy_23" class="md-nav__link">
+    six.x&lt;&lt;y
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixxy_24" class="md-nav__link">
+    six.x&lt;=y
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixxy_25" class="md-nav__link">
+    six.x&lt;y
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixxy_26" class="md-nav__link">
+    six.x===y
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixxy_27" class="md-nav__link">
+    six.x==y
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixxy_28" class="md-nav__link">
+    six.x=y
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixxy_29" class="md-nav__link">
+    six.x&gt;=y
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixxy_30" class="md-nav__link">
+    six.x&gt;&gt;&gt;=y
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixxy_31" class="md-nav__link">
+    six.x&gt;&gt;&gt;y
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixxy_32" class="md-nav__link">
+    six.x&gt;&gt;=y
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixxy_33" class="md-nav__link">
+    six.x&gt;&gt;y
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixxy_34" class="md-nav__link">
+    six.x&gt;y
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixxyz" class="md-nav__link">
+    six.x?y:z
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixxy_35" class="md-nav__link">
+    six.x^=y
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixxy_36" class="md-nav__link">
+    six.x^y
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixxy_37" class="md-nav__link">
+    |six.x|=y|
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixxy_38" class="md-nav__link">
+    |six.x|y|
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixxy_39" class="md-nav__link">
+    |six.x||y|
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixxandy" class="md-nav__link">
+    six.xandy
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixxinstanceofy" class="md-nav__link">
+    six.xinstanceofy
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixxiny" class="md-nav__link">
+    six.xiny
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixxisy" class="md-nav__link">
+    six.xisy
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixnotx" class="md-nav__link">
+    six.notx
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixxory" class="md-nav__link">
+    six.xory
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixx_7" class="md-nav__link">
+    six.~x
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixyieldx" class="md-nav__link">
+    six.yieldx
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#readtable-comment-handler" class="md-nav__link">
+    readtable-comment-handler
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#readtable-comment-handler-set" class="md-nav__link">
+    readtable-comment-handler-set
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#open-output-bytevector" class="md-nav__link">
+    open-output-bytevector
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_8" type="checkbox" id="__nav_2_8" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../modules/">Modules</a>
+          
+            <label for="__nav_2_8">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Modules" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_8">
+          <span class="md-nav__icon md-icon"></span>
+          Modules
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/legacy_modules/" class="md-nav__link">
+        Legacy modules
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/primitive_modules/" class="md-nav__link">
+        Primitive modules
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/primitive_procedures/" class="md-nav__link">
+        Primitive procedures
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/r7rs_compatible_modules/" class="md-nav__link">
+        R7RS compatible modules
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/installing_modules/" class="md-nav__link">
+        Installing modules
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/compiling_modules/" class="md-nav__link">
+        Compiling modules
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_9" type="checkbox" id="__nav_2_9" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../built_in_data_types/">Built-in data types</a>
+          
+            <label for="__nav_2_9">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Built-in data types" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_9">
+          <span class="md-nav__icon md-icon"></span>
+          Built-in data types
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../built_in_data_types/numbers/" class="md-nav__link">
+        Numbers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../built_in_data_types/booleans/" class="md-nav__link">
+        Booleans
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../built_in_data_types/pairs_and_lists/" class="md-nav__link">
+        Pairs and lists
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../built_in_data_types/symbols_and_keywords/" class="md-nav__link">
+        Symbols and keywords
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../built_in_data_types/characters_and_strings/" class="md-nav__link">
+        Characters and strings
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../built_in_data_types/vectors/" class="md-nav__link">
+        Vectors
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../built_in_data_types/homogeneous_numeric_vectors/" class="md-nav__link">
+        Homogeneous numeric vectors
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../built_in_data_types/hashing_and_weak_references/" class="md-nav__link">
+        Hashing and weak references
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_10" type="checkbox" id="__nav_2_10" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../records/">Records</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Records" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_10">
+          <span class="md-nav__icon md-icon"></span>
+          Records
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_11" type="checkbox" id="__nav_2_11" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../threads/">Threads</a>
+          
+            <label for="__nav_2_11">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Threads" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_11">
+          <span class="md-nav__icon md-icon"></span>
+          Threads
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../threads/introduction/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../threads/thread_objects/" class="md-nav__link">
+        Thread objects
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../threads/mutex_objects/" class="md-nav__link">
+        Mutex objects
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../threads/condvar_objects/" class="md-nav__link">
+        Condition variable objects
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../threads/fairness/" class="md-nav__link">
+        Fairness
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../threads/memory_coherency/" class="md-nav__link">
+        Memory coherency
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../threads/timeouts/" class="md-nav__link">
+        Timeouts
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../threads/primordial_thread/" class="md-nav__link">
+        Primordial thread
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../threads/procedures/" class="md-nav__link">
+        Procedures
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_12" type="checkbox" id="__nav_2_12" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../dynamic_environment/">Dynamic environment</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Dynamic environment" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_12">
+          <span class="md-nav__icon md-icon"></span>
+          Dynamic environment
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_13" type="checkbox" id="__nav_2_13" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../exceptions/">Exceptions</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Exceptions" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_13">
+          <span class="md-nav__icon md-icon"></span>
+          Exceptions
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_14" type="checkbox" id="__nav_2_14" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../host_environment/">Host environment</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Host environment" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_14">
+          <span class="md-nav__icon md-icon"></span>
+          Host environment
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_15" type="checkbox" id="__nav_2_15" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../io_and_ports/">I/O and ports</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="I/O and ports" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_15">
+          <span class="md-nav__icon md-icon"></span>
+          I/O and ports
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_16" type="checkbox" id="__nav_2_16" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../lexical_syntax_and_readtables/">Lexical syntax and readtables</a>
+          
+            <label for="__nav_2_16">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Lexical syntax and readtables" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_16">
+          <span class="md-nav__icon md-icon"></span>
+          Lexical syntax and readtables
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lexical_syntax_and_readtables/readtables/" class="md-nav__link">
+        Readtables
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_17" type="checkbox" id="__nav_2_17" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../c_interface/">C-interface</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="C-interface" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_17">
+          <span class="md-nav__icon md-icon"></span>
+          C-interface
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_18" type="checkbox" id="__nav_2_18" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../system_limitations/">System limitations</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="System limitations" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_18">
+          <span class="md-nav__icon md-icon"></span>
+          System limitations
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_19" type="checkbox" id="__nav_2_19" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../copyright_and_license/">Copyright and license</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Copyright and license" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_19">
+          <span class="md-nav__icon md-icon"></span>
+          Copyright and license
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../howtos/">How-tos</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="How-tos" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          How-tos
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#make-thread-group" class="md-nav__link">
+    make-thread-group
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-group" class="md-nav__link">
+    thread-group?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-group-name" class="md-nav__link">
+    thread-group-name
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-group-parent" class="md-nav__link">
+    thread-group-parent
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-group-resume" class="md-nav__link">
+    thread-group-resume!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-group-suspend" class="md-nav__link">
+    thread-group-suspend!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-group-terminate" class="md-nav__link">
+    thread-group-terminate!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-group-thread-group-list" class="md-nav__link">
+    thread-group-&gt;thread-group-list
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-group-thread-group-vector" class="md-nav__link">
+    thread-group-&gt;thread-group-vector
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-group-thread-list" class="md-nav__link">
+    thread-group-&gt;thread-list
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-group-thread-vector" class="md-nav__link">
+    thread-group-&gt;thread-vector
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-group-specific" class="md-nav__link">
+    thread-group-specific
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-group-specific-set" class="md-nav__link">
+    thread-group-specific-set!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-state" class="md-nav__link">
+    thread-state
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-state-uninitialized" class="md-nav__link">
+    thread-state-uninitialized?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-state-initialized" class="md-nav__link">
+    thread-state-initialized?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-state-running" class="md-nav__link">
+    thread-state-running?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-state-running-processor" class="md-nav__link">
+    thread-state-running-processor
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-state-waiting" class="md-nav__link">
+    thread-state-waiting?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-state-waiting-for" class="md-nav__link">
+    thread-state-waiting-for
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-state-waiting-timeout" class="md-nav__link">
+    thread-state-waiting-timeout
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-state-normally-terminated" class="md-nav__link">
+    thread-state-normally-terminated?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-state-normally-terminated-result" class="md-nav__link">
+    thread-state-normally-terminated-result
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-state-abnormally-terminated" class="md-nav__link">
+    thread-state-abnormally-terminated?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-state-abnormally-terminated-reason" class="md-nav__link">
+    thread-state-abnormally-terminated-reason
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#top" class="md-nav__link">
+    top
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-interrupt" class="md-nav__link">
+    thread-interrupt!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-suspend" class="md-nav__link">
+    thread-suspend!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-resume" class="md-nav__link">
+    thread-resume!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-thread-group" class="md-nav__link">
+    thread-thread-group
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#define-type-of-thread" class="md-nav__link">
+    define-type-of-thread
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-init" class="md-nav__link">
+    thread-init!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#initialized-thread-exception" class="md-nav__link">
+    initialized-thread-exception?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#initialized-thread-exception-procedure" class="md-nav__link">
+    initialized-thread-exception-procedure
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#initialized-thread-exception-arguments" class="md-nav__link">
+    initialized-thread-exception-arguments
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uninitialized-thread-exception" class="md-nav__link">
+    uninitialized-thread-exception?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uninitialized-thread-exception-procedure" class="md-nav__link">
+    uninitialized-thread-exception-procedure
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uninitialized-thread-exception-arguments" class="md-nav__link">
+    uninitialized-thread-exception-arguments
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inactive-thread-exception" class="md-nav__link">
+    inactive-thread-exception?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inactive-thread-exception-procedure" class="md-nav__link">
+    inactive-thread-exception-procedure
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inactive-thread-exception-arguments" class="md-nav__link">
+    inactive-thread-exception-arguments
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rpc-remote-error-exception" class="md-nav__link">
+    rpc-remote-error-exception?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rpc-remote-error-exception-procedure" class="md-nav__link">
+    rpc-remote-error-exception-procedure
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rpc-remote-error-exception-arguments" class="md-nav__link">
+    rpc-remote-error-exception-arguments
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rpc-remote-error-exception-message" class="md-nav__link">
+    rpc-remote-error-exception-message
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#invalid-utf8-encoding-exception" class="md-nav__link">
+    invalid-utf8-encoding-exception?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#invalid-utf8-encoding-exception-procedure" class="md-nav__link">
+    invalid-utf8-encoding-exception-procedure
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#invalid-utf8-encoding-exception-arguments" class="md-nav__link">
+    invalid-utf8-encoding-exception-arguments
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#module-not-found-exception" class="md-nav__link">
+    module-not-found-exception?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#module-not-found-exception-procedure" class="md-nav__link">
+    module-not-found-exception-procedure
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#module-not-found-exception-arguments" class="md-nav__link">
+    module-not-found-exception-arguments
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#processor" class="md-nav__link">
+    processor?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#current-processor" class="md-nav__link">
+    current-processor
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#processor-id" class="md-nav__link">
+    processor-id
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#timeout-time" class="md-nav__link">
+    timeout-&gt;time
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#current-second" class="md-nav__link">
+    current-second
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#current-jiffy" class="md-nav__link">
+    current-jiffy
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#jiffies-per-second" class="md-nav__link">
+    jiffies-per-second
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get-environment-variable" class="md-nav__link">
+    get-environment-variable
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get-environment-variables" class="md-nav__link">
+    get-environment-variables
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#executable-path" class="md-nav__link">
+    executable-path
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#command-name" class="md-nav__link">
+    command-name
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#command-args" class="md-nav__link">
+    command-args
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#script-file" class="md-nav__link">
+    script-file
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#script-directory" class="md-nav__link">
+    script-directory
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#open-dummy" class="md-nav__link">
+    open-dummy
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#port-settings-set" class="md-nav__link">
+    port-settings-set!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#port-io-exception-handler-set" class="md-nav__link">
+    port-io-exception-handler-set!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#input-port-bytes-buffered" class="md-nav__link">
+    input-port-bytes-buffered
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#input-port-characters-buffered" class="md-nav__link">
+    input-port-characters-buffered
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nonempty-input-port-character-buffer-exception" class="md-nav__link">
+    nonempty-input-port-character-buffer-exception?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nonempty-input-port-character-buffer-exception-arguments" class="md-nav__link">
+    nonempty-input-port-character-buffer-exception-arguments
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nonempty-input-port-character-buffer-exception-procedure" class="md-nav__link">
+    nonempty-input-port-character-buffer-exception-procedure
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#repl-input-port" class="md-nav__link">
+    repl-input-port
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#repl-output-port" class="md-nav__link">
+    repl-output-port
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#repl-error-port" class="md-nav__link">
+    repl-error-port
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#console-port" class="md-nav__link">
+    console-port
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#current-user-interrupt-handler" class="md-nav__link">
+    current-user-interrupt-handler
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#default-user-interrupt-handler" class="md-nav__link">
+    default-user-interrupt-handler
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#defer-user-interrupts" class="md-nav__link">
+    defer-user-interrupts
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#primordial-exception-handler" class="md-nav__link">
+    primordial-exception-handler
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#err-code-string" class="md-nav__link">
+    err-code-&gt;string
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#foreign" class="md-nav__link">
+    foreign?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#foreign-tags" class="md-nav__link">
+    foreign-tags
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#foreign-address" class="md-nav__link">
+    foreign-address
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#foreign-release" class="md-nav__link">
+    foreign-release!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#foreign-released" class="md-nav__link">
+    foreign-released?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#invalid-hash-number-exception" class="md-nav__link">
+    invalid-hash-number-exception?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#invalid-hash-number-exception-procedure" class="md-nav__link">
+    invalid-hash-number-exception-procedure
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#invalid-hash-number-exception-arguments" class="md-nav__link">
+    invalid-hash-number-exception-arguments
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tcp-client-local-socket-info" class="md-nav__link">
+    tcp-client-local-socket-info
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tcp-client-peer-socket-info" class="md-nav__link">
+    tcp-client-peer-socket-info
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tcp-client-self-socket-info" class="md-nav__link">
+    tcp-client-self-socket-info
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tcp-server-socket-info" class="md-nav__link">
+    tcp-server-socket-info
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#socket-info" class="md-nav__link">
+    socket-info?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#socket-info-address" class="md-nav__link">
+    socket-info-address
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#socket-info-family" class="md-nav__link">
+    socket-info-family
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#socket-info-port-number" class="md-nav__link">
+    socket-info-port-number
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#system-version" class="md-nav__link">
+    system-version
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#system-version-string" class="md-nav__link">
+    system-version-string
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#system-type" class="md-nav__link">
+    system-type
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#system-type-string" class="md-nav__link">
+    system-type-string
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configure-command-string" class="md-nav__link">
+    configure-command-string
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#system-stamp" class="md-nav__link">
+    system-stamp
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#future" class="md-nav__link">
+    future
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#touch" class="md-nav__link">
+    touch
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tty" class="md-nav__link">
+    tty?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tty-history" class="md-nav__link">
+    tty-history
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tty-history-set" class="md-nav__link">
+    tty-history-set!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tty-history-max-length-set" class="md-nav__link">
+    tty-history-max-length-set!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tty-paren-balance-duration-set" class="md-nav__link">
+    tty-paren-balance-duration-set!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tty-text-attributes-set" class="md-nav__link">
+    tty-text-attributes-set!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tty-mode-set" class="md-nav__link">
+    tty-mode-set!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tty-type-set" class="md-nav__link">
+    tty-type-set!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#with-input-from-port" class="md-nav__link">
+    with-input-from-port
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#with-output-to-port" class="md-nav__link">
+    with-output-to-port
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#input-port-char-position" class="md-nav__link">
+    input-port-char-position
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#output-port-char-position" class="md-nav__link">
+    output-port-char-position
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#open-event-queue" class="md-nav__link">
+    open-event-queue
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#main" class="md-nav__link">
+    main
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dead-end" class="md-nav__link">
+    dead-end
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#poll-point" class="md-nav__link">
+    poll-point
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#define-record-type" class="md-nav__link">
+    define-record-type
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#define-type" class="md-nav__link">
+    define-type
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#this-source-file" class="md-nav__link">
+    this-source-file
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#receive" class="md-nav__link">
+    receive
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#define-values" class="md-nav__link">
+    define-values
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#define-module-alias" class="md-nav__link">
+    define-module-alias
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#r7rs-guard" class="md-nav__link">
+    r7rs-guard
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#case-lambda" class="md-nav__link">
+    case-lambda
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#syntax-case" class="md-nav__link">
+    syntax-case
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#syntax" class="md-nav__link">
+    syntax
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#datum-syntax" class="md-nav__link">
+    datum-&gt;syntax
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#syntax-datum" class="md-nav__link">
+    syntax-&gt;datum
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#syntax-list" class="md-nav__link">
+    syntax-&gt;list
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#syntax-vector" class="md-nav__link">
+    syntax-&gt;vector
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#length" class="md-nav__link">
+    length+
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#carcdr" class="md-nav__link">
+    car+cdr
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#first" class="md-nav__link">
+    first
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#second" class="md-nav__link">
+    second
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#third" class="md-nav__link">
+    third
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fourth" class="md-nav__link">
+    fourth
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fifth" class="md-nav__link">
+    fifth
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixth" class="md-nav__link">
+    sixth
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#seventh" class="md-nav__link">
+    seventh
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eighth" class="md-nav__link">
+    eighth
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ninth" class="md-nav__link">
+    ninth
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tenth" class="md-nav__link">
+    tenth
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#not-pair" class="md-nav__link">
+    not-pair?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#null-list" class="md-nav__link">
+    null-list?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#proper-list" class="md-nav__link">
+    proper-list?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#circular-list" class="md-nav__link">
+    circular-list?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dotted-list" class="md-nav__link">
+    dotted-list?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#filter" class="md-nav__link">
+    filter
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#remove" class="md-nav__link">
+    remove
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#remq" class="md-nav__link">
+    remq
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concatenate" class="md-nav__link">
+    concatenate
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concatenate_1" class="md-nav__link">
+    concatenate!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list" class="md-nav__link">
+    list=
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list-set" class="md-nav__link">
+    list-set
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list-set_1" class="md-nav__link">
+    list-set!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fold" class="md-nav__link">
+    fold
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fold-right" class="md-nav__link">
+    fold-right
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iota" class="md-nav__link">
+    iota
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#circular-list_1" class="md-nav__link">
+    circular-list
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cons" class="md-nav__link">
+    cons*
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list-copy" class="md-nav__link">
+    list-copy
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list-tabulate" class="md-nav__link">
+    list-tabulate
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#make-list" class="md-nav__link">
+    make-list
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reverse" class="md-nav__link">
+    reverse!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#append-reverse" class="md-nav__link">
+    append-reverse
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#append-reverse_1" class="md-nav__link">
+    append-reverse!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xcons" class="md-nav__link">
+    xcons
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#take" class="md-nav__link">
+    take
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#drop" class="md-nav__link">
+    drop
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#last" class="md-nav__link">
+    last
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#last-pair" class="md-nav__link">
+    last-pair
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list-sort" class="md-nav__link">
+    list-sort
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list-sort_1" class="md-nav__link">
+    list-sort!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#finite" class="md-nav__link">
+    finite?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#infinite" class="md-nav__link">
+    infinite?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nan" class="md-nav__link">
+    nan?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#acosh" class="md-nav__link">
+    acosh
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#asinh" class="md-nav__link">
+    asinh
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#atanh" class="md-nav__link">
+    atanh
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cosh" class="md-nav__link">
+    cosh
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sinh" class="md-nav__link">
+    sinh
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tanh" class="md-nav__link">
+    tanh
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conjugate" class="md-nav__link">
+    conjugate
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bits" class="md-nav__link">
+    bits
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bits-list" class="md-nav__link">
+    bits-&gt;list
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list-bits" class="md-nav__link">
+    list-&gt;bits
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bits-vector" class="md-nav__link">
+    bits-&gt;vector
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vector-bits" class="md-nav__link">
+    vector-&gt;bits
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixinfix" class="md-nav__link">
+    six.infix
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#six" class="md-nav__link">
+    six.!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixx" class="md-nav__link">
+    six.!x
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixx_1" class="md-nav__link">
+    six.&amp;x
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixx_2" class="md-nav__link">
+    six.**x
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixx_3" class="md-nav__link">
+    six.*x
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixx_4" class="md-nav__link">
+    six.++x
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixx_5" class="md-nav__link">
+    six.+x
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#six-x" class="md-nav__link">
+    six.--x
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#six-x_1" class="md-nav__link">
+    six.-x
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixarrow" class="md-nav__link">
+    six.arrow
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixasyncx" class="md-nav__link">
+    six.asyncx
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixawaitx" class="md-nav__link">
+    six.awaitx
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixbreak" class="md-nav__link">
+    six.break
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixcall" class="md-nav__link">
+    six.call
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixcase" class="md-nav__link">
+    six.case
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixclause" class="md-nav__link">
+    six.clause
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixcompound" class="md-nav__link">
+    six.compound
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixcons" class="md-nav__link">
+    six.cons
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixcontinue" class="md-nav__link">
+    six.continue
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixdefine-procedure" class="md-nav__link">
+    six.define-procedure
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixdefine-variable" class="md-nav__link">
+    six.define-variable
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixdo-while" class="md-nav__link">
+    six.do-while
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixdot" class="md-nav__link">
+    six.dot
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixfor" class="md-nav__link">
+    six.for
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixgoto" class="md-nav__link">
+    six.goto
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixfrom-import" class="md-nav__link">
+    six.from-import
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixfrom-import-" class="md-nav__link">
+    six.from-import-*
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixidentifier" class="md-nav__link">
+    six.identifier
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixif" class="md-nav__link">
+    six.if
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#siximport" class="md-nav__link">
+    six.import
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixindex" class="md-nav__link">
+    six.index
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixlabel" class="md-nav__link">
+    six.label
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixlist" class="md-nav__link">
+    six.list
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixliteral" class="md-nav__link">
+    six.literal
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixmake-array" class="md-nav__link">
+    six.make-array
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixnew" class="md-nav__link">
+    six.new
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixnull" class="md-nav__link">
+    six.null
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixprocedure" class="md-nav__link">
+    six.procedure
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixprocedure-body" class="md-nav__link">
+    six.procedure-body
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixreturn" class="md-nav__link">
+    six.return
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixswitch" class="md-nav__link">
+    six.switch
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixtypeofx" class="md-nav__link">
+    six.typeofx
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixwhile" class="md-nav__link">
+    six.while
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixxy" class="md-nav__link">
+    six.x!==y
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixxy_1" class="md-nav__link">
+    six.x!=y
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixxy_2" class="md-nav__link">
+    six.x%=y
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixxy_3" class="md-nav__link">
+    six.x%y
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixxy_4" class="md-nav__link">
+    six.x&amp;&amp;y
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixxy_5" class="md-nav__link">
+    six.x&amp;=y
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixxy_6" class="md-nav__link">
+    six.x&amp;y
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixxy_7" class="md-nav__link">
+    six.x**=y
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixxy_8" class="md-nav__link">
+    six.x**y
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixxy_9" class="md-nav__link">
+    six.x*=y
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixxy_10" class="md-nav__link">
+    six.x*y
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixxy_11" class="md-nav__link">
+    six.x@=y
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixxy_12" class="md-nav__link">
+    six.x@y
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixx_6" class="md-nav__link">
+    six.x++
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixxy_13" class="md-nav__link">
+    six.x+=y
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixxy_14" class="md-nav__link">
+    six.x+y
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixxy_15" class="md-nav__link">
+    |six.x,y|
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixx-" class="md-nav__link">
+    six.x--
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixx-y" class="md-nav__link">
+    six.x-=y
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixx-y_1" class="md-nav__link">
+    six.x-y
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixxy_16" class="md-nav__link">
+    six.x//=y
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixxy_17" class="md-nav__link">
+    six.x//y
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixxy_18" class="md-nav__link">
+    six.x/=y
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixxy_19" class="md-nav__link">
+    six.x/y
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixx-y_2" class="md-nav__link">
+    six.x:-y
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixxy_20" class="md-nav__link">
+    six.x:=y
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixxy_21" class="md-nav__link">
+    six.x:y
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixxy_22" class="md-nav__link">
+    six.x&lt;&lt;=y
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixxy_23" class="md-nav__link">
+    six.x&lt;&lt;y
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixxy_24" class="md-nav__link">
+    six.x&lt;=y
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixxy_25" class="md-nav__link">
+    six.x&lt;y
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixxy_26" class="md-nav__link">
+    six.x===y
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixxy_27" class="md-nav__link">
+    six.x==y
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixxy_28" class="md-nav__link">
+    six.x=y
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixxy_29" class="md-nav__link">
+    six.x&gt;=y
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixxy_30" class="md-nav__link">
+    six.x&gt;&gt;&gt;=y
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixxy_31" class="md-nav__link">
+    six.x&gt;&gt;&gt;y
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixxy_32" class="md-nav__link">
+    six.x&gt;&gt;=y
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixxy_33" class="md-nav__link">
+    six.x&gt;&gt;y
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixxy_34" class="md-nav__link">
+    six.x&gt;y
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixxyz" class="md-nav__link">
+    six.x?y:z
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixxy_35" class="md-nav__link">
+    six.x^=y
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixxy_36" class="md-nav__link">
+    six.x^y
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixxy_37" class="md-nav__link">
+    |six.x|=y|
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixxy_38" class="md-nav__link">
+    |six.x|y|
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixxy_39" class="md-nav__link">
+    |six.x||y|
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixxandy" class="md-nav__link">
+    six.xandy
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixxinstanceofy" class="md-nav__link">
+    six.xinstanceofy
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixxiny" class="md-nav__link">
+    six.xiny
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixxisy" class="md-nav__link">
+    six.xisy
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixnotx" class="md-nav__link">
+    six.notx
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixxory" class="md-nav__link">
+    six.xory
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixx_7" class="md-nav__link">
+    six.~x
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sixyieldx" class="md-nav__link">
+    six.yieldx
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#readtable-comment-handler" class="md-nav__link">
+    readtable-comment-handler
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#readtable-comment-handler-set" class="md-nav__link">
+    readtable-comment-handler-set
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#open-output-bytevector" class="md-nav__link">
+    open-output-bytevector
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  <a href="https://github.com/gambit/gambit/edit/master/docs/manual/scheme_extensions/undocumented_extensions.md" title="Edit this page" class="md-content__button md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
+
+
+<h1 id="undocumented-extensions">Undocumented extensions</h1>
+<p>The procedures in this section are not yet documented.</p>
+<h4 id="make-thread-group">make-thread-group</h4>
+<pre class="highlight"><code class="language-scheme">(make-thread-group [name [thread-group]]) ;; procedure</code></pre>
+<h4 id="thread-group">thread-group?</h4>
+<pre class="highlight"><code class="language-scheme">(thread-group? obj) ;; procedure</code></pre>
+<h4 id="thread-group-name">thread-group-name</h4>
+<pre class="highlight"><code class="language-scheme">(thread-group-name thread-group) ;; procedure</code></pre>
+<h4 id="thread-group-parent">thread-group-parent</h4>
+<pre class="highlight"><code class="language-scheme">(thread-group-parent thread-group) ;; procedure</code></pre>
+<h4 id="thread-group-resume">thread-group-resume!</h4>
+<pre class="highlight"><code class="language-scheme">(thread-group-resume! thread-group) ;; procedure</code></pre>
+<h4 id="thread-group-suspend">thread-group-suspend!</h4>
+<pre class="highlight"><code class="language-scheme">(thread-group-suspend! thread-group) ;; procedure</code></pre>
+<h4 id="thread-group-terminate">thread-group-terminate!</h4>
+<pre class="highlight"><code class="language-scheme">(thread-group-terminate! thread-group) ;; procedure</code></pre>
+<h4 id="thread-group-thread-group-list">thread-group-&gt;thread-group-list</h4>
+<pre class="highlight"><code class="language-scheme">(thread-group-&gt;thread-group-list thread-group) ;; procedure</code></pre>
+<h4 id="thread-group-thread-group-vector">thread-group-&gt;thread-group-vector</h4>
+<pre class="highlight"><code class="language-scheme">(thread-group-&gt;thread-group-vector thread-group) ;; procedure</code></pre>
+<h4 id="thread-group-thread-list">thread-group-&gt;thread-list</h4>
+<pre class="highlight"><code class="language-scheme">(thread-group-&gt;thread-list thread-group) ;; procedure</code></pre>
+<h4 id="thread-group-thread-vector">thread-group-&gt;thread-vector</h4>
+<pre class="highlight"><code class="language-scheme">(thread-group-&gt;thread-vector thread-group) ;; procedure</code></pre>
+<h4 id="thread-group-specific">thread-group-specific</h4>
+<pre class="highlight"><code class="language-scheme">(thread-group-specific thread-group) ;; procedure</code></pre>
+<h4 id="thread-group-specific-set">thread-group-specific-set!</h4>
+<pre class="highlight"><code class="language-scheme">(thread-group-specific-set! thread-group obj) ;; procedure</code></pre>
+<h4 id="thread-state">thread-state</h4>
+<pre class="highlight"><code class="language-scheme">(thread-state thread) ;; procedure</code></pre>
+<h4 id="thread-state-uninitialized">thread-state-uninitialized?</h4>
+<pre class="highlight"><code class="language-scheme">(thread-state-uninitialized? thread-state) ;; procedure</code></pre>
+<h4 id="thread-state-initialized">thread-state-initialized?</h4>
+<pre class="highlight"><code class="language-scheme">(thread-state-initialized? thread-state) ;; procedure</code></pre>
+<h4 id="thread-state-running">thread-state-running?</h4>
+<pre class="highlight"><code class="language-scheme">(thread-state-running? thread-state) ;; procedure</code></pre>
+<h4 id="thread-state-running-processor">thread-state-running-processor</h4>
+<pre class="highlight"><code class="language-scheme">(thread-state-running-processor thread-state) ;; procedure</code></pre>
+<h4 id="thread-state-waiting">thread-state-waiting?</h4>
+<pre class="highlight"><code class="language-scheme">(thread-state-waiting? thread-state) ;; procedure</code></pre>
+<h4 id="thread-state-waiting-for">thread-state-waiting-for</h4>
+<pre class="highlight"><code class="language-scheme">(thread-state-waiting-for thread-state) ;; procedure</code></pre>
+<h4 id="thread-state-waiting-timeout">thread-state-waiting-timeout</h4>
+<pre class="highlight"><code class="language-scheme">(thread-state-waiting-timeout thread-state) ;; procedure</code></pre>
+<h4 id="thread-state-normally-terminated">thread-state-normally-terminated?</h4>
+<pre class="highlight"><code class="language-scheme">(thread-state-normally-terminated? thread-state) ;; procedure</code></pre>
+<h4 id="thread-state-normally-terminated-result">thread-state-normally-terminated-result</h4>
+<pre class="highlight"><code class="language-scheme">(thread-state-normally-terminated-result thread-state) ;; procedure</code></pre>
+<h4 id="thread-state-abnormally-terminated">thread-state-abnormally-terminated?</h4>
+<pre class="highlight"><code class="language-scheme">(thread-state-abnormally-terminated? thread-state) ;; procedure</code></pre>
+<h4 id="thread-state-abnormally-terminated-reason">thread-state-abnormally-terminated-reason</h4>
+<pre class="highlight"><code class="language-scheme">(thread-state-abnormally-terminated-reason thread-state) ;; procedure</code></pre>
+<h4 id="top">top</h4>
+<pre class="highlight"><code class="language-scheme">(top [timeout [thread-group [port]]]) ;; procedure</code></pre>
+<h4 id="thread-interrupt">thread-interrupt!</h4>
+<pre class="highlight"><code class="language-scheme">(thread-interrupt! thread [thunk]) ;; procedure</code></pre>
+<h4 id="thread-suspend">thread-suspend!</h4>
+<pre class="highlight"><code class="language-scheme">(thread-suspend! thread) ;; procedure</code></pre>
+<h4 id="thread-resume">thread-resume!</h4>
+<pre class="highlight"><code class="language-scheme">(thread-resume! thread) ;; procedure</code></pre>
+<h4 id="thread-thread-group">thread-thread-group</h4>
+<pre class="highlight"><code class="language-scheme">(thread-thread-group thread) ;; procedure</code></pre>
+<h4 id="define-type-of-thread">define-type-of-thread</h4>
+<pre class="highlight"><code class="language-scheme">(define-type-of-thread name field…) ;; special form</code></pre>
+<h4 id="thread-init">thread-init!</h4>
+<pre class="highlight"><code class="language-scheme">(thread-init! thread thunk [name [thread-group]]) ;; procedure</code></pre>
+<h4 id="initialized-thread-exception">initialized-thread-exception?</h4>
+<pre class="highlight"><code class="language-scheme">(initialized-thread-exception? obj) ;; procedure</code></pre>
+<h4 id="initialized-thread-exception-procedure">initialized-thread-exception-procedure</h4>
+<pre class="highlight"><code class="language-scheme">(initialized-thread-exception-procedure exc) ;; procedure</code></pre>
+<h4 id="initialized-thread-exception-arguments">initialized-thread-exception-arguments</h4>
+<pre class="highlight"><code class="language-scheme">(initialized-thread-exception-arguments exc) ;; procedure</code></pre>
+<h4 id="uninitialized-thread-exception">uninitialized-thread-exception?</h4>
+<pre class="highlight"><code class="language-scheme">(uninitialized-thread-exception? obj) ;; procedure</code></pre>
+<h4 id="uninitialized-thread-exception-procedure">uninitialized-thread-exception-procedure</h4>
+<pre class="highlight"><code class="language-scheme">(uninitialized-thread-exception-procedure exc) ;; procedure</code></pre>
+<h4 id="uninitialized-thread-exception-arguments">uninitialized-thread-exception-arguments</h4>
+<pre class="highlight"><code class="language-scheme">(uninitialized-thread-exception-arguments exc) ;; procedure</code></pre>
+<h4 id="inactive-thread-exception">inactive-thread-exception?</h4>
+<pre class="highlight"><code class="language-scheme">(inactive-thread-exception? obj) ;; procedure</code></pre>
+<h4 id="inactive-thread-exception-procedure">inactive-thread-exception-procedure</h4>
+<pre class="highlight"><code class="language-scheme">(inactive-thread-exception-procedure exc) ;; procedure</code></pre>
+<h4 id="inactive-thread-exception-arguments">inactive-thread-exception-arguments</h4>
+<pre class="highlight"><code class="language-scheme">(inactive-thread-exception-arguments exc) ;; procedure</code></pre>
+<h4 id="rpc-remote-error-exception">rpc-remote-error-exception?</h4>
+<pre class="highlight"><code class="language-scheme">(rpc-remote-error-exception? obj) ;; procedure</code></pre>
+<h4 id="rpc-remote-error-exception-procedure">rpc-remote-error-exception-procedure</h4>
+<pre class="highlight"><code class="language-scheme">(rpc-remote-error-exception-procedure exc) ;; procedure</code></pre>
+<h4 id="rpc-remote-error-exception-arguments">rpc-remote-error-exception-arguments</h4>
+<pre class="highlight"><code class="language-scheme">(rpc-remote-error-exception-arguments exc) ;; procedure</code></pre>
+<h4 id="rpc-remote-error-exception-message">rpc-remote-error-exception-message</h4>
+<pre class="highlight"><code class="language-scheme">(rpc-remote-error-exception-message exc) ;; procedure</code></pre>
+<h4 id="invalid-utf8-encoding-exception">invalid-utf8-encoding-exception?</h4>
+<pre class="highlight"><code class="language-scheme">(invalid-utf8-encoding-exception? obj) ;; procedure</code></pre>
+<h4 id="invalid-utf8-encoding-exception-procedure">invalid-utf8-encoding-exception-procedure</h4>
+<pre class="highlight"><code class="language-scheme">(invalid-utf8-encoding-exception-procedure exc) ;; procedure</code></pre>
+<h4 id="invalid-utf8-encoding-exception-arguments">invalid-utf8-encoding-exception-arguments</h4>
+<pre class="highlight"><code class="language-scheme">(invalid-utf8-encoding-exception-arguments exc) ;; procedure</code></pre>
+<h4 id="module-not-found-exception">module-not-found-exception?</h4>
+<pre class="highlight"><code class="language-scheme">(module-not-found-exception? obj) ;; procedure</code></pre>
+<h4 id="module-not-found-exception-procedure">module-not-found-exception-procedure</h4>
+<pre class="highlight"><code class="language-scheme">(module-not-found-exception-procedure exc) ;; procedure</code></pre>
+<h4 id="module-not-found-exception-arguments">module-not-found-exception-arguments</h4>
+<pre class="highlight"><code class="language-scheme">(module-not-found-exception-arguments exc) ;; procedure</code></pre>
+<h4 id="processor">processor?</h4>
+<pre class="highlight"><code class="language-scheme">(processor? obj) ;; procedure</code></pre>
+<h4 id="current-processor">current-processor</h4>
+<pre class="highlight"><code class="language-scheme">(current-processor) ;; procedure</code></pre>
+<h4 id="processor-id">processor-id</h4>
+<pre class="highlight"><code class="language-scheme">(processor-id processor) ;; procedure</code></pre>
+<h4 id="timeout-time">timeout-&gt;time</h4>
+<pre class="highlight"><code class="language-scheme">(timeout-&gt;time timeout) ;; procedure</code></pre>
+<h4 id="current-second">current-second</h4>
+<pre class="highlight"><code class="language-scheme">(current-second) ;; procedure</code></pre>
+<h4 id="current-jiffy">current-jiffy</h4>
+<pre class="highlight"><code class="language-scheme">(current-jiffy) ;; procedure</code></pre>
+<h4 id="jiffies-per-second">jiffies-per-second</h4>
+<pre class="highlight"><code class="language-scheme">(jiffies-per-second) ;; procedure</code></pre>
+<h4 id="get-environment-variable">get-environment-variable</h4>
+<pre class="highlight"><code class="language-scheme">(get-environment-variable name) ;; procedure</code></pre>
+<h4 id="get-environment-variables">get-environment-variables</h4>
+<pre class="highlight"><code class="language-scheme">(get-environment-variables) ;; procedure</code></pre>
+<h4 id="executable-path">executable-path</h4>
+<pre class="highlight"><code class="language-scheme">(executable-path) ;; procedure</code></pre>
+<h4 id="command-name">command-name</h4>
+<pre class="highlight"><code class="language-scheme">(command-name) ;; procedure</code></pre>
+<h4 id="command-args">command-args</h4>
+<pre class="highlight"><code class="language-scheme">(command-args) ;; procedure</code></pre>
+<h4 id="script-file">script-file</h4>
+<pre class="highlight"><code class="language-scheme">(script-file) ;; procedure</code></pre>
+<h4 id="script-directory">script-directory</h4>
+<pre class="highlight"><code class="language-scheme">(script-directory) ;; procedure</code></pre>
+<h4 id="open-dummy">open-dummy</h4>
+<pre class="highlight"><code class="language-scheme">(open-dummy) ;; procedure</code></pre>
+<h4 id="port-settings-set">port-settings-set!</h4>
+<pre class="highlight"><code class="language-scheme">(port-settings-set! port settings) ;; procedure</code></pre>
+<h4 id="port-io-exception-handler-set">port-io-exception-handler-set!</h4>
+<pre class="highlight"><code class="language-scheme">(port-io-exception-handler-set! port handler) ;; procedure</code></pre>
+<h4 id="input-port-bytes-buffered">input-port-bytes-buffered</h4>
+<pre class="highlight"><code class="language-scheme">(input-port-bytes-buffered port) ;; procedure</code></pre>
+<h4 id="input-port-characters-buffered">input-port-characters-buffered</h4>
+<pre class="highlight"><code class="language-scheme">(input-port-characters-buffered port) ;; procedure</code></pre>
+<h4 id="nonempty-input-port-character-buffer-exception">nonempty-input-port-character-buffer-exception?</h4>
+<pre class="highlight"><code class="language-scheme">(nonempty-input-port-character-buffer-exception? obj) ;; procedure</code></pre>
+<h4 id="nonempty-input-port-character-buffer-exception-arguments">nonempty-input-port-character-buffer-exception-arguments</h4>
+<pre class="highlight"><code class="language-scheme">(nonempty-input-port-character-buffer-exception-arguments exc) ;; procedure</code></pre>
+<h4 id="nonempty-input-port-character-buffer-exception-procedure">nonempty-input-port-character-buffer-exception-procedure</h4>
+<pre class="highlight"><code class="language-scheme">(nonempty-input-port-character-buffer-exception-procedure exc) ;; procedure</code></pre>
+<h4 id="repl-input-port">repl-input-port</h4>
+<pre class="highlight"><code class="language-scheme">(repl-input-port) ;; procedure</code></pre>
+<h4 id="repl-output-port">repl-output-port</h4>
+<pre class="highlight"><code class="language-scheme">(repl-output-port) ;; procedure</code></pre>
+<h4 id="repl-error-port">repl-error-port</h4>
+<pre class="highlight"><code class="language-scheme">(repl-error-port) ;; procedure</code></pre>
+<h4 id="console-port">console-port</h4>
+<pre class="highlight"><code class="language-scheme">(console-port) ;; procedure</code></pre>
+<h4 id="current-user-interrupt-handler">current-user-interrupt-handler</h4>
+<pre class="highlight"><code class="language-scheme">(current-user-interrupt-handler [handler]) ;; procedure</code></pre>
+<h4 id="default-user-interrupt-handler">default-user-interrupt-handler</h4>
+<pre class="highlight"><code class="language-scheme">(default-user-interrupt-handler) ;; procedure</code></pre>
+<h4 id="defer-user-interrupts">defer-user-interrupts</h4>
+<pre class="highlight"><code class="language-scheme">(defer-user-interrupts) ;; procedure</code></pre>
+<h4 id="primordial-exception-handler">primordial-exception-handler</h4>
+<pre class="highlight"><code class="language-scheme">(primordial-exception-handler exc) ;; procedure</code></pre>
+<h4 id="err-code-string">err-code-&gt;string</h4>
+<pre class="highlight"><code class="language-scheme">(err-code-&gt;string code) ;; procedure</code></pre>
+<h4 id="foreign">foreign?</h4>
+<pre class="highlight"><code class="language-scheme">(foreign? obj) ;; procedure</code></pre>
+<h4 id="foreign-tags">foreign-tags</h4>
+<pre class="highlight"><code class="language-scheme">(foreign-tags foreign) ;; procedure</code></pre>
+<h4 id="foreign-address">foreign-address</h4>
+<pre class="highlight"><code class="language-scheme">(foreign-address foreign) ;; procedure</code></pre>
+<h4 id="foreign-release">foreign-release!</h4>
+<pre class="highlight"><code class="language-scheme">(foreign-release! foreign) ;; procedure</code></pre>
+<h4 id="foreign-released">foreign-released?</h4>
+<pre class="highlight"><code class="language-scheme">(foreign-released? foreign) ;; procedure</code></pre>
+<h4 id="invalid-hash-number-exception">invalid-hash-number-exception?</h4>
+<pre class="highlight"><code class="language-scheme">(invalid-hash-number-exception? obj) ;; procedure</code></pre>
+<h4 id="invalid-hash-number-exception-procedure">invalid-hash-number-exception-procedure</h4>
+<pre class="highlight"><code class="language-scheme">(invalid-hash-number-exception-procedure exc) ;; procedure</code></pre>
+<h4 id="invalid-hash-number-exception-arguments">invalid-hash-number-exception-arguments</h4>
+<pre class="highlight"><code class="language-scheme">(invalid-hash-number-exception-arguments exc) ;; procedure</code></pre>
+<h4 id="tcp-client-local-socket-info">tcp-client-local-socket-info</h4>
+<pre class="highlight"><code class="language-scheme">(tcp-client-local-socket-info tcp-client-port) ;; procedure</code></pre>
+<h4 id="tcp-client-peer-socket-info">tcp-client-peer-socket-info</h4>
+<pre class="highlight"><code class="language-scheme">(tcp-client-peer-socket-info tcp-client-port) ;; procedure</code></pre>
+<h4 id="tcp-client-self-socket-info">tcp-client-self-socket-info</h4>
+<pre class="highlight"><code class="language-scheme">(tcp-client-self-socket-info tcp-client-port) ;; procedure</code></pre>
+<h4 id="tcp-server-socket-info">tcp-server-socket-info</h4>
+<pre class="highlight"><code class="language-scheme">(tcp-server-socket-info tcp-server-port) ;; procedure</code></pre>
+<h4 id="socket-info">socket-info?</h4>
+<pre class="highlight"><code class="language-scheme">(socket-info? obj) ;; procedure</code></pre>
+<h4 id="socket-info-address">socket-info-address</h4>
+<pre class="highlight"><code class="language-scheme">(socket-info-address socket-info) ;; procedure</code></pre>
+<h4 id="socket-info-family">socket-info-family</h4>
+<pre class="highlight"><code class="language-scheme">(socket-info-family socket-info) ;; procedure</code></pre>
+<h4 id="socket-info-port-number">socket-info-port-number</h4>
+<pre class="highlight"><code class="language-scheme">(socket-info-port-number socket-info) ;; procedure</code></pre>
+<h4 id="system-version">system-version</h4>
+<pre class="highlight"><code class="language-scheme">(system-version) ;; procedure</code></pre>
+<h4 id="system-version-string">system-version-string</h4>
+<pre class="highlight"><code class="language-scheme">(system-version-string) ;; procedure</code></pre>
+<h4 id="system-type">system-type</h4>
+<pre class="highlight"><code class="language-scheme">(system-type) ;; procedure</code></pre>
+<h4 id="system-type-string">system-type-string</h4>
+<pre class="highlight"><code class="language-scheme">(system-type-string) ;; procedure</code></pre>
+<h4 id="configure-command-string">configure-command-string</h4>
+<pre class="highlight"><code class="language-scheme">(configure-command-string) ;; procedure</code></pre>
+<h4 id="system-stamp">system-stamp</h4>
+<pre class="highlight"><code class="language-scheme">(system-stamp) ;; procedure</code></pre>
+<h4 id="future">future</h4>
+<pre class="highlight"><code class="language-scheme">(future expr) ;; special form</code></pre>
+<h4 id="touch">touch</h4>
+<pre class="highlight"><code class="language-scheme">(touch obj) ;; procedure</code></pre>
+<h4 id="tty">tty?</h4>
+<pre class="highlight"><code class="language-scheme">(tty? obj) ;; procedure</code></pre>
+<h4 id="tty-history">tty-history</h4>
+<pre class="highlight"><code class="language-scheme">(tty-history tty) ;; procedure</code></pre>
+<h4 id="tty-history-set">tty-history-set!</h4>
+<pre class="highlight"><code class="language-scheme">(tty-history-set! tty history) ;; procedure</code></pre>
+<h4 id="tty-history-max-length-set">tty-history-max-length-set!</h4>
+<pre class="highlight"><code class="language-scheme">(tty-history-max-length-set! tty n) ;; procedure</code></pre>
+<h4 id="tty-paren-balance-duration-set">tty-paren-balance-duration-set!</h4>
+<pre class="highlight"><code class="language-scheme">(tty-paren-balance-duration-set! tty duration) ;; procedure</code></pre>
+<h4 id="tty-text-attributes-set">tty-text-attributes-set!</h4>
+<pre class="highlight"><code class="language-scheme">(tty-text-attributes-set! tty attributes) ;; procedure</code></pre>
+<h4 id="tty-mode-set">tty-mode-set!</h4>
+<pre class="highlight"><code class="language-scheme">(tty-mode-set! tty mode) ;; procedure</code></pre>
+<h4 id="tty-type-set">tty-type-set!</h4>
+<pre class="highlight"><code class="language-scheme">(tty-type-set! tty type) ;; procedure</code></pre>
+<h4 id="with-input-from-port">with-input-from-port</h4>
+<pre class="highlight"><code class="language-scheme">(with-input-from-port port thunk) ;; procedure</code></pre>
+<h4 id="with-output-to-port">with-output-to-port</h4>
+<pre class="highlight"><code class="language-scheme">(with-output-to-port port thunk) ;; procedure</code></pre>
+<h4 id="input-port-char-position">input-port-char-position</h4>
+<pre class="highlight"><code class="language-scheme">(input-port-char-position port) ;; procedure</code></pre>
+<h4 id="output-port-char-position">output-port-char-position</h4>
+<pre class="highlight"><code class="language-scheme">(output-port-char-position port) ;; procedure</code></pre>
+<h4 id="open-event-queue">open-event-queue</h4>
+<pre class="highlight"><code class="language-scheme">(open-event-queue selector) ;; procedure</code></pre>
+<h4 id="main">main</h4>
+<pre class="highlight"><code class="language-scheme">(main …) ;; procedure</code></pre>
+<h4 id="dead-end">dead-end</h4>
+<pre class="highlight"><code class="language-scheme">(dead-end) ;; procedure</code></pre>
+<h4 id="poll-point">poll-point</h4>
+<pre class="highlight"><code class="language-scheme">(poll-point) ;; procedure</code></pre>
+<h4 id="define-record-type">define-record-type</h4>
+<pre class="highlight"><code class="language-scheme">(define-record-type …) ;; special form</code></pre>
+<h4 id="define-type">define-type</h4>
+<pre class="highlight"><code class="language-scheme">(define-type …) ;; special form</code></pre>
+<h4 id="this-source-file">this-source-file</h4>
+<pre class="highlight"><code class="language-scheme">(this-source-file) ;; special form</code></pre>
+<h4 id="receive">receive</h4>
+<pre class="highlight"><code class="language-scheme">(receive …) ;; special form</code></pre>
+<h4 id="define-values">define-values</h4>
+<pre class="highlight"><code class="language-scheme">(define-values …) ;; special form</code></pre>
+<h4 id="define-module-alias">define-module-alias</h4>
+<pre class="highlight"><code class="language-scheme">(define-module-alias …) ;; special form</code></pre>
+<h4 id="r7rs-guard">r7rs-guard</h4>
+<pre class="highlight"><code class="language-scheme">(r7rs-guard …) ;; special form</code></pre>
+<h4 id="case-lambda">case-lambda</h4>
+<pre class="highlight"><code class="language-scheme">(case-lambda …) ;; special form</code></pre>
+<h4 id="syntax-case">syntax-case</h4>
+<pre class="highlight"><code class="language-scheme">(syntax-case …) ;; special form</code></pre>
+<h4 id="syntax">syntax</h4>
+<pre class="highlight"><code class="language-scheme">(syntax …) ;; special form</code></pre>
+<h4 id="datum-syntax">datum-&gt;syntax</h4>
+<pre class="highlight"><code class="language-scheme">(datum-&gt;syntax obj) ;; procedure</code></pre>
+<h4 id="syntax-datum">syntax-&gt;datum</h4>
+<pre class="highlight"><code class="language-scheme">(syntax-&gt;datum stx) ;; procedure</code></pre>
+<h4 id="syntax-list">syntax-&gt;list</h4>
+<pre class="highlight"><code class="language-scheme">(syntax-&gt;list stx) ;; procedure</code></pre>
+<h4 id="syntax-vector">syntax-&gt;vector</h4>
+<pre class="highlight"><code class="language-scheme">(syntax-&gt;vector stx) ;; procedure</code></pre>
+<h4 id="length">length+</h4>
+<pre class="highlight"><code class="language-scheme">(length+ clist) ;; procedure</code></pre>
+<h4 id="carcdr">car+cdr</h4>
+<pre class="highlight"><code class="language-scheme">(car+cdr pair) ;; procedure</code></pre>
+<h4 id="first">first</h4>
+<pre class="highlight"><code class="language-scheme">(first pair) ;; procedure</code></pre>
+<h4 id="second">second</h4>
+<pre class="highlight"><code class="language-scheme">(second pair) ;; procedure</code></pre>
+<h4 id="third">third</h4>
+<pre class="highlight"><code class="language-scheme">(third pair) ;; procedure</code></pre>
+<h4 id="fourth">fourth</h4>
+<pre class="highlight"><code class="language-scheme">(fourth pair) ;; procedure</code></pre>
+<h4 id="fifth">fifth</h4>
+<pre class="highlight"><code class="language-scheme">(fifth pair) ;; procedure</code></pre>
+<h4 id="sixth">sixth</h4>
+<pre class="highlight"><code class="language-scheme">(sixth pair) ;; procedure</code></pre>
+<h4 id="seventh">seventh</h4>
+<pre class="highlight"><code class="language-scheme">(seventh pair) ;; procedure</code></pre>
+<h4 id="eighth">eighth</h4>
+<pre class="highlight"><code class="language-scheme">(eighth pair) ;; procedure</code></pre>
+<h4 id="ninth">ninth</h4>
+<pre class="highlight"><code class="language-scheme">(ninth pair) ;; procedure</code></pre>
+<h4 id="tenth">tenth</h4>
+<pre class="highlight"><code class="language-scheme">(tenth pair) ;; procedure</code></pre>
+<h4 id="not-pair">not-pair?</h4>
+<pre class="highlight"><code class="language-scheme">(not-pair? x) ;; procedure</code></pre>
+<h4 id="null-list">null-list?</h4>
+<pre class="highlight"><code class="language-scheme">(null-list? list) ;; procedure</code></pre>
+<h4 id="proper-list">proper-list?</h4>
+<pre class="highlight"><code class="language-scheme">(proper-list? s) ;; procedure</code></pre>
+<h4 id="circular-list">circular-list?</h4>
+<pre class="highlight"><code class="language-scheme">(circular-list? s) ;; procedure</code></pre>
+<h4 id="dotted-list">dotted-list?</h4>
+<pre class="highlight"><code class="language-scheme">(dotted-list? s) ;; procedure</code></pre>
+<h4 id="filter">filter</h4>
+<pre class="highlight"><code class="language-scheme">(filter pred list) ;; procedure</code></pre>
+<h4 id="remove">remove</h4>
+<pre class="highlight"><code class="language-scheme">(remove pred list) ;; procedure</code></pre>
+<h4 id="remq">remq</h4>
+<pre class="highlight"><code class="language-scheme">(remq elem list) ;; procedure</code></pre>
+<h4 id="concatenate">concatenate</h4>
+<pre class="highlight"><code class="language-scheme">(concatenate list-of-lists [separator]) ;; procedure</code></pre>
+<h4 id="concatenate_1">concatenate!</h4>
+<pre class="highlight"><code class="language-scheme">(concatenate! list-of-lists) ;; procedure</code></pre>
+<h4 id="list">list=</h4>
+<pre class="highlight"><code class="language-scheme">(list= elt= list …) ;; procedure</code></pre>
+<h4 id="list-set">list-set</h4>
+<pre class="highlight"><code class="language-scheme">(list-set list k val) ;; procedure</code></pre>
+<h4 id="list-set_1">list-set!</h4>
+<pre class="highlight"><code class="language-scheme">(list-set! list k val) ;; procedure</code></pre>
+<h4 id="fold">fold</h4>
+<pre class="highlight"><code class="language-scheme">(fold proc base list …) ;; procedure</code></pre>
+<h4 id="fold-right">fold-right</h4>
+<pre class="highlight"><code class="language-scheme">(fold-right proc base list …) ;; procedure</code></pre>
+<h4 id="iota">iota</h4>
+<pre class="highlight"><code class="language-scheme">(iota count [start [step]]) ;; procedure</code></pre>
+<h4 id="circular-list_1">circular-list</h4>
+<pre class="highlight"><code class="language-scheme">(circular-list x y…) ;; procedure</code></pre>
+<h4 id="cons">cons*</h4>
+<pre class="highlight"><code class="language-scheme">(cons* x y…) ;; procedure</code></pre>
+<h4 id="list-copy">list-copy</h4>
+<pre class="highlight"><code class="language-scheme">(list-copy list) ;; procedure</code></pre>
+<h4 id="list-tabulate">list-tabulate</h4>
+<pre class="highlight"><code class="language-scheme">(list-tabulate n init-proc) ;; procedure</code></pre>
+<h4 id="make-list">make-list</h4>
+<pre class="highlight"><code class="language-scheme">(make-list n [fill]) ;; procedure</code></pre>
+<h4 id="reverse">reverse!</h4>
+<pre class="highlight"><code class="language-scheme">(reverse! list) ;; procedure</code></pre>
+<h4 id="append-reverse">append-reverse</h4>
+<pre class="highlight"><code class="language-scheme">(append-reverse list tail) ;; procedure</code></pre>
+<h4 id="append-reverse_1">append-reverse!</h4>
+<pre class="highlight"><code class="language-scheme">(append-reverse! list tail) ;; procedure</code></pre>
+<h4 id="xcons">xcons</h4>
+<pre class="highlight"><code class="language-scheme">(xcons d a) ;; procedure</code></pre>
+<h4 id="take">take</h4>
+<pre class="highlight"><code class="language-scheme">(take x i) ;; procedure</code></pre>
+<h4 id="drop">drop</h4>
+<pre class="highlight"><code class="language-scheme">(drop x i) ;; procedure</code></pre>
+<h4 id="last">last</h4>
+<pre class="highlight"><code class="language-scheme">(last pair) ;; procedure</code></pre>
+<h4 id="last-pair">last-pair</h4>
+<pre class="highlight"><code class="language-scheme">(last-pair pair) ;; procedure</code></pre>
+<h4 id="list-sort">list-sort</h4>
+<pre class="highlight"><code class="language-scheme">(list-sort proc list) ;; procedure</code></pre>
+<h4 id="list-sort_1">list-sort!</h4>
+<pre class="highlight"><code class="language-scheme">(list-sort! proc list) ;; procedure</code></pre>
+<h4 id="finite">finite?</h4>
+<pre class="highlight"><code class="language-scheme">(finite? x) ;; procedure</code></pre>
+<h4 id="infinite">infinite?</h4>
+<pre class="highlight"><code class="language-scheme">(infinite? x) ;; procedure</code></pre>
+<h4 id="nan">nan?</h4>
+<pre class="highlight"><code class="language-scheme">(nan? x) ;; procedure</code></pre>
+<h4 id="acosh">acosh</h4>
+<pre class="highlight"><code class="language-scheme">(acosh x) ;; procedure</code></pre>
+<h4 id="asinh">asinh</h4>
+<pre class="highlight"><code class="language-scheme">(asinh x) ;; procedure</code></pre>
+<h4 id="atanh">atanh</h4>
+<pre class="highlight"><code class="language-scheme">(atanh x) ;; procedure</code></pre>
+<h4 id="cosh">cosh</h4>
+<pre class="highlight"><code class="language-scheme">(cosh x) ;; procedure</code></pre>
+<h4 id="sinh">sinh</h4>
+<pre class="highlight"><code class="language-scheme">(sinh x) ;; procedure</code></pre>
+<h4 id="tanh">tanh</h4>
+<pre class="highlight"><code class="language-scheme">(tanh x) ;; procedure</code></pre>
+<h4 id="conjugate">conjugate</h4>
+<pre class="highlight"><code class="language-scheme">(conjugate x) ;; procedure</code></pre>
+<h4 id="bits">bits</h4>
+<pre class="highlight"><code class="language-scheme">(bits bool…) ;; procedure</code></pre>
+<h4 id="bits-list">bits-&gt;list</h4>
+<pre class="highlight"><code class="language-scheme">(bits-&gt;list i [len]) ;; procedure</code></pre>
+<h4 id="list-bits">list-&gt;bits</h4>
+<pre class="highlight"><code class="language-scheme">(list-&gt;bits list) ;; procedure</code></pre>
+<h4 id="bits-vector">bits-&gt;vector</h4>
+<pre class="highlight"><code class="language-scheme">(bits-&gt;vector i [len]) ;; procedure</code></pre>
+<h4 id="vector-bits">vector-&gt;bits</h4>
+<pre class="highlight"><code class="language-scheme">(vector-&gt;bits vector) ;; procedure</code></pre>
+<h4 id="sixinfix">six.infix</h4>
+<pre class="highlight"><code class="language-scheme">(six.infix datum) ;; special form</code></pre>
+<h4 id="six">six.!</h4>
+<pre class="highlight"><code class="language-scheme">(six.!) ;; undefined</code></pre>
+<h4 id="sixx">six.!x</h4>
+<pre class="highlight"><code class="language-scheme">(six.!x x) ;; special form</code></pre>
+<h4 id="sixx_1">six.&amp;x</h4>
+<pre class="highlight"><code class="language-scheme">(six.&amp;x x) ;; special form</code></pre>
+<h4 id="sixx_2">six.**x</h4>
+<pre class="highlight"><code class="language-scheme">(six.**x x) ;; special form</code></pre>
+<h4 id="sixx_3">six.*x</h4>
+<pre class="highlight"><code class="language-scheme">(six.*x x) ;; special form</code></pre>
+<h4 id="sixx_4">six.++x</h4>
+<pre class="highlight"><code class="language-scheme">(six.++x x) ;; special form</code></pre>
+<h4 id="sixx_5">six.+x</h4>
+<pre class="highlight"><code class="language-scheme">(six.+x x) ;; special form</code></pre>
+<h4 id="six-x">six.--x</h4>
+<pre class="highlight"><code class="language-scheme">(six.--x x) ;; special form</code></pre>
+<h4 id="six-x_1">six.-x</h4>
+<pre class="highlight"><code class="language-scheme">(six.-x x) ;; special form</code></pre>
+<h4 id="sixarrow">six.arrow</h4>
+<pre class="highlight"><code class="language-scheme">(six.arrow expr ident) ;; special form</code></pre>
+<h4 id="sixasyncx">six.asyncx</h4>
+<pre class="highlight"><code class="language-scheme">(six.asyncx x) ;; undefined</code></pre>
+<h4 id="sixawaitx">six.awaitx</h4>
+<pre class="highlight"><code class="language-scheme">(six.awaitx x) ;; undefined</code></pre>
+<h4 id="sixbreak">six.break</h4>
+<pre class="highlight"><code class="language-scheme">(six.break) ;; undefined</code></pre>
+<h4 id="sixcall">six.call</h4>
+<pre class="highlight"><code class="language-scheme">(six.call func arg…) ;; special form</code></pre>
+<h4 id="sixcase">six.case</h4>
+<pre class="highlight"><code class="language-scheme">(six.case) ;; undefined</code></pre>
+<h4 id="sixclause">six.clause</h4>
+<pre class="highlight"><code class="language-scheme">(six.clause) ;; undefined</code></pre>
+<h4 id="sixcompound">six.compound</h4>
+<pre class="highlight"><code class="language-scheme">(six.compound statement…) ;; special form</code></pre>
+<h4 id="sixcons">six.cons</h4>
+<pre class="highlight"><code class="language-scheme">(six.cons x y) ;; special form</code></pre>
+<h4 id="sixcontinue">six.continue</h4>
+<pre class="highlight"><code class="language-scheme">(six.continue) ;; undefined</code></pre>
+<h4 id="sixdefine-procedure">six.define-procedure</h4>
+<pre class="highlight"><code class="language-scheme">(six.define-procedure ident proc) ;; special form</code></pre>
+<h4 id="sixdefine-variable">six.define-variable</h4>
+<pre class="highlight"><code class="language-scheme">(six.define-variable ident type dims init) ;; special form</code></pre>
+<h4 id="sixdo-while">six.do-while</h4>
+<pre class="highlight"><code class="language-scheme">(six.do-while stat expr) ;; special form</code></pre>
+<h4 id="sixdot">six.dot</h4>
+<pre class="highlight"><code class="language-scheme">(six.dot expr ident) ;; special form</code></pre>
+<h4 id="sixfor">six.for</h4>
+<pre class="highlight"><code class="language-scheme">(six.for stat1 expr2 expr3 stat2) ;; special form</code></pre>
+<h4 id="sixgoto">six.goto</h4>
+<pre class="highlight"><code class="language-scheme">(six.goto expr) ;; undefined</code></pre>
+<h4 id="sixfrom-import">six.from-import</h4>
+<pre class="highlight"><code class="language-scheme">(six.from-import expr1 expr2) ;; undefined</code></pre>
+<h4 id="sixfrom-import-">six.from-import-*</h4>
+<pre class="highlight"><code class="language-scheme">(six.from-import-* expr) ;; undefined</code></pre>
+<h4 id="sixidentifier">six.identifier</h4>
+<pre class="highlight"><code class="language-scheme">(six.identifier ident) ;; special form</code></pre>
+<h4 id="sixif">six.if</h4>
+<pre class="highlight"><code class="language-scheme">(six.if expr stat1 [stat2]) ;; special form</code></pre>
+<h4 id="siximport">six.import</h4>
+<pre class="highlight"><code class="language-scheme">(six.import expr) ;; undefined</code></pre>
+<h4 id="sixindex">six.index</h4>
+<pre class="highlight"><code class="language-scheme">(six.index expr1 expr2) ;; special form</code></pre>
+<h4 id="sixlabel">six.label</h4>
+<pre class="highlight"><code class="language-scheme">(six.label ident stat) ;; undefined</code></pre>
+<h4 id="sixlist">six.list</h4>
+<pre class="highlight"><code class="language-scheme">(six.list x y) ;; special form</code></pre>
+<h4 id="sixliteral">six.literal</h4>
+<pre class="highlight"><code class="language-scheme">(six.literal value) ;; special form</code></pre>
+<h4 id="sixmake-array">six.make-array</h4>
+<pre class="highlight"><code class="language-scheme">(six.make-array init dim…) ;; procedure</code></pre>
+<h4 id="sixnew">six.new</h4>
+<pre class="highlight"><code class="language-scheme">(six.new ident arg…) ;; special form</code></pre>
+<h4 id="sixnull">six.null</h4>
+<pre class="highlight"><code class="language-scheme">(six.null) ;; special form</code></pre>
+<h4 id="sixprocedure">six.procedure</h4>
+<pre class="highlight"><code class="language-scheme">(six.procedure type params stat) ;; special form</code></pre>
+<h4 id="sixprocedure-body">six.procedure-body</h4>
+<pre class="highlight"><code class="language-scheme">(six.procedure-body stat…) ;; special form</code></pre>
+<h4 id="sixreturn">six.return</h4>
+<pre class="highlight"><code class="language-scheme">(six.return) ;; undefined</code></pre>
+<h4 id="sixswitch">six.switch</h4>
+<pre class="highlight"><code class="language-scheme">(six.switch) ;; undefined</code></pre>
+<h4 id="sixtypeofx">six.typeofx</h4>
+<pre class="highlight"><code class="language-scheme">(six.typeofx x) ;; undefined</code></pre>
+<h4 id="sixwhile">six.while</h4>
+<pre class="highlight"><code class="language-scheme">(six.while expr stat…) ;; special form</code></pre>
+<h4 id="sixxy">six.x!==y</h4>
+<pre class="highlight"><code class="language-scheme">(six.x!==y x y) ;; special form</code></pre>
+<h4 id="sixxy_1">six.x!=y</h4>
+<pre class="highlight"><code class="language-scheme">(six.x!=y x y) ;; special form</code></pre>
+<h4 id="sixxy_2">six.x%=y</h4>
+<pre class="highlight"><code class="language-scheme">(six.x%=y x y) ;; special form</code></pre>
+<h4 id="sixxy_3">six.x%y</h4>
+<pre class="highlight"><code class="language-scheme">(six.x%y x y) ;; special form</code></pre>
+<h4 id="sixxy_4">six.x&amp;&amp;y</h4>
+<pre class="highlight"><code class="language-scheme">(six.x&amp;&amp;y x y) ;; special form</code></pre>
+<h4 id="sixxy_5">six.x&amp;=y</h4>
+<pre class="highlight"><code class="language-scheme">(six.x&amp;=y x y) ;; special form</code></pre>
+<h4 id="sixxy_6">six.x&amp;y</h4>
+<pre class="highlight"><code class="language-scheme">(six.x&amp;y x y) ;; special form</code></pre>
+<h4 id="sixxy_7">six.x**=y</h4>
+<pre class="highlight"><code class="language-scheme">(six.x**=y x y) ;; special form</code></pre>
+<h4 id="sixxy_8">six.x**y</h4>
+<pre class="highlight"><code class="language-scheme">(six.x**y x y) ;; special form</code></pre>
+<h4 id="sixxy_9">six.x*=y</h4>
+<pre class="highlight"><code class="language-scheme">(six.x*=y x y) ;; special form</code></pre>
+<h4 id="sixxy_10">six.x*y</h4>
+<pre class="highlight"><code class="language-scheme">(six.x*y x y) ;; special form</code></pre>
+<h4 id="sixxy_11">six.x@=y</h4>
+<pre class="highlight"><code class="language-scheme">(six.x@=y x y) ;; special form</code></pre>
+<h4 id="sixxy_12">six.x@y</h4>
+<pre class="highlight"><code class="language-scheme">(six.x@y x y) ;; special form</code></pre>
+<h4 id="sixx_6">six.x++</h4>
+<pre class="highlight"><code class="language-scheme">(six.x++ x) ;; special form</code></pre>
+<h4 id="sixxy_13">six.x+=y</h4>
+<pre class="highlight"><code class="language-scheme">(six.x+=y x y) ;; special form</code></pre>
+<h4 id="sixxy_14">six.x+y</h4>
+<pre class="highlight"><code class="language-scheme">(six.x+y x y) ;; special form</code></pre>
+<h4 id="sixxy_15">|six.x,y|</h4>
+<pre class="highlight"><code class="language-scheme">(|six.x,y| x y) ;; special form</code></pre>
+<h4 id="sixx-">six.x--</h4>
+<pre class="highlight"><code class="language-scheme">(six.x-- x) ;; special form</code></pre>
+<h4 id="sixx-y">six.x-=y</h4>
+<pre class="highlight"><code class="language-scheme">(six.x-=y x y) ;; special form</code></pre>
+<h4 id="sixx-y_1">six.x-y</h4>
+<pre class="highlight"><code class="language-scheme">(six.x-y x y) ;; special form</code></pre>
+<h4 id="sixxy_16">six.x//=y</h4>
+<pre class="highlight"><code class="language-scheme">(six.x//=y x y) ;; special form</code></pre>
+<h4 id="sixxy_17">six.x//y</h4>
+<pre class="highlight"><code class="language-scheme">(six.x//y x y) ;; special form</code></pre>
+<h4 id="sixxy_18">six.x/=y</h4>
+<pre class="highlight"><code class="language-scheme">(six.x/=y x y) ;; special form</code></pre>
+<h4 id="sixxy_19">six.x/y</h4>
+<pre class="highlight"><code class="language-scheme">(six.x/y x y) ;; special form</code></pre>
+<h4 id="sixx-y_2">six.x:-y</h4>
+<pre class="highlight"><code class="language-scheme">(six.x:-y x y) ;; undefined</code></pre>
+<h4 id="sixxy_20">six.x:=y</h4>
+<pre class="highlight"><code class="language-scheme">(six.x:=y x y) ;; special form</code></pre>
+<h4 id="sixxy_21">six.x:y</h4>
+<pre class="highlight"><code class="language-scheme">(six.x:y x y) ;; special form</code></pre>
+<h4 id="sixxy_22">six.x&lt;&lt;=y</h4>
+<pre class="highlight"><code class="language-scheme">(six.x&lt;&lt;=y x y) ;; special form</code></pre>
+<h4 id="sixxy_23">six.x&lt;&lt;y</h4>
+<pre class="highlight"><code class="language-scheme">(six.x&lt;&lt;y x y) ;; special form</code></pre>
+<h4 id="sixxy_24">six.x&lt;=y</h4>
+<pre class="highlight"><code class="language-scheme">(six.x&lt;=y x y) ;; special form</code></pre>
+<h4 id="sixxy_25">six.x&lt;y</h4>
+<pre class="highlight"><code class="language-scheme">(six.x&lt;y x y) ;; special form</code></pre>
+<h4 id="sixxy_26">six.x===y</h4>
+<pre class="highlight"><code class="language-scheme">(six.x===y x y) ;; special form</code></pre>
+<h4 id="sixxy_27">six.x==y</h4>
+<pre class="highlight"><code class="language-scheme">(six.x==y x y) ;; special form</code></pre>
+<h4 id="sixxy_28">six.x=y</h4>
+<pre class="highlight"><code class="language-scheme">(six.x=y x y) ;; special form</code></pre>
+<h4 id="sixxy_29">six.x&gt;=y</h4>
+<pre class="highlight"><code class="language-scheme">(six.x&gt;=y x y) ;; special form</code></pre>
+<h4 id="sixxy_30">six.x&gt;&gt;&gt;=y</h4>
+<pre class="highlight"><code class="language-scheme">(six.x&gt;&gt;&gt;=y x y) ;; special form</code></pre>
+<h4 id="sixxy_31">six.x&gt;&gt;&gt;y</h4>
+<pre class="highlight"><code class="language-scheme">(six.x&gt;&gt;&gt;y x y) ;; special form</code></pre>
+<h4 id="sixxy_32">six.x&gt;&gt;=y</h4>
+<pre class="highlight"><code class="language-scheme">(six.x&gt;&gt;=y x y) ;; special form</code></pre>
+<h4 id="sixxy_33">six.x&gt;&gt;y</h4>
+<pre class="highlight"><code class="language-scheme">(six.x&gt;&gt;y x y) ;; special form</code></pre>
+<h4 id="sixxy_34">six.x&gt;y</h4>
+<pre class="highlight"><code class="language-scheme">(six.x&gt;y x y) ;; special form</code></pre>
+<h4 id="sixxyz">six.x?y:z</h4>
+<pre class="highlight"><code class="language-scheme">(six.x?y:z x y z) ;; special form</code></pre>
+<h4 id="sixxy_35">six.x^=y</h4>
+<pre class="highlight"><code class="language-scheme">(six.x^=y x y) ;; special form</code></pre>
+<h4 id="sixxy_36">six.x^y</h4>
+<pre class="highlight"><code class="language-scheme">(six.x^y x y) ;; special form</code></pre>
+<h4 id="sixxy_37">|six.x|=y|</h4>
+<pre class="highlight"><code class="language-scheme">(|six.x\|=y| x y) ;; special form</code></pre>
+<h4 id="sixxy_38">|six.x|y|</h4>
+<pre class="highlight"><code class="language-scheme">(|six.x\|y| x y) ;; special form</code></pre>
+<h4 id="sixxy_39">|six.x||y|</h4>
+<pre class="highlight"><code class="language-scheme">(|six.x\|\|y| x y) ;; special form</code></pre>
+<h4 id="sixxandy">six.xandy</h4>
+<pre class="highlight"><code class="language-scheme">(six.xandy x y) ;; special form</code></pre>
+<h4 id="sixxinstanceofy">six.xinstanceofy</h4>
+<pre class="highlight"><code class="language-scheme">(six.xinstanceofy x y) ;; undefined</code></pre>
+<h4 id="sixxiny">six.xiny</h4>
+<pre class="highlight"><code class="language-scheme">(six.xiny x y) ;; special form</code></pre>
+<h4 id="sixxisy">six.xisy</h4>
+<pre class="highlight"><code class="language-scheme">(six.xisy x y) ;; special form</code></pre>
+<h4 id="sixnotx">six.notx</h4>
+<pre class="highlight"><code class="language-scheme">(six.notx x y) ;; special form</code></pre>
+<h4 id="sixxory">six.xory</h4>
+<pre class="highlight"><code class="language-scheme">(six.xory x y) ;; special form</code></pre>
+<h4 id="sixx_7">six.~x</h4>
+<pre class="highlight"><code class="language-scheme">(six.~x x) ;; special form</code></pre>
+<h4 id="sixyieldx">six.yieldx</h4>
+<pre class="highlight"><code class="language-scheme">(six.yieldx x) ;; undefined</code></pre>
+<h4 id="readtable-comment-handler">readtable-comment-handler</h4>
+<pre class="highlight"><code class="language-scheme">(readtable-comment-handler readtable) ;; procedure</code></pre>
+<h4 id="readtable-comment-handler-set">readtable-comment-handler-set</h4>
+<pre class="highlight"><code class="language-scheme">(readtable-comment-handler-set readtable new-value) ;; procedure</code></pre>
+<h4 id="open-output-bytevector">open-output-bytevector</h4>
+<pre class="highlight"><code class="language-scheme">(open-output-bytevector [u8vector-or-settings]) ;; procedure</code></pre>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      Last update:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">November 9, 2022</span>
+      
+        <br>
+        Created:
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">November 9, 2022</span>
+      
+    
+  </small>
+</div>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../miscellaneous_extensions/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Miscellaneous extensions" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Miscellaneous extensions
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../../modules/" class="md-footer__link md-footer__link--next" aria-label="Next: Modules" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Modules
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.indexes", "toc.follow", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d6c3db9e.min.js"></script>
+      
+        <script src="../../../js/codemirror/lib/codemirror.js"></script>
+      
+        <script src="../../../js/codemirror/addon/edit/matchbrackets.js"></script>
+      
+        <script src="../../../js/codemirror/keymap/emacs.js"></script>
+      
+        <script src="../../../js/codemirror/mode/scheme/scheme.js"></script>
+      
+        <script src="../../../js/UI.js"></script>
+      
+        <script src="../../../js/VM.min.js"></script>
+      
+        <script src="../../../js/browserfs.min.js"></script>
+      
+    
+  </body>
+</html>

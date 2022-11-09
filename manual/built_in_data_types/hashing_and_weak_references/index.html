@@ -1,0 +1,3256 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../../../assets/favicon.ico">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.9">
+    
+    
+      
+        <title>Hashing and weak references - Gambit Scheme</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.20d9efc8.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.08040f6c.min.css">
+        
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../js/codemirror/lib/codemirror.css">
+    
+      <link rel="stylesheet" href="../../../css/UI.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Hashing and weak references - Gambit Scheme" >
+      
+        <meta  property="og:description"  content="None" >
+      
+        <meta  property="og:image"  content="./assets/images/social/manual/built_in_data_types/hashing_and_weak_references.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="None" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Hashing and weak references - Gambit Scheme" >
+      
+        <meta  name="twitter:description"  content="None" >
+      
+        <meta  name="twitter:image"  content="./assets/images/social/manual/built_in_data_types/hashing_and_weak_references.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#hashing-and-weak-references" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Gambit Scheme" class="md-header__button md-logo" aria-label="Gambit Scheme" data-md-component="logo">
+      
+  <img src="../../../assets/gambit.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Gambit Scheme
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Hashing and weak references
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+          
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/gambit/gambit" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    gambit/gambit
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        Home
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../" class="md-tabs__link md-tabs__link--active">
+        Manual
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../howtos/" class="md-tabs__link">
+        How-tos
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Gambit Scheme" class="md-nav__button md-logo" aria-label="Gambit Scheme" data-md-component="logo">
+      
+  <img src="../../../assets/gambit.png" alt="logo">
+
+    </a>
+    Gambit Scheme
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/gambit/gambit" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    gambit/gambit
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../..">Home</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Home" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Home
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../">Manual</a>
+          
+            <label for="__nav_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Manual" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Manual
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" type="checkbox" id="__nav_2_2" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../the_gambit_system/">The Gambit system</a>
+          
+            <label for="__nav_2_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="The Gambit system" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          The Gambit system
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../the_gambit_system/accessing_the_system_files/" class="md-nav__link">
+        Accessing the system files
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" type="checkbox" id="__nav_2_3" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../gsi/">The Gambit Scheme interpreter</a>
+          
+            <label for="__nav_2_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="The Gambit Scheme interpreter" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          The Gambit Scheme interpreter
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gsi/interactive_mode/" class="md-nav__link">
+        Interactive mode
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gsi/batch_mode/" class="md-nav__link">
+        Batch mode
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gsi/module_management_mode/" class="md-nav__link">
+        Module management mode
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gsi/customization/" class="md-nav__link">
+        Customization
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gsi/process_exit_status/" class="md-nav__link">
+        Process exit status
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gsi/scheme_scripts/" class="md-nav__link">
+        Scheme scripts
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4" type="checkbox" id="__nav_2_4" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../gsc/">The Gambit Scheme compiler</a>
+          
+            <label for="__nav_2_4">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="The Gambit Scheme compiler" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_4">
+          <span class="md-nav__icon md-icon"></span>
+          The Gambit Scheme compiler
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gsc/interactive_mode/" class="md-nav__link">
+        Interactive mode
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gsc/customization/" class="md-nav__link">
+        Customization
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gsc/batch_mode/" class="md-nav__link">
+        Batch mode
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gsc/link_files/" class="md-nav__link">
+        Link files
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gsc/procedures/" class="md-nav__link">
+        Procedures specific to the compiler
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5" type="checkbox" id="__nav_2_5" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../runtime_options/">Runtime options</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Runtime options" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_5">
+          <span class="md-nav__icon md-icon"></span>
+          Runtime options
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6" type="checkbox" id="__nav_2_6" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../debugging/">Debugging</a>
+          
+            <label for="__nav_2_6">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Debugging" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_6">
+          <span class="md-nav__icon md-icon"></span>
+          Debugging
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../debugging/debugging_model/" class="md-nav__link">
+        Debugging model
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../debugging/debugging_commands/" class="md-nav__link">
+        Debugging commands
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../debugging/debugging_example/" class="md-nav__link">
+        Debugging example
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../debugging/procedures/" class="md-nav__link">
+        Procedures related to debugging
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../debugging/console_line_editing/" class="md-nav__link">
+        Console line-editing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../debugging/emacs_interface/" class="md-nav__link">
+        Emacs interface
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_7" type="checkbox" id="__nav_2_7" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../scheme_extensions/">Scheme extensions</a>
+          
+            <label for="__nav_2_7">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Scheme extensions" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_7">
+          <span class="md-nav__icon md-icon"></span>
+          Scheme extensions
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../scheme_extensions/extensions_to_standard_procedures/" class="md-nav__link">
+        Extensions to standard procedures
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../scheme_extensions/extensions_to_standard_special_forms/" class="md-nav__link">
+        Extensions to standard special forms
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../scheme_extensions/miscellaneous_extensions/" class="md-nav__link">
+        Miscellaneous extensions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../scheme_extensions/undocumented_extensions/" class="md-nav__link">
+        Undocumented extensions
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_8" type="checkbox" id="__nav_2_8" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../modules/">Modules</a>
+          
+            <label for="__nav_2_8">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Modules" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_8">
+          <span class="md-nav__icon md-icon"></span>
+          Modules
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/legacy_modules/" class="md-nav__link">
+        Legacy modules
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/primitive_modules/" class="md-nav__link">
+        Primitive modules
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/primitive_procedures/" class="md-nav__link">
+        Primitive procedures
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/r7rs_compatible_modules/" class="md-nav__link">
+        R7RS compatible modules
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/installing_modules/" class="md-nav__link">
+        Installing modules
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/compiling_modules/" class="md-nav__link">
+        Compiling modules
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_9" type="checkbox" id="__nav_2_9" checked>
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../">Built-in data types</a>
+          
+            <label for="__nav_2_9">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Built-in data types" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_9">
+          <span class="md-nav__icon md-icon"></span>
+          Built-in data types
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../numbers/" class="md-nav__link">
+        Numbers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../booleans/" class="md-nav__link">
+        Booleans
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pairs_and_lists/" class="md-nav__link">
+        Pairs and lists
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../symbols_and_keywords/" class="md-nav__link">
+        Symbols and keywords
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../characters_and_strings/" class="md-nav__link">
+        Characters and strings
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vectors/" class="md-nav__link">
+        Vectors
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../homogeneous_numeric_vectors/" class="md-nav__link">
+        Homogeneous numeric vectors
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Hashing and weak references
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Hashing and weak references
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#hashing" class="md-nav__link">
+    Hashing
+  </a>
+  
+    <nav class="md-nav" aria-label="Hashing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#object-serial-number" class="md-nav__link">
+    object-&gt;serial-number
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#serial-number-object" class="md-nav__link">
+    serial-number-&gt;object
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unbound-serial-number-exception" class="md-nav__link">
+    unbound-serial-number-exception?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unbound-serial-number-exception-procedure" class="md-nav__link">
+    unbound-serial-number-exception-procedure
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unbound-serial-number-exception-arguments" class="md-nav__link">
+    unbound-serial-number-exception-arguments
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#symbol-hash" class="md-nav__link">
+    symbol-hash
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#keyword-hash" class="md-nav__link">
+    keyword-hash
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#string-hash" class="md-nav__link">
+    string=?-hash
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#string-ci-hash" class="md-nav__link">
+    string-ci=?-hash
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eq-hash" class="md-nav__link">
+    eq?-hash
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eqv-hash" class="md-nav__link">
+    eqv?-hash
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#equal-hash" class="md-nav__link">
+    equal?-hash
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#weak-references" class="md-nav__link">
+    Weak references
+  </a>
+  
+    <nav class="md-nav" aria-label="Weak references">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#wills" class="md-nav__link">
+    Wills
+  </a>
+  
+    <nav class="md-nav" aria-label="Wills">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#make-will" class="md-nav__link">
+    make-will
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#will" class="md-nav__link">
+    will?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#will-testator" class="md-nav__link">
+    will-testator
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#will-execute" class="md-nav__link">
+    will-execute!
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tables" class="md-nav__link">
+    Tables
+  </a>
+  
+    <nav class="md-nav" aria-label="Tables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#make-table" class="md-nav__link">
+    make-table
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#table" class="md-nav__link">
+    table?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#table-length" class="md-nav__link">
+    table-length
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#table-set" class="md-nav__link">
+    table-set!
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#table-search" class="md-nav__link">
+    table-search
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#table-for-each" class="md-nav__link">
+    table-for-each
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#table-list" class="md-nav__link">
+    table-&gt;list
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#list-table" class="md-nav__link">
+    list-&gt;table
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unbound-key-exception" class="md-nav__link">
+    unbound-key-exception?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unbound-key-exception-procedure" class="md-nav__link">
+    unbound-key-exception-procedure
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unbound-key-exceptionarguments" class="md-nav__link">
+    unbound-key-exceptionarguments
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#table-copy" class="md-nav__link">
+    table-copy
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#table-merge" class="md-nav__link">
+    table-merge!
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#table-merge_1" class="md-nav__link">
+    table-merge
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_10" type="checkbox" id="__nav_2_10" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../records/">Records</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Records" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_10">
+          <span class="md-nav__icon md-icon"></span>
+          Records
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_11" type="checkbox" id="__nav_2_11" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../threads/">Threads</a>
+          
+            <label for="__nav_2_11">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Threads" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_11">
+          <span class="md-nav__icon md-icon"></span>
+          Threads
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../threads/introduction/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../threads/thread_objects/" class="md-nav__link">
+        Thread objects
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../threads/mutex_objects/" class="md-nav__link">
+        Mutex objects
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../threads/condvar_objects/" class="md-nav__link">
+        Condition variable objects
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../threads/fairness/" class="md-nav__link">
+        Fairness
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../threads/memory_coherency/" class="md-nav__link">
+        Memory coherency
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../threads/timeouts/" class="md-nav__link">
+        Timeouts
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../threads/primordial_thread/" class="md-nav__link">
+        Primordial thread
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../threads/procedures/" class="md-nav__link">
+        Procedures
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_12" type="checkbox" id="__nav_2_12" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../dynamic_environment/">Dynamic environment</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Dynamic environment" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_12">
+          <span class="md-nav__icon md-icon"></span>
+          Dynamic environment
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_13" type="checkbox" id="__nav_2_13" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../exceptions/">Exceptions</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Exceptions" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_13">
+          <span class="md-nav__icon md-icon"></span>
+          Exceptions
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_14" type="checkbox" id="__nav_2_14" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../host_environment/">Host environment</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Host environment" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_14">
+          <span class="md-nav__icon md-icon"></span>
+          Host environment
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_15" type="checkbox" id="__nav_2_15" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../io_and_ports/">I/O and ports</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="I/O and ports" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_15">
+          <span class="md-nav__icon md-icon"></span>
+          I/O and ports
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_16" type="checkbox" id="__nav_2_16" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../lexical_syntax_and_readtables/">Lexical syntax and readtables</a>
+          
+            <label for="__nav_2_16">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Lexical syntax and readtables" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_16">
+          <span class="md-nav__icon md-icon"></span>
+          Lexical syntax and readtables
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lexical_syntax_and_readtables/readtables/" class="md-nav__link">
+        Readtables
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_17" type="checkbox" id="__nav_2_17" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../c_interface/">C-interface</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="C-interface" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_17">
+          <span class="md-nav__icon md-icon"></span>
+          C-interface
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_18" type="checkbox" id="__nav_2_18" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../system_limitations/">System limitations</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="System limitations" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_18">
+          <span class="md-nav__icon md-icon"></span>
+          System limitations
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_19" type="checkbox" id="__nav_2_19" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../copyright_and_license/">Copyright and license</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Copyright and license" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_19">
+          <span class="md-nav__icon md-icon"></span>
+          Copyright and license
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../howtos/">How-tos</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="How-tos" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          How-tos
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#hashing" class="md-nav__link">
+    Hashing
+  </a>
+  
+    <nav class="md-nav" aria-label="Hashing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#object-serial-number" class="md-nav__link">
+    object-&gt;serial-number
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#serial-number-object" class="md-nav__link">
+    serial-number-&gt;object
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unbound-serial-number-exception" class="md-nav__link">
+    unbound-serial-number-exception?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unbound-serial-number-exception-procedure" class="md-nav__link">
+    unbound-serial-number-exception-procedure
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unbound-serial-number-exception-arguments" class="md-nav__link">
+    unbound-serial-number-exception-arguments
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#symbol-hash" class="md-nav__link">
+    symbol-hash
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#keyword-hash" class="md-nav__link">
+    keyword-hash
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#string-hash" class="md-nav__link">
+    string=?-hash
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#string-ci-hash" class="md-nav__link">
+    string-ci=?-hash
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eq-hash" class="md-nav__link">
+    eq?-hash
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eqv-hash" class="md-nav__link">
+    eqv?-hash
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#equal-hash" class="md-nav__link">
+    equal?-hash
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#weak-references" class="md-nav__link">
+    Weak references
+  </a>
+  
+    <nav class="md-nav" aria-label="Weak references">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#wills" class="md-nav__link">
+    Wills
+  </a>
+  
+    <nav class="md-nav" aria-label="Wills">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#make-will" class="md-nav__link">
+    make-will
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#will" class="md-nav__link">
+    will?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#will-testator" class="md-nav__link">
+    will-testator
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#will-execute" class="md-nav__link">
+    will-execute!
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tables" class="md-nav__link">
+    Tables
+  </a>
+  
+    <nav class="md-nav" aria-label="Tables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#make-table" class="md-nav__link">
+    make-table
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#table" class="md-nav__link">
+    table?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#table-length" class="md-nav__link">
+    table-length
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#table-set" class="md-nav__link">
+    table-set!
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#table-search" class="md-nav__link">
+    table-search
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#table-for-each" class="md-nav__link">
+    table-for-each
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#table-list" class="md-nav__link">
+    table-&gt;list
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#list-table" class="md-nav__link">
+    list-&gt;table
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unbound-key-exception" class="md-nav__link">
+    unbound-key-exception?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unbound-key-exception-procedure" class="md-nav__link">
+    unbound-key-exception-procedure
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unbound-key-exceptionarguments" class="md-nav__link">
+    unbound-key-exceptionarguments
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#table-copy" class="md-nav__link">
+    table-copy
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#table-merge" class="md-nav__link">
+    table-merge!
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#table-merge_1" class="md-nav__link">
+    table-merge
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  <a href="https://github.com/gambit/gambit/edit/master/docs/manual/built_in_data_types/hashing_and_weak_references.md" title="Edit this page" class="md-content__button md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
+
+
+<h1 id="hashing-and-weak-references">Hashing and weak references</h1>
+<h2 id="hashing">Hashing</h2>
+<h4 id="object-serial-number">object-&gt;serial-number</h4>
+<h4 id="serial-number-object">serial-number-&gt;object</h4>
+<pre class="highlight"><code class="language-scheme">(object-&gt;serial-number obj) ;; procedure
+(serial-number-&gt;object n [default]) ;; procedure</code></pre>
+<p>All Scheme objects are uniquely identified with a serial number which is a
+nonnegative exact integer. The <code>object-&gt;serial-number</code> procedure returns the
+serial number of object <code>obj</code>. This serial number is only allocated the first
+time the <code>object-&gt;serial-number</code> procedure is called on that object. Objects
+which do not have an external textual representation that can be read by the
+<code>read</code> procedure, use an external textual representation that includes a serial
+number of the form <code>#n</code>. Consequently, the procedures <code>write</code>, <code>pretty-print</code>,
+etc will call the <code>object-&gt;serial-number</code> procedure to get the serial number,
+and this may cause the serial number to be allocated.</p>
+<p>The <code>serial-number-&gt;object</code> procedure takes an exact integer parameter <code>n</code> and
+returns the object whose serial number is <code>n</code>. If no object currently exists
+with that serial number, <code>default</code> is returned if it is specified, otherwise an
+<code>unbound-serial-number-exception</code> object is raised. The reader defines the
+following abbreviation for calling <code>serial-number-&gt;object</code>: the syntax <code>#n</code>,
+where <code>n</code> is a sequence of decimal digits and it is not followed by <code>=</code> or <code>#</code>,
+is equivalent to the list <code>(serial-number-&gt;object n)</code>.</p>
+<p>For example:</p>
+<pre class="highlight"><code class="language-scheme">&gt; (define z (list (lambda (x) (* x x)) (lambda (y) (/ 1 y))))
+&gt; z
+(#&lt;procedure #2&gt; #&lt;procedure #3&gt;)
+&gt; (#3 10)
+1/10
+&gt; '(#3 10)
+((serial-number-&gt;object 3) 10)
+&gt; car
+#&lt;procedure #4 car&gt;
+&gt; (#4 z)
+#&lt;procedure #2&gt;</code></pre>
+<h4 id="unbound-serial-number-exception">unbound-serial-number-exception?</h4>
+<h4 id="unbound-serial-number-exception-procedure">unbound-serial-number-exception-procedure</h4>
+<h4 id="unbound-serial-number-exception-arguments">unbound-serial-number-exception-arguments</h4>
+<pre class="highlight"><code class="language-scheme">(unbound-serial-number-exception? obj) ;; procedure
+(unbound-serial-number-exception-procedure exc) ;; procedure
+(unbound-serial-number-exception-arguments exc) ;; procedure</code></pre>
+<p>Unbound-serial-number-exception objects are raised by the procedure
+<code>serial-number-&gt;object</code> when no object currently exists with that serial number.
+The parameter <code>exc</code> must be an unbound-serial-number-exception object.</p>
+<p>The procedure <code>unbound-serial-number-exception?</code> returns <code>#t</code> when <code>obj</code> is a
+unbound-serial-number-exception object and <code>#f</code> otherwise.</p>
+<p>The procedure <code>unbound-serial-number-exception-procedure</code> returns the procedure
+that raised <code>exc</code>.</p>
+<p>The procedure <code>unbound-serial-number-exception-arguments</code> returns the list of
+arguments of the procedure that raised <code>exc</code>.</p>
+<p>For example:</p>
+<pre class="highlight"><code class="language-scheme">&gt; (define (handler exc)
+    (if (unbound-serial-number-exception? exc)
+        (list (unbound-serial-number-exception-procedure exc)
+              (unbound-serial-number-exception-arguments exc))
+        'not-unbound-serial-number-exception))
+&gt; (with-exception-catcher
+    handler
+    (lambda () (serial-number-&gt;object 1000)))
+(#&lt;procedure #2 serial-number-&gt;object&gt; (1000))</code></pre>
+<h4 id="symbol-hash">symbol-hash</h4>
+<pre class="highlight"><code class="language-scheme">(symbol-hash symbol) ;; procedure</code></pre>
+<p>The <code>symbol-hash</code> procedure returns the hash number of the symbol <code>symbol</code>. The
+hash number is a small exact integer (fixnum). When <code>symbol</code> is an interned
+symbol the value returned is the same as <code>(string=?-hash (symbol-&gt;string
+symbol))</code>.</p>
+<p>For example:</p>
+<pre class="highlight"><code class="language-scheme">&gt; (symbol-hash 'car)
+444471047</code></pre>
+<h4 id="keyword-hash">keyword-hash</h4>
+<pre class="highlight"><code class="language-scheme">(keyword-hash keyword) ;; procedure</code></pre>
+<p>The <code>keyword-hash</code> procedure returns the hash number of the keyword <code>keyword</code>.
+The hash number is a small exact integer (fixnum). When <code>keyword</code> is an interned
+keyword the value returned is the same as <code>(string=?-hash (keyword-&gt;string
+keyword))</code>.</p>
+<p>For example:</p>
+<pre class="highlight"><code class="language-scheme">&gt; (keyword-hash car:)
+444471047</code></pre>
+<h4 id="string-hash">string=?-hash</h4>
+<pre class="highlight"><code class="language-scheme">(string=?-hash string)  procedure</code></pre>
+<p>The <code>string=?-hash</code> procedure returns the hash number of the string <code>string</code>.
+The hash number is a small exact integer (fixnum). For any two strings <code>s1</code> and
+<code>s2</code>, <code>(string=? s1 s2)</code> implies <code>(= (string=?-hash s1) (string=?-hash s2))</code>.</p>
+<p>For example:</p>
+<pre class="highlight"><code class="language-scheme">&gt; (string=?-hash "car")
+444471047</code></pre>
+<h4 id="string-ci-hash">string-ci=?-hash</h4>
+<pre class="highlight"><code class="language-scheme">(string-ci=?-hash string) ;; procedure</code></pre>
+<p>The <code>string-ci=?-hash</code> procedure returns the hash number of the string <code>string</code>.
+The hash number is a small exact integer (fixnum). For any two strings <code>s1</code> and
+<code>s2</code>, <code>(string-ci=? s1 s2)</code> implies <code>(= (string-ci=?-hash s1) (string-ci=?-hash
+s2))</code>.</p>
+<p>For example:</p>
+<pre class="highlight"><code class="language-scheme">&gt; (string-ci=?-hash "CaR")
+444471047</code></pre>
+<h4 id="eq-hash">eq?-hash</h4>
+<pre class="highlight"><code class="language-scheme">(eq?-hash obj)  procedure</code></pre>
+<p>The <code>eq?-hash</code> procedure returns the hash number of the object <code>obj</code>. The hash
+number is a small exact integer (fixnum). For any two objects <code>o1</code> and <code>o2</code>,
+<code>(eq? o1 o2)</code> implies <code>(= (eq?-hash o1) (eq?-hash o2))</code>.</p>
+<p>For example:</p>
+<pre class="highlight"><code class="language-scheme">&gt; (eq?-hash #t)
+536870910</code></pre>
+<h4 id="eqv-hash">eqv?-hash</h4>
+<pre class="highlight"><code class="language-scheme">(eqv?-hash obj) ;; procedure</code></pre>
+<p>The <code>eqv?-hash</code> procedure returns the hash number of the object <code>obj</code>. The hash
+number is a small exact integer (fixnum). For any two objects <code>o1</code> and <code>o2</code>,
+<code>(eqv? o1 o2)</code> implies <code>(= (eqv?-hash o1) (eqv?-hash o2))</code>.</p>
+<p>For example:</p>
+<pre class="highlight"><code class="language-scheme">&gt; (eqv?-hash 1.5)
+496387656</code></pre>
+<h4 id="equal-hash">equal?-hash</h4>
+<pre class="highlight"><code class="language-scheme">(equal?-hash obj) ;; procedure</code></pre>
+<p>The <code>equal?-hash</code> procedure returns the hash number of the object <code>obj</code>. The
+hash number is a small exact integer (fixnum). For any two objects <code>o1</code> and
+<code>o2</code>, <code>(equal? o1 o2)</code> implies <code>(= (equal?-hash o1) (equal?-hash o2))</code>.</p>
+<p>For example:</p>
+<pre class="highlight"><code class="language-scheme">&gt; (equal?-hash (list 1 2 3))
+442438567</code></pre>
+<h2 id="weak-references">Weak references</h2>
+<p>The garbage collector is responsible for reclaiming objects that are no longer
+needed by the program. This is done by analyzing the reachability graph of all
+objects from the roots (i.e. the global variables, the runnable threads,
+permanently allocated objects such as procedures defined in a compiled file,
+nonexecutable wills, etc). If a root or a reachable object <code>X</code> contains a
+reference to an object <code>Y</code> then <code>Y</code> is reachable. As a general rule, unreachable
+objects are reclaimed by the garbage collector.</p>
+<p>There are two types of references: strong references and weak references. Most
+objects, including pairs, vectors, records and closures, contain strong
+references. An object <code>X</code> is strongly reachable if there is a path from the
+roots to <code>X</code> that traverses only strong references. Weak references only occur
+in wills and tables. There are two types of weak references: will-weak
+references and table-weak references. If all paths from the roots to an object
+<code>Y</code> traverse at least one table-weak reference, then <code>Y</code> will be reclaimed by
+the garbage collector. The will-weak references are used for finalization and
+are explained in the next section.</p>
+<h3 id="wills">Wills</h3>
+<p>The following procedures implement the <code>will</code> data type. Will objects provide
+support for finalization. A will is an object that contains a will-weak
+reference to a testator object (the object attached to the will), and a strong
+reference to an action procedure which is a one parameter procedure which is
+called when the will is executed.</p>
+<h4 id="make-will">make-will</h4>
+<h4 id="will">will?</h4>
+<h4 id="will-testator">will-testator</h4>
+<h4 id="will-execute">will-execute!</h4>
+<pre class="highlight"><code class="language-scheme">(make-will testator action) ;; procedure
+(will? obj) ;; procedure
+(will-testator will) ;; procedure
+(will-execute! will) ;; procedure</code></pre>
+<p>The <code>make-will</code> procedure creates a will object with the given <code>testator</code> object
+and <code>action</code> procedure. The <code>will?</code> procedure tests if <code>obj</code> is a will object.
+The <code>will-testator</code> procedure gets the <code>testator</code> object attached to the <code>will</code>.
+The <code>will-execute!</code> procedure executes <code>will</code>.</p>
+<p>A will becomes executable when its <code>testator</code> object is not strongly reachable
+(i.e. the <code>testator</code> object is either unreachable or only reachable using paths
+from the roots that traverse at least one weak reference). Some objects,
+including symbols, small exact integers (fixnums), booleans and characters, are
+considered to be always strongly reachable.</p>
+<p>When the runtime system detects that a will has become executable the current
+computation is interrupted, the will's <code>testator</code> is set to <code>#f</code> and the will's
+<code>action</code> procedure is called with the will's <code>testator</code> as the sole argument.
+Currently only the garbage collector detects when wills become executable but
+this may change in future versions of Gambit (for example the compiler could
+perform an analysis to infer will executability at compile time). The garbage
+collector builds a list of all executable wills. Shortly after a garbage
+collection, the <code>action</code> procedures of these wills will be called. The link from
+the will to the <code>action</code> procedure is severed when the <code>action</code> procedure is
+called.</p>
+<p>Note that the <code>testator</code> object will not be reclaimed during the garbage
+collection that determined executability of the will. It is only when an object
+is not reachable from the roots that it is reclaimed by the garbage collector.</p>
+<p>A remarkable feature of wills is that an <code>action</code> procedure can "resurrect" an
+object. An <code>action</code> procedure could for example assign the <code>testator</code> object to
+a global variable or create a new will with the same <code>testator</code> object.</p>
+<p>For example:</p>
+<pre class="highlight"><code class="language-scheme">&gt; (define a (list 123))
+&gt; (set-cdr! a a) ; create a circular list
+&gt; (define b (vector a))
+&gt; (define c #f)
+&gt; (define w
+    (let ((obj a))
+      (make-will obj
+                 (lambda (x) ; x will be eq? to obj
+                   (display "executing action procedure")
+                   (newline)
+                   (set! c x)))))
+&gt; (will? w)
+#t
+&gt; (car (will-testator w))
+123
+&gt; (##gc)
+&gt; (set! a #f)
+&gt; (##gc)
+&gt; (set! b #f)
+&gt; (##gc)
+executing action procedure
+&gt; (will-testator w)
+#f
+&gt; (car c)
+123</code></pre>
+<h2 id="tables">Tables</h2>
+<p>The following procedures implement the <code>table</code> data type. Tables are heterogenous
+structures whose elements are indexed by keys which are arbitrary objects.
+Tables are similar to association lists but are abstract and the access time for
+large tables is typically smaller. Each key contained in the table is bound to a
+value. The length of the table is the number of key/value bindings it contains.
+New key/value bindings can be added to a table, the value bound to a key can be
+changed, and existing key/value bindings can be removed.</p>
+<p>The references to the keys can either be all strong or all table-weak and the
+references to the values can either be all strong or all table-weak. The garbage
+collector removes key/value bindings from a table when 1) the key is a
+table-weak reference and the key is unreachable or only reachable using paths
+from the roots that traverse at least one table-weak reference, or 2) the value
+is a table-weak reference and the value is unreachable or only reachable using
+paths from the roots that traverse at least one table-weak reference. Key/value
+bindings that are removed by the garbage collector are reclaimed immediately.</p>
+<p>Although there are several possible ways of implementing tables, the current
+implementation uses hashing with open-addressing. This is space efficient and
+provides constant-time access. Hash tables are automatically resized to maintain
+the load within specified bounds. The load is the number of active entries (the
+length of the table) divided by the total number of entries in the hash table.</p>
+<p>Tables are parameterized with a key comparison procedure. By default the
+<code>equal?</code> procedure is used, but <code>eq?</code>, <code>eqv?</code>, <code>string=?</code>, <code>string-ci=?</code>, or a
+user defined procedure can also be used. To support arbitrary key comparison
+procedures, tables are also parameterized with a hashing procedure accepting a
+key as its single parameter and returning a fixnum result. The hashing procedure
+hash must be consistent with the key comparison procedure <code>test</code>, that is, for
+any two keys <code>k1</code> and <code>k2</code> in the table, <code>(test k1 k2)</code> implies <code>(= (hash k1)
+(hash k2))</code>. A default hashing procedure consistent with the key comparison
+procedure is provided by the system. The default hashing procedure generally
+gives good performance when the key comparison procedure is <code>eq?</code>, <code>eqv?</code>,
+<code>equal?</code>, <code>string=?</code>, and <code>string-ci=?</code>. However, for user defined key
+comparison procedures, the default hashing procedure always returns 0. This
+degrades the performance of the table to a linear search.</p>
+<p>Tables can be compared for equality using the <code>equal?</code> procedure. Two tables <code>X</code>
+and <code>Y</code> are considered equal by <code>equal?</code> when they have the same weakness
+attributes, the same key comparison procedure, the same hashing procedure, the
+same length, and for all the keys <code>k</code> in <code>X</code>, <code>(equal? (table-ref X k)
+(table-ref Y k))</code>.</p>
+<h4 id="make-table">make-table</h4>
+<pre class="highlight"><code class="language-scheme">(make-table [size: size]
+            [init: init]
+            [weak-keys: weak-keys]
+            [weak-values: weak-values]
+            [test: test]
+            [hash: hash]
+            [min-load: min-load]
+            [max-load: max-load]) ;; procedure</code></pre>
+<p>The procedure <code>make-table</code> returns a new table. The optional keyword parameters
+specify various parameters of the table.</p>
+<p>The <code>size</code> parameter is a nonnegative exact integer indicating the expected length
+of the table. The system uses <code>size</code> to choose an appropriate initial size of the
+hash table so that it does not need to be resized too often.</p>
+<p>The <code>init</code> parameter indicates a value that is associated to keys that are not in
+the table. When <code>init</code> is not specified, no value is associated to keys that are
+not in the table.</p>
+<p>The <code>weak-keys</code> and <code>weak-values</code> parameters are extended booleans indicating
+respectively whether the keys and values are table-weak references (true) or
+strong references (false). By default the keys and values are strong references.</p>
+<p>The <code>test</code> parameter indicates the key comparison procedure. The default key
+comparison procedure is <code>equal?</code>. The key comparison procedures <code>eq?</code>, <code>eqv?</code>,
+<code>equal?</code>, <code>string=?</code>, and <code>string-ci=?</code> are special because the system will use
+a reasonably good hash procedure when none is specified.</p>
+<p>The <code>hash</code> parameter indicates the hash procedure. This procedure must accept a
+single key parameter, return a fixnum, and be consistent with the key comparison
+procedure. When <code>hash</code> is not specified, a default hash procedure is used. The
+default hash procedure is reasonably good when the key comparison procedure is
+<code>eq?</code>, <code>eqv?</code>, <code>equal?</code>, <code>string=?</code>, or <code>string-ci=?</code>.</p>
+<p>The <code>min-load</code> and <code>max-load</code> parameters are real numbers that indicate the
+minimum and maximum load of the table respectively. The table is resized when
+adding or deleting a key/value binding would bring the table's load outside of
+this range. The <code>min-load</code> parameter must be no less than <code>0.05</code> and the
+<code>max-load</code> parameter must be no greater than <code>0.95</code>. Moreover the difference
+between <code>min-load</code> and <code>max-load</code> must be at least <code>0.20</code>. When <code>min-load</code> is
+not specified, the value <code>0.45</code> is used. When <code>max-load</code> is not specified, the
+value <code>0.90</code> is used.</p>
+<p>For example:</p>
+<pre class="highlight"><code class="language-scheme">&gt; (define t (make-table))
+&gt; (table? t)
+#t
+&gt; (table-length t)
+0
+&gt; (table-set! t (list 1 2) 3)
+&gt; (table-set! t (list 4 5) 6)
+&gt; (table-ref t (list 1 2))
+3
+&gt; (table-length t)
+2</code></pre>
+<h4 id="table">table?</h4>
+<pre class="highlight"><code class="language-scheme">(table? obj) ;; procedure</code></pre>
+<p>The procedure <code>table?</code> returns <code>#t</code> when <code>obj</code> is a table and <code>#f</code> otherwise.</p>
+<p>For example:</p>
+<pre class="highlight"><code class="language-scheme">&gt; (table? (make-table))
+#t
+&gt; (table? 123)
+#f</code></pre>
+<h4 id="table-length">table-length</h4>
+<pre class="highlight"><code class="language-scheme">(table-length table) ;; procedure</code></pre>
+<p>The procedure <code>table-length</code> returns the number of key/value bindings contained
+in the table <code>table</code>.</p>
+<p>For example:</p>
+<pre class="highlight"><code class="language-scheme">&gt; (define t (make-table weak-keys: #t))
+&gt; (define x (list 1 2))
+&gt; (define y (list 3 4))
+&gt; (table-set! t x 111)
+&gt; (table-set! t y 222)
+&gt; (table-length t)
+2
+&gt; (table-set! t x)
+&gt; (table-length t)
+1
+&gt; (##gc)
+&gt; (table-length t)
+1
+&gt; (set! y #f)
+&gt; (##gc)
+&gt; (table-length t)
+0</code></pre>
+<pre class="highlight"><code class="language-scheme">(table-ref table key [default]) ;; procedure</code></pre>
+<p>The procedure <code>table-ref</code> returns the value bound to the object <code>key</code> in the
+table <code>table</code>. When <code>key</code> is not bound and <code>default</code> is specified, <code>default</code> is
+returned. When <code>default</code> is not specified but an <code>init</code> parameter was specified
+when table was created, <code>init</code> is returned. Otherwise an unbound-key-exception
+object is raised.</p>
+<p>For example:</p>
+<pre class="highlight"><code class="language-scheme">&gt; (define t1 (make-table init: 999))
+&gt; (table-set! t1 (list 1 2) 3)
+&gt; (table-ref t1 (list 1 2))
+3
+&gt; (table-ref t1 (list 4 5))
+999
+&gt; (table-ref t1 (list 4 5) #f)
+#f
+&gt; (define t2 (make-table))
+&gt; (table-ref t2 (list 4 5))
+*** ERROR IN (console)@7.1 -- Unbound key
+(table-ref '#&lt;table #2&gt; '(4 5))</code></pre>
+<h4 id="table-set">table-set!</h4>
+<pre class="highlight"><code class="language-scheme">(table-set! table key [value]) ;; procedure</code></pre>
+<p>The procedure <code>table-set!</code> binds the object <code>key</code> to <code>value</code> in the table
+<code>table</code>. When <code>value</code> is not specified, if table contains a binding for <code>key</code>
+then the binding is removed from table. The procedure <code>table-set!</code> returns an
+unspecified value.</p>
+<p>For example:</p>
+<pre class="highlight"><code class="language-scheme">&gt; (define t (make-table))
+&gt; (table-set! t (list 1 2) 3)
+&gt; (table-set! t (list 4 5) 6)
+&gt; (table-set! t (list 4 5))
+&gt; (table-set! t (list 7 8))
+&gt; (table-ref t (list 1 2))
+3
+&gt; (table-ref t (list 4 5))
+*** ERROR IN (console)@7.1 -- Unbound key
+(table-ref '#&lt;table #2&gt; '(4 5))</code></pre>
+<h4 id="table-search">table-search</h4>
+<pre class="highlight"><code class="language-scheme">(table-search proc table) ;; procedure</code></pre>
+<p>The procedure <code>table-search</code> searches the table <code>table</code> for a key/value binding
+for which the two parameter procedure <code>proc</code> returns a non false result. For
+each key/value binding visited by <code>table-search</code> the procedure <code>proc</code> is called
+with the <code>key</code> as the first parameter and the <code>value</code> as the second parameter.
+The procedure <code>table-search</code> returns the first non false value returned by
+<code>proc</code>, or <code>#f</code> if <code>proc</code> returned <code>#f</code> for all key/value bindings in <code>table</code>.</p>
+<p>The order in which the key/value bindings are visited is unspecified and may
+vary from one call of <code>table-search</code> to the next. While a call to <code>table-search</code>
+is being performed on <code>table</code>, it is an error to call any of the following
+procedures on <code>table</code>: <code>table-ref</code>, <code>table-set!</code>, <code>table-search</code>,
+<code>table-for-each</code>, <code>table-copy</code>, <code>table-merge</code>, <code>table-merge!</code>, and
+<code>table-&gt;list</code>. It is also an error to compare with <code>equal?</code> (directly or
+indirectly with <code>member</code>, <code>assoc</code>, <code>table-ref</code>, etc.) an object that contains
+<code>table</code>. All these procedures may cause <code>table</code> to be reordered and resized.
+This restriction allows a more efficient iteration over the key/value bindings.</p>
+<p>For example:</p>
+<pre class="highlight"><code class="language-scheme">&gt; (define square (make-table))
+&gt; (table-set! square 2 4)
+&gt; (table-set! square 3 9)
+&gt; (table-search (lambda (k v) (and (odd? k) v)) square)
+9</code></pre>
+<h4 id="table-for-each">table-for-each</h4>
+<pre class="highlight"><code class="language-scheme">(table-for-each proc table) ;; procedure</code></pre>
+<p>The procedure <code>table-for-each</code> calls the two parameter procedure <code>proc</code> for each
+key/value binding in the table <code>table</code>. The procedure <code>proc</code> is called with the
+<code>key</code> as the first parameter and the <code>value</code> as the second parameter. The
+procedure <code>table-for-each</code> returns an unspecified value.</p>
+<p>The order in which the key/value bindings are visited is unspecified and may
+vary from one call of <code>table-for-each</code> to the next. While a call to
+<code>table-for-each</code> is being performed on <code>table</code>, it is an error to call any of
+the following procedures on <code>table</code>: <code>table-ref</code>, <code>table-set!</code>, <code>table-search</code>,
+<code>table-for-each</code>, and <code>table-&gt;list</code>. It is also an error to compare with
+<code>equal?</code> (directly or indirectly with <code>member</code>, <code>assoc</code>, <code>table-ref</code>, etc.) an
+object that contains <code>table</code>. All these procedures may cause <code>table</code> to be
+reordered and resized. This restriction allows a more efficient iteration over
+the key/value bindings.</p>
+<p>For example:</p>
+<pre class="highlight"><code class="language-scheme">&gt; (define square (make-table))
+&gt; (table-set! square 2 4)
+&gt; (table-set! square 3 9)
+&gt; (table-for-each (lambda (k v) (write (list k v)) (newline)) square)
+(2 4)
+(3 9)</code></pre>
+<h4 id="table-list">table-&gt;list</h4>
+<pre class="highlight"><code class="language-scheme">(table-&gt;list table) ;; procedure</code></pre>
+<p>The procedure <code>table-&gt;list</code> returns an association list containing the key/value
+bindings in the table <code>table</code>. Each key/value binding yields a pair whose <code>car</code>
+field is the <code>key</code> and whose <code>cdr</code> field is the <code>value</code> bound to that <code>key</code>. The
+order of the bindings in the list is unspecified.</p>
+<p>For example:</p>
+<pre class="highlight"><code class="language-scheme">&gt; (define square (make-table))
+&gt; (table-set! square 2 4)
+&gt; (table-set! square 3 9)
+&gt; (table-&gt;list square)
+((3 . 9) (2 . 4))</code></pre>
+<h4 id="list-table">list-&gt;table</h4>
+<pre class="highlight"><code class="language-scheme">(list-&gt;table list [size: size]
+                  [init: init]
+                  [weak-keys: weak-keys]
+                  [weak-values: weak-values]
+                  [test: test]
+                  [hash: hash]
+                  [min-load: min-load]
+                  [max-load: max-load]) ;; procedure</code></pre>
+<p>The procedure <code>list-&gt;table</code> returns a new table containing the key/value
+bindings in the association list <code>list</code>. The optional keyword parameters specify
+various parameters of the table and have the same meaning as for the
+<code>make-table</code> procedure.</p>
+<p>Each element of <code>list</code> is a pair whose <code>car</code> field is a <code>key</code> and whose <code>cdr</code>
+field is the <code>value</code> bound to that <code>key</code>. If a key appears more than once in
+<code>list</code> (tested using the table's key comparison procedure) it is the first
+key/value binding in list that has precedence.</p>
+<p>For example:</p>
+<pre class="highlight"><code class="language-scheme">&gt; (define t (list-&gt;table '((b . 2) (a . 1) (c . 3) (a . 4))))
+&gt; (table-&gt;list t)
+((a . 1) (b . 2) (c . 3))</code></pre>
+<h4 id="unbound-key-exception">unbound-key-exception?</h4>
+<h4 id="unbound-key-exception-procedure">unbound-key-exception-procedure</h4>
+<h4 id="unbound-key-exceptionarguments">unbound-key-exceptionarguments</h4>
+<pre class="highlight"><code class="language-scheme">(unbound-key-exception? obj) ;; procedure
+(unbound-key-exception-procedure exc) ;; procedure
+(unbound-key-exception-arguments exc) ;; procedure</code></pre>
+<p>Unbound-key-exception objects are raised by the procedure <code>table-ref</code> when the
+key does not have a binding in the table. The parameter <code>exc</code> must be an
+unbound-key-exception object.</p>
+<p>The procedure <code>unbound-key-exception?</code> returns <code>#t</code> when <code>obj</code> is a
+unbound-key-exception object and <code>#f</code> otherwise.</p>
+<p>The procedure <code>unbound-key-exception-procedure</code> returns the procedure that
+raised <code>exc</code>.</p>
+<p>The procedure <code>unbound-key-exception-arguments</code> returns the list of arguments of
+the procedure that raised <code>exc</code>.</p>
+<p>For example:</p>
+<pre class="highlight"><code class="language-scheme">&gt; (define t (make-table))
+&gt; (define (handler exc)
+    (if (unbound-key-exception? exc)
+        (list (unbound-key-exception-procedure exc)
+              (unbound-key-exception-arguments exc))
+        'not-unbound-key-exception))
+&gt; (with-exception-catcher
+    handler
+    (lambda () (table-ref t '(1 2))))
+(#&lt;procedure #2 table-ref&gt; (#&lt;table #3&gt; (1 2)))</code></pre>
+<h4 id="table-copy">table-copy</h4>
+<pre class="highlight"><code class="language-scheme">(table-copy table) procedure</code></pre>
+<p>The procedure <code>table-copy</code> returns a new table containing the same key/value
+bindings as <code>table</code> and the same table parameters (i.e. hash procedure, key
+comparison procedure, key and value weakness, etc).</p>
+<p>For example:</p>
+<pre class="highlight"><code class="language-scheme">&gt; (define t (list-&gt;table '((b . 2) (a . 1) (c . 3))))
+&gt; (define x (table-copy t))
+&gt; (table-set! t 'b 99)
+&gt; (table-&gt;list t)
+((a . 1) (b . 99) (c . 3))
+&gt; (table-&gt;list x)
+((a . 1) (b . 2) (c . 3))</code></pre>
+<h4 id="table-merge">table-merge!</h4>
+<pre class="highlight"><code class="language-scheme">(table-merge! table1 table2 [table2-takes-precedence?]) ;; procedure</code></pre>
+<p>The procedure <code>table-merge!</code> returns <code>table1</code> after the key/value bindings
+contained in <code>table2</code> have been added to it. When a key exists both in <code>table1</code>
+and <code>table2</code>, then the parameter <code>table2-takes-precedence?</code> indicates which
+binding will be kept (the one in <code>table1</code> if <code>table2-takes-precedence?</code> is
+false, and the one in <code>table2</code> otherwise). If <code>table2-takes-precedence?</code> is not
+specified the binding in <code>table1</code> is kept.</p>
+<p>For example:</p>
+<pre class="highlight"><code class="language-scheme">&gt; (define t1 (list-&gt;table '((a . 1) (b . 2) (c . 3))))
+&gt; (define t2 (list-&gt;table '((a . 4) (b . 5) (z . 6))))
+&gt; (table-&gt;list (table-merge! t1 t2))
+((a . 1) (b . 2) (c . 3) (z . 6))
+&gt; (define t1 (list-&gt;table '((a . 1) (b . 2) (c . 3))))
+&gt; (define t2 (list-&gt;table '((a . 4) (b . 5) (z . 6))))
+&gt; (table-&gt;list (table-merge! t1 t2 #t))
+((a . 4) (b . 5) (c . 3) (z . 6))</code></pre>
+<h4 id="table-merge_1">table-merge</h4>
+<pre class="highlight"><code class="language-scheme">(table-merge table1 table2 [table2-takes-precedence?]) ;; procedure</code></pre>
+<p>The procedure <code>table-merge</code> returns a copy of <code>table1</code> (created with
+<code>table-copy</code>) to which the key/value bindings contained in <code>table2</code> have been
+added using <code>table-merge!</code>. When a key exists both in <code>table1</code> and <code>table2</code>,
+then the parameter <code>table2-takes-precedence?</code> indicates which binding will be
+kept (the one in <code>table1</code> if <code>table2-takes-precedence?</code> is false, and the one in
+<code>table2</code> otherwise). If <code>table2-takes-precedence?</code> is not specified the binding
+in <code>table1</code> is kept.</p>
+<p>For example:</p>
+<pre class="highlight"><code class="language-scheme">&gt; (define t1 (list-&gt;table '((a . 1) (b . 2) (c . 3))))
+&gt; (define t2 (list-&gt;table '((a . 4) (b . 5) (z . 6))))
+&gt; (table-&gt;list (table-merge t1 t2))
+((a . 1) (b . 2) (c . 3) (z . 6))
+&gt; (table-&gt;list (table-merge t1 t2 #t))
+((a . 4) (b . 5) (c . 3) (z . 6))</code></pre>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      Last update:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">November 9, 2022</span>
+      
+        <br>
+        Created:
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">November 9, 2022</span>
+      
+    
+  </small>
+</div>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../homogeneous_numeric_vectors/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Homogeneous numeric vectors" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Homogeneous numeric vectors
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../../records/" class="md-footer__link md-footer__link--next" aria-label="Next: Records" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Records
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.indexes", "toc.follow", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d6c3db9e.min.js"></script>
+      
+        <script src="../../../js/codemirror/lib/codemirror.js"></script>
+      
+        <script src="../../../js/codemirror/addon/edit/matchbrackets.js"></script>
+      
+        <script src="../../../js/codemirror/keymap/emacs.js"></script>
+      
+        <script src="../../../js/codemirror/mode/scheme/scheme.js"></script>
+      
+        <script src="../../../js/UI.js"></script>
+      
+        <script src="../../../js/VM.min.js"></script>
+      
+        <script src="../../../js/browserfs.min.js"></script>
+      
+    
+  </body>
+</html>

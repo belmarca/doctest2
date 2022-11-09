@@ -1,0 +1,5215 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../../../assets/favicon.ico">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.9">
+    
+    
+      
+        <title>Homogeneous numeric vectors - Gambit Scheme</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.20d9efc8.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.08040f6c.min.css">
+        
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../js/codemirror/lib/codemirror.css">
+    
+      <link rel="stylesheet" href="../../../css/UI.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Homogeneous numeric vectors - Gambit Scheme" >
+      
+        <meta  property="og:description"  content="None" >
+      
+        <meta  property="og:image"  content="./assets/images/social/manual/built_in_data_types/homogeneous_numeric_vectors.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="None" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Homogeneous numeric vectors - Gambit Scheme" >
+      
+        <meta  name="twitter:description"  content="None" >
+      
+        <meta  name="twitter:image"  content="./assets/images/social/manual/built_in_data_types/homogeneous_numeric_vectors.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#homogeneous-numeric-vectors" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Gambit Scheme" class="md-header__button md-logo" aria-label="Gambit Scheme" data-md-component="logo">
+      
+  <img src="../../../assets/gambit.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Gambit Scheme
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Homogeneous numeric vectors
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+          
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/gambit/gambit" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    gambit/gambit
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        Home
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../" class="md-tabs__link md-tabs__link--active">
+        Manual
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../howtos/" class="md-tabs__link">
+        How-tos
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Gambit Scheme" class="md-nav__button md-logo" aria-label="Gambit Scheme" data-md-component="logo">
+      
+  <img src="../../../assets/gambit.png" alt="logo">
+
+    </a>
+    Gambit Scheme
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/gambit/gambit" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    gambit/gambit
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../..">Home</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Home" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Home
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../">Manual</a>
+          
+            <label for="__nav_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Manual" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Manual
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" type="checkbox" id="__nav_2_2" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../the_gambit_system/">The Gambit system</a>
+          
+            <label for="__nav_2_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="The Gambit system" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          The Gambit system
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../the_gambit_system/accessing_the_system_files/" class="md-nav__link">
+        Accessing the system files
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" type="checkbox" id="__nav_2_3" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../gsi/">The Gambit Scheme interpreter</a>
+          
+            <label for="__nav_2_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="The Gambit Scheme interpreter" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          The Gambit Scheme interpreter
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gsi/interactive_mode/" class="md-nav__link">
+        Interactive mode
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gsi/batch_mode/" class="md-nav__link">
+        Batch mode
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gsi/module_management_mode/" class="md-nav__link">
+        Module management mode
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gsi/customization/" class="md-nav__link">
+        Customization
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gsi/process_exit_status/" class="md-nav__link">
+        Process exit status
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gsi/scheme_scripts/" class="md-nav__link">
+        Scheme scripts
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4" type="checkbox" id="__nav_2_4" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../gsc/">The Gambit Scheme compiler</a>
+          
+            <label for="__nav_2_4">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="The Gambit Scheme compiler" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_4">
+          <span class="md-nav__icon md-icon"></span>
+          The Gambit Scheme compiler
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gsc/interactive_mode/" class="md-nav__link">
+        Interactive mode
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gsc/customization/" class="md-nav__link">
+        Customization
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gsc/batch_mode/" class="md-nav__link">
+        Batch mode
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gsc/link_files/" class="md-nav__link">
+        Link files
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gsc/procedures/" class="md-nav__link">
+        Procedures specific to the compiler
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5" type="checkbox" id="__nav_2_5" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../runtime_options/">Runtime options</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Runtime options" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_5">
+          <span class="md-nav__icon md-icon"></span>
+          Runtime options
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6" type="checkbox" id="__nav_2_6" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../debugging/">Debugging</a>
+          
+            <label for="__nav_2_6">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Debugging" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_6">
+          <span class="md-nav__icon md-icon"></span>
+          Debugging
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../debugging/debugging_model/" class="md-nav__link">
+        Debugging model
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../debugging/debugging_commands/" class="md-nav__link">
+        Debugging commands
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../debugging/debugging_example/" class="md-nav__link">
+        Debugging example
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../debugging/procedures/" class="md-nav__link">
+        Procedures related to debugging
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../debugging/console_line_editing/" class="md-nav__link">
+        Console line-editing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../debugging/emacs_interface/" class="md-nav__link">
+        Emacs interface
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_7" type="checkbox" id="__nav_2_7" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../scheme_extensions/">Scheme extensions</a>
+          
+            <label for="__nav_2_7">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Scheme extensions" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_7">
+          <span class="md-nav__icon md-icon"></span>
+          Scheme extensions
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../scheme_extensions/extensions_to_standard_procedures/" class="md-nav__link">
+        Extensions to standard procedures
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../scheme_extensions/extensions_to_standard_special_forms/" class="md-nav__link">
+        Extensions to standard special forms
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../scheme_extensions/miscellaneous_extensions/" class="md-nav__link">
+        Miscellaneous extensions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../scheme_extensions/undocumented_extensions/" class="md-nav__link">
+        Undocumented extensions
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_8" type="checkbox" id="__nav_2_8" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../modules/">Modules</a>
+          
+            <label for="__nav_2_8">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Modules" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_8">
+          <span class="md-nav__icon md-icon"></span>
+          Modules
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/legacy_modules/" class="md-nav__link">
+        Legacy modules
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/primitive_modules/" class="md-nav__link">
+        Primitive modules
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/primitive_procedures/" class="md-nav__link">
+        Primitive procedures
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/r7rs_compatible_modules/" class="md-nav__link">
+        R7RS compatible modules
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/installing_modules/" class="md-nav__link">
+        Installing modules
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/compiling_modules/" class="md-nav__link">
+        Compiling modules
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_9" type="checkbox" id="__nav_2_9" checked>
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../">Built-in data types</a>
+          
+            <label for="__nav_2_9">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Built-in data types" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_9">
+          <span class="md-nav__icon md-icon"></span>
+          Built-in data types
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../numbers/" class="md-nav__link">
+        Numbers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../booleans/" class="md-nav__link">
+        Booleans
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pairs_and_lists/" class="md-nav__link">
+        Pairs and lists
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../symbols_and_keywords/" class="md-nav__link">
+        Symbols and keywords
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../characters_and_strings/" class="md-nav__link">
+        Characters and strings
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vectors/" class="md-nav__link">
+        Vectors
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Homogeneous numeric vectors
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Homogeneous numeric vectors
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#s8vector" class="md-nav__link">
+    s8vector?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#make-s8vector" class="md-nav__link">
+    make-s8vector
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s8vector_1" class="md-nav__link">
+    s8vector
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s8vector-length" class="md-nav__link">
+    s8vector-length
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s8vector-ref" class="md-nav__link">
+    s8vector-ref
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s8vector-set" class="md-nav__link">
+    s8vector-set
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s8vector-set_1" class="md-nav__link">
+    s8vector-set!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s8vector-list" class="md-nav__link">
+    s8vector-&gt;list
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list-s8vector" class="md-nav__link">
+    list-&gt;s8vector
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s8vector-fill" class="md-nav__link">
+    s8vector-fill!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subs8vector-fill" class="md-nav__link">
+    subs8vector-fill!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s8vector-concatenate" class="md-nav__link">
+    s8vector-concatenate
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s8vector-copy" class="md-nav__link">
+    s8vector-copy
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s8vector-copy_1" class="md-nav__link">
+    s8vector-copy!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s8vector-append" class="md-nav__link">
+    s8vector-append
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subs8vector" class="md-nav__link">
+    subs8vector
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subs8vector-move" class="md-nav__link">
+    subs8vector-move!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s8vector-shrink" class="md-nav__link">
+    s8vector-shrink!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u8vector" class="md-nav__link">
+    u8vector?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#make-u8vector" class="md-nav__link">
+    make-u8vector
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u8vector_1" class="md-nav__link">
+    u8vector
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u8vector-length" class="md-nav__link">
+    u8vector-length
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u8vector-ref" class="md-nav__link">
+    u8vector-ref
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u8vector-set" class="md-nav__link">
+    u8vector-set
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u8vector-set_1" class="md-nav__link">
+    u8vector-set!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u8vector-list" class="md-nav__link">
+    u8vector-&gt;list
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list-u8vector" class="md-nav__link">
+    list-&gt;u8vector
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u8vector-fill" class="md-nav__link">
+    u8vector-fill!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subu8vector-fill" class="md-nav__link">
+    subu8vector-fill!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u8vector-concatenate" class="md-nav__link">
+    u8vector-concatenate
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u8vector-copy" class="md-nav__link">
+    u8vector-copy
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u8vector-copy_1" class="md-nav__link">
+    u8vector-copy!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u8vector-append" class="md-nav__link">
+    u8vector-append
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subu8vector" class="md-nav__link">
+    subu8vector
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subu8vector-move" class="md-nav__link">
+    subu8vector-move!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u8vector-shrink" class="md-nav__link">
+    u8vector-shrink!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s16vector" class="md-nav__link">
+    s16vector?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#make-s16vector" class="md-nav__link">
+    make-s16vector
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s16vector_1" class="md-nav__link">
+    s16vector
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s16vector-length" class="md-nav__link">
+    s16vector-length
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s16vector-ref" class="md-nav__link">
+    s16vector-ref
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s16vector-set" class="md-nav__link">
+    s16vector-set
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s16vector-set_1" class="md-nav__link">
+    s16vector-set!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s16vector-list" class="md-nav__link">
+    s16vector-&gt;list
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list-s16vector" class="md-nav__link">
+    list-&gt;s16vector
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s16vector-fill" class="md-nav__link">
+    s16vector-fill!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subs16vector-fill" class="md-nav__link">
+    subs16vector-fill!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s16vector-concatenate" class="md-nav__link">
+    s16vector-concatenate
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s16vector-copy" class="md-nav__link">
+    s16vector-copy
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s16vector-copy_1" class="md-nav__link">
+    s16vector-copy!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s16vector-append" class="md-nav__link">
+    s16vector-append
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subs16vector" class="md-nav__link">
+    subs16vector
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subs16vector-move" class="md-nav__link">
+    subs16vector-move!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s16vector-shrink" class="md-nav__link">
+    s16vector-shrink!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u16vector" class="md-nav__link">
+    u16vector?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#make-u16vector" class="md-nav__link">
+    make-u16vector
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u16vector_1" class="md-nav__link">
+    u16vector
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u16vector-length" class="md-nav__link">
+    u16vector-length
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u16vector-ref" class="md-nav__link">
+    u16vector-ref
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u16vector-set" class="md-nav__link">
+    u16vector-set
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u16vector-set_1" class="md-nav__link">
+    u16vector-set!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u16vector-list" class="md-nav__link">
+    u16vector-&gt;list
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list-u16vector" class="md-nav__link">
+    list-&gt;u16vector
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u16vector-fill" class="md-nav__link">
+    u16vector-fill!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subu16vector-fill" class="md-nav__link">
+    subu16vector-fill!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u16vector-concatenate" class="md-nav__link">
+    u16vector-concatenate
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u16vector-copy" class="md-nav__link">
+    u16vector-copy
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u16vector-copy_1" class="md-nav__link">
+    u16vector-copy!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u16vector-append" class="md-nav__link">
+    u16vector-append
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subu16vector" class="md-nav__link">
+    subu16vector
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subu16vector-move" class="md-nav__link">
+    subu16vector-move!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u16vector-shrink" class="md-nav__link">
+    u16vector-shrink!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s32vector" class="md-nav__link">
+    s32vector?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#make-s32vector" class="md-nav__link">
+    make-s32vector
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s32vector_1" class="md-nav__link">
+    s32vector
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s32vector-length" class="md-nav__link">
+    s32vector-length
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s32vector-ref" class="md-nav__link">
+    s32vector-ref
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s32vector-set" class="md-nav__link">
+    s32vector-set
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s32vector-set_1" class="md-nav__link">
+    s32vector-set!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s32vector-list" class="md-nav__link">
+    s32vector-&gt;list
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list-s32vector" class="md-nav__link">
+    list-&gt;s32vector
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s32vector-fill" class="md-nav__link">
+    s32vector-fill!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subs32vector-fill" class="md-nav__link">
+    subs32vector-fill!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s32vector-concatenate" class="md-nav__link">
+    s32vector-concatenate
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s32vector-copy" class="md-nav__link">
+    s32vector-copy
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s32vector-copy_1" class="md-nav__link">
+    s32vector-copy!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s32vector-append" class="md-nav__link">
+    s32vector-append
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subs32vector" class="md-nav__link">
+    subs32vector
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subs32vector-move" class="md-nav__link">
+    subs32vector-move!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s32vector-shrink" class="md-nav__link">
+    s32vector-shrink!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u32vector" class="md-nav__link">
+    u32vector?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#make-u32vector" class="md-nav__link">
+    make-u32vector
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u32vector_1" class="md-nav__link">
+    u32vector
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u32vector-length" class="md-nav__link">
+    u32vector-length
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u32vector-ref" class="md-nav__link">
+    u32vector-ref
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u32vector-set" class="md-nav__link">
+    u32vector-set
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u32vector-set_1" class="md-nav__link">
+    u32vector-set!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u32vector-list" class="md-nav__link">
+    u32vector-&gt;list
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list-u32vector" class="md-nav__link">
+    list-&gt;u32vector
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u32vector-fill" class="md-nav__link">
+    u32vector-fill!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subu32vector-fill" class="md-nav__link">
+    subu32vector-fill!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u32vector-concatenate" class="md-nav__link">
+    u32vector-concatenate
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u32vector-copy" class="md-nav__link">
+    u32vector-copy
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u32vector-copy_1" class="md-nav__link">
+    u32vector-copy!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u32vector-append" class="md-nav__link">
+    u32vector-append
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subu32vector" class="md-nav__link">
+    subu32vector
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subu32vector-move" class="md-nav__link">
+    subu32vector-move!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u32vector-shrink" class="md-nav__link">
+    u32vector-shrink!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s64vector" class="md-nav__link">
+    s64vector?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#make-s64vector" class="md-nav__link">
+    make-s64vector
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s64vector_1" class="md-nav__link">
+    s64vector
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s64vector-length" class="md-nav__link">
+    s64vector-length
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s64vector-ref" class="md-nav__link">
+    s64vector-ref
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s64vector-set" class="md-nav__link">
+    s64vector-set
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s64vector-set_1" class="md-nav__link">
+    s64vector-set!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s64vector-list" class="md-nav__link">
+    s64vector-&gt;list
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list-s64vector" class="md-nav__link">
+    list-&gt;s64vector
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s64vector-fill" class="md-nav__link">
+    s64vector-fill!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subs64vector-fill" class="md-nav__link">
+    subs64vector-fill!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s64vector-concatenate" class="md-nav__link">
+    s64vector-concatenate
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s64vector-copy" class="md-nav__link">
+    s64vector-copy
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s64vector-copy_1" class="md-nav__link">
+    s64vector-copy!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s64vector-append" class="md-nav__link">
+    s64vector-append
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subs64vector" class="md-nav__link">
+    subs64vector
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subs64vector-move" class="md-nav__link">
+    subs64vector-move!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s64vector-shrink" class="md-nav__link">
+    s64vector-shrink!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u64vector" class="md-nav__link">
+    u64vector?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#make-u64vector" class="md-nav__link">
+    make-u64vector
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u64vector_1" class="md-nav__link">
+    u64vector
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u64vector-length" class="md-nav__link">
+    u64vector-length
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u64vector-ref" class="md-nav__link">
+    u64vector-ref
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u64vector-set" class="md-nav__link">
+    u64vector-set
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u64vector-set_1" class="md-nav__link">
+    u64vector-set!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u64vector-list" class="md-nav__link">
+    u64vector-&gt;list
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list-u64vector" class="md-nav__link">
+    list-&gt;u64vector
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u64vector-fill" class="md-nav__link">
+    u64vector-fill!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subu64vector-fill" class="md-nav__link">
+    subu64vector-fill!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u64vector-concatenate" class="md-nav__link">
+    u64vector-concatenate
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u64vector-copy" class="md-nav__link">
+    u64vector-copy
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u64vector-copy_1" class="md-nav__link">
+    u64vector-copy!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u64vector-append" class="md-nav__link">
+    u64vector-append
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subu64vector" class="md-nav__link">
+    subu64vector
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subu64vector-move" class="md-nav__link">
+    subu64vector-move!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u64vector-shrink" class="md-nav__link">
+    u64vector-shrink!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#f32vector" class="md-nav__link">
+    f32vector?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#make-f32vector" class="md-nav__link">
+    make-f32vector
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#f32vector_1" class="md-nav__link">
+    f32vector
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#f32vector-length" class="md-nav__link">
+    f32vector-length
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#f32vector-ref" class="md-nav__link">
+    f32vector-ref
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#f32vector-set" class="md-nav__link">
+    f32vector-set
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#f32vector-set_1" class="md-nav__link">
+    f32vector-set!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#f32vector-list" class="md-nav__link">
+    f32vector-&gt;list
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list-f32vector" class="md-nav__link">
+    list-&gt;f32vector
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#f32vector-fill" class="md-nav__link">
+    f32vector-fill!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subf32vector-fill" class="md-nav__link">
+    subf32vector-fill!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#f32vector-concatenate" class="md-nav__link">
+    f32vector-concatenate
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#f32vector-copy" class="md-nav__link">
+    f32vector-copy
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#f32vector-copy_1" class="md-nav__link">
+    f32vector-copy!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#f32vector-append" class="md-nav__link">
+    f32vector-append
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subf32vector" class="md-nav__link">
+    subf32vector
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subf32vector-move" class="md-nav__link">
+    subf32vector-move!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#f32vector-shrink" class="md-nav__link">
+    f32vector-shrink!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#f64vector" class="md-nav__link">
+    f64vector?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#make-f64vector" class="md-nav__link">
+    make-f64vector
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#f64vector_1" class="md-nav__link">
+    f64vector
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#f64vector-length" class="md-nav__link">
+    f64vector-length
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#f64vector-ref" class="md-nav__link">
+    f64vector-ref
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#f64vector-set" class="md-nav__link">
+    f64vector-set
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#f64vector-set_1" class="md-nav__link">
+    f64vector-set!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#f64vector-list" class="md-nav__link">
+    f64vector-&gt;list
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list-f64vector" class="md-nav__link">
+    list-&gt;f64vector
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#f64vector-fill" class="md-nav__link">
+    f64vector-fill!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subf64vector-fill" class="md-nav__link">
+    subf64vector-fill!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#f64vector-concatenate" class="md-nav__link">
+    f64vector-concatenate
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#f64vector-copy" class="md-nav__link">
+    f64vector-copy
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#f64vector-copy_1" class="md-nav__link">
+    f64vector-copy!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#f64vector-append" class="md-nav__link">
+    f64vector-append
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subf64vector" class="md-nav__link">
+    subf64vector
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subf64vector-move" class="md-nav__link">
+    subf64vector-move!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#f64vector-shrink" class="md-nav__link">
+    f64vector-shrink!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#object-u8vector" class="md-nav__link">
+    object-&gt;u8vector
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u8vector-object" class="md-nav__link">
+    u8vector-&gt;object
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hashing_and_weak_references/" class="md-nav__link">
+        Hashing and weak references
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_10" type="checkbox" id="__nav_2_10" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../records/">Records</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Records" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_10">
+          <span class="md-nav__icon md-icon"></span>
+          Records
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_11" type="checkbox" id="__nav_2_11" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../threads/">Threads</a>
+          
+            <label for="__nav_2_11">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Threads" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_11">
+          <span class="md-nav__icon md-icon"></span>
+          Threads
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../threads/introduction/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../threads/thread_objects/" class="md-nav__link">
+        Thread objects
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../threads/mutex_objects/" class="md-nav__link">
+        Mutex objects
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../threads/condvar_objects/" class="md-nav__link">
+        Condition variable objects
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../threads/fairness/" class="md-nav__link">
+        Fairness
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../threads/memory_coherency/" class="md-nav__link">
+        Memory coherency
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../threads/timeouts/" class="md-nav__link">
+        Timeouts
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../threads/primordial_thread/" class="md-nav__link">
+        Primordial thread
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../threads/procedures/" class="md-nav__link">
+        Procedures
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_12" type="checkbox" id="__nav_2_12" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../dynamic_environment/">Dynamic environment</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Dynamic environment" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_12">
+          <span class="md-nav__icon md-icon"></span>
+          Dynamic environment
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_13" type="checkbox" id="__nav_2_13" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../exceptions/">Exceptions</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Exceptions" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_13">
+          <span class="md-nav__icon md-icon"></span>
+          Exceptions
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_14" type="checkbox" id="__nav_2_14" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../host_environment/">Host environment</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Host environment" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_14">
+          <span class="md-nav__icon md-icon"></span>
+          Host environment
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_15" type="checkbox" id="__nav_2_15" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../io_and_ports/">I/O and ports</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="I/O and ports" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_15">
+          <span class="md-nav__icon md-icon"></span>
+          I/O and ports
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_16" type="checkbox" id="__nav_2_16" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../lexical_syntax_and_readtables/">Lexical syntax and readtables</a>
+          
+            <label for="__nav_2_16">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Lexical syntax and readtables" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_16">
+          <span class="md-nav__icon md-icon"></span>
+          Lexical syntax and readtables
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lexical_syntax_and_readtables/readtables/" class="md-nav__link">
+        Readtables
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_17" type="checkbox" id="__nav_2_17" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../c_interface/">C-interface</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="C-interface" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_17">
+          <span class="md-nav__icon md-icon"></span>
+          C-interface
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_18" type="checkbox" id="__nav_2_18" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../system_limitations/">System limitations</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="System limitations" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_18">
+          <span class="md-nav__icon md-icon"></span>
+          System limitations
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_19" type="checkbox" id="__nav_2_19" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../copyright_and_license/">Copyright and license</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Copyright and license" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_19">
+          <span class="md-nav__icon md-icon"></span>
+          Copyright and license
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../howtos/">How-tos</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="How-tos" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          How-tos
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#s8vector" class="md-nav__link">
+    s8vector?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#make-s8vector" class="md-nav__link">
+    make-s8vector
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s8vector_1" class="md-nav__link">
+    s8vector
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s8vector-length" class="md-nav__link">
+    s8vector-length
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s8vector-ref" class="md-nav__link">
+    s8vector-ref
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s8vector-set" class="md-nav__link">
+    s8vector-set
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s8vector-set_1" class="md-nav__link">
+    s8vector-set!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s8vector-list" class="md-nav__link">
+    s8vector-&gt;list
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list-s8vector" class="md-nav__link">
+    list-&gt;s8vector
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s8vector-fill" class="md-nav__link">
+    s8vector-fill!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subs8vector-fill" class="md-nav__link">
+    subs8vector-fill!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s8vector-concatenate" class="md-nav__link">
+    s8vector-concatenate
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s8vector-copy" class="md-nav__link">
+    s8vector-copy
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s8vector-copy_1" class="md-nav__link">
+    s8vector-copy!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s8vector-append" class="md-nav__link">
+    s8vector-append
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subs8vector" class="md-nav__link">
+    subs8vector
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subs8vector-move" class="md-nav__link">
+    subs8vector-move!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s8vector-shrink" class="md-nav__link">
+    s8vector-shrink!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u8vector" class="md-nav__link">
+    u8vector?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#make-u8vector" class="md-nav__link">
+    make-u8vector
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u8vector_1" class="md-nav__link">
+    u8vector
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u8vector-length" class="md-nav__link">
+    u8vector-length
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u8vector-ref" class="md-nav__link">
+    u8vector-ref
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u8vector-set" class="md-nav__link">
+    u8vector-set
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u8vector-set_1" class="md-nav__link">
+    u8vector-set!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u8vector-list" class="md-nav__link">
+    u8vector-&gt;list
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list-u8vector" class="md-nav__link">
+    list-&gt;u8vector
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u8vector-fill" class="md-nav__link">
+    u8vector-fill!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subu8vector-fill" class="md-nav__link">
+    subu8vector-fill!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u8vector-concatenate" class="md-nav__link">
+    u8vector-concatenate
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u8vector-copy" class="md-nav__link">
+    u8vector-copy
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u8vector-copy_1" class="md-nav__link">
+    u8vector-copy!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u8vector-append" class="md-nav__link">
+    u8vector-append
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subu8vector" class="md-nav__link">
+    subu8vector
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subu8vector-move" class="md-nav__link">
+    subu8vector-move!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u8vector-shrink" class="md-nav__link">
+    u8vector-shrink!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s16vector" class="md-nav__link">
+    s16vector?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#make-s16vector" class="md-nav__link">
+    make-s16vector
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s16vector_1" class="md-nav__link">
+    s16vector
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s16vector-length" class="md-nav__link">
+    s16vector-length
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s16vector-ref" class="md-nav__link">
+    s16vector-ref
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s16vector-set" class="md-nav__link">
+    s16vector-set
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s16vector-set_1" class="md-nav__link">
+    s16vector-set!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s16vector-list" class="md-nav__link">
+    s16vector-&gt;list
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list-s16vector" class="md-nav__link">
+    list-&gt;s16vector
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s16vector-fill" class="md-nav__link">
+    s16vector-fill!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subs16vector-fill" class="md-nav__link">
+    subs16vector-fill!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s16vector-concatenate" class="md-nav__link">
+    s16vector-concatenate
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s16vector-copy" class="md-nav__link">
+    s16vector-copy
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s16vector-copy_1" class="md-nav__link">
+    s16vector-copy!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s16vector-append" class="md-nav__link">
+    s16vector-append
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subs16vector" class="md-nav__link">
+    subs16vector
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subs16vector-move" class="md-nav__link">
+    subs16vector-move!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s16vector-shrink" class="md-nav__link">
+    s16vector-shrink!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u16vector" class="md-nav__link">
+    u16vector?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#make-u16vector" class="md-nav__link">
+    make-u16vector
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u16vector_1" class="md-nav__link">
+    u16vector
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u16vector-length" class="md-nav__link">
+    u16vector-length
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u16vector-ref" class="md-nav__link">
+    u16vector-ref
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u16vector-set" class="md-nav__link">
+    u16vector-set
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u16vector-set_1" class="md-nav__link">
+    u16vector-set!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u16vector-list" class="md-nav__link">
+    u16vector-&gt;list
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list-u16vector" class="md-nav__link">
+    list-&gt;u16vector
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u16vector-fill" class="md-nav__link">
+    u16vector-fill!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subu16vector-fill" class="md-nav__link">
+    subu16vector-fill!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u16vector-concatenate" class="md-nav__link">
+    u16vector-concatenate
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u16vector-copy" class="md-nav__link">
+    u16vector-copy
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u16vector-copy_1" class="md-nav__link">
+    u16vector-copy!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u16vector-append" class="md-nav__link">
+    u16vector-append
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subu16vector" class="md-nav__link">
+    subu16vector
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subu16vector-move" class="md-nav__link">
+    subu16vector-move!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u16vector-shrink" class="md-nav__link">
+    u16vector-shrink!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s32vector" class="md-nav__link">
+    s32vector?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#make-s32vector" class="md-nav__link">
+    make-s32vector
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s32vector_1" class="md-nav__link">
+    s32vector
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s32vector-length" class="md-nav__link">
+    s32vector-length
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s32vector-ref" class="md-nav__link">
+    s32vector-ref
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s32vector-set" class="md-nav__link">
+    s32vector-set
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s32vector-set_1" class="md-nav__link">
+    s32vector-set!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s32vector-list" class="md-nav__link">
+    s32vector-&gt;list
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list-s32vector" class="md-nav__link">
+    list-&gt;s32vector
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s32vector-fill" class="md-nav__link">
+    s32vector-fill!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subs32vector-fill" class="md-nav__link">
+    subs32vector-fill!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s32vector-concatenate" class="md-nav__link">
+    s32vector-concatenate
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s32vector-copy" class="md-nav__link">
+    s32vector-copy
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s32vector-copy_1" class="md-nav__link">
+    s32vector-copy!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s32vector-append" class="md-nav__link">
+    s32vector-append
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subs32vector" class="md-nav__link">
+    subs32vector
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subs32vector-move" class="md-nav__link">
+    subs32vector-move!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s32vector-shrink" class="md-nav__link">
+    s32vector-shrink!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u32vector" class="md-nav__link">
+    u32vector?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#make-u32vector" class="md-nav__link">
+    make-u32vector
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u32vector_1" class="md-nav__link">
+    u32vector
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u32vector-length" class="md-nav__link">
+    u32vector-length
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u32vector-ref" class="md-nav__link">
+    u32vector-ref
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u32vector-set" class="md-nav__link">
+    u32vector-set
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u32vector-set_1" class="md-nav__link">
+    u32vector-set!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u32vector-list" class="md-nav__link">
+    u32vector-&gt;list
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list-u32vector" class="md-nav__link">
+    list-&gt;u32vector
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u32vector-fill" class="md-nav__link">
+    u32vector-fill!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subu32vector-fill" class="md-nav__link">
+    subu32vector-fill!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u32vector-concatenate" class="md-nav__link">
+    u32vector-concatenate
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u32vector-copy" class="md-nav__link">
+    u32vector-copy
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u32vector-copy_1" class="md-nav__link">
+    u32vector-copy!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u32vector-append" class="md-nav__link">
+    u32vector-append
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subu32vector" class="md-nav__link">
+    subu32vector
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subu32vector-move" class="md-nav__link">
+    subu32vector-move!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u32vector-shrink" class="md-nav__link">
+    u32vector-shrink!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s64vector" class="md-nav__link">
+    s64vector?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#make-s64vector" class="md-nav__link">
+    make-s64vector
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s64vector_1" class="md-nav__link">
+    s64vector
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s64vector-length" class="md-nav__link">
+    s64vector-length
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s64vector-ref" class="md-nav__link">
+    s64vector-ref
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s64vector-set" class="md-nav__link">
+    s64vector-set
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s64vector-set_1" class="md-nav__link">
+    s64vector-set!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s64vector-list" class="md-nav__link">
+    s64vector-&gt;list
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list-s64vector" class="md-nav__link">
+    list-&gt;s64vector
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s64vector-fill" class="md-nav__link">
+    s64vector-fill!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subs64vector-fill" class="md-nav__link">
+    subs64vector-fill!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s64vector-concatenate" class="md-nav__link">
+    s64vector-concatenate
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s64vector-copy" class="md-nav__link">
+    s64vector-copy
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s64vector-copy_1" class="md-nav__link">
+    s64vector-copy!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s64vector-append" class="md-nav__link">
+    s64vector-append
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subs64vector" class="md-nav__link">
+    subs64vector
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subs64vector-move" class="md-nav__link">
+    subs64vector-move!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s64vector-shrink" class="md-nav__link">
+    s64vector-shrink!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u64vector" class="md-nav__link">
+    u64vector?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#make-u64vector" class="md-nav__link">
+    make-u64vector
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u64vector_1" class="md-nav__link">
+    u64vector
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u64vector-length" class="md-nav__link">
+    u64vector-length
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u64vector-ref" class="md-nav__link">
+    u64vector-ref
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u64vector-set" class="md-nav__link">
+    u64vector-set
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u64vector-set_1" class="md-nav__link">
+    u64vector-set!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u64vector-list" class="md-nav__link">
+    u64vector-&gt;list
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list-u64vector" class="md-nav__link">
+    list-&gt;u64vector
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u64vector-fill" class="md-nav__link">
+    u64vector-fill!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subu64vector-fill" class="md-nav__link">
+    subu64vector-fill!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u64vector-concatenate" class="md-nav__link">
+    u64vector-concatenate
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u64vector-copy" class="md-nav__link">
+    u64vector-copy
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u64vector-copy_1" class="md-nav__link">
+    u64vector-copy!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u64vector-append" class="md-nav__link">
+    u64vector-append
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subu64vector" class="md-nav__link">
+    subu64vector
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subu64vector-move" class="md-nav__link">
+    subu64vector-move!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u64vector-shrink" class="md-nav__link">
+    u64vector-shrink!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#f32vector" class="md-nav__link">
+    f32vector?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#make-f32vector" class="md-nav__link">
+    make-f32vector
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#f32vector_1" class="md-nav__link">
+    f32vector
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#f32vector-length" class="md-nav__link">
+    f32vector-length
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#f32vector-ref" class="md-nav__link">
+    f32vector-ref
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#f32vector-set" class="md-nav__link">
+    f32vector-set
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#f32vector-set_1" class="md-nav__link">
+    f32vector-set!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#f32vector-list" class="md-nav__link">
+    f32vector-&gt;list
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list-f32vector" class="md-nav__link">
+    list-&gt;f32vector
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#f32vector-fill" class="md-nav__link">
+    f32vector-fill!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subf32vector-fill" class="md-nav__link">
+    subf32vector-fill!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#f32vector-concatenate" class="md-nav__link">
+    f32vector-concatenate
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#f32vector-copy" class="md-nav__link">
+    f32vector-copy
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#f32vector-copy_1" class="md-nav__link">
+    f32vector-copy!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#f32vector-append" class="md-nav__link">
+    f32vector-append
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subf32vector" class="md-nav__link">
+    subf32vector
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subf32vector-move" class="md-nav__link">
+    subf32vector-move!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#f32vector-shrink" class="md-nav__link">
+    f32vector-shrink!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#f64vector" class="md-nav__link">
+    f64vector?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#make-f64vector" class="md-nav__link">
+    make-f64vector
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#f64vector_1" class="md-nav__link">
+    f64vector
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#f64vector-length" class="md-nav__link">
+    f64vector-length
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#f64vector-ref" class="md-nav__link">
+    f64vector-ref
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#f64vector-set" class="md-nav__link">
+    f64vector-set
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#f64vector-set_1" class="md-nav__link">
+    f64vector-set!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#f64vector-list" class="md-nav__link">
+    f64vector-&gt;list
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list-f64vector" class="md-nav__link">
+    list-&gt;f64vector
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#f64vector-fill" class="md-nav__link">
+    f64vector-fill!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subf64vector-fill" class="md-nav__link">
+    subf64vector-fill!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#f64vector-concatenate" class="md-nav__link">
+    f64vector-concatenate
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#f64vector-copy" class="md-nav__link">
+    f64vector-copy
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#f64vector-copy_1" class="md-nav__link">
+    f64vector-copy!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#f64vector-append" class="md-nav__link">
+    f64vector-append
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subf64vector" class="md-nav__link">
+    subf64vector
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subf64vector-move" class="md-nav__link">
+    subf64vector-move!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#f64vector-shrink" class="md-nav__link">
+    f64vector-shrink!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#object-u8vector" class="md-nav__link">
+    object-&gt;u8vector
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u8vector-object" class="md-nav__link">
+    u8vector-&gt;object
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  <a href="https://github.com/gambit/gambit/edit/master/docs/manual/built_in_data_types/homogeneous_numeric_vectors.md" title="Edit this page" class="md-content__button md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
+
+
+<h1 id="homogeneous-numeric-vectors">Homogeneous numeric vectors</h1>
+<p>Homogeneous vectors are vectors containing raw numbers of the same type (signed
+or unsigned exact integers or inexact reals). There are 10 types of homogeneous
+vectors:</p>
+<p><code>s8vector</code>
+: vector of exact integers in the range <code>-2^7</code> to <code>2^7-1</code></p>
+<p><code>u8vector</code>
+: vector of exact integers in the range <code>0</code> to <code>2^8-1</code></p>
+<p><code>s16vector</code>
+: vector of exact integers in the range <code>-2^15</code> to <code>2^15-1</code></p>
+<p><code>u16vector</code>
+: vector of exact integers in the range <code>0</code> to <code>2^16-1</code></p>
+<p><code>s32vector</code>
+: vector of exact integers in the range <code>-2^31</code> to <code>2^31-1</code></p>
+<p><code>u32vector</code>
+: vector of exact integers in the range <code>0</code> to <code>2^32-1</code></p>
+<p><code>s64vector</code>
+: vector of exact integers in the range <code>-2^63</code> to <code>2^63-1</code></p>
+<p><code>u64vector</code>
+: vector of exact integers in the range <code>0</code> to <code>2^64-1</code></p>
+<p><code>f32vector</code>
+: vector of 32 bit floating point numbers</p>
+<p><code>f64vector</code>
+: vector of 64 bit floating point numbers</p>
+<p>The lexical syntax of homogeneous vectors is specified in <a href="/manual/lexical_syntax_and_readtables/homogeneous_vector_syntax">Homogeneous vector
+syntax</a>.</p>
+<p>The procedures available for homogeneous vectors, listed below, are the analog
+of the normal vector/string procedures for each of the homogeneous vector types.</p>
+<h4 id="s8vector">s8vector?</h4>
+<pre class="highlight"><code class="language-scheme">(s8vector? obj) ;; procedure</code></pre>
+<h4 id="make-s8vector">make-s8vector</h4>
+<pre class="highlight"><code class="language-scheme">(make-s8vector k [fill]) ;; procedure</code></pre>
+<h4 id="s8vector_1">s8vector</h4>
+<pre class="highlight"><code class="language-scheme">(s8vector exact-int8 ...) ;; procedure</code></pre>
+<h4 id="s8vector-length">s8vector-length</h4>
+<pre class="highlight"><code class="language-scheme">(s8vector-length s8vector) ;; procedure</code></pre>
+<h4 id="s8vector-ref">s8vector-ref</h4>
+<pre class="highlight"><code class="language-scheme">(s8vector-ref s8vector k) ;; procedure</code></pre>
+<h4 id="s8vector-set">s8vector-set</h4>
+<pre class="highlight"><code class="language-scheme">(s8vector-set s8vector k exact-int8) ;; procedure</code></pre>
+<h4 id="s8vector-set_1">s8vector-set!</h4>
+<pre class="highlight"><code class="language-scheme">(s8vector-set! s8vector k exact-int8) ;; procedure</code></pre>
+<h4 id="s8vector-list">s8vector-&gt;list</h4>
+<pre class="highlight"><code class="language-scheme">(s8vector-&gt;list s8vector) ;; procedure</code></pre>
+<h4 id="list-s8vector">list-&gt;s8vector</h4>
+<pre class="highlight"><code class="language-scheme">(list-&gt;s8vector list-of-exact-int8) ;; procedure</code></pre>
+<h4 id="s8vector-fill">s8vector-fill!</h4>
+<pre class="highlight"><code class="language-scheme">(s8vector-fill! s8vector fill [start [end]]) ;; procedure</code></pre>
+<h4 id="subs8vector-fill">subs8vector-fill!</h4>
+<pre class="highlight"><code class="language-scheme">(subs8vector-fill! vector start end fill) ;; procedure</code></pre>
+<h4 id="s8vector-concatenate">s8vector-concatenate</h4>
+<pre class="highlight"><code class="language-scheme">(s8vector-concatenate lst [separator]) ;; procedure</code></pre>
+<h4 id="s8vector-copy">s8vector-copy</h4>
+<pre class="highlight"><code class="language-scheme">(s8vector-copy s8vector [start [end]]) ;; procedure</code></pre>
+<h4 id="s8vector-copy_1">s8vector-copy!</h4>
+<pre class="highlight"><code class="language-scheme">(s8vector-copy! dest-s8vector dest-start s8vector [start [end]]) ;; procedure</code></pre>
+<h4 id="s8vector-append">s8vector-append</h4>
+<pre class="highlight"><code class="language-scheme">(s8vector-append s8vector ...) ;; procedure</code></pre>
+<h4 id="subs8vector">subs8vector</h4>
+<pre class="highlight"><code class="language-scheme">(subs8vector s8vector start end) ;; procedure</code></pre>
+<h4 id="subs8vector-move">subs8vector-move!</h4>
+<pre class="highlight"><code class="language-scheme">(subs8vector-move! src-s8vector src-start src-end dst-s8vector dst-start) ;; procedure</code></pre>
+<h4 id="s8vector-shrink">s8vector-shrink!</h4>
+<pre class="highlight"><code class="language-scheme">(s8vector-shrink! s8vector k) ;; procedure</code></pre>
+<h4 id="u8vector">u8vector?</h4>
+<pre class="highlight"><code class="language-scheme">(u8vector? obj) ;; procedure</code></pre>
+<h4 id="make-u8vector">make-u8vector</h4>
+<pre class="highlight"><code class="language-scheme">(make-u8vector k [fill]) ;; procedure</code></pre>
+<h4 id="u8vector_1">u8vector</h4>
+<pre class="highlight"><code class="language-scheme">(u8vector exact-int8 ...) ;; procedure</code></pre>
+<h4 id="u8vector-length">u8vector-length</h4>
+<pre class="highlight"><code class="language-scheme">(u8vector-length u8vector) ;; procedure</code></pre>
+<h4 id="u8vector-ref">u8vector-ref</h4>
+<pre class="highlight"><code class="language-scheme">(u8vector-ref u8vector k) ;; procedure</code></pre>
+<h4 id="u8vector-set">u8vector-set</h4>
+<pre class="highlight"><code class="language-scheme">(u8vector-set u8vector k exact-int8) ;; procedure</code></pre>
+<h4 id="u8vector-set_1">u8vector-set!</h4>
+<pre class="highlight"><code class="language-scheme">(u8vector-set! u8vector k exact-int8) ;; procedure</code></pre>
+<h4 id="u8vector-list">u8vector-&gt;list</h4>
+<pre class="highlight"><code class="language-scheme">(u8vector-&gt;list u8vector) ;; procedure</code></pre>
+<h4 id="list-u8vector">list-&gt;u8vector</h4>
+<pre class="highlight"><code class="language-scheme">(list-&gt;u8vector list-of-exact-int8) ;; procedure</code></pre>
+<h4 id="u8vector-fill">u8vector-fill!</h4>
+<pre class="highlight"><code class="language-scheme">(u8vector-fill! u8vector fill [start [end]]) ;; procedure</code></pre>
+<h4 id="subu8vector-fill">subu8vector-fill!</h4>
+<pre class="highlight"><code class="language-scheme">(subu8vector-fill! vector start end fill) ;; procedure</code></pre>
+<h4 id="u8vector-concatenate">u8vector-concatenate</h4>
+<pre class="highlight"><code class="language-scheme">(u8vector-concatenate lst [separator]) ;; procedure</code></pre>
+<h4 id="u8vector-copy">u8vector-copy</h4>
+<pre class="highlight"><code class="language-scheme">(u8vector-copy u8vector [start [end]]) ;; procedure</code></pre>
+<h4 id="u8vector-copy_1">u8vector-copy!</h4>
+<pre class="highlight"><code class="language-scheme">(u8vector-copy! dest-u8vector dest-start u8vector [start [end]]) ;; procedure</code></pre>
+<h4 id="u8vector-append">u8vector-append</h4>
+<pre class="highlight"><code class="language-scheme">(u8vector-append u8vector ...) ;; procedure</code></pre>
+<h4 id="subu8vector">subu8vector</h4>
+<pre class="highlight"><code class="language-scheme">(subu8vector u8vector start end) ;; procedure</code></pre>
+<h4 id="subu8vector-move">subu8vector-move!</h4>
+<pre class="highlight"><code class="language-scheme">(subu8vector-move! src-u8vector src-start src-end dst-u8vector dst-start) ;; procedure</code></pre>
+<h4 id="u8vector-shrink">u8vector-shrink!</h4>
+<pre class="highlight"><code class="language-scheme">(u8vector-shrink! u8vector k) ;; procedure</code></pre>
+<h4 id="s16vector">s16vector?</h4>
+<pre class="highlight"><code class="language-scheme">(s16vector? obj) ;; procedure</code></pre>
+<h4 id="make-s16vector">make-s16vector</h4>
+<pre class="highlight"><code class="language-scheme">(make-s16vector k [fill]) ;; procedure</code></pre>
+<h4 id="s16vector_1">s16vector</h4>
+<pre class="highlight"><code class="language-scheme">(s16vector exact-int16 ...) ;; procedure</code></pre>
+<h4 id="s16vector-length">s16vector-length</h4>
+<pre class="highlight"><code class="language-scheme">(s16vector-length s16vector) ;; procedure</code></pre>
+<h4 id="s16vector-ref">s16vector-ref</h4>
+<pre class="highlight"><code class="language-scheme">(s16vector-ref s16vector k) ;; procedure</code></pre>
+<h4 id="s16vector-set">s16vector-set</h4>
+<pre class="highlight"><code class="language-scheme">(s16vector-set s16vector k exact-int16) ;; procedure</code></pre>
+<h4 id="s16vector-set_1">s16vector-set!</h4>
+<pre class="highlight"><code class="language-scheme">(s16vector-set! s16vector k exact-int16) ;; procedure</code></pre>
+<h4 id="s16vector-list">s16vector-&gt;list</h4>
+<pre class="highlight"><code class="language-scheme">(s16vector-&gt;list s16vector) ;; procedure</code></pre>
+<h4 id="list-s16vector">list-&gt;s16vector</h4>
+<pre class="highlight"><code class="language-scheme">(list-&gt;s16vector list-of-exact-int16) ;; procedure</code></pre>
+<h4 id="s16vector-fill">s16vector-fill!</h4>
+<pre class="highlight"><code class="language-scheme">(s16vector-fill! s16vector fill [start [end]]) ;; procedure</code></pre>
+<h4 id="subs16vector-fill">subs16vector-fill!</h4>
+<pre class="highlight"><code class="language-scheme">(subs16vector-fill! vector start end fill) ;; procedure</code></pre>
+<h4 id="s16vector-concatenate">s16vector-concatenate</h4>
+<pre class="highlight"><code class="language-scheme">(s16vector-concatenate lst [separator]) ;; procedure</code></pre>
+<h4 id="s16vector-copy">s16vector-copy</h4>
+<pre class="highlight"><code class="language-scheme">(s16vector-copy s16vector [start [end]]) ;; procedure</code></pre>
+<h4 id="s16vector-copy_1">s16vector-copy!</h4>
+<pre class="highlight"><code class="language-scheme">(s16vector-copy! dest-s16vector dest-start s16vector [start [end]]) ;; procedure</code></pre>
+<h4 id="s16vector-append">s16vector-append</h4>
+<pre class="highlight"><code class="language-scheme">(s16vector-append s16vector ...) ;; procedure</code></pre>
+<h4 id="subs16vector">subs16vector</h4>
+<pre class="highlight"><code class="language-scheme">(subs16vector s16vector start end) ;; procedure</code></pre>
+<h4 id="subs16vector-move">subs16vector-move!</h4>
+<pre class="highlight"><code class="language-scheme">(subs16vector-move! src-s16vector src-start src-end dst-s16vector dst-start) ;; procedure</code></pre>
+<h4 id="s16vector-shrink">s16vector-shrink!</h4>
+<pre class="highlight"><code class="language-scheme">(s16vector-shrink! s16vector k) ;; procedure</code></pre>
+<h4 id="u16vector">u16vector?</h4>
+<pre class="highlight"><code class="language-scheme">(u16vector? obj) ;; procedure</code></pre>
+<h4 id="make-u16vector">make-u16vector</h4>
+<pre class="highlight"><code class="language-scheme">(make-u16vector k [fill]) ;; procedure</code></pre>
+<h4 id="u16vector_1">u16vector</h4>
+<pre class="highlight"><code class="language-scheme">(u16vector exact-int16 ...) ;; procedure</code></pre>
+<h4 id="u16vector-length">u16vector-length</h4>
+<pre class="highlight"><code class="language-scheme">(u16vector-length u16vector) ;; procedure</code></pre>
+<h4 id="u16vector-ref">u16vector-ref</h4>
+<pre class="highlight"><code class="language-scheme">(u16vector-ref u16vector k) ;; procedure</code></pre>
+<h4 id="u16vector-set">u16vector-set</h4>
+<pre class="highlight"><code class="language-scheme">(u16vector-set u16vector k exact-int16) ;; procedure</code></pre>
+<h4 id="u16vector-set_1">u16vector-set!</h4>
+<pre class="highlight"><code class="language-scheme">(u16vector-set! u16vector k exact-int16) ;; procedure</code></pre>
+<h4 id="u16vector-list">u16vector-&gt;list</h4>
+<pre class="highlight"><code class="language-scheme">(u16vector-&gt;list u16vector) ;; procedure</code></pre>
+<h4 id="list-u16vector">list-&gt;u16vector</h4>
+<pre class="highlight"><code class="language-scheme">(list-&gt;u16vector list-of-exact-int16) ;; procedure</code></pre>
+<h4 id="u16vector-fill">u16vector-fill!</h4>
+<pre class="highlight"><code class="language-scheme">(u16vector-fill! u16vector fill [start [end]]) ;; procedure</code></pre>
+<h4 id="subu16vector-fill">subu16vector-fill!</h4>
+<pre class="highlight"><code class="language-scheme">(subu16vector-fill! vector start end fill) ;; procedure</code></pre>
+<h4 id="u16vector-concatenate">u16vector-concatenate</h4>
+<pre class="highlight"><code class="language-scheme">(u16vector-concatenate lst [separator]) ;; procedure</code></pre>
+<h4 id="u16vector-copy">u16vector-copy</h4>
+<pre class="highlight"><code class="language-scheme">(u16vector-copy u16vector [start [end]]) ;; procedure</code></pre>
+<h4 id="u16vector-copy_1">u16vector-copy!</h4>
+<pre class="highlight"><code class="language-scheme">(u16vector-copy! dest-u16vector dest-start u16vector [start [end]]) ;; procedure</code></pre>
+<h4 id="u16vector-append">u16vector-append</h4>
+<pre class="highlight"><code class="language-scheme">(u16vector-append u16vector ...) ;; procedure</code></pre>
+<h4 id="subu16vector">subu16vector</h4>
+<pre class="highlight"><code class="language-scheme">(subu16vector u16vector start end) ;; procedure</code></pre>
+<h4 id="subu16vector-move">subu16vector-move!</h4>
+<pre class="highlight"><code class="language-scheme">(subu16vector-move! src-u16vector src-start src-end dst-u16vector dst-start) ;; procedure</code></pre>
+<h4 id="u16vector-shrink">u16vector-shrink!</h4>
+<pre class="highlight"><code class="language-scheme">(u16vector-shrink! u16vector k) ;; procedure</code></pre>
+<h4 id="s32vector">s32vector?</h4>
+<pre class="highlight"><code class="language-scheme">(s32vector? obj) ;; procedure</code></pre>
+<h4 id="make-s32vector">make-s32vector</h4>
+<pre class="highlight"><code class="language-scheme">(make-s32vector k [fill]) ;; procedure</code></pre>
+<h4 id="s32vector_1">s32vector</h4>
+<pre class="highlight"><code class="language-scheme">(s32vector exact-int32 ...) ;; procedure</code></pre>
+<h4 id="s32vector-length">s32vector-length</h4>
+<pre class="highlight"><code class="language-scheme">(s32vector-length s32vector) ;; procedure</code></pre>
+<h4 id="s32vector-ref">s32vector-ref</h4>
+<pre class="highlight"><code class="language-scheme">(s32vector-ref s32vector k) ;; procedure</code></pre>
+<h4 id="s32vector-set">s32vector-set</h4>
+<pre class="highlight"><code class="language-scheme">(s32vector-set s32vector k exact-int32) ;; procedure</code></pre>
+<h4 id="s32vector-set_1">s32vector-set!</h4>
+<pre class="highlight"><code class="language-scheme">(s32vector-set! s32vector k exact-int32) ;; procedure</code></pre>
+<h4 id="s32vector-list">s32vector-&gt;list</h4>
+<pre class="highlight"><code class="language-scheme">(s32vector-&gt;list s32vector) ;; procedure</code></pre>
+<h4 id="list-s32vector">list-&gt;s32vector</h4>
+<pre class="highlight"><code class="language-scheme">(list-&gt;s32vector list-of-exact-int32) ;; procedure</code></pre>
+<h4 id="s32vector-fill">s32vector-fill!</h4>
+<pre class="highlight"><code class="language-scheme">(s32vector-fill! s32vector fill [start [end]]) ;; procedure</code></pre>
+<h4 id="subs32vector-fill">subs32vector-fill!</h4>
+<pre class="highlight"><code class="language-scheme">(subs32vector-fill! vector start end fill) ;; procedure</code></pre>
+<h4 id="s32vector-concatenate">s32vector-concatenate</h4>
+<pre class="highlight"><code class="language-scheme">(s32vector-concatenate lst [separator]) ;; procedure</code></pre>
+<h4 id="s32vector-copy">s32vector-copy</h4>
+<pre class="highlight"><code class="language-scheme">(s32vector-copy s32vector [start [end]]) ;; procedure</code></pre>
+<h4 id="s32vector-copy_1">s32vector-copy!</h4>
+<pre class="highlight"><code class="language-scheme">(s32vector-copy! dest-s32vector dest-start s32vector [start [end]]) ;; procedure</code></pre>
+<h4 id="s32vector-append">s32vector-append</h4>
+<pre class="highlight"><code class="language-scheme">(s32vector-append s32vector ...) ;; procedure</code></pre>
+<h4 id="subs32vector">subs32vector</h4>
+<pre class="highlight"><code class="language-scheme">(subs32vector s32vector start end) ;; procedure</code></pre>
+<h4 id="subs32vector-move">subs32vector-move!</h4>
+<pre class="highlight"><code class="language-scheme">(subs32vector-move! src-s32vector src-start src-end dst-s32vector dst-start) ;; procedure</code></pre>
+<h4 id="s32vector-shrink">s32vector-shrink!</h4>
+<pre class="highlight"><code class="language-scheme">(s32vector-shrink! s32vector k) ;; procedure</code></pre>
+<h4 id="u32vector">u32vector?</h4>
+<pre class="highlight"><code class="language-scheme">(u32vector? obj) ;; procedure</code></pre>
+<h4 id="make-u32vector">make-u32vector</h4>
+<pre class="highlight"><code class="language-scheme">(make-u32vector k [fill]) ;; procedure</code></pre>
+<h4 id="u32vector_1">u32vector</h4>
+<pre class="highlight"><code class="language-scheme">(u32vector exact-int32 ...) ;; procedure</code></pre>
+<h4 id="u32vector-length">u32vector-length</h4>
+<pre class="highlight"><code class="language-scheme">(u32vector-length u32vector) ;; procedure</code></pre>
+<h4 id="u32vector-ref">u32vector-ref</h4>
+<pre class="highlight"><code class="language-scheme">(u32vector-ref u32vector k) ;; procedure</code></pre>
+<h4 id="u32vector-set">u32vector-set</h4>
+<pre class="highlight"><code class="language-scheme">(u32vector-set u32vector k exact-int32) ;; procedure</code></pre>
+<h4 id="u32vector-set_1">u32vector-set!</h4>
+<pre class="highlight"><code class="language-scheme">(u32vector-set! u32vector k exact-int32) ;; procedure</code></pre>
+<h4 id="u32vector-list">u32vector-&gt;list</h4>
+<pre class="highlight"><code class="language-scheme">(u32vector-&gt;list u32vector) ;; procedure</code></pre>
+<h4 id="list-u32vector">list-&gt;u32vector</h4>
+<pre class="highlight"><code class="language-scheme">(list-&gt;u32vector list-of-exact-int32) ;; procedure</code></pre>
+<h4 id="u32vector-fill">u32vector-fill!</h4>
+<pre class="highlight"><code class="language-scheme">(u32vector-fill! u32vector fill [start [end]]) ;; procedure</code></pre>
+<h4 id="subu32vector-fill">subu32vector-fill!</h4>
+<pre class="highlight"><code class="language-scheme">(subu32vector-fill! vector start end fill) ;; procedure</code></pre>
+<h4 id="u32vector-concatenate">u32vector-concatenate</h4>
+<pre class="highlight"><code class="language-scheme">(u32vector-concatenate lst [separator]) ;; procedure</code></pre>
+<h4 id="u32vector-copy">u32vector-copy</h4>
+<pre class="highlight"><code class="language-scheme">(u32vector-copy u32vector [start [end]]) ;; procedure</code></pre>
+<h4 id="u32vector-copy_1">u32vector-copy!</h4>
+<pre class="highlight"><code class="language-scheme">(u32vector-copy! dest-u32vector dest-start u32vector [start [end]]) ;; procedure</code></pre>
+<h4 id="u32vector-append">u32vector-append</h4>
+<pre class="highlight"><code class="language-scheme">(u32vector-append u32vector ...) ;; procedure</code></pre>
+<h4 id="subu32vector">subu32vector</h4>
+<pre class="highlight"><code class="language-scheme">(subu32vector u32vector start end) ;; procedure</code></pre>
+<h4 id="subu32vector-move">subu32vector-move!</h4>
+<pre class="highlight"><code class="language-scheme">(subu32vector-move! src-u32vector src-start src-end dst-u32vector dst-start) ;; procedure</code></pre>
+<h4 id="u32vector-shrink">u32vector-shrink!</h4>
+<pre class="highlight"><code class="language-scheme">(u32vector-shrink! u32vector k) ;; procedure</code></pre>
+<h4 id="s64vector">s64vector?</h4>
+<pre class="highlight"><code class="language-scheme">(s64vector? obj) ;; procedure</code></pre>
+<h4 id="make-s64vector">make-s64vector</h4>
+<pre class="highlight"><code class="language-scheme">(make-s64vector k [fill]) ;; procedure</code></pre>
+<h4 id="s64vector_1">s64vector</h4>
+<pre class="highlight"><code class="language-scheme">(s64vector exact-int64 ...) ;; procedure</code></pre>
+<h4 id="s64vector-length">s64vector-length</h4>
+<pre class="highlight"><code class="language-scheme">(s64vector-length s64vector) ;; procedure</code></pre>
+<h4 id="s64vector-ref">s64vector-ref</h4>
+<pre class="highlight"><code class="language-scheme">(s64vector-ref s64vector k) ;; procedure</code></pre>
+<h4 id="s64vector-set">s64vector-set</h4>
+<pre class="highlight"><code class="language-scheme">(s64vector-set s64vector k exact-int64) ;; procedure</code></pre>
+<h4 id="s64vector-set_1">s64vector-set!</h4>
+<pre class="highlight"><code class="language-scheme">(s64vector-set! s64vector k exact-int64) ;; procedure</code></pre>
+<h4 id="s64vector-list">s64vector-&gt;list</h4>
+<pre class="highlight"><code class="language-scheme">(s64vector-&gt;list s64vector) ;; procedure</code></pre>
+<h4 id="list-s64vector">list-&gt;s64vector</h4>
+<pre class="highlight"><code class="language-scheme">(list-&gt;s64vector list-of-exact-int64) ;; procedure</code></pre>
+<h4 id="s64vector-fill">s64vector-fill!</h4>
+<pre class="highlight"><code class="language-scheme">(s64vector-fill! s64vector fill [start [end]]) ;; procedure</code></pre>
+<h4 id="subs64vector-fill">subs64vector-fill!</h4>
+<pre class="highlight"><code class="language-scheme">(subs64vector-fill! vector start end fill) ;; procedure</code></pre>
+<h4 id="s64vector-concatenate">s64vector-concatenate</h4>
+<pre class="highlight"><code class="language-scheme">(s64vector-concatenate lst [separator]) ;; procedure</code></pre>
+<h4 id="s64vector-copy">s64vector-copy</h4>
+<pre class="highlight"><code class="language-scheme">(s64vector-copy s64vector [start [end]]) ;; procedure</code></pre>
+<h4 id="s64vector-copy_1">s64vector-copy!</h4>
+<pre class="highlight"><code class="language-scheme">(s64vector-copy! dest-s64vector dest-start s64vector [start [end]]) ;; procedure</code></pre>
+<h4 id="s64vector-append">s64vector-append</h4>
+<pre class="highlight"><code class="language-scheme">(s64vector-append s64vector ...) ;; procedure</code></pre>
+<h4 id="subs64vector">subs64vector</h4>
+<pre class="highlight"><code class="language-scheme">(subs64vector s64vector start end) ;; procedure</code></pre>
+<h4 id="subs64vector-move">subs64vector-move!</h4>
+<pre class="highlight"><code class="language-scheme">(subs64vector-move! src-s64vector src-start src-end dst-s64vector dst-start) ;; procedure</code></pre>
+<h4 id="s64vector-shrink">s64vector-shrink!</h4>
+<pre class="highlight"><code class="language-scheme">(s64vector-shrink! s64vector k) ;; procedure</code></pre>
+<h4 id="u64vector">u64vector?</h4>
+<pre class="highlight"><code class="language-scheme">(u64vector? obj) ;; procedure</code></pre>
+<h4 id="make-u64vector">make-u64vector</h4>
+<pre class="highlight"><code class="language-scheme">(make-u64vector k [fill]) ;; procedure</code></pre>
+<h4 id="u64vector_1">u64vector</h4>
+<pre class="highlight"><code class="language-scheme">(u64vector exact-int64 ...) ;; procedure</code></pre>
+<h4 id="u64vector-length">u64vector-length</h4>
+<pre class="highlight"><code class="language-scheme">(u64vector-length u64vector) ;; procedure</code></pre>
+<h4 id="u64vector-ref">u64vector-ref</h4>
+<pre class="highlight"><code class="language-scheme">(u64vector-ref u64vector k) ;; procedure</code></pre>
+<h4 id="u64vector-set">u64vector-set</h4>
+<pre class="highlight"><code class="language-scheme">(u64vector-set u64vector k exact-int64) ;; procedure</code></pre>
+<h4 id="u64vector-set_1">u64vector-set!</h4>
+<pre class="highlight"><code class="language-scheme">(u64vector-set! u64vector k exact-int64) ;; procedure</code></pre>
+<h4 id="u64vector-list">u64vector-&gt;list</h4>
+<pre class="highlight"><code class="language-scheme">(u64vector-&gt;list u64vector) ;; procedure</code></pre>
+<h4 id="list-u64vector">list-&gt;u64vector</h4>
+<pre class="highlight"><code class="language-scheme">(list-&gt;u64vector list-of-exact-int64) ;; procedure</code></pre>
+<h4 id="u64vector-fill">u64vector-fill!</h4>
+<pre class="highlight"><code class="language-scheme">(u64vector-fill! u64vector fill [start [end]]) ;; procedure</code></pre>
+<h4 id="subu64vector-fill">subu64vector-fill!</h4>
+<pre class="highlight"><code class="language-scheme">(subu64vector-fill! vector start end fill) ;; procedure</code></pre>
+<h4 id="u64vector-concatenate">u64vector-concatenate</h4>
+<pre class="highlight"><code class="language-scheme">(u64vector-concatenate lst [separator]) ;; procedure</code></pre>
+<h4 id="u64vector-copy">u64vector-copy</h4>
+<pre class="highlight"><code class="language-scheme">(u64vector-copy u64vector [start [end]]) ;; procedure</code></pre>
+<h4 id="u64vector-copy_1">u64vector-copy!</h4>
+<pre class="highlight"><code class="language-scheme">(u64vector-copy! dest-u64vector dest-start u64vector [start [end]]) ;; procedure</code></pre>
+<h4 id="u64vector-append">u64vector-append</h4>
+<pre class="highlight"><code class="language-scheme">(u64vector-append u64vector ...) ;; procedure</code></pre>
+<h4 id="subu64vector">subu64vector</h4>
+<pre class="highlight"><code class="language-scheme">(subu64vector u64vector start end) ;; procedure</code></pre>
+<h4 id="subu64vector-move">subu64vector-move!</h4>
+<pre class="highlight"><code class="language-scheme">(subu64vector-move! src-u64vector src-start src-end dst-u64vector dst-start) ;; procedure</code></pre>
+<h4 id="u64vector-shrink">u64vector-shrink!</h4>
+<pre class="highlight"><code class="language-scheme">(u64vector-shrink! u64vector k) ;; procedure</code></pre>
+<h4 id="f32vector">f32vector?</h4>
+<pre class="highlight"><code class="language-scheme">(f32vector? obj) ;; procedure</code></pre>
+<h4 id="make-f32vector">make-f32vector</h4>
+<pre class="highlight"><code class="language-scheme">(make-f32vector k [fill]) ;; procedure</code></pre>
+<h4 id="f32vector_1">f32vector</h4>
+<pre class="highlight"><code class="language-scheme">(f32vector inexact-real ...) ;; procedure</code></pre>
+<h4 id="f32vector-length">f32vector-length</h4>
+<pre class="highlight"><code class="language-scheme">(f32vector-length f32vector) ;; procedure</code></pre>
+<h4 id="f32vector-ref">f32vector-ref</h4>
+<pre class="highlight"><code class="language-scheme">(f32vector-ref f32vector k) ;; procedure</code></pre>
+<h4 id="f32vector-set">f32vector-set</h4>
+<pre class="highlight"><code class="language-scheme">(f32vector-set f32vector k inexact-real) ;; procedure</code></pre>
+<h4 id="f32vector-set_1">f32vector-set!</h4>
+<pre class="highlight"><code class="language-scheme">(f32vector-set! f32vector k inexact-real) ;; procedure</code></pre>
+<h4 id="f32vector-list">f32vector-&gt;list</h4>
+<pre class="highlight"><code class="language-scheme">(f32vector-&gt;list f32vector) ;; procedure</code></pre>
+<h4 id="list-f32vector">list-&gt;f32vector</h4>
+<pre class="highlight"><code class="language-scheme">(list-&gt;f32vector list-of-inexact-real) ;; procedure</code></pre>
+<h4 id="f32vector-fill">f32vector-fill!</h4>
+<pre class="highlight"><code class="language-scheme">(f32vector-fill! f32vector fill [start [end]]) ;; procedure</code></pre>
+<h4 id="subf32vector-fill">subf32vector-fill!</h4>
+<pre class="highlight"><code class="language-scheme">(subf32vector-fill! vector start end fill) ;; procedure</code></pre>
+<h4 id="f32vector-concatenate">f32vector-concatenate</h4>
+<pre class="highlight"><code class="language-scheme">(f32vector-concatenate lst [separator]) ;; procedure</code></pre>
+<h4 id="f32vector-copy">f32vector-copy</h4>
+<pre class="highlight"><code class="language-scheme">(f32vector-copy f32vector [start [end]]) ;; procedure</code></pre>
+<h4 id="f32vector-copy_1">f32vector-copy!</h4>
+<pre class="highlight"><code class="language-scheme">(f32vector-copy! dest-f32vector dest-start f32vector [start [end]]) ;; procedure</code></pre>
+<h4 id="f32vector-append">f32vector-append</h4>
+<pre class="highlight"><code class="language-scheme">(f32vector-append f32vector ...) ;; procedure</code></pre>
+<h4 id="subf32vector">subf32vector</h4>
+<pre class="highlight"><code class="language-scheme">(subf32vector f32vector start end) ;; procedure</code></pre>
+<h4 id="subf32vector-move">subf32vector-move!</h4>
+<pre class="highlight"><code class="language-scheme">(subf32vector-move! src-f32vector src-start src-end dst-f32vector dst-start) ;; procedure</code></pre>
+<h4 id="f32vector-shrink">f32vector-shrink!</h4>
+<pre class="highlight"><code class="language-scheme">(f32vector-shrink! f32vector k) ;; procedure</code></pre>
+<h4 id="f64vector">f64vector?</h4>
+<pre class="highlight"><code class="language-scheme">(f64vector? obj) ;; procedure</code></pre>
+<h4 id="make-f64vector">make-f64vector</h4>
+<pre class="highlight"><code class="language-scheme">(make-f64vector k [fill]) ;; procedure</code></pre>
+<h4 id="f64vector_1">f64vector</h4>
+<pre class="highlight"><code class="language-scheme">(f64vector inexact-real ...) ;; procedure</code></pre>
+<h4 id="f64vector-length">f64vector-length</h4>
+<pre class="highlight"><code class="language-scheme">(f64vector-length f64vector) ;; procedure</code></pre>
+<h4 id="f64vector-ref">f64vector-ref</h4>
+<pre class="highlight"><code class="language-scheme">(f64vector-ref f64vector k) ;; procedure</code></pre>
+<h4 id="f64vector-set">f64vector-set</h4>
+<pre class="highlight"><code class="language-scheme">(f64vector-set f64vector k inexact-real) ;; procedure</code></pre>
+<h4 id="f64vector-set_1">f64vector-set!</h4>
+<pre class="highlight"><code class="language-scheme">(f64vector-set! f64vector k inexact-real) ;; procedure</code></pre>
+<h4 id="f64vector-list">f64vector-&gt;list</h4>
+<pre class="highlight"><code class="language-scheme">(f64vector-&gt;list f64vector) ;; procedure</code></pre>
+<h4 id="list-f64vector">list-&gt;f64vector</h4>
+<pre class="highlight"><code class="language-scheme">(list-&gt;f64vector list-of-inexact-real) ;; procedure</code></pre>
+<h4 id="f64vector-fill">f64vector-fill!</h4>
+<pre class="highlight"><code class="language-scheme">(f64vector-fill! f64vector fill [start [end]]) ;; procedure</code></pre>
+<h4 id="subf64vector-fill">subf64vector-fill!</h4>
+<pre class="highlight"><code class="language-scheme">(subf64vector-fill! vector start end fill) ;; procedure</code></pre>
+<h4 id="f64vector-concatenate">f64vector-concatenate</h4>
+<pre class="highlight"><code class="language-scheme">(f64vector-concatenate lst [separator]) ;; procedure</code></pre>
+<h4 id="f64vector-copy">f64vector-copy</h4>
+<pre class="highlight"><code class="language-scheme">(f64vector-copy f64vector [start [end]]) ;; procedure</code></pre>
+<h4 id="f64vector-copy_1">f64vector-copy!</h4>
+<pre class="highlight"><code class="language-scheme">(f64vector-copy! dest-f64vector dest-start f64vector [start [end]]) ;; procedure</code></pre>
+<h4 id="f64vector-append">f64vector-append</h4>
+<pre class="highlight"><code class="language-scheme">(f64vector-append f64vector ...) ;; procedure</code></pre>
+<h4 id="subf64vector">subf64vector</h4>
+<pre class="highlight"><code class="language-scheme">(subf64vector f64vector start end) ;; procedure</code></pre>
+<h4 id="subf64vector-move">subf64vector-move!</h4>
+<pre class="highlight"><code class="language-scheme">(subf64vector-move! src-f64vector src-start src-end dst-f64vector dst-start) ;; procedure</code></pre>
+<h4 id="f64vector-shrink">f64vector-shrink!</h4>
+<pre class="highlight"><code class="language-scheme">(f64vector-shrink! f64vector k)</code></pre>
+<p>For example:</p>
+<pre class="highlight"><code class="language-scheme">&gt; (define v (u8vector 10 255 13))
+&gt; (u8vector-set! v 2 99)
+&gt; v
+#u8(10 255 99)
+&gt; (u8vector-ref v 1)
+255
+&gt; (u8vector-&gt;list v)
+(10 255 99)
+&gt; (u8vector-shrink! v 2)
+&gt; (v)
+#u8(10 255)</code></pre>
+<h4 id="object-u8vector">object-&gt;u8vector</h4>
+<h4 id="u8vector-object">u8vector-&gt;object</h4>
+<pre class="highlight"><code class="language-scheme">(object-&gt;u8vector obj [encoder]) ;; procedure
+(u8vector-&gt;object u8vector [decoder]) ;; procedure</code></pre>
+<p>The procedure <code>object-&gt;u8vector</code> returns a <code>u8vector</code> that contains the sequence
+of bytes that encodes the object <code>obj</code>. The procedure <code>u8vector-&gt;object</code> decodes
+the sequence of bytes contained in the u8vector <code>u8vector</code>, which was produced
+by the procedure <code>object-&gt;u8vector</code>, and reconstructs an object structurally
+equal to the original object. In other words the procedures <code>object-&gt;u8vector</code>
+and <code>u8vector-&gt;object</code> respectively perform serialization and deserialization of
+Scheme objects. Note that some objects are non-serializable (e.g. threads,
+wills, some types of ports, and any object containing a non-serializable
+object).</p>
+<p>The optional <code>encoder</code> and <code>decoder</code> parameters are single parameter procedures
+which default to the identity function. The <code>encoder</code> procedure is called during
+serialization. As the serializer walks through <code>obj</code>, it calls the <code>encoder</code>
+procedure on each sub-object <code>X</code> that is encountered. The <code>encoder</code> transforms the
+object <code>X</code> into an object <code>Y</code> that will be serialized instead of <code>X</code>. Similarly the
+<code>decoder</code> procedure is called during deserialization. When an object <code>Y</code> is
+encountered, the <code>decoder</code> procedure is called to transform it into the object <code>X</code>
+that is the result of deserialization.</p>
+<p>The <code>encoder</code> and <code>decoder</code> procedures are useful to customize the serialized
+representation of objects. In particular, it can be used to define the semantics
+of serializing objects, such as threads and ports, that would otherwise not be
+serializable. The <code>decoder</code> procedure is typically the inverse of the <code>encoder</code>
+procedure, i.e. <code>(decoder (encoder X)) = X</code>.</p>
+<p>For example:</p>
+<pre class="highlight"><code class="language-scheme">&gt; (define (make-adder x) (lambda (y) (+ x y)))
+&gt; (define f (make-adder 10))
+&gt; (define a (object-&gt;u8vector f))
+&gt; (define b (u8vector-&gt;object a))
+&gt; (u8vector-length a)
+1639
+&gt; (f 5)
+15
+&gt; (b 5)
+15
+&gt; (pp b)
+(lambda (y) (+ x y))</code></pre>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      Last update:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">November 9, 2022</span>
+      
+        <br>
+        Created:
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">November 9, 2022</span>
+      
+    
+  </small>
+</div>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../vectors/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Vectors" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Vectors
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../hashing_and_weak_references/" class="md-footer__link md-footer__link--next" aria-label="Next: Hashing and weak references" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Hashing and weak references
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.indexes", "toc.follow", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d6c3db9e.min.js"></script>
+      
+        <script src="../../../js/codemirror/lib/codemirror.js"></script>
+      
+        <script src="../../../js/codemirror/addon/edit/matchbrackets.js"></script>
+      
+        <script src="../../../js/codemirror/keymap/emacs.js"></script>
+      
+        <script src="../../../js/codemirror/mode/scheme/scheme.js"></script>
+      
+        <script src="../../../js/UI.js"></script>
+      
+        <script src="../../../js/VM.min.js"></script>
+      
+        <script src="../../../js/browserfs.min.js"></script>
+      
+    
+  </body>
+</html>

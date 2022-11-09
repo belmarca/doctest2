@@ -1,0 +1,2473 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../../../assets/favicon.ico">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.9">
+    
+    
+      
+        <title>Batch mode - Gambit Scheme</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.20d9efc8.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.08040f6c.min.css">
+        
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../js/codemirror/lib/codemirror.css">
+    
+      <link rel="stylesheet" href="../../../css/UI.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Batch mode - Gambit Scheme" >
+      
+        <meta  property="og:description"  content="None" >
+      
+        <meta  property="og:image"  content="./assets/images/social/manual/gsc/batch_mode.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="None" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Batch mode - Gambit Scheme" >
+      
+        <meta  name="twitter:description"  content="None" >
+      
+        <meta  name="twitter:image"  content="./assets/images/social/manual/gsc/batch_mode.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#batch-mode" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Gambit Scheme" class="md-header__button md-logo" aria-label="Gambit Scheme" data-md-component="logo">
+      
+  <img src="../../../assets/gambit.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Gambit Scheme
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Batch mode
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+          
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/gambit/gambit" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    gambit/gambit
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        Home
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../" class="md-tabs__link md-tabs__link--active">
+        Manual
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../howtos/" class="md-tabs__link">
+        How-tos
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Gambit Scheme" class="md-nav__button md-logo" aria-label="Gambit Scheme" data-md-component="logo">
+      
+  <img src="../../../assets/gambit.png" alt="logo">
+
+    </a>
+    Gambit Scheme
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/gambit/gambit" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    gambit/gambit
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../..">Home</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Home" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Home
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../">Manual</a>
+          
+            <label for="__nav_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Manual" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Manual
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" type="checkbox" id="__nav_2_2" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../the_gambit_system/">The Gambit system</a>
+          
+            <label for="__nav_2_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="The Gambit system" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          The Gambit system
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../the_gambit_system/accessing_the_system_files/" class="md-nav__link">
+        Accessing the system files
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" type="checkbox" id="__nav_2_3" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../gsi/">The Gambit Scheme interpreter</a>
+          
+            <label for="__nav_2_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="The Gambit Scheme interpreter" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          The Gambit Scheme interpreter
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gsi/interactive_mode/" class="md-nav__link">
+        Interactive mode
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gsi/batch_mode/" class="md-nav__link">
+        Batch mode
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gsi/module_management_mode/" class="md-nav__link">
+        Module management mode
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gsi/customization/" class="md-nav__link">
+        Customization
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gsi/process_exit_status/" class="md-nav__link">
+        Process exit status
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gsi/scheme_scripts/" class="md-nav__link">
+        Scheme scripts
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4" type="checkbox" id="__nav_2_4" checked>
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../">The Gambit Scheme compiler</a>
+          
+            <label for="__nav_2_4">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="The Gambit Scheme compiler" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_4">
+          <span class="md-nav__icon md-icon"></span>
+          The Gambit Scheme compiler
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interactive_mode/" class="md-nav__link">
+        Interactive mode
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customization/" class="md-nav__link">
+        Customization
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Batch mode
+      </a>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../link_files/" class="md-nav__link">
+        Link files
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../procedures/" class="md-nav__link">
+        Procedures specific to the compiler
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5" type="checkbox" id="__nav_2_5" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../runtime_options/">Runtime options</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Runtime options" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_5">
+          <span class="md-nav__icon md-icon"></span>
+          Runtime options
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6" type="checkbox" id="__nav_2_6" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../debugging/">Debugging</a>
+          
+            <label for="__nav_2_6">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Debugging" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_6">
+          <span class="md-nav__icon md-icon"></span>
+          Debugging
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../debugging/debugging_model/" class="md-nav__link">
+        Debugging model
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../debugging/debugging_commands/" class="md-nav__link">
+        Debugging commands
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../debugging/debugging_example/" class="md-nav__link">
+        Debugging example
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../debugging/procedures/" class="md-nav__link">
+        Procedures related to debugging
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../debugging/console_line_editing/" class="md-nav__link">
+        Console line-editing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../debugging/emacs_interface/" class="md-nav__link">
+        Emacs interface
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_7" type="checkbox" id="__nav_2_7" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../scheme_extensions/">Scheme extensions</a>
+          
+            <label for="__nav_2_7">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Scheme extensions" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_7">
+          <span class="md-nav__icon md-icon"></span>
+          Scheme extensions
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../scheme_extensions/extensions_to_standard_procedures/" class="md-nav__link">
+        Extensions to standard procedures
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../scheme_extensions/extensions_to_standard_special_forms/" class="md-nav__link">
+        Extensions to standard special forms
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../scheme_extensions/miscellaneous_extensions/" class="md-nav__link">
+        Miscellaneous extensions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../scheme_extensions/undocumented_extensions/" class="md-nav__link">
+        Undocumented extensions
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_8" type="checkbox" id="__nav_2_8" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../modules/">Modules</a>
+          
+            <label for="__nav_2_8">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Modules" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_8">
+          <span class="md-nav__icon md-icon"></span>
+          Modules
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/legacy_modules/" class="md-nav__link">
+        Legacy modules
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/primitive_modules/" class="md-nav__link">
+        Primitive modules
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/primitive_procedures/" class="md-nav__link">
+        Primitive procedures
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/r7rs_compatible_modules/" class="md-nav__link">
+        R7RS compatible modules
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/installing_modules/" class="md-nav__link">
+        Installing modules
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/compiling_modules/" class="md-nav__link">
+        Compiling modules
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_9" type="checkbox" id="__nav_2_9" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../built_in_data_types/">Built-in data types</a>
+          
+            <label for="__nav_2_9">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Built-in data types" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_9">
+          <span class="md-nav__icon md-icon"></span>
+          Built-in data types
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../built_in_data_types/numbers/" class="md-nav__link">
+        Numbers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../built_in_data_types/booleans/" class="md-nav__link">
+        Booleans
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../built_in_data_types/pairs_and_lists/" class="md-nav__link">
+        Pairs and lists
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../built_in_data_types/symbols_and_keywords/" class="md-nav__link">
+        Symbols and keywords
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../built_in_data_types/characters_and_strings/" class="md-nav__link">
+        Characters and strings
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../built_in_data_types/vectors/" class="md-nav__link">
+        Vectors
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../built_in_data_types/homogeneous_numeric_vectors/" class="md-nav__link">
+        Homogeneous numeric vectors
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../built_in_data_types/hashing_and_weak_references/" class="md-nav__link">
+        Hashing and weak references
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_10" type="checkbox" id="__nav_2_10" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../records/">Records</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Records" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_10">
+          <span class="md-nav__icon md-icon"></span>
+          Records
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_11" type="checkbox" id="__nav_2_11" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../threads/">Threads</a>
+          
+            <label for="__nav_2_11">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Threads" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_11">
+          <span class="md-nav__icon md-icon"></span>
+          Threads
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../threads/introduction/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../threads/thread_objects/" class="md-nav__link">
+        Thread objects
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../threads/mutex_objects/" class="md-nav__link">
+        Mutex objects
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../threads/condvar_objects/" class="md-nav__link">
+        Condition variable objects
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../threads/fairness/" class="md-nav__link">
+        Fairness
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../threads/memory_coherency/" class="md-nav__link">
+        Memory coherency
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../threads/timeouts/" class="md-nav__link">
+        Timeouts
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../threads/primordial_thread/" class="md-nav__link">
+        Primordial thread
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../threads/procedures/" class="md-nav__link">
+        Procedures
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_12" type="checkbox" id="__nav_2_12" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../dynamic_environment/">Dynamic environment</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Dynamic environment" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_12">
+          <span class="md-nav__icon md-icon"></span>
+          Dynamic environment
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_13" type="checkbox" id="__nav_2_13" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../exceptions/">Exceptions</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Exceptions" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_13">
+          <span class="md-nav__icon md-icon"></span>
+          Exceptions
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_14" type="checkbox" id="__nav_2_14" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../host_environment/">Host environment</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Host environment" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_14">
+          <span class="md-nav__icon md-icon"></span>
+          Host environment
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_15" type="checkbox" id="__nav_2_15" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../io_and_ports/">I/O and ports</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="I/O and ports" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_15">
+          <span class="md-nav__icon md-icon"></span>
+          I/O and ports
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_16" type="checkbox" id="__nav_2_16" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../lexical_syntax_and_readtables/">Lexical syntax and readtables</a>
+          
+            <label for="__nav_2_16">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Lexical syntax and readtables" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_16">
+          <span class="md-nav__icon md-icon"></span>
+          Lexical syntax and readtables
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lexical_syntax_and_readtables/readtables/" class="md-nav__link">
+        Readtables
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_17" type="checkbox" id="__nav_2_17" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../c_interface/">C-interface</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="C-interface" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_17">
+          <span class="md-nav__icon md-icon"></span>
+          C-interface
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_18" type="checkbox" id="__nav_2_18" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../system_limitations/">System limitations</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="System limitations" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_18">
+          <span class="md-nav__icon md-icon"></span>
+          System limitations
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_19" type="checkbox" id="__nav_2_19" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../copyright_and_license/">Copyright and license</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Copyright and license" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_19">
+          <span class="md-nav__icon md-icon"></span>
+          Copyright and license
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../howtos/">How-tos</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="How-tos" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          How-tos
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  <a href="https://github.com/gambit/gambit/edit/master/docs/manual/gsc/batch_mode.md" title="Edit this page" class="md-content__button md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
+
+
+<h1 id="batch-mode">Batch mode</h1>
+<p>In batch mode <code>gsc</code> accepts on the command line 3 types of non-options which are
+processed from left to right: search directories, modules, and files. Search
+directories are added to the list of module search order directories. Every
+command line argument that is the name of a module that is found in the list of
+module search order directories will cause that module to be compiled.
+Similarly, file names (with either no extension, or a C file extension, or some
+other extension) on the command line will cause that file to be compiled. The
+compilation is done for the target language specified with the -target target
+option. target is either js, for JavaScript, or C, which is the default if no
+target language is specified.</p>
+<p>The recognized C file extensions are <code>.c</code>, <code>.C</code>, <code>.cc</code>, <code>.cp</code>, <code>.cpp</code>, <code>.CPP</code>,
+<code>.cxx</code>, <code>.c++</code>, <code>.m</code>, <code>.M</code>, and <code>.mm</code>.</p>
+<p>The extension can be omitted from a file name when the Scheme file has a <code>.scm</code>,
+<code>.sld</code> or <code>.six</code> extension. When the extension of the Scheme file is <code>.six</code> the
+content of the file will be parsed using the Scheme infix syntax extension (see
+<a href="#scheme_infix_syntax_extension">Scheme infix syntax extension</a>). Otherwise, <code>gsc</code>
+will parse the Scheme file using the normal Scheme prefix syntax. Files with a C
+file extension must have been previously produced by gsc with the C target and
+the <code>-c</code> option, and are used by the C target Gambit linker.</p>
+<p>For each Scheme file the compiler creates a file of target code, either <code>file.c</code>
+or <code>file.js</code> for the C and js targets respectively. The file's name is the same
+as the Scheme file, but the extension is changed to <code>.c</code> or <code>.js</code> as
+appropriate. By default the file is created in the same directory as the Scheme
+file. This default can be overridden with the compiler's <code>-o</code> option.</p>
+<p>The files of target code produced by the compiler serve two purposes. They will
+be processed by a C compiler or JavaScript VM, and they also contain information
+to be read by Gambit’s linker to generate a link file. The link file is a file
+of target code that collects various linking information for a group of modules,
+such as the set of all symbols and global variables used by the modules. The
+linker is only invoked when the <code>-link</code> or <code>-exe</code> options appear on the command
+line.</p>
+<p>Compiler options must be specified before the first file name and after the <code>-:</code>
+runtime option (see section <a href="#runtime_options">Runtime options</a>). If present, the <code>-i</code>, <code>-f</code>, and
+<code>-v</code> compiler options must come first. The available options are:</p>
+<p><code>-i</code>
+: Force interpreter mode.</p>
+<p><code>-f</code>
+:Do not examine the initialization file.</p>
+<p><code>-h / -help</code>
+: Print brief usage information on standard output and exit.</p>
+<p><code>-v</code>
+: Print the system version string, system time stamp, operating system type, and
+  configure script options on standard output and exit.</p>
+<p><code>-target target</code>
+: Select the target language.</p>
+<p><code>-prelude expressions</code>
+: Add expressions to the top of the source code being compiled.</p>
+<p><code>-postlude expressions</code>
+: Add expressions to the bottom of the source code being compiled.</p>
+<p><code>-cc compiler</code>
+: Select specific C compiler.</p>
+<p><code>-cc-options options</code>
+: Add options to the command that invokes the C compiler.</p>
+<p><code>-ld-options-prelude options</code>
+: Add options to the command that invokes the C linker.</p>
+<p><code>-ld-options options</code>
+: Add options to the command that invokes the C linker.</p>
+<p><code>-pkg-config pkg-config-args</code>
+: Use the pkg-config program to determine options for the C compiler and C
+  linker.</p>
+<p><code>-pkg-config-path pkg-config-path</code>
+: Add a path to the <code>PKG_CONFIG_PATH</code> environment variable.</p>
+<p><code>-warnings</code>
+: Display warnings.</p>
+<p><code>-verbose</code>
+: Display a trace of the compiler's activity.</p>
+<p><code>-report</code>
+: Display a global variable usage report.</p>
+<p><code>-expansion</code>
+: Display the source code after expansion.</p>
+<p><code>-gvm</code>
+: Generate a listing of the GVM code.</p>
+<p><code>-cfg</code>
+: Generate a control flow graph of the GVM code.</p>
+<p><code>-dg</code>
+: Generate a dependency graph.</p>
+<p><code>-debug</code>
+: Include all debugging information in the code generated.</p>
+<p><code>-debug-location</code>
+: Include source code location debugging information in the code generated.</p>
+<p><code>-debug-source</code>
+: Include the source code debugging information in the code generated.</p>
+<p><code>-debug-environments</code>
+: Include environment debugging information in the code generated.</p>
+<p><code>-track-scheme</code>
+: Generate <code>#line</code> directives referring back to the Scheme code.</p>
+<p><code>-o output</code>
+: Set name of output file or directory where output file(s) are written.</p>
+<p><code>-dynamic</code>
+: Compile Scheme source files to dynamically loadable object files (this is the default).</p>
+<p><code>-exe</code>
+: Compile Scheme source files to an executable program (machine code or script).</p>
+<p><code>-obj</code>
+: Compile Scheme source files to object files by invoking the C compiler.</p>
+<p><code>-keep-temp</code>
+: Keep any intermediate files that are generated.</p>
+<p><code>-c</code>
+: Compile Scheme source files to target code without generating a link file.</p>
+<p><code>-link</code>
+: Compile Scheme source files to target code and generate a link file.</p>
+<p><code>-flat</code>
+: Generate a flat link file instead of the default incremental link file.</p>
+<p><code>-l base</code>
+: Specify the link file of the base library to use for the link.</p>
+<p><code>-module-ref module-ref</code>
+: Specify the reference of the generated module.</p>
+<p><code>-linker-name linker-name</code>
+: Specify the name of the low-level initialization function exported by the module.</p>
+<p><code>-preload</code>
+: Turn on <code>preload</code> linker bit.</p>
+<p><code>-nopreload</code>
+: Turn off <code>preload</code> linker bit. Start REPL interaction.</p>
+<p><code>-e expressions</code>
+: Evaluate expressions in the interaction environment.</p>
+<p><code>-nb-gvm-regs n</code>
+: Specify the number of available Gambit virtual machine registers.</p>
+<p><code>-nb-arg-regs n</code>
+: Specify the number of procedure call parameters passed in Gambit virtual
+  machine registers.</p>
+<p><code>-compactness level</code>
+: Specify the compactness of the generated code.</p>
+<p>The <code>-i</code> option forces the compiler to process the remaining command line
+arguments like the interpreter.</p>
+<p>The <code>-target</code> option selects the target language of the compilation. It is
+either <code>js</code> for JavaScript, or <code>C</code> for C (which is the default).</p>
+<p>The <code>-prelude</code> option adds the specified expressions to the top of the source
+code being compiled. It can appear multiple times. The main use of this option
+is to supply declarations on the command line. For example the following
+invocation of the compiler will compile the file <code>bench.scm</code> in unsafe mode:</p>
+<pre class="highlight"><code class="language-shell">$ gsc -prelude "(declare (not safe))" bench.scm</code></pre>
+<p>The <code>-postlude</code> option adds the specified expressions to the bottom of the
+source code being compiled. It can appear multiple times. The main use of this
+option is to supply the expression that will start the execution of the program.
+For example:</p>
+<pre class="highlight"><code class="language-shell">$ gsc -postlude "(start-bench)" bench.scm</code></pre>
+<p>The <code>-cc</code> option is only meaningful when the <code>C</code> target is selected. The <code>-cc</code>
+option selects the specified C compiler for compiling the generated C code. When
+this option is used, the default C compiler options that were determined to be
+needed by the configure script are nullified because they are very likely to be
+invalid for the specified C compiler. Any options needed for this C compiler
+should be specified explicitly using the <code>-cc-options</code>, <code>-ld-options-prelude</code>,
+and <code>-ld-options</code> options. For example:</p>
+<pre class="highlight"><code class="language-shell">$ gsc -cc clang -cc-options "-O0 -bundle" bench.scm # clang on macOS
+$ gsc -cc tcc -cc-options -shared bench.scm         # tcc on linux</code></pre>
+<p>The <code>-cc-options</code> option is only meaningful when the <code>C</code> target is selected and a
+dynamically loadable object file is being generated (neither the <code>-c</code> or <code>-link</code>
+options are used). It can appear multiple times. The <code>-cc-options</code> option adds
+the specified options to the command that invokes the C compiler. The main use
+of this option is to specify the include path, some symbols to define or
+undefine, the optimization level, or any C compiler option that is different
+from the default. For example:</p>
+<pre class="highlight"><code class="language-shell">$ gsc -cc-options "-U___SINGLE_HOST -O2 -I../include" bench.scm</code></pre>
+<p>The <code>-ld-options-prelude</code> and <code>-ld-options</code> options are only meaningful when the
+<code>C</code> target is selected and a dynamically loadable object file is being generated
+(neither the <code>-c</code> or <code>-link</code> options are used). They can appear multiple times.
+The <code>-ld-options-prelude</code> and <code>-ld-options</code> options add the specified options to
+the command that invokes the C linker (the options in <code>ld-options-prelude</code> are
+passed to the C linker before the input file and the options in <code>ld-options</code> are
+passed after). The main use of this option is to specify additional object files
+or libraries that need to be linked, or any C linker option that is different
+from the default (such as the library search path and flags to select between
+static and dynamic linking). For example:</p>
+<pre class="highlight"><code class="language-shell">$ gsc -ld-options "-L/usr/X11R6/lib -lX11 -dynamic" app.scm</code></pre>
+<p>The <code>-pkg-config</code> is only meaningful when the <code>C</code> target is selected. The
+<code>-pkg-config</code> option will cause the <code>pkg-config</code> program to be invoked to
+determine the options to add to the command that invokes the C compiler and C
+linker. It can appear multiple times. The <code>pkg-config</code> program is passed the
+arguments in the string <code>pkg-config-args</code> in addition to either <code>--cflags</code> or
+<code>--libs</code>. It is typical for <code>pkg-config-args</code> to be the name of a system
+library, such as <code>"sqlite3"</code>, but other <code>pkg-config</code> options can be specified,
+such as <code>"--static sqlite3"</code>. The <code>-pkg-config-path</code> option adds a path to the
+<code>PKG_CONFIG_PATH</code> environment variable for use by the <code>pkg-config</code> program to
+find <code>.pc</code> files. For example:</p>
+<pre class="highlight"><code class="language-shell">$ gsc -pkg-config "x11" -pkg-config-path "/usr/share/pkgconfig" app.scm</code></pre>
+<p>The <code>-warnings</code> option displays on standard output all warnings that the
+compiler may have.</p>
+<p>The <code>-verbose</code> option displays on standard output a trace of the compiler's
+activity.</p>
+<p>The <code>-report</code> option displays on standard output a global variable usage report.
+Each global variable used in the program is listed with 4 flags that indicate
+whether the global variable is defined, referenced, mutated and called.</p>
+<p>The <code>-expansion</code> option displays on standard output the source code after
+expansion and inlining by the front end.</p>
+<p>The <code>-gvm</code> option generates a listing of the intermediate code for the “Gambit
+Virtual Machine” (GVM) of each Scheme file on <code>file.gvm</code>.</p>
+<p>The <code>-cfg</code> option generates a visual representation of the control flow graph of
+the intermediate code for the “Gambit Virtual Machine” (GVM) of each Scheme file
+on <code>file.cfg</code>. The file is suitable for processing with the <code>dot</code> program. For
+example, to generate the PDF file <code>file.cfg.pdf</code> from <code>file.cfg</code> the following
+command can be used:</p>
+<pre class="highlight"><code class="language-shell">$ dot -O -Tpdf file.cfg</code></pre>
+<p>The <code>-dg</code> option generates a visual representation of the dependency graph of
+each Scheme file on <code>file.dg</code>. The file is suitable for processing with the
+<code>dot</code> program. For example, to generate the PDF file <code>file.dg.pdf</code> from
+<code>file.dg</code> the following command can be used:</p>
+<pre class="highlight"><code class="language-shell">$ dot -O -Tpdf file.dg</code></pre>
+<p>The <code>-debug</code> option causes all kinds of debugging information to be saved in the
+code generated. See the documentation of the <code>debug</code> declaration for details.</p>
+<p>The <code>-debug-location</code> option causes source code location debugging information
+to be saved in the code generated. See the documentation of the <code>debug-location</code>
+declaration for details.</p>
+<p>The <code>-debug-source</code> option causes source code debugging information to be saved
+in the code generated. See the documentation of the <code>debug-source</code> declaration
+for details.</p>
+<p>The <code>-debug-environments</code> option causes environment debugging information to be
+saved in the code generated. See the documentation of the <code>debug-environments</code>
+declaration for details.</p>
+<p>The <code>-track-scheme</code> option is only meaningful when the <code>C</code> target is selected. The
+<code>-track-scheme</code> option causes the generation of <code>#line</code> directives that refer
+back to the Scheme source code. This allows the use of a C debugger or profiler
+to debug Scheme code.</p>
+<p>The <code>-o</code> option sets the filename of the output file, or the directory in which
+the output file(s) generated by the compiler are written.</p>
+<p>If the <code>-link</code> or <code>-exe</code> options appear on the command line, the Gambit linker
+is invoked to generate the link file from the set of files specified on the
+command line or produced by the Gambit compiler. By default the link file is
+named after the last file on the compiler's command line. If the last file
+stripped of it's extension is <code>last</code> then the link file is <code>last_.c</code> for the <code>C</code>
+target and <code>last_.js</code> for the <code>js</code> target. When the <code>-c</code> option is specified, the
+Scheme source files are compiled to target files without invoking the linker,
+which is useful for separate compilation of modules. When the <code>-exe</code> option is
+specified, the generated target files and link file are combined to produce an
+executable program whose name defaults to <code>last</code> on Unix, and <code>last.exe</code> or
+<code>last.bat</code> on Windows depending on whether a machine code executable or script
+is produced. When the C target is selected and the <code>-obj</code> option is specified,
+the generated C files are compiled using the C compiler to produce object files
+(<code>.o</code> or <code>.obj</code> extensions). If neither the <code>-link</code>, <code>-c</code>, <code>-exe</code>, or <code>-obj</code>
+options appear on the command line, the Scheme source files are compiled to
+dynamically loadable object files (<code>.on</code> extension). The <code>-keep-temp</code> option
+will prevent the deletion of any intermediate files that are generated. Note
+that in this case the intermediate file will be generated in the same directory
+as the Scheme source file even if the <code>-o</code> option is used.</p>
+<p>The <code>-flat</code> option is only meaningful when a link file is being generated (i.e.
+the <code>-link</code> or <code>-exe</code> options also appear on the command line). The <code>-flat</code>
+option directs the Gambit linker to generate a flat link file. By default, the
+linker generates an incremental link file (see the next section for a
+description of the two types of link files).</p>
+<p>The <code>-l</code> option is only meaningful when an incremental link file is being
+generated (i.e. the <code>-link</code> or <code>-exe</code> options appear on the command line and the
+<code>-flat</code> option is absent). The <code>-l</code> option specifies the link file (without the
+<code>.c</code> or <code>.js</code> extension) of the base library to use for the incremental link. By
+default the link file of the Gambit runtime library is used (i.e.
+<code>~~lib/_gambit</code>).</p>
+<p>The <code>-preload</code> and <code>-nopreload</code> options are only meaningful when a link file is
+being generated. The <code>-preload</code> option turns on the <code>preload</code> linker bit for the
+modules that follow on the command line. The following modules will be loaded
+unconditionally at program startup and in command line order (this is the
+default for compatibility with how legacy modules have been handled in the
+past). The <code>-nopreload</code> option turns off the <code>preload</code> linker bit. The following
+modules will be loaded only to satisfy the module dependencies of the
+<code>##demand-module</code> form.</p>
+<p>The <code>-</code> option starts a REPL interaction.</p>
+<p>The <code>-e</code> option evaluates the specified expressions in the interaction
+environment.</p>
+<p>The <code>-nb-gvm-regs</code> option specifies the number of Gambit virtual machine
+registers that are available for the generated code. The default number depends
+on configuration options and the target but it is typically <code>5</code>. All modules and
+the runtime library must be compiled with the same setting. This option exists
+mainly for experimentation by the developers. For example:</p>
+<pre class="highlight"><code class="language-shell">$ gsc -nb-gvm-regs 10 -c bench.scm</code></pre>
+<p>The <code>-nb-arg-regs</code> option specifies the number of procedure call parameters
+passed in Gambit virtual machine registers. The default number depends on
+configuration options and the target but it is typically <code>3</code>. All modules and the
+runtime library must be compiled with the same setting. This option exists
+mainly for experimentation by the developers. For example:</p>
+<pre class="highlight"><code class="language-shell">$ gsc -nb-arg-regs 2 -c bench.scm</code></pre>
+<p>The <code>-compactness</code> option selects the level of compactness of the generated
+code. The default level depends on configuration options and the target but it
+is typically <code>5</code>. Levels from <code>0</code> to <code>5</code> cause the generation of increasingly compact
+code with little or no impact on execution speed. Lower values tend to make the
+generated code more humanly readable. Above a level of <code>5</code> the compiler will trade
+execution speed for saving code space. The detailed meaning of this option
+depends on the target, some targets may ignore it and some targets may require
+all modules and the runtime library to be compiled with the same compactness
+level. For example:</p>
+<pre class="highlight"><code class="language-shell">$ gsc -target js -compactness 0 -c bench.scm</code></pre>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      Last update:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">November 9, 2022</span>
+      
+        <br>
+        Created:
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">November 9, 2022</span>
+      
+    
+  </small>
+</div>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../customization/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Customization" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Customization
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../link_files/" class="md-footer__link md-footer__link--next" aria-label="Next: Link files" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Link files
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.indexes", "toc.follow", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d6c3db9e.min.js"></script>
+      
+        <script src="../../../js/codemirror/lib/codemirror.js"></script>
+      
+        <script src="../../../js/codemirror/addon/edit/matchbrackets.js"></script>
+      
+        <script src="../../../js/codemirror/keymap/emacs.js"></script>
+      
+        <script src="../../../js/codemirror/mode/scheme/scheme.js"></script>
+      
+        <script src="../../../js/UI.js"></script>
+      
+        <script src="../../../js/VM.min.js"></script>
+      
+        <script src="../../../js/browserfs.min.js"></script>
+      
+    
+  </body>
+</html>

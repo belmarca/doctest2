@@ -1,0 +1,2856 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../../../assets/favicon.ico">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.9">
+    
+    
+      
+        <title>Procedures related to debugging - Gambit Scheme</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.20d9efc8.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.08040f6c.min.css">
+        
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../js/codemirror/lib/codemirror.css">
+    
+      <link rel="stylesheet" href="../../../css/UI.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Procedures related to debugging - Gambit Scheme" >
+      
+        <meta  property="og:description"  content="None" >
+      
+        <meta  property="og:image"  content="./assets/images/social/manual/debugging/procedures.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="None" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Procedures related to debugging - Gambit Scheme" >
+      
+        <meta  name="twitter:description"  content="None" >
+      
+        <meta  name="twitter:image"  content="./assets/images/social/manual/debugging/procedures.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#procedures-related-to-debugging" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Gambit Scheme" class="md-header__button md-logo" aria-label="Gambit Scheme" data-md-component="logo">
+      
+  <img src="../../../assets/gambit.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Gambit Scheme
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Procedures related to debugging
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+          
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/gambit/gambit" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    gambit/gambit
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        Home
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../" class="md-tabs__link md-tabs__link--active">
+        Manual
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../howtos/" class="md-tabs__link">
+        How-tos
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Gambit Scheme" class="md-nav__button md-logo" aria-label="Gambit Scheme" data-md-component="logo">
+      
+  <img src="../../../assets/gambit.png" alt="logo">
+
+    </a>
+    Gambit Scheme
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/gambit/gambit" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    gambit/gambit
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../..">Home</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Home" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Home
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../">Manual</a>
+          
+            <label for="__nav_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Manual" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Manual
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" type="checkbox" id="__nav_2_2" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../the_gambit_system/">The Gambit system</a>
+          
+            <label for="__nav_2_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="The Gambit system" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          The Gambit system
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../the_gambit_system/accessing_the_system_files/" class="md-nav__link">
+        Accessing the system files
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" type="checkbox" id="__nav_2_3" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../gsi/">The Gambit Scheme interpreter</a>
+          
+            <label for="__nav_2_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="The Gambit Scheme interpreter" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          The Gambit Scheme interpreter
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gsi/interactive_mode/" class="md-nav__link">
+        Interactive mode
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gsi/batch_mode/" class="md-nav__link">
+        Batch mode
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gsi/module_management_mode/" class="md-nav__link">
+        Module management mode
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gsi/customization/" class="md-nav__link">
+        Customization
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gsi/process_exit_status/" class="md-nav__link">
+        Process exit status
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gsi/scheme_scripts/" class="md-nav__link">
+        Scheme scripts
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4" type="checkbox" id="__nav_2_4" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../gsc/">The Gambit Scheme compiler</a>
+          
+            <label for="__nav_2_4">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="The Gambit Scheme compiler" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_4">
+          <span class="md-nav__icon md-icon"></span>
+          The Gambit Scheme compiler
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gsc/interactive_mode/" class="md-nav__link">
+        Interactive mode
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gsc/customization/" class="md-nav__link">
+        Customization
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gsc/batch_mode/" class="md-nav__link">
+        Batch mode
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gsc/link_files/" class="md-nav__link">
+        Link files
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gsc/procedures/" class="md-nav__link">
+        Procedures specific to the compiler
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5" type="checkbox" id="__nav_2_5" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../runtime_options/">Runtime options</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Runtime options" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_5">
+          <span class="md-nav__icon md-icon"></span>
+          Runtime options
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6" type="checkbox" id="__nav_2_6" checked>
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../">Debugging</a>
+          
+            <label for="__nav_2_6">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Debugging" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_6">
+          <span class="md-nav__icon md-icon"></span>
+          Debugging
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../debugging_model/" class="md-nav__link">
+        Debugging model
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../debugging_commands/" class="md-nav__link">
+        Debugging commands
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../debugging_example/" class="md-nav__link">
+        Debugging example
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Procedures related to debugging
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Procedures related to debugging
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#help" class="md-nav__link">
+    help
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#help-browser" class="md-nav__link">
+    help-browser
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#apropos" class="md-nav__link">
+    apropos
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#repl-result-history-ref" class="md-nav__link">
+    repl-result-history-ref
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#repl-result-history-max-length-set" class="md-nav__link">
+    repl-result-history-max-length-set!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#trace" class="md-nav__link">
+    trace
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#untrace" class="md-nav__link">
+    untrace
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step" class="md-nav__link">
+    step
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-level-set" class="md-nav__link">
+    step-level-set!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#break" class="md-nav__link">
+    break
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#unbreak" class="md-nav__link">
+    unbreak
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generate-proper-tail-calls" class="md-nav__link">
+    generate-proper-tail-calls
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#display-environment-set" class="md-nav__link">
+    display-environment-set!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#repl-display-environment" class="md-nav__link">
+    repl-display-environment?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#display-dynamic-environment" class="md-nav__link">
+    display-dynamic-environment?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pretty-print" class="md-nav__link">
+    pretty-print
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pp" class="md-nav__link">
+    pp
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gc-report-set" class="md-nav__link">
+    gc-report-set!
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../console_line_editing/" class="md-nav__link">
+        Console line-editing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../emacs_interface/" class="md-nav__link">
+        Emacs interface
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_7" type="checkbox" id="__nav_2_7" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../scheme_extensions/">Scheme extensions</a>
+          
+            <label for="__nav_2_7">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Scheme extensions" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_7">
+          <span class="md-nav__icon md-icon"></span>
+          Scheme extensions
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../scheme_extensions/extensions_to_standard_procedures/" class="md-nav__link">
+        Extensions to standard procedures
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../scheme_extensions/extensions_to_standard_special_forms/" class="md-nav__link">
+        Extensions to standard special forms
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../scheme_extensions/miscellaneous_extensions/" class="md-nav__link">
+        Miscellaneous extensions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../scheme_extensions/undocumented_extensions/" class="md-nav__link">
+        Undocumented extensions
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_8" type="checkbox" id="__nav_2_8" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../modules/">Modules</a>
+          
+            <label for="__nav_2_8">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Modules" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_8">
+          <span class="md-nav__icon md-icon"></span>
+          Modules
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/legacy_modules/" class="md-nav__link">
+        Legacy modules
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/primitive_modules/" class="md-nav__link">
+        Primitive modules
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/primitive_procedures/" class="md-nav__link">
+        Primitive procedures
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/r7rs_compatible_modules/" class="md-nav__link">
+        R7RS compatible modules
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/installing_modules/" class="md-nav__link">
+        Installing modules
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/compiling_modules/" class="md-nav__link">
+        Compiling modules
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_9" type="checkbox" id="__nav_2_9" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../built_in_data_types/">Built-in data types</a>
+          
+            <label for="__nav_2_9">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Built-in data types" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_9">
+          <span class="md-nav__icon md-icon"></span>
+          Built-in data types
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../built_in_data_types/numbers/" class="md-nav__link">
+        Numbers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../built_in_data_types/booleans/" class="md-nav__link">
+        Booleans
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../built_in_data_types/pairs_and_lists/" class="md-nav__link">
+        Pairs and lists
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../built_in_data_types/symbols_and_keywords/" class="md-nav__link">
+        Symbols and keywords
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../built_in_data_types/characters_and_strings/" class="md-nav__link">
+        Characters and strings
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../built_in_data_types/vectors/" class="md-nav__link">
+        Vectors
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../built_in_data_types/homogeneous_numeric_vectors/" class="md-nav__link">
+        Homogeneous numeric vectors
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../built_in_data_types/hashing_and_weak_references/" class="md-nav__link">
+        Hashing and weak references
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_10" type="checkbox" id="__nav_2_10" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../records/">Records</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Records" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_10">
+          <span class="md-nav__icon md-icon"></span>
+          Records
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_11" type="checkbox" id="__nav_2_11" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../threads/">Threads</a>
+          
+            <label for="__nav_2_11">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Threads" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_11">
+          <span class="md-nav__icon md-icon"></span>
+          Threads
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../threads/introduction/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../threads/thread_objects/" class="md-nav__link">
+        Thread objects
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../threads/mutex_objects/" class="md-nav__link">
+        Mutex objects
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../threads/condvar_objects/" class="md-nav__link">
+        Condition variable objects
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../threads/fairness/" class="md-nav__link">
+        Fairness
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../threads/memory_coherency/" class="md-nav__link">
+        Memory coherency
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../threads/timeouts/" class="md-nav__link">
+        Timeouts
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../threads/primordial_thread/" class="md-nav__link">
+        Primordial thread
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../threads/procedures/" class="md-nav__link">
+        Procedures
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_12" type="checkbox" id="__nav_2_12" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../dynamic_environment/">Dynamic environment</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Dynamic environment" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_12">
+          <span class="md-nav__icon md-icon"></span>
+          Dynamic environment
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_13" type="checkbox" id="__nav_2_13" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../exceptions/">Exceptions</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Exceptions" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_13">
+          <span class="md-nav__icon md-icon"></span>
+          Exceptions
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_14" type="checkbox" id="__nav_2_14" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../host_environment/">Host environment</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Host environment" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_14">
+          <span class="md-nav__icon md-icon"></span>
+          Host environment
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_15" type="checkbox" id="__nav_2_15" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../io_and_ports/">I/O and ports</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="I/O and ports" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_15">
+          <span class="md-nav__icon md-icon"></span>
+          I/O and ports
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_16" type="checkbox" id="__nav_2_16" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../lexical_syntax_and_readtables/">Lexical syntax and readtables</a>
+          
+            <label for="__nav_2_16">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Lexical syntax and readtables" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_16">
+          <span class="md-nav__icon md-icon"></span>
+          Lexical syntax and readtables
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lexical_syntax_and_readtables/readtables/" class="md-nav__link">
+        Readtables
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_17" type="checkbox" id="__nav_2_17" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../c_interface/">C-interface</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="C-interface" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_17">
+          <span class="md-nav__icon md-icon"></span>
+          C-interface
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_18" type="checkbox" id="__nav_2_18" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../system_limitations/">System limitations</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="System limitations" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_18">
+          <span class="md-nav__icon md-icon"></span>
+          System limitations
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_19" type="checkbox" id="__nav_2_19" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../copyright_and_license/">Copyright and license</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Copyright and license" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_19">
+          <span class="md-nav__icon md-icon"></span>
+          Copyright and license
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../howtos/">How-tos</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="How-tos" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          How-tos
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#help" class="md-nav__link">
+    help
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#help-browser" class="md-nav__link">
+    help-browser
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#apropos" class="md-nav__link">
+    apropos
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#repl-result-history-ref" class="md-nav__link">
+    repl-result-history-ref
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#repl-result-history-max-length-set" class="md-nav__link">
+    repl-result-history-max-length-set!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#trace" class="md-nav__link">
+    trace
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#untrace" class="md-nav__link">
+    untrace
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step" class="md-nav__link">
+    step
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-level-set" class="md-nav__link">
+    step-level-set!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#break" class="md-nav__link">
+    break
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#unbreak" class="md-nav__link">
+    unbreak
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generate-proper-tail-calls" class="md-nav__link">
+    generate-proper-tail-calls
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#display-environment-set" class="md-nav__link">
+    display-environment-set!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#repl-display-environment" class="md-nav__link">
+    repl-display-environment?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#display-dynamic-environment" class="md-nav__link">
+    display-dynamic-environment?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pretty-print" class="md-nav__link">
+    pretty-print
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pp" class="md-nav__link">
+    pp
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gc-report-set" class="md-nav__link">
+    gc-report-set!
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  <a href="https://github.com/gambit/gambit/edit/master/docs/manual/debugging/procedures.md" title="Edit this page" class="md-content__button md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
+
+
+<h1 id="procedures-related-to-debugging">Procedures related to debugging</h1>
+<h4 id="help">help</h4>
+<h4 id="help-browser">help-browser</h4>
+<pre class="highlight"><code class="language-scheme">(help [subject]) ;; procedure
+(help-browser [new-value]) ;; procedure</code></pre>
+<p>The <code>help</code> procedure displays the section of the Gambit manual with the
+definition of the procedure or special form subject, which must be a procedure
+or symbol. For example the call <code>(help gensym)</code> will show the section
+documenting the <code>gensym</code> procedure and the call <code>(help 'time)</code> will show the
+section documenting the <code>time</code> special form. When the <code>subject</code> is absent, the
+documentation of the <code>help</code> procedure is shown. The help procedure returns the
+<code>void</code> object.</p>
+<p>The parameter object <code>help-browser</code> is bound to a string naming the external
+program that is used by the <code>help</code> procedure to view the documentation.
+Initially it is bound to the empty string. In normal circumstances when
+<code>help-browser</code> is bound to an empty string the <code>help</code> procedure runs the script
+<code>~~bin/gambdoc.bat</code> which searches for a suitable web browser to open the
+documentation in HTML format. Unless the system was built with the command
+<code>configure --enable-help-browser=...</code>, the text-only browser <code>lynx</code> (see
+<a href="http://lynx.isc.org/">http://lynx.isc.org/</a>) will be used by default if it is
+available. We highly recommend that you install this browser if you are
+interested in viewing the documentation within the console in which the REPL is
+running. You can exit <code>lynx</code> conveniently by typing an end of file (usually
+<code>&lt;^D&gt;</code>).</p>
+<p>For example:</p>
+<pre class="highlight"><code class="language-scheme">&gt; (help-browser "firefox") ; use firefox instead of lynx
+&gt; (help 'gensym)
+&gt; (help gensym) ; OK because gensym is a procedure
+&gt; (help 'time)
+&gt; (help time) ; not OK because time is a special form
+*** ERROR IN (console)@5.7 -- Macro name can't be used as a variable: time
+&gt;</code></pre>
+<h4 id="apropos">apropos</h4>
+<pre class="highlight"><code class="language-scheme">(apropos [substring [port]]) ;; procedure</code></pre>
+<p>The <code>apropos</code> procedure writes to the port <code>port</code> a report of all the global
+variables whose name contains <code>substring</code>, a <code>string</code> or <code>symbol</code>. If <code>substring</code> is not
+specified the report contains all the global variables. If it is not specified,
+<code>port</code> defaults to the interaction channel (i.e. the output will appear at the
+REPL). The <code>apropos</code> procedure returns the <code>void</code> object.</p>
+<p>The global variables are grouped into namespaces. The empty namespace, if it is
+relevant, is last. This reduces the likelihood it will scroll off the screen if
+there are several global variables in other namespaces, which are typically less
+interesting.</p>
+<p>Note that with the <code>apropos</code> procedure it is possible to reveal the existence of
+procedures of the runtime system and modules that are not intended to be called
+by user code. These procedures often avoid type checking their arguments or must
+be called in a specific context, so calling them incorrectly may crash the
+system. On the other hand it also allows discovering the existence of certain
+functionalities that may have gone unnoticed.</p>
+<p>For example:</p>
+<pre class="highlight"><code class="language-scheme">&gt; (apropos "cons")
+"##" namespace:
+  10^-constants, cons, cons*, cons*-aux, console-port,
+  constant-expression-value, constant-expression?,
+  cprc-quasi-cons, deconstruct-call,
+  define-type-construct-constant, degen-quasi-cons,
+  gen-quasi-cons, quasi-cons, stdio/console-repl-channel,
+  void-constant?, xcons
+empty namespace:
+  cons, cons*, console-port, xcons
+&gt; (import (srfi 69))
+&gt; (apropos "table?")
+"##" namespace:
+  gc-hash-table?, mutable?, readtable?, table?
+"srfi/69#" namespace:
+  hash-table?
+empty namespace:
+  readtable?, table?
+&gt; (apropos "srfi/69#")
+"srfi/69#" namespace:
+  ||, alist-&gt;hash-table, hash, hash-by-identity,
+  hash-table-&gt;alist, hash-table-copy, hash-table-delete!,
+  hash-table-equivalence-function, hash-table-exists?,
+  hash-table-fold, hash-table-hash-function,
+  hash-table-keys, hash-table-merge!, hash-table-ref,
+  hash-table-ref/default, hash-table-set!, hash-table-size,
+  hash-table-update!, hash-table-update!/default,
+  hash-table-values, hash-table-walk, hash-table?,
+  make-hash-table, string-ci-hash, string-hash</code></pre>
+<h4 id="repl-result-history-ref">repl-result-history-ref</h4>
+<h4 id="repl-result-history-max-length-set">repl-result-history-max-length-set!</h4>
+<pre class="highlight"><code class="language-scheme">(repl-result-history-ref i) ;; procedure
+(repl-result-history-max-length-set! n) ;; procedure</code></pre>
+<p>The REPL keeps a history of the last few results printed by the REPL. The call
+<code>(repl-result-history-ref i)</code> returns the <code>i</code>th previous result (the last for <code>i=0</code>,
+the next to last for <code>i=1</code>, etc). By default the REPL result history remembers up
+to 3 results. The maximal length of the history can be set to <code>n</code> between <code>0</code> and <code>10</code>
+by a call to <code>(repl-result-history-max-length-set! n)</code>.</p>
+<p>For convenience the reader defines an abbreviation for calling
+<code>repl-result-history-ref</code>. Tokens formed by a sequence of one or more hash signs,
+such as <code>#</code>, <code>##</code>, etc, are expanded by the reader into the list
+<code>(repl-result-history-ref i)</code>, where <code>i</code> is the number of hash signs minus 1. In
+other words, <code>#</code> will return the last result printed by the REPL, <code>##</code> will
+return the next to last, etc.</p>
+<p>For example:</p>
+<pre class="highlight"><code class="language-scheme">&gt; (map (lambda (x) (* x x)) '(1 2 3))
+(1 4 9)
+&gt; (reverse #)
+(9 4 1)
+&gt; (append # ##)
+(9 4 1 1 4 9)
+&gt; 1
+1
+&gt; 1
+1
+&gt; (+ # ##)
+2
+&gt; (+ # ##)
+3
+&gt; (+ # ##)
+5
+&gt; #####
+*** ERROR IN (console)@9.1 -- (Argument 1) Out of range
+(repl-result-history-ref 3)
+1&gt;</code></pre>
+<h4 id="trace">trace</h4>
+<h4 id="untrace">untrace</h4>
+<pre class="highlight"><code class="language-scheme">(trace proc ...) ;; procedure
+(untrace proc ...) ;; procedure</code></pre>
+<p>The <code>trace</code> procedure starts tracing calls to the specified procedures. When a
+traced procedure is called, a line containing the procedure and its arguments is
+displayed (using the procedure call expression syntax). The line is indented
+with a sequence of vertical bars which indicate the nesting depth of the
+procedure’s continuation. After the vertical bars is a greater-than sign which
+indicates that the evaluation of the call is starting.</p>
+<p>When a traced procedure returns a result, it is displayed with the same
+indentation as the call but without the greater-than sign. This makes it easy to
+match calls and results (the result of a given call is the value at the same
+indentation as the greater-than sign). If a traced procedure <code>P1</code> performs a
+tail call to a traced procedure <code>P2</code>, then <code>P2</code> will use the same indentation as
+<code>P1</code>. This makes it easy to spot tail calls. The special handling for tail calls
+is needed to preserve the space complexity of the program (i.e. tail calls are
+implemented as required by Scheme even when they involve traced procedures).</p>
+<p>The untrace procedure stops tracing calls to the specified procedures. When no
+argument is passed to the trace procedure, the list of procedures currently
+being traced is returned. The <code>void</code> object is returned by the <code>trace</code> procedure
+when it is passed one or more arguments. When no argument is passed to the
+<code>untrace</code> procedure stops all tracing and returns the <code>void</code> object. A compiled
+procedure may be traced but only if it is bound to a global variable.</p>
+<p>For example:</p>
+<pre class="highlight"><code class="language-scheme">&gt; (define (fact n) (if (&lt; n 2) 1 (* n (fact (- n 1)))))
+&gt; (trace fact)
+&gt; (fact 5)
+| &gt; (fact 5)
+| | &gt; (fact 4)
+| | | &gt; (fact 3)
+| | | | &gt; (fact 2)
+| | | | | &gt; (fact 1)
+| | | | | 1
+| | | | 2
+| | | 6
+| | 24
+| 120
+120
+&gt; (trace -)
+*** WARNING -- Rebinding global variable "-" to an interpreted procedure
+&gt; (define (fact-iter n r) (if (&lt; n 2) r (fact-iter (- n 1) (* n r))))
+&gt; (trace fact-iter)
+&gt; (fact-iter 5 1)
+| &gt; (fact-iter 5 1)
+| | &gt; (- 5 1)
+| | 4
+| &gt; (fact-iter 4 5)
+| | &gt; (- 4 1)
+| | 3
+| &gt; (fact-iter 3 20)
+| | &gt; (- 3 1)
+| | 2
+| &gt; (fact-iter 2 60)
+| | &gt; (- 2 1)
+| | 1
+| &gt; (fact-iter 1 120)
+| 120
+120
+&gt; (trace)
+(#&lt;procedure #2 fact-iter&gt; #&lt;procedure #3 -&gt; #&lt;procedure #4 fact&gt;)
+&gt; (untrace)
+&gt; (fact 5)
+120</code></pre>
+<h4 id="step">step</h4>
+<h4 id="step-level-set">step-level-set!</h4>
+<pre class="highlight"><code class="language-scheme">(step) ;; procedure
+(step-level-set! level) ;; procedure</code></pre>
+<p>The <code>step</code> procedure enables single-stepping mode. After the call to <code>step</code> the
+computation will stop just before the interpreter executes the next evaluation
+<code>step</code> (as defined by <code>step-level-set!</code>). A nested REPL is then started. Note that
+because single-stepping is stopped by the REPL whenever the prompt is displayed
+it is pointless to enter <code>(step)</code> by itself. On the other hand entering <code>(begin
+(step) expr)</code> will evaluate <code>expr</code> in single-stepping mode.</p>
+<p>The procedure <code>step-level-set!</code> sets the stepping level which determines the
+granularity of the evaluation steps when single-stepping is enabled. The
+stepping level level must be an exact integer in the range <code>0</code> to <code>7</code>. At a level of
+<code>0</code>, the interpreter ignores single-stepping mode. At higher levels the
+interpreter stops the computation just before it performs the following
+operations, depending on the stepping level:</p>
+<ol>
+<li>procedure call</li>
+<li><code>delay</code> special form and operations at lower levels</li>
+<li><code>lambda</code> special form and operations at lower levels</li>
+<li><code>define</code> special form and operations at lower levels</li>
+<li><code>set!</code> special form and operations at lower levels</li>
+<li>variable reference and operations at lower levels</li>
+<li>constant reference and operations at lower levels</li>
+<li>The default stepping level is 7.</li>
+</ol>
+<p>For example:</p>
+<pre class="highlight"><code class="language-scheme">&gt; (define (fact n) (if (&lt; n 2) 1 (* n (fact (- n 1)))))
+&gt; (step-level-set! 1)
+&gt; (begin (step) (fact 5))
+*** STOPPED IN (console)@3.15
+1&gt; ,s
+| &gt; (fact 5)
+*** STOPPED IN fact, (console)@1.22
+1&gt; ,s
+| | &gt; (&lt; n 2)
+| | #f
+*** STOPPED IN fact, (console)@1.43
+1&gt; ,s
+| | &gt; (- n 1)
+| | 4
+*** STOPPED IN fact, (console)@1.37
+1&gt; ,s
+| | &gt; (fact (- n 1))
+*** STOPPED IN fact, (console)@1.22
+1&gt; ,s
+| | | &gt; (&lt; n 2)
+| | | #f
+*** STOPPED IN fact, (console)@1.43
+1&gt; ,s
+| | | &gt; (- n 1)
+| | | 3
+*** STOPPED IN fact, (console)@1.37
+1&gt; ,l
+| | | &gt; (fact (- n 1))
+*** STOPPED IN fact, (console)@1.22
+1&gt; ,l
+| | &gt; (* n (fact (- n 1)))
+| | 24
+*** STOPPED IN fact, (console)@1.32
+1&gt; ,l
+| &gt; (* n (fact (- n 1)))
+| 120
+120</code></pre>
+<h4 id="break">break</h4>
+<h4 id="unbreak">unbreak</h4>
+<pre class="highlight"><code class="language-scheme">(break proc ...) ;; procedure
+(unbreak proc ...) ;; procedure</code></pre>
+<p>The <code>break</code> procedure places a breakpoint on each of the specified procedures.
+When a procedure is called that has a breakpoint, the interpreter will enable
+single-stepping mode (as if <code>step</code> had been called). This typically causes the
+computation to stop soon inside the procedure if the stepping level is high
+enough.</p>
+<p>The <code>unbreak</code> procedure removes the breakpoints on the specified procedures. With
+no argument, <code>break</code> returns the list of procedures currently containing
+breakpoints. The <code>void</code> object is returned by <code>break</code> if it is passed one or more
+arguments. With no argument <code>unbreak</code> removes all the breakpoints and returns the
+<code>void</code> object. A breakpoint can be placed on a compiled procedure but only if it
+is bound to a global variable.</p>
+<p>For example:</p>
+<pre class="highlight"><code class="language-scheme">&gt; (define (double x) (+ x x))
+&gt; (define (triple y) (- (double (double y)) y))
+&gt; (define (f z) (* (triple z) 10))
+&gt; (break double)
+&gt; (break -)
+*** WARNING -- Rebinding global variable "-" to an interpreted procedure
+&gt; (f 5)
+*** STOPPED IN double, (console)@1.21
+1&gt; ,b
+0  double                    (console)@1:21          +
+1  triple                    (console)@2:31          (double y)
+2  f                         (console)@3:18          (triple z)
+3  (interaction)             (console)@6:1           (f 5)
+1&gt; ,e
+x = 5
+1&gt; ,c
+*** STOPPED IN double, (console)@1.21
+1&gt; ,c
+*** STOPPED IN f, (console)@3.29
+1&gt; ,c
+150
+&gt; (break)
+(#&lt;procedure #3 -&gt; #&lt;procedure #4 double&gt;)
+&gt; (unbreak)
+&gt; (f 5)
+150</code></pre>
+<h4 id="generate-proper-tail-calls">generate-proper-tail-calls</h4>
+<pre class="highlight"><code class="language-scheme">(generate-proper-tail-calls [new-value]) ;; procedure</code></pre>
+<div class="admonition warning">
+<p class="admonition-title">Deprecation warning</p>
+<p>This procedure is DEPRECATED and will be removed in a future version of
+Gambit. Use the <code>proper-tail-calls</code> declaration instead.</p>
+</div>
+<p>The parameter object <code>generate-proper-tail-calls</code> is bound to a boolean value
+controlling how the interpreter handles tail calls. When it is bound to <code>#f</code> the
+interpreter will treat tail calls like nontail calls, that is a new continuation
+will be created for the call. This setting is useful for debugging, because when
+a primitive signals an error the location information will point to the call
+site of the primitive even if this primitive was called with a tail call. The
+initial value of this parameter object is <code>#t</code>, which means that a tail call will
+reuse the continuation of the calling function.</p>
+<p>This parameter object only affects code that is subsequently processed by <code>load</code>
+or <code>eval</code>, or entered at the REPL.</p>
+<p>For example:</p>
+<pre class="highlight"><code class="language-scheme">&gt; (generate-proper-tail-calls)
+#t
+&gt; (let loop ((i 1)) (if (&lt; i 10) (loop (* i 2)) oops))
+*** ERROR IN #&lt;procedure #2&gt;, (console)@2.47 -- Unbound variable: oops
+1&gt; ,b
+0  #&lt;procedure #2&gt;           (console)@2:47          oops
+1  (interaction)             (console)@2:1           ((letrec ((loop (lambda...
+1&gt; ,t
+&gt; (generate-proper-tail-calls #f)
+&gt; (let loop ((i 1)) (if (&lt; i 10) (loop (* i 2)) oops))
+*** ERROR IN #&lt;procedure #3&gt;, (console)@6.47 -- Unbound variable: oops
+1&gt; ,b
+0  #&lt;procedure #3&gt;           (console)@6:47          oops
+1  #&lt;procedure #3&gt;           (console)@6:32          (loop (* i 2))
+2  #&lt;procedure #3&gt;           (console)@6:32          (loop (* i 2))
+3  #&lt;procedure #3&gt;           (console)@6:32          (loop (* i 2))
+4  #&lt;procedure #3&gt;           (console)@6:32          (loop (* i 2))
+5  (interaction)             (console)@6:1           ((letrec ((loop (lambda...</code></pre>
+<h4 id="display-environment-set">display-environment-set!</h4>
+<pre class="highlight"><code>(display-environment-set! display?) ;; procedure</code></pre>
+<div class="admonition warning">
+<p class="admonition-title">Deprecation warning</p>
+<p>This procedure is DEPRECATED and will be removed in a future version of
+Gambit. Use the parameter object <code>repl-display-environment?</code> instead.</p>
+</div>
+<p>This procedure sets a flag that controls the automatic display of the
+environment by the REPL. If <code>display?</code> is true, the environment is displayed by
+the REPL before the prompt. The default setting is not to display the
+environment.</p>
+<h4 id="repl-display-environment">repl-display-environment?</h4>
+<pre class="highlight"><code class="language-scheme">(repl-display-environment? display?) ;; procedure</code></pre>
+<p>The parameter object <code>repl-display-environment?</code> is bound to a boolean value
+that controls the automatic display of the environment by the REPL. If
+<code>display?</code> is true, the environment is displayed by the REPL before the prompt.
+This is particularly useful in single-stepping mode. The default setting is not
+to display the environment.</p>
+<h4 id="display-dynamic-environment">display-dynamic-environment?</h4>
+<pre class="highlight"><code class="language-scheme">(display-dynamic-environment? display?) ;; procedure</code></pre>
+<p>The parameter object <code>display-dynamic-environment?</code> is bound to a boolean value
+that controls wether the dynamic environment is displayed when the environment
+is displayed. The default setting is not to display the dynamic environment.</p>
+<h4 id="pretty-print">pretty-print</h4>
+<pre class="highlight"><code class="language-scheme">(pretty-print obj [port]) procedure</code></pre>
+<p>This procedure pretty-prints <code>obj</code> on the <code>port</code> port. If it is not specified,
+<code>port</code> defaults to the current output-port.</p>
+<p>For example:</p>
+<pre class="highlight"><code class="language-scheme">&gt; (pretty-print
+    (let* ((x '(1 2 3 4)) (y (list x x x))) (list y y y)))
+(((1 2 3 4) (1 2 3 4) (1 2 3 4))
+ ((1 2 3 4) (1 2 3 4) (1 2 3 4))
+ ((1 2 3 4) (1 2 3 4) (1 2 3 4)))</code></pre>
+<h4 id="pp">pp</h4>
+<pre class="highlight"><code class="language-scheme">(pp obj [port]) ;; procedure</code></pre>
+<p>This procedure pretty-prints <code>obj</code> on the <code>port</code> port. When <code>obj</code> is a procedure
+created by the interpreter or a procedure created by code compiled with the
+declaration <code>debug-source</code>, the procedure's source code is displayed. If it is
+not specified, <code>port</code> defaults to the interaction channel (i.e. the output will
+appear at the REPL).</p>
+<p>For example:</p>
+<pre class="highlight"><code class="language-scheme">&gt; (define (f g) (+ (time (g 100)) (time (g 1000))))
+&gt; (pp f)
+(lambda (g)
+  (+ (##time (lambda () (g 100)) '(g 100))
+     (##time (lambda () (g 1000)) '(g 1000))))</code></pre>
+<h4 id="gc-report-set">gc-report-set!</h4>
+<pre class="highlight"><code class="language-scheme">(gc-report-set! report?) ;; procedure</code></pre>
+<p>This procedure controls the generation of reports during garbage collections. If
+the argument is true, a brief report of memory usage is generated after every
+garbage collection. It contains: the time taken for this garbage collection, the
+amount of memory allocated in megabytes since the program was started, the size
+of the heap in megabytes, the heap memory in megabytes occupied by live data,
+the proportion of the heap occupied by live data, and the number of bytes
+occupied by movable and nonmovable objects.</p>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      Last update:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">November 9, 2022</span>
+      
+        <br>
+        Created:
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">November 9, 2022</span>
+      
+    
+  </small>
+</div>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../debugging_example/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Debugging example" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Debugging example
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../console_line_editing/" class="md-footer__link md-footer__link--next" aria-label="Next: Console line-editing" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Console line-editing
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.indexes", "toc.follow", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d6c3db9e.min.js"></script>
+      
+        <script src="../../../js/codemirror/lib/codemirror.js"></script>
+      
+        <script src="../../../js/codemirror/addon/edit/matchbrackets.js"></script>
+      
+        <script src="../../../js/codemirror/keymap/emacs.js"></script>
+      
+        <script src="../../../js/codemirror/mode/scheme/scheme.js"></script>
+      
+        <script src="../../../js/UI.js"></script>
+      
+        <script src="../../../js/VM.min.js"></script>
+      
+        <script src="../../../js/browserfs.min.js"></script>
+      
+    
+  </body>
+</html>

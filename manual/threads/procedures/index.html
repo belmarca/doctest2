@@ -1,0 +1,3533 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../../../assets/favicon.ico">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.9">
+    
+    
+      
+        <title>Procedures - Gambit Scheme</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.20d9efc8.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.08040f6c.min.css">
+        
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../js/codemirror/lib/codemirror.css">
+    
+      <link rel="stylesheet" href="../../../css/UI.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Procedures - Gambit Scheme" >
+      
+        <meta  property="og:description"  content="None" >
+      
+        <meta  property="og:image"  content="./assets/images/social/manual/threads/procedures.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="None" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Procedures - Gambit Scheme" >
+      
+        <meta  name="twitter:description"  content="None" >
+      
+        <meta  name="twitter:image"  content="./assets/images/social/manual/threads/procedures.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#procedures" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Gambit Scheme" class="md-header__button md-logo" aria-label="Gambit Scheme" data-md-component="logo">
+      
+  <img src="../../../assets/gambit.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Gambit Scheme
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Procedures
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+          
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/gambit/gambit" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    gambit/gambit
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        Home
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../" class="md-tabs__link md-tabs__link--active">
+        Manual
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../howtos/" class="md-tabs__link">
+        How-tos
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Gambit Scheme" class="md-nav__button md-logo" aria-label="Gambit Scheme" data-md-component="logo">
+      
+  <img src="../../../assets/gambit.png" alt="logo">
+
+    </a>
+    Gambit Scheme
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/gambit/gambit" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    gambit/gambit
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../..">Home</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Home" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Home
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../">Manual</a>
+          
+            <label for="__nav_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Manual" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Manual
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" type="checkbox" id="__nav_2_2" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../the_gambit_system/">The Gambit system</a>
+          
+            <label for="__nav_2_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="The Gambit system" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          The Gambit system
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../the_gambit_system/accessing_the_system_files/" class="md-nav__link">
+        Accessing the system files
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" type="checkbox" id="__nav_2_3" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../gsi/">The Gambit Scheme interpreter</a>
+          
+            <label for="__nav_2_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="The Gambit Scheme interpreter" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          The Gambit Scheme interpreter
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gsi/interactive_mode/" class="md-nav__link">
+        Interactive mode
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gsi/batch_mode/" class="md-nav__link">
+        Batch mode
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gsi/module_management_mode/" class="md-nav__link">
+        Module management mode
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gsi/customization/" class="md-nav__link">
+        Customization
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gsi/process_exit_status/" class="md-nav__link">
+        Process exit status
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gsi/scheme_scripts/" class="md-nav__link">
+        Scheme scripts
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4" type="checkbox" id="__nav_2_4" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../gsc/">The Gambit Scheme compiler</a>
+          
+            <label for="__nav_2_4">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="The Gambit Scheme compiler" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_4">
+          <span class="md-nav__icon md-icon"></span>
+          The Gambit Scheme compiler
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gsc/interactive_mode/" class="md-nav__link">
+        Interactive mode
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gsc/customization/" class="md-nav__link">
+        Customization
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gsc/batch_mode/" class="md-nav__link">
+        Batch mode
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gsc/link_files/" class="md-nav__link">
+        Link files
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gsc/procedures/" class="md-nav__link">
+        Procedures specific to the compiler
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5" type="checkbox" id="__nav_2_5" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../runtime_options/">Runtime options</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Runtime options" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_5">
+          <span class="md-nav__icon md-icon"></span>
+          Runtime options
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6" type="checkbox" id="__nav_2_6" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../debugging/">Debugging</a>
+          
+            <label for="__nav_2_6">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Debugging" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_6">
+          <span class="md-nav__icon md-icon"></span>
+          Debugging
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../debugging/debugging_model/" class="md-nav__link">
+        Debugging model
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../debugging/debugging_commands/" class="md-nav__link">
+        Debugging commands
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../debugging/debugging_example/" class="md-nav__link">
+        Debugging example
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../debugging/procedures/" class="md-nav__link">
+        Procedures related to debugging
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../debugging/console_line_editing/" class="md-nav__link">
+        Console line-editing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../debugging/emacs_interface/" class="md-nav__link">
+        Emacs interface
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_7" type="checkbox" id="__nav_2_7" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../scheme_extensions/">Scheme extensions</a>
+          
+            <label for="__nav_2_7">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Scheme extensions" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_7">
+          <span class="md-nav__icon md-icon"></span>
+          Scheme extensions
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../scheme_extensions/extensions_to_standard_procedures/" class="md-nav__link">
+        Extensions to standard procedures
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../scheme_extensions/extensions_to_standard_special_forms/" class="md-nav__link">
+        Extensions to standard special forms
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../scheme_extensions/miscellaneous_extensions/" class="md-nav__link">
+        Miscellaneous extensions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../scheme_extensions/undocumented_extensions/" class="md-nav__link">
+        Undocumented extensions
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_8" type="checkbox" id="__nav_2_8" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../modules/">Modules</a>
+          
+            <label for="__nav_2_8">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Modules" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_8">
+          <span class="md-nav__icon md-icon"></span>
+          Modules
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/legacy_modules/" class="md-nav__link">
+        Legacy modules
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/primitive_modules/" class="md-nav__link">
+        Primitive modules
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/primitive_procedures/" class="md-nav__link">
+        Primitive procedures
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/r7rs_compatible_modules/" class="md-nav__link">
+        R7RS compatible modules
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/installing_modules/" class="md-nav__link">
+        Installing modules
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/compiling_modules/" class="md-nav__link">
+        Compiling modules
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_9" type="checkbox" id="__nav_2_9" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../built_in_data_types/">Built-in data types</a>
+          
+            <label for="__nav_2_9">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Built-in data types" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_9">
+          <span class="md-nav__icon md-icon"></span>
+          Built-in data types
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../built_in_data_types/numbers/" class="md-nav__link">
+        Numbers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../built_in_data_types/booleans/" class="md-nav__link">
+        Booleans
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../built_in_data_types/pairs_and_lists/" class="md-nav__link">
+        Pairs and lists
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../built_in_data_types/symbols_and_keywords/" class="md-nav__link">
+        Symbols and keywords
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../built_in_data_types/characters_and_strings/" class="md-nav__link">
+        Characters and strings
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../built_in_data_types/vectors/" class="md-nav__link">
+        Vectors
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../built_in_data_types/homogeneous_numeric_vectors/" class="md-nav__link">
+        Homogeneous numeric vectors
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../built_in_data_types/hashing_and_weak_references/" class="md-nav__link">
+        Hashing and weak references
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_10" type="checkbox" id="__nav_2_10" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../records/">Records</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Records" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_10">
+          <span class="md-nav__icon md-icon"></span>
+          Records
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_11" type="checkbox" id="__nav_2_11" checked>
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../">Threads</a>
+          
+            <label for="__nav_2_11">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Threads" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_11">
+          <span class="md-nav__icon md-icon"></span>
+          Threads
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../introduction/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../thread_objects/" class="md-nav__link">
+        Thread objects
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mutex_objects/" class="md-nav__link">
+        Mutex objects
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../condvar_objects/" class="md-nav__link">
+        Condition variable objects
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fairness/" class="md-nav__link">
+        Fairness
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../memory_coherency/" class="md-nav__link">
+        Memory coherency
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../timeouts/" class="md-nav__link">
+        Timeouts
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../primordial_thread/" class="md-nav__link">
+        Primordial thread
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Procedures
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Procedures
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#current-thread" class="md-nav__link">
+    current-thread
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread" class="md-nav__link">
+    thread?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#make-thread" class="md-nav__link">
+    make-thread
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#make-root-thread" class="md-nav__link">
+    make-root-thread
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread_1" class="md-nav__link">
+    thread
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-name" class="md-nav__link">
+    thread-name
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-specific" class="md-nav__link">
+    thread-specific
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-specific-set" class="md-nav__link">
+    thread-specific-set!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-base-priority" class="md-nav__link">
+    thread-base-priority
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-base-priority-set" class="md-nav__link">
+    thread-base-priority-set!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-priority-boost" class="md-nav__link">
+    thread-priority-boost
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-priority-boost-set" class="md-nav__link">
+    thread-priority-boost-set!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-quantum" class="md-nav__link">
+    thread-quantum
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-quantum-set" class="md-nav__link">
+    thread-quantum-set!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-start" class="md-nav__link">
+    thread-start!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-yield" class="md-nav__link">
+    thread-yield!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-sleep" class="md-nav__link">
+    thread-sleep!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-terminate" class="md-nav__link">
+    thread-terminate!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-join" class="md-nav__link">
+    thread-join!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-send" class="md-nav__link">
+    thread-send
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-receive" class="md-nav__link">
+    thread-receive
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-mailbox-next" class="md-nav__link">
+    thread-mailbox-next
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-mailbox-rewind" class="md-nav__link">
+    thread-mailbox-rewind
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-mailbox-extract-and-rewind" class="md-nav__link">
+    thread-mailbox-extract-and-rewind
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mailbox-receive-timeout-exception" class="md-nav__link">
+    mailbox-receive-timeout-exception?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mailbox-receive-timeout-exception-procedure" class="md-nav__link">
+    mailbox-receive-timeout-exception-procedure
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mailbox-receive-timeout-exception-arguments" class="md-nav__link">
+    mailbox-receive-timeout-exception-arguments
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mutex" class="md-nav__link">
+    mutex?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#make-mutex" class="md-nav__link">
+    make-mutex
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mutex-name" class="md-nav__link">
+    mutex-name
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mutex-specific" class="md-nav__link">
+    mutex-specific
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mutex-specific-set" class="md-nav__link">
+    mutex-specific-set!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mutex-state" class="md-nav__link">
+    mutex-state
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mutex-lock" class="md-nav__link">
+    mutex-lock!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mutex-unlock" class="md-nav__link">
+    mutex-unlock!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#condition-variable" class="md-nav__link">
+    condition-variable?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#make-condition-variable" class="md-nav__link">
+    make-condition-variable
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#condition-variable-name" class="md-nav__link">
+    condition-variable-name
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#condition-variable-specific" class="md-nav__link">
+    condition-variable-specific
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#condition-variable-specific-set" class="md-nav__link">
+    condition-variable-specific-set!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#condition-variable-signal" class="md-nav__link">
+    condition-variable-signal!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#condition-variable-broadcast" class="md-nav__link">
+    condition-variable-broadcast!
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_12" type="checkbox" id="__nav_2_12" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../dynamic_environment/">Dynamic environment</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Dynamic environment" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_12">
+          <span class="md-nav__icon md-icon"></span>
+          Dynamic environment
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_13" type="checkbox" id="__nav_2_13" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../exceptions/">Exceptions</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Exceptions" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_13">
+          <span class="md-nav__icon md-icon"></span>
+          Exceptions
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_14" type="checkbox" id="__nav_2_14" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../host_environment/">Host environment</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Host environment" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_14">
+          <span class="md-nav__icon md-icon"></span>
+          Host environment
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_15" type="checkbox" id="__nav_2_15" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../io_and_ports/">I/O and ports</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="I/O and ports" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_15">
+          <span class="md-nav__icon md-icon"></span>
+          I/O and ports
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_16" type="checkbox" id="__nav_2_16" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../lexical_syntax_and_readtables/">Lexical syntax and readtables</a>
+          
+            <label for="__nav_2_16">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Lexical syntax and readtables" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_16">
+          <span class="md-nav__icon md-icon"></span>
+          Lexical syntax and readtables
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lexical_syntax_and_readtables/readtables/" class="md-nav__link">
+        Readtables
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_17" type="checkbox" id="__nav_2_17" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../c_interface/">C-interface</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="C-interface" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_17">
+          <span class="md-nav__icon md-icon"></span>
+          C-interface
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_18" type="checkbox" id="__nav_2_18" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../system_limitations/">System limitations</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="System limitations" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_18">
+          <span class="md-nav__icon md-icon"></span>
+          System limitations
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_19" type="checkbox" id="__nav_2_19" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../copyright_and_license/">Copyright and license</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Copyright and license" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_19">
+          <span class="md-nav__icon md-icon"></span>
+          Copyright and license
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../howtos/">How-tos</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="How-tos" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          How-tos
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#current-thread" class="md-nav__link">
+    current-thread
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread" class="md-nav__link">
+    thread?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#make-thread" class="md-nav__link">
+    make-thread
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#make-root-thread" class="md-nav__link">
+    make-root-thread
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread_1" class="md-nav__link">
+    thread
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-name" class="md-nav__link">
+    thread-name
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-specific" class="md-nav__link">
+    thread-specific
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-specific-set" class="md-nav__link">
+    thread-specific-set!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-base-priority" class="md-nav__link">
+    thread-base-priority
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-base-priority-set" class="md-nav__link">
+    thread-base-priority-set!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-priority-boost" class="md-nav__link">
+    thread-priority-boost
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-priority-boost-set" class="md-nav__link">
+    thread-priority-boost-set!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-quantum" class="md-nav__link">
+    thread-quantum
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-quantum-set" class="md-nav__link">
+    thread-quantum-set!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-start" class="md-nav__link">
+    thread-start!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-yield" class="md-nav__link">
+    thread-yield!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-sleep" class="md-nav__link">
+    thread-sleep!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-terminate" class="md-nav__link">
+    thread-terminate!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-join" class="md-nav__link">
+    thread-join!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-send" class="md-nav__link">
+    thread-send
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-receive" class="md-nav__link">
+    thread-receive
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-mailbox-next" class="md-nav__link">
+    thread-mailbox-next
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-mailbox-rewind" class="md-nav__link">
+    thread-mailbox-rewind
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-mailbox-extract-and-rewind" class="md-nav__link">
+    thread-mailbox-extract-and-rewind
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mailbox-receive-timeout-exception" class="md-nav__link">
+    mailbox-receive-timeout-exception?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mailbox-receive-timeout-exception-procedure" class="md-nav__link">
+    mailbox-receive-timeout-exception-procedure
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mailbox-receive-timeout-exception-arguments" class="md-nav__link">
+    mailbox-receive-timeout-exception-arguments
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mutex" class="md-nav__link">
+    mutex?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#make-mutex" class="md-nav__link">
+    make-mutex
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mutex-name" class="md-nav__link">
+    mutex-name
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mutex-specific" class="md-nav__link">
+    mutex-specific
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mutex-specific-set" class="md-nav__link">
+    mutex-specific-set!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mutex-state" class="md-nav__link">
+    mutex-state
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mutex-lock" class="md-nav__link">
+    mutex-lock!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mutex-unlock" class="md-nav__link">
+    mutex-unlock!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#condition-variable" class="md-nav__link">
+    condition-variable?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#make-condition-variable" class="md-nav__link">
+    make-condition-variable
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#condition-variable-name" class="md-nav__link">
+    condition-variable-name
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#condition-variable-specific" class="md-nav__link">
+    condition-variable-specific
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#condition-variable-specific-set" class="md-nav__link">
+    condition-variable-specific-set!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#condition-variable-signal" class="md-nav__link">
+    condition-variable-signal!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#condition-variable-broadcast" class="md-nav__link">
+    condition-variable-broadcast!
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  <a href="https://github.com/gambit/gambit/edit/master/docs/manual/threads/procedures.md" title="Edit this page" class="md-content__button md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
+
+
+<h1 id="procedures">Procedures</h1>
+<h4 id="current-thread">current-thread</h4>
+<pre class="highlight"><code class="language-scheme">(current-thread) ;; procedure</code></pre>
+<p>This procedure returns the current thread. For example:</p>
+<pre class="highlight"><code class="language-scheme">&gt; (current-thread)
+#&lt;thread #1 primordial&gt;
+&gt; (eq? (current-thread) (current-thread))
+#t</code></pre>
+<h4 id="thread">thread?</h4>
+<pre class="highlight"><code class="language-scheme">(thread? obj) ;; procedure</code></pre>
+<p>This procedure returns <code>#t</code> when <code>obj</code> is a thread object and <code>#f</code> otherwise.</p>
+<p>For example:</p>
+<pre class="highlight"><code class="language-scheme">&gt; (thread? (current-thread))
+#t
+&gt; (thread? 'foo)
+#f</code></pre>
+<h4 id="make-thread">make-thread</h4>
+<h4 id="make-root-thread">make-root-thread</h4>
+<pre class="highlight"><code class="language-scheme">(make-thread thunk [name [thread-group]]) ;; procedure
+(make-root-thread thunk [name
+                        [thread-group
+                        [input-port
+                        [output-port]]]]) ;; procedure</code></pre>
+<p>The <code>make-thread</code> procedure creates and returns an initialized thread. This
+thread is not automatically made runnable (the procedure <code>thread-start!</code> must be
+used for this). A thread has the following fields: base priority, priority
+boost, boosted flag, quantum, name, specific, end-result, end-exception, and a
+list of locked/owned mutexes it owns. The thread's execution consists of a call
+to <code>thunk</code> with the initial continuation. This continuation causes the (then)
+current thread to store the result in its <code>end-result</code> field, abandon all
+mutexes it owns, and finally terminate. The <code>dynamic-wind</code> stack of the initial
+continuation is empty. The optional <code>name</code> is an arbitrary Scheme object which
+identifies the thread (useful for debugging); it defaults to an unspecified
+value. The specific field is set to an unspecified value. The optional
+<code>thread-group</code> indicates which thread group this thread belongs to; it defaults
+to the thread group of the current thread. The base priority, priority boost,
+and quantum of the thread are set to the same value as the current thread and
+the boosted flag is set to false. The thread's mailbox is initially empty. The
+thread inherits the dynamic environment from the current thread. Moreover, in
+this dynamic environment the exception-handler is bound to the <em>initial
+exception-handler</em> which is a unary procedure which causes the (then) current
+thread to store in its end-exception field an uncaught-exception object whose
+"reason" is the argument of the handler, abandon all mutexes it owns, and
+finally terminate.</p>
+<p>The <code>make-root-thread</code> procedure behaves like the <code>make-thread</code> procedure except the
+created thread does not inherit the dynamic environment from the current thread
+and the base priority is set to <code>0</code>, the priority boost is set to <code>1.0e-6</code>, and the
+quantum is set to <code>0.02</code>. The dynamic environment of the thread has the global
+bindings of the parameter objects, except <code>current-input-port</code> which is bound to
+<code>input-port</code>, <code>current-output-port</code> which is bound to <code>output-port</code>, and
+<code>current-directory</code> which is bound to the initial current working directory of the
+current process. If <code>input-port</code> is not specified it defaults to a port
+corresponding to the standard input (<code>stdin</code>). If <code>output-port</code> is not specified
+it defaults to a port corresponding to the standard output (<code>stdout</code>).</p>
+<p>For example:</p>
+<pre class="highlight"><code class="language-scheme">&gt; (make-thread (lambda () (write 'hello)))
+#&lt;thread #2&gt;
+&gt; (make-root-thread (lambda () (write 'world)) 'a-name)
+#&lt;thread #3 a-name&gt;</code></pre>
+<h4 id="thread_1">thread</h4>
+<pre class="highlight"><code class="language-scheme">(thread thunk) ;; procedure</code></pre>
+<p>The <code>thread</code> procedure creates, starts and returns a new thread. The call
+<code>(thread thunk)</code> is equivalent to <code>(thread-start! (make-thread thunk))</code>.</p>
+<p>For example:</p>
+<pre class="highlight"><code class="language-scheme">&gt; (define a (thread (lambda () (expt 2 1005))))
+&gt; (define b (thread (lambda () (expt 2 1000))))
+&gt; (/ (thread-join! a) (thread-join! b))
+32</code></pre>
+<h4 id="thread-name">thread-name</h4>
+<pre class="highlight"><code class="language-scheme">(thread-name thread) ;; procedure</code></pre>
+<p>This procedure returns the name of the thread. For example:</p>
+<pre class="highlight"><code class="language-scheme">&gt; (thread-name (make-thread (lambda () #f) 'foo))
+foo</code></pre>
+<h4 id="thread-specific">thread-specific</h4>
+<h4 id="thread-specific-set">thread-specific-set!</h4>
+<pre class="highlight"><code class="language-scheme">(thread-specific thread) ;; procedure
+(thread-specific-set! thread obj) ;; procedure</code></pre>
+<p>The <code>thread-specific</code> procedure returns the content of the thread's specific
+field.</p>
+<p>The <code>thread-specific-set!</code> procedure stores obj into the thread's specific field
+and returns an unspecified value.</p>
+<p>For example:</p>
+<pre class="highlight"><code class="language-scheme">&gt; (thread-specific-set! (current-thread) "hello")
+&gt; (thread-specific (current-thread))
+"hello"</code></pre>
+<h4 id="thread-base-priority">thread-base-priority</h4>
+<h4 id="thread-base-priority-set">thread-base-priority-set!</h4>
+<pre class="highlight"><code class="language-scheme">(thread-base-priority thread) ;; procedure
+(thread-base-priority-set! thread priority) ;; procedure</code></pre>
+<p>The procedure <code>thread-base-priority</code> returns a real number which corresponds to
+the base priority of the thread.</p>
+<p>The procedure <code>thread-base-priority-set!</code> changes the base priority of the
+thread to priority and returns an unspecified value. The priority must be a real
+number.</p>
+<p>For example:</p>
+<pre class="highlight"><code class="language-scheme">&gt; (thread-base-priority-set! (current-thread) 12.3)
+&gt; (thread-base-priority (current-thread))
+12.3</code></pre>
+<h4 id="thread-priority-boost">thread-priority-boost</h4>
+<h4 id="thread-priority-boost-set">thread-priority-boost-set!</h4>
+<pre class="highlight"><code class="language-scheme">(thread-priority-boost thread) ;; procedure
+(thread-priority-boost-set! thread priority-boost) ;; procedure</code></pre>
+<p>The procedure <code>thread-priority-boost</code> returns a real number which corresponds to
+the priority boost of the thread.</p>
+<p>The procedure <code>thread-priority-boost-set!</code> changes the priority boost of the
+thread to <code>priority-boost</code> and returns an unspecified value. The
+<code>priority-boost</code> must be a nonnegative real.</p>
+<p>For example:</p>
+<pre class="highlight"><code class="language-scheme">&gt; (thread-priority-boost-set! (current-thread) 2.5)
+&gt; (thread-priority-boost (current-thread))
+2.5</code></pre>
+<h4 id="thread-quantum">thread-quantum</h4>
+<h4 id="thread-quantum-set">thread-quantum-set!</h4>
+<pre class="highlight"><code class="language-scheme">(thread-quantum thread) ;; procedure
+(thread-quantum-set! thread quantum) ;; procedure</code></pre>
+<p>The procedure <code>thread-quantum</code> returns a real number which corresponds to the
+quantum of the thread.</p>
+<p>The procedure <code>thread-quantum-set!</code> changes the quantum of the thread to <code>quantum</code>
+and returns an unspecified value. The <code>quantum</code> must be a nonnegative real. A
+value of zero selects the smallest quantum supported by the implementation.</p>
+<p>For example:</p>
+<pre class="highlight"><code class="language-scheme">&gt; (thread-quantum-set! (current-thread) 1.5)
+&gt; (thread-quantum (current-thread))
+1.5
+&gt; (thread-quantum-set! (current-thread) 0)
+&gt; (thread-quantum (current-thread))
+0.</code></pre>
+<h4 id="thread-start">thread-start!</h4>
+<pre class="highlight"><code class="language-scheme">(thread-start! thread) ;; procedure</code></pre>
+<p>This procedure makes <code>thread</code> runnable and returns the thread. The thread must
+be an initialized thread.</p>
+<p>For example:</p>
+<pre class="highlight"><code class="language-scheme">&gt; (let ((t (thread-start! (make-thread (lambda () (write 'a))))))
+    (write 'b)
+    (thread-join! t))
+ab&gt; or ba&gt;</code></pre>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It is useful to separate thread creation and thread activation to avoid the
+race condition that would occur if the created thread tries to examine a
+table in which the current thread stores the created thread. See the last
+example of the <code>thread-terminate!</code> procedure which contains mutually
+recursive threads.</p>
+</div>
+<h4 id="thread-yield">thread-yield!</h4>
+<pre class="highlight"><code class="language-scheme">(thread-yield!) ;; procedure</code></pre>
+<p>This procedure causes the current thread to exit the running state as if its
+quantum had expired and returns an unspecified value.</p>
+<p>For example:</p>
+<pre class="highlight"><code class="language-scheme">; a busy loop that avoids being too wasteful of the CPU
+
+(let loop ()
+  (if (mutex-lock! m 0) ; try to lock m but don't block
+      (begin
+        (display "locked mutex m")
+        (mutex-unlock! m))
+      (begin
+        (do-something-else)
+        (thread-yield!) ; relinquish rest of quantum
+        (loop))))</code></pre>
+<h4 id="thread-sleep">thread-sleep!</h4>
+<pre class="highlight"><code class="language-scheme">(thread-sleep! timeout) ;; procedure</code></pre>
+<p>This procedure causes the current thread to wait until the <code>timeout</code> is reached
+and returns an unspecified value. This blocks the thread only if <code>timeout</code>
+represents a point in the future. It is an error for <code>timeout</code> to be <code>#f</code>.</p>
+<p>For example:</p>
+<pre class="highlight"><code class="language-scheme">; a clock with a gradual drift:
+
+(let loop ((x 1))
+  (thread-sleep! 1)
+  (write x)
+  (loop (+ x 1)))
+
+; a clock with no drift:
+
+(let ((start (time-&gt;seconds (current-time)))
+  (let loop ((x 1))
+    (thread-sleep! (seconds-&gt;time (+ x start)))
+    (write x)
+    (loop (+ x 1))))</code></pre>
+<h4 id="thread-terminate">thread-terminate!</h4>
+<pre class="highlight"><code class="language-scheme">(thread-terminate! thread) ;; procedure</code></pre>
+<p>This procedure causes an abnormal termination of the <code>thread</code>. If the thread is
+not already terminated, all mutexes owned by the thread become
+unlocked/abandoned and a terminated-thread-exception object is stored in the
+thread's end-exception field. If <code>thread</code> is the current thread,
+<code>thread-terminate!</code> does not return. Otherwise <code>thread-terminate!</code> returns an
+unspecified value; the termination of the thread will occur at some point
+between the calling of <code>thread-terminate!</code> and a finite time in the future (an
+explicit thread synchronization is needed to detect termination, see
+<code>thread-join!</code>).</p>
+<p>For example:</p>
+<pre class="highlight"><code class="language-scheme">(define (amb thunk1 thunk2)
+  (let ((result #f)
+        (result-mutex (make-mutex))
+        (done-mutex (make-mutex)))
+    (letrec ((child1
+              (make-thread
+                (lambda ()
+                  (let ((x (thunk1)))
+                    (mutex-lock! result-mutex #f #f)
+                    (set! result x)
+                    (thread-terminate! child2)
+                    (mutex-unlock! done-mutex)))))
+             (child2
+              (make-thread
+                (lambda ()
+                  (let ((x (thunk2)))
+                    (mutex-lock! result-mutex #f #f)
+                    (set! result x)
+                    (thread-terminate! child1)
+                    (mutex-unlock! done-mutex))))))
+      (mutex-lock! done-mutex #f #f)
+      (thread-start! child1)
+      (thread-start! child2)
+      (mutex-lock! done-mutex #f #f)
+      result)))</code></pre>
+<div class="admonition node">
+<p class="admonition-title">Note</p>
+<p>This operation must be used carefully because it terminates a thread
+abruptly and it is impossible for that thread to perform any kind of
+cleanup. This may be a problem if the thread is in the middle of a critical
+section where some structure has been put in an inconsistent state. However,
+another thread attempting to enter this critical section will raise an
+abandoned-mutex-exception object because the mutex is unlocked/abandoned.
+This helps avoid observing an inconsistent state. Clean termination can be
+obtained by polling, as shown in the example below.</p>
+</div>
+<p>For example:</p>
+<pre class="highlight"><code class="language-scheme">(define (spawn thunk)
+  (let ((t (make-thread thunk)))
+    (thread-specific-set! t #t)
+    (thread-start! t)
+    t))
+
+(define (stop! thread)
+  (thread-specific-set! thread #f)
+  (thread-join! thread))
+
+(define (keep-going?)
+  (thread-specific (current-thread)))
+
+(define count!
+  (let ((m (make-mutex))
+        (i 0))
+    (lambda ()
+      (mutex-lock! m)
+      (let ((x (+ i 1)))
+        (set! i x)
+        (mutex-unlock! m)
+        x))))
+
+(define (increment-forever!)
+  (let loop () (count!) (if (keep-going?) (loop))))
+
+(let ((t1 (spawn increment-forever!))
+      (t2 (spawn increment-forever!)))
+  (thread-sleep! 1)
+  (stop! t1)
+  (stop! t2)
+  (count!))  ==&gt;  377290</code></pre>
+<h4 id="thread-join">thread-join!</h4>
+<pre class="highlight"><code class="language-scheme">(thread-join! thread [timeout [timeout-val]])   procedure</code></pre>
+<p>This procedure causes the current thread to wait until the <code>thread</code> terminates
+(normally or not) or until the timeout is reached if <code>timeout</code> is supplied. If
+the timeout is reached, <code>thread-join!</code> returns <code>timeout-val</code> if it is supplied,
+otherwise a join-timeout-exception object is raised. If the thread terminated
+normally, the content of the end-result field is returned, otherwise the content
+of the end-exception field is raised.</p>
+<p>For example:</p>
+<pre class="highlight"><code class="language-scheme">(let ((t (thread-start! (make-thread (lambda () (expt 2 100))))))
+  (do-something-else)
+  (thread-join! t))  ==&gt;  1267650600228229401496703205376
+
+(let ((t (thread-start! (make-thread (lambda () (raise 123))))))
+  (do-something-else)
+  (with-exception-handler
+    (lambda (exc)
+      (if (uncaught-exception? exc)
+          (* 10 (uncaught-exception-reason exc))
+          99999))
+    (lambda ()
+      (+ 1 (thread-join! t)))))  ==&gt;  1231
+
+(define thread-alive?
+  (let ((unique (list 'unique)))
+    (lambda (thread)
+      ; Note: this procedure raises an exception if
+      ; the thread terminated abnormally.
+      (eq? (thread-join! thread 0 unique) unique))))
+
+(define (wait-for-termination! thread)
+  (let ((eh (current-exception-handler)))
+    (with-exception-handler
+      (lambda (exc)
+        (if (not (or (terminated-thread-exception? exc)
+                     (uncaught-exception? exc)))
+            (eh exc))) ; unexpected exceptions are handled by eh
+      (lambda ()
+        ; The following call to thread-join! will wait until the
+        ; thread terminates.  If the thread terminated normally
+        ; thread-join! will return normally.  If the thread
+        ; terminated abnormally then one of these two exception
+        ; objects is raised by thread-join!:
+        ;   - terminated-thread-exception object
+        ;   - uncaught-exception object
+        (thread-join! thread)
+        #f)))) ; ignore result of thread-join!</code></pre>
+<h4 id="thread-send">thread-send</h4>
+<pre class="highlight"><code class="language-scheme">(thread-send thread msg) ;; procedure</code></pre>
+<p>Each thread has a mailbox which stores messages delivered to the thread in the
+order delivered.</p>
+<p>The procedure <code>thread-send</code> adds the message <code>msg</code> at the end of the mailbox of
+thread <code>thread</code> and returns an unspecified value.</p>
+<p>For example:</p>
+<pre class="highlight"><code class="language-scheme">&gt; (thread-send (current-thread) 111)
+&gt; (thread-send (current-thread) 222)
+&gt; (thread-receive)
+111
+&gt; (thread-receive)
+222</code></pre>
+<h4 id="thread-receive">thread-receive</h4>
+<h4 id="thread-mailbox-next">thread-mailbox-next</h4>
+<h4 id="thread-mailbox-rewind">thread-mailbox-rewind</h4>
+<h4 id="thread-mailbox-extract-and-rewind">thread-mailbox-extract-and-rewind</h4>
+<pre class="highlight"><code class="language-scheme">(thread-receive [timeout [default]]) ;; procedure
+(thread-mailbox-next [timeout [default]]) ;; procedure
+(thread-mailbox-rewind) ;; procedure
+(thread-mailbox-extract-and-rewind) ;; procedure</code></pre>
+<p>To allow a thread to examine the messages in its mailbox without removing them
+from the mailbox, each thread has a mailbox cursor which normally points to the
+last message accessed in the mailbox. When a mailbox cursor is rewound using the
+procedure <code>thread-mailbox-rewind</code> or <code>thread-mailbox-extract-and-rewind</code> or
+<code>thread-receive</code>, the cursor does not point to a message, but the next call to
+<code>thread-receive</code> and <code>thread-mailbox-next</code> will set the cursor to the oldest
+message in the mailbox.</p>
+<p>The procedure <code>thread-receive</code> advances the mailbox cursor of the current thread
+to the next message, removes that message from the mailbox, rewinds the mailbox
+cursor, and returns the message. When <code>timeout</code> is not specified, the current
+thread will wait until a message is available in the mailbox. When <code>timeout</code> is
+specified and <code>default</code> is not specified, a mailbox-receive-timeout-exception
+object is raised if the timeout is reached before a message is available. When
+<code>timeout</code> is specified and <code>default</code> is specified, <code>default</code> is returned if the
+timeout is reached before a message is available.</p>
+<p>The procedure <code>thread-mailbox-next</code> behaves like <code>thread-receive</code> except that
+the message remains in the mailbox and the mailbox cursor is not rewound.</p>
+<p>The procedures <code>thread-mailbox-rewind</code> or <code>thread-mailbox-extract-and-rewind</code>
+rewind the mailbox cursor of the current thread so that the next call to
+<code>thread-mailbox-next</code> and <code>thread-receive</code> will access the oldest message in the
+mailbox. Additionally the procedure <code>thread-mailbox-extract-and-rewind</code> will
+remove from the mailbox the message most recently accessed by a call to
+<code>thread-mailbox-next</code>. When <code>thread-mailbox-next</code> has not been called since the
+last call to <code>thread-receive or thread-mailbox-rewind</code> or
+<code>thread-mailbox-extract-and-rewind</code>, a call to
+<code>thread-mailbox-extract-and-rewind</code> only resets the mailbox cursor (no message
+is removed).</p>
+<p>For example:</p>
+<pre class="highlight"><code class="language-scheme">&gt; (thread-send (current-thread) 111)
+&gt; (thread-receive 1 999)
+111
+&gt; (thread-send (current-thread) 222)
+&gt; (thread-send (current-thread) 333)
+&gt; (thread-mailbox-next 1 999)
+222
+&gt; (thread-mailbox-next 1 999)
+333
+&gt; (thread-mailbox-next 1 999)
+999
+&gt; (thread-mailbox-extract-and-rewind)
+&gt; (thread-receive 1 999)
+222
+&gt; (thread-receive 1 999)
+999</code></pre>
+<h4 id="mailbox-receive-timeout-exception">mailbox-receive-timeout-exception?</h4>
+<h4 id="mailbox-receive-timeout-exception-procedure">mailbox-receive-timeout-exception-procedure</h4>
+<h4 id="mailbox-receive-timeout-exception-arguments">mailbox-receive-timeout-exception-arguments</h4>
+<pre class="highlight"><code class="language-scheme">(mailbox-receive-timeout-exception? obj)    procedure
+(mailbox-receive-timeout-exception-procedure exc)   procedure
+(mailbox-receive-timeout-exception-arguments exc)   procedure</code></pre>
+<p>Mailbox-receive-timeout-exception objects are raised by the procedures
+<code>thread-receive</code> and <code>thread-mailbox-next</code> when a timeout expires before a message
+is available and no default value is specified. The parameter <code>exc</code> must be a
+mailbox-receive-timeout-exception object.</p>
+<p>The procedure <code>mailbox-receive-timeout-exception?</code> returns <code>#t</code> when <code>obj</code> is a
+mailbox-receive-timeout-exception object and <code>#f</code> otherwise.</p>
+<p>The procedure <code>mailbox-receive-timeout-exception-procedure</code> returns the
+procedure that raised <code>exc</code>.</p>
+<p>The procedure <code>mailbox-receive-timeout-exception-arguments</code> returns the list of
+arguments of the procedure that raised <code>exc</code>.</p>
+<p>For example:</p>
+<pre class="highlight"><code class="language-scheme">&gt; (define (handler exc)
+    (if (mailbox-receive-timeout-exception? exc)
+        (list (mailbox-receive-timeout-exception-procedure exc)
+              (mailbox-receive-timeout-exception-arguments exc))
+        'not-mailbox-receive-timeout-exception))
+&gt; (with-exception-catcher
+    handler
+    (lambda () (thread-receive 1)))
+(#&lt;procedure #2 thread-receive&gt; (1))</code></pre>
+<h4 id="mutex">mutex?</h4>
+<pre class="highlight"><code class="language-scheme">(mutex? obj) ;; procedure</code></pre>
+<p>This procedure returns <code>#t</code> when <code>obj</code> is a mutex object and <code>#f</code> otherwise.</p>
+<p>For example:</p>
+<pre class="highlight"><code class="language-scheme">&gt; (mutex? (make-mutex))
+#t
+&gt; (mutex? 'foo)
+#f</code></pre>
+<h4 id="make-mutex">make-mutex</h4>
+<pre class="highlight"><code class="language-scheme">(make-mutex [name]) ;; procedure</code></pre>
+<p>This procedure returns a new mutex in the unlocked/not-abandoned state. The
+optional <code>name</code> is an arbitrary Scheme object which identifies the mutex (useful
+for debugging); it defaults to an unspecified value. The mutex's specific field
+is set to an unspecified value.</p>
+<p>For example:</p>
+<pre class="highlight"><code class="language-scheme">&gt; (make-mutex)
+#&lt;mutex #2&gt;
+&gt; (make-mutex 'foo)
+#&lt;mutex #3 foo&gt;</code></pre>
+<h4 id="mutex-name">mutex-name</h4>
+<pre class="highlight"><code class="language-scheme">(mutex-name mutex) ;; procedure</code></pre>
+<p>Returns the name of the mutex. For example:</p>
+<pre class="highlight"><code class="language-scheme">&gt; (mutex-name (make-mutex 'foo))
+foo</code></pre>
+<h4 id="mutex-specific">mutex-specific</h4>
+<h4 id="mutex-specific-set">mutex-specific-set!</h4>
+<pre class="highlight"><code class="language-scheme">(mutex-specific mutex) ;; procedure
+(mutex-specific-set! mutex obj) ;; procedure</code></pre>
+<p>The <code>mutex-specific</code> procedure returns the content of the mutex's specific
+field.</p>
+<p>The <code>mutex-specific-set!</code> procedure stores <code>obj</code> into the mutex's specific field
+and returns an unspecified value.</p>
+<p>For example:</p>
+<pre class="highlight"><code class="language-scheme">&gt; (define m (make-mutex))
+&gt; (mutex-specific-set! m "hello")
+&gt; (mutex-specific m)
+"hello"
+&gt; (define (mutex-lock-recursively! mutex)
+    (if (eq? (mutex-state mutex) (current-thread))
+        (let ((n (mutex-specific mutex)))
+          (mutex-specific-set! mutex (+ n 1)))
+        (begin
+          (mutex-lock! mutex)
+          (mutex-specific-set! mutex 0))))
+&gt; (define (mutex-unlock-recursively! mutex)
+    (let ((n (mutex-specific mutex)))
+      (if (= n 0)
+          (mutex-unlock! mutex)
+          (mutex-specific-set! mutex (- n 1)))))
+&gt; (mutex-lock-recursively! m)
+&gt; (mutex-lock-recursively! m)
+&gt; (mutex-lock-recursively! m)
+&gt; (mutex-specific m)
+2</code></pre>
+<h4 id="mutex-state">mutex-state</h4>
+<pre class="highlight"><code class="language-scheme">(mutex-state mutex) ;; procedure</code></pre>
+<p>This procedure returns information about the state of the mutex. The possible
+results are:</p>
+<ul>
+<li>thread <code>T</code>: the mutex is in the locked/owned state and thread <code>T</code> is the owner of the mutex</li>
+<li>symbol <code>not-owned</code>: the mutex is in the locked/not-owned state</li>
+<li>symbol <code>abandoned</code>: the mutex is in the unlocked/abandoned state</li>
+<li>symbol <code>not-abandoned</code>: the mutex is in the unlocked/not-abandoned state</li>
+</ul>
+<p>For example:</p>
+<pre class="highlight"><code class="language-scheme">(mutex-state (make-mutex))  ==&gt;  not-abandoned
+
+(define (thread-alive? thread)
+  (let ((mutex (make-mutex)))
+    (mutex-lock! mutex #f thread)
+    (let ((state (mutex-state mutex)))
+      (mutex-unlock! mutex) ; avoid space leak
+      (eq? state thread))))</code></pre>
+<h4 id="mutex-lock">mutex-lock!</h4>
+<pre class="highlight"><code class="language-scheme">(mutex-lock! mutex [timeout [thread]]) ;; procedure</code></pre>
+<p>This procedure locks mutex. If the mutex is currently locked, the current thread
+waits until the mutex is unlocked, or until the timeout is reached if timeout is
+supplied. If the timeout is reached, mutex-lock! returns ‘#f’. Otherwise, the
+state of the mutex is changed as follows:</p>
+<ul>
+<li>if <code>thread</code> is <code>#f</code> the mutex becomes locked/not-owned,</li>
+<li>otherwise, let <em>T</em> be <code>thread</code> (or the current thread if <code>thread</code> is not
+  supplied),<ul>
+<li>if <em>T</em> is terminated the mutex becomes unlocked/abandoned,</li>
+<li>otherwise mutex becomes locked/owned with <em>T</em> as the owner.</li>
+</ul>
+</li>
+</ul>
+<p>After changing the state of the mutex, an abandoned-mutex-exception object is
+raised if the mutex was unlocked/abandoned before the state change, otherwise
+<code>mutex-lock!</code> returns <code>#t</code>. It is not an error if the mutex is owned by the
+current thread (but the current thread will have to wait).</p>
+<p>For example:</p>
+<pre class="highlight"><code class="language-scheme">; an implementation of a mailbox object of depth one; this
+; implementation does not behave well in the presence of forced
+; thread terminations using thread-terminate! (deadlock can occur
+; if a thread is terminated in the middle of a put! or get! operation)
+
+(define (make-empty-mailbox)
+  (let ((put-mutex (make-mutex)) ; allow put! operation
+        (get-mutex (make-mutex))
+        (cell #f))
+
+    (define (put! obj)
+      (mutex-lock! put-mutex #f #f) ; prevent put! operation
+      (set! cell obj)
+      (mutex-unlock! get-mutex)) ; allow get! operation
+
+    (define (get!)
+      (mutex-lock! get-mutex #f #f) ; wait until object in mailbox
+      (let ((result cell))
+        (set! cell #f) ; prevent space leaks
+        (mutex-unlock! put-mutex) ; allow put! operation
+        result))
+
+    (mutex-lock! get-mutex #f #f) ; prevent get! operation
+
+    (lambda (msg)
+      (case msg
+        ((put!) put!)
+        ((get!) get!)
+        (else (error "unknown message"))))))
+
+(define (mailbox-put! m obj) ((m 'put!) obj))
+(define (mailbox-get! m) ((m 'get!)))
+
+; an alternate implementation of thread-sleep!
+
+(define (sleep! timeout)
+  (let ((m (make-mutex)))
+    (mutex-lock! m #f #f)
+    (mutex-lock! m timeout #f)))
+
+; a procedure that waits for one of two mutexes to unlock
+
+(define (lock-one-of! mutex1 mutex2)
+  ; this procedure assumes that neither mutex1 or mutex2
+  ; are owned by the current thread
+  (let ((ct (current-thread))
+        (done-mutex (make-mutex)))
+    (mutex-lock! done-mutex #f #f)
+    (let ((t1 (thread-start!
+               (make-thread
+                (lambda ()
+                  (mutex-lock! mutex1 #f ct)
+                  (mutex-unlock! done-mutex)))))
+          (t2 (thread-start!
+               (make-thread
+                (lambda ()
+                  (mutex-lock! mutex2 #f ct)
+                  (mutex-unlock! done-mutex))))))
+      (mutex-lock! done-mutex #f #f)
+      (thread-terminate! t1)
+      (thread-terminate! t2)
+      (if (eq? (mutex-state mutex1) ct)
+          (begin
+            (if (eq? (mutex-state mutex2) ct)
+                (mutex-unlock! mutex2)) ; don't lock both
+            mutex1)
+          mutex2))))</code></pre>
+<h4 id="mutex-unlock">mutex-unlock!</h4>
+<pre class="highlight"><code class="language-scheme">(mutex-unlock! mutex [condition-variable [timeout]]) ;; procedure</code></pre>
+<p>This procedure unlocks the mutex by making it unlocked/not-abandoned. It is not
+an error to unlock an unlocked mutex and a mutex that is owned by any thread. If
+<code>condition-variable</code> is supplied, the current thread is blocked and added to the
+<code>condition-variable</code> before unlocking <code>mutex</code>; the thread can unblock at any
+time but no later than when an appropriate call to <code>condition-variable-signal!</code>
+or <code>condition-variable-broadcast!</code> is performed (see below), and no later than
+the timeout (if <code>timeout</code> is supplied). If there are threads waiting to lock
+this mutex, the scheduler selects a thread, the mutex becomes locked/owned or
+locked/not-owned, and the thread is unblocked. <code>mutex-unlock!</code> returns <code>#f</code> when
+the timeout is reached, otherwise it returns <code>#t</code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The reason the thread can unblock at any time (when <code>condition-variable</code> is
+supplied) is that the scheduler, when it detects a serious problem such as a
+deadlock, must interrupt one of the blocked threads (such as the primordial
+thread) so that it can perform some appropriate action. After a thread
+blocked on a condition-variable has handled such an interrupt it would be
+wrong for the scheduler to return the thread to the blocked state, because
+any calls to <code>condition-variable-broadcast!</code> during the interrupt will have
+gone unnoticed. It is necessary for the thread to remain runnable and return
+from the call to <code>mutex-unlock!</code> with a result of <code>#t</code>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code>mutex-unlock!</code> is related to the "wait" operation on condition variables
+available in other thread systems. The main difference is that "wait"
+automatically locks mutex just after the thread is unblocked. This operation
+is not performed by <code>mutex-unlock!</code> and so must be done by an explicit call
+to <code>mutex-lock!</code>. This has the advantages that a different timeout and
+exception-handler can be specified on the <code>mutex-lock!</code> and <code>mutex-unlock!</code>
+and the location of all the mutex operations is clearly apparent.</p>
+</div>
+<p>For example:</p>
+<pre class="highlight"><code class="language-scheme">(let loop ()
+  (mutex-lock! m)
+  (if (condition-is-true?)
+      (begin
+        (do-something-when-condition-is-true)
+        (mutex-unlock! m))
+      (begin
+        (mutex-unlock! m cv)
+        (loop))))</code></pre>
+<h4 id="condition-variable">condition-variable?</h4>
+<pre class="highlight"><code class="language-scheme">(condition-variable? obj) ;; procedure</code></pre>
+<p>This procedure returns <code>#t</code> when <code>obj</code> is a condition-variable object and <code>#f</code>
+otherwise.</p>
+<p>For example:</p>
+<pre class="highlight"><code class="language-scheme">&gt; (condition-variable? (make-condition-variable))
+#t
+&gt; (condition-variable? 'foo)
+#f</code></pre>
+<h4 id="make-condition-variable">make-condition-variable</h4>
+<pre class="highlight"><code class="language-scheme">(make-condition-variable [name]) ;; procedure</code></pre>
+<p>This procedure returns a new empty condition variable. The optional <code>name</code> is an
+arbitrary Scheme object which identifies the condition variable (useful for
+debugging); it defaults to an unspecified value. The condition variable's
+specific field is set to an unspecified value.</p>
+<p>For example:</p>
+<pre class="highlight"><code class="language-scheme">&gt; (make-condition-variable)
+#&lt;condition-variable #2&gt;</code></pre>
+<h4 id="condition-variable-name">condition-variable-name</h4>
+<pre class="highlight"><code class="language-scheme">(condition-variable-name condition-variable) ;; procedure</code></pre>
+<p>This procedure returns the name of the <code>condition-variable</code>. For example:</p>
+<pre class="highlight"><code class="language-scheme">&gt; (condition-variable-name (make-condition-variable 'foo))
+foo</code></pre>
+<h4 id="condition-variable-specific">condition-variable-specific</h4>
+<h4 id="condition-variable-specific-set">condition-variable-specific-set!</h4>
+<pre class="highlight"><code class="language-scheme">(condition-variable-specific condition-variable) ;; procedure
+(condition-variable-specific-set! condition-variable obj) ;; procedure</code></pre>
+<p>The <code>condition-variable-specific</code> procedure returns the content of the
+<code>condition-variable</code>’s specific field.</p>
+<p>The <code>condition-variable-specific-set!</code> procedure stores <code>obj</code> into the
+<code>condition-variable</code>’s specific field and returns an unspecified value.</p>
+<p>For example:</p>
+<pre class="highlight"><code class="language-scheme">&gt; (define cv (make-condition-variable))
+&gt; (condition-variable-specific-set! cv "hello")
+&gt; (condition-variable-specific cv)
+"hello"</code></pre>
+<h4 id="condition-variable-signal">condition-variable-signal!</h4>
+<pre class="highlight"><code class="language-scheme">(condition-variable-signal! condition-variable) ;; procedure</code></pre>
+<p>This procedure unblocks a thread blocked on the <code>condition-variable</code> (if there
+is at least one) and returns an unspecified value.</p>
+<p>For example:</p>
+<pre class="highlight"><code class="language-scheme">; an implementation of a mailbox object of depth one; this
+; implementation behaves gracefully when threads are forcibly
+; terminated using thread-terminate! (an abandoned-mutex-exception
+; object will be raised when a put! or get! operation is attempted
+; after a thread is terminated in the middle of a put! or get!
+; operation)
+
+(define (make-empty-mailbox)
+  (let ((mutex (make-mutex))
+        (put-condvar (make-condition-variable))
+        (get-condvar (make-condition-variable))
+        (full? #f)
+        (cell #f))
+
+    (define (put! obj)
+      (mutex-lock! mutex)
+      (if full?
+          (begin
+            (mutex-unlock! mutex put-condvar)
+            (put! obj))
+          (begin
+            (set! cell obj)
+            (set! full? #t)
+            (condition-variable-signal! get-condvar)
+            (mutex-unlock! mutex))))
+
+    (define (get!)
+      (mutex-lock! mutex)
+      (if (not full?)
+          (begin
+            (mutex-unlock! mutex get-condvar)
+            (get!))
+          (let ((result cell))
+            (set! cell #f) ; avoid space leaks
+            (set! full? #f)
+            (condition-variable-signal! put-condvar)
+            (mutex-unlock! mutex)
+            result)))
+
+    (lambda (msg)
+      (case msg
+        ((put!) put!)
+        ((get!) get!)
+        (else (error "unknown message"))))))
+
+(define (mailbox-put! m obj) ((m 'put!) obj))
+(define (mailbox-get! m) ((m 'get!)))</code></pre>
+<h4 id="condition-variable-broadcast">condition-variable-broadcast!</h4>
+<pre class="highlight"><code class="language-scheme">(condition-variable-broadcast! condition-variable) ;; procedure</code></pre>
+<p>This procedure unblocks all the thread blocked on the <code>condition-variable</code> and
+returns an unspecified value.</p>
+<p>For example:</p>
+<pre class="highlight"><code class="language-scheme">(define (make-semaphore n)
+  (vector n (make-mutex) (make-condition-variable)))
+
+(define (semaphore-wait! sema)
+  (mutex-lock! (vector-ref sema 1))
+  (let ((n (vector-ref sema 0)))
+    (if (&gt; n 0)
+        (begin
+          (vector-set! sema 0 (- n 1))
+          (mutex-unlock! (vector-ref sema 1)))
+        (begin
+          (mutex-unlock! (vector-ref sema 1) (vector-ref sema 2))
+          (semaphore-wait! sema))))
+
+(define (semaphore-signal-by! sema increment)
+  (mutex-lock! (vector-ref sema 1))
+  (let ((n (+ (vector-ref sema 0) increment)))
+    (vector-set! sema 0 n)
+    (if (&gt; n 0)
+        (condition-variable-broadcast! (vector-ref sema 2)))
+    (mutex-unlock! (vector-ref sema 1))))</code></pre>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      Last update:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">November 9, 2022</span>
+      
+        <br>
+        Created:
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">November 9, 2022</span>
+      
+    
+  </small>
+</div>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../primordial_thread/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Primordial thread" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Primordial thread
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../../dynamic_environment/" class="md-footer__link md-footer__link--next" aria-label="Next: Dynamic environment" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Dynamic environment
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.indexes", "toc.follow", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d6c3db9e.min.js"></script>
+      
+        <script src="../../../js/codemirror/lib/codemirror.js"></script>
+      
+        <script src="../../../js/codemirror/addon/edit/matchbrackets.js"></script>
+      
+        <script src="../../../js/codemirror/keymap/emacs.js"></script>
+      
+        <script src="../../../js/codemirror/mode/scheme/scheme.js"></script>
+      
+        <script src="../../../js/UI.js"></script>
+      
+        <script src="../../../js/VM.min.js"></script>
+      
+        <script src="../../../js/browserfs.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,4377 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../../../assets/favicon.ico">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.9">
+    
+    
+      
+        <title>Numbers - Gambit Scheme</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.20d9efc8.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.08040f6c.min.css">
+        
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../js/codemirror/lib/codemirror.css">
+    
+      <link rel="stylesheet" href="../../../css/UI.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Numbers - Gambit Scheme" >
+      
+        <meta  property="og:description"  content="None" >
+      
+        <meta  property="og:image"  content="./assets/images/social/manual/built_in_data_types/numbers.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="None" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Numbers - Gambit Scheme" >
+      
+        <meta  name="twitter:description"  content="None" >
+      
+        <meta  name="twitter:image"  content="./assets/images/social/manual/built_in_data_types/numbers.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#numbers" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Gambit Scheme" class="md-header__button md-logo" aria-label="Gambit Scheme" data-md-component="logo">
+      
+  <img src="../../../assets/gambit.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Gambit Scheme
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Numbers
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+          
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/gambit/gambit" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    gambit/gambit
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        Home
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../" class="md-tabs__link md-tabs__link--active">
+        Manual
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../howtos/" class="md-tabs__link">
+        How-tos
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Gambit Scheme" class="md-nav__button md-logo" aria-label="Gambit Scheme" data-md-component="logo">
+      
+  <img src="../../../assets/gambit.png" alt="logo">
+
+    </a>
+    Gambit Scheme
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/gambit/gambit" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    gambit/gambit
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../..">Home</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Home" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Home
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../">Manual</a>
+          
+            <label for="__nav_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Manual" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Manual
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" type="checkbox" id="__nav_2_2" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../the_gambit_system/">The Gambit system</a>
+          
+            <label for="__nav_2_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="The Gambit system" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          The Gambit system
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../the_gambit_system/accessing_the_system_files/" class="md-nav__link">
+        Accessing the system files
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" type="checkbox" id="__nav_2_3" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../gsi/">The Gambit Scheme interpreter</a>
+          
+            <label for="__nav_2_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="The Gambit Scheme interpreter" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          The Gambit Scheme interpreter
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gsi/interactive_mode/" class="md-nav__link">
+        Interactive mode
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gsi/batch_mode/" class="md-nav__link">
+        Batch mode
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gsi/module_management_mode/" class="md-nav__link">
+        Module management mode
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gsi/customization/" class="md-nav__link">
+        Customization
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gsi/process_exit_status/" class="md-nav__link">
+        Process exit status
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gsi/scheme_scripts/" class="md-nav__link">
+        Scheme scripts
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4" type="checkbox" id="__nav_2_4" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../gsc/">The Gambit Scheme compiler</a>
+          
+            <label for="__nav_2_4">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="The Gambit Scheme compiler" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_4">
+          <span class="md-nav__icon md-icon"></span>
+          The Gambit Scheme compiler
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gsc/interactive_mode/" class="md-nav__link">
+        Interactive mode
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gsc/customization/" class="md-nav__link">
+        Customization
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gsc/batch_mode/" class="md-nav__link">
+        Batch mode
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gsc/link_files/" class="md-nav__link">
+        Link files
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gsc/procedures/" class="md-nav__link">
+        Procedures specific to the compiler
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5" type="checkbox" id="__nav_2_5" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../runtime_options/">Runtime options</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Runtime options" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_5">
+          <span class="md-nav__icon md-icon"></span>
+          Runtime options
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6" type="checkbox" id="__nav_2_6" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../debugging/">Debugging</a>
+          
+            <label for="__nav_2_6">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Debugging" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_6">
+          <span class="md-nav__icon md-icon"></span>
+          Debugging
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../debugging/debugging_model/" class="md-nav__link">
+        Debugging model
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../debugging/debugging_commands/" class="md-nav__link">
+        Debugging commands
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../debugging/debugging_example/" class="md-nav__link">
+        Debugging example
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../debugging/procedures/" class="md-nav__link">
+        Procedures related to debugging
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../debugging/console_line_editing/" class="md-nav__link">
+        Console line-editing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../debugging/emacs_interface/" class="md-nav__link">
+        Emacs interface
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_7" type="checkbox" id="__nav_2_7" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../scheme_extensions/">Scheme extensions</a>
+          
+            <label for="__nav_2_7">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Scheme extensions" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_7">
+          <span class="md-nav__icon md-icon"></span>
+          Scheme extensions
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../scheme_extensions/extensions_to_standard_procedures/" class="md-nav__link">
+        Extensions to standard procedures
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../scheme_extensions/extensions_to_standard_special_forms/" class="md-nav__link">
+        Extensions to standard special forms
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../scheme_extensions/miscellaneous_extensions/" class="md-nav__link">
+        Miscellaneous extensions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../scheme_extensions/undocumented_extensions/" class="md-nav__link">
+        Undocumented extensions
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_8" type="checkbox" id="__nav_2_8" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../modules/">Modules</a>
+          
+            <label for="__nav_2_8">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Modules" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_8">
+          <span class="md-nav__icon md-icon"></span>
+          Modules
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/legacy_modules/" class="md-nav__link">
+        Legacy modules
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/primitive_modules/" class="md-nav__link">
+        Primitive modules
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/primitive_procedures/" class="md-nav__link">
+        Primitive procedures
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/r7rs_compatible_modules/" class="md-nav__link">
+        R7RS compatible modules
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/installing_modules/" class="md-nav__link">
+        Installing modules
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/compiling_modules/" class="md-nav__link">
+        Compiling modules
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_9" type="checkbox" id="__nav_2_9" checked>
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../">Built-in data types</a>
+          
+            <label for="__nav_2_9">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Built-in data types" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_9">
+          <span class="md-nav__icon md-icon"></span>
+          Built-in data types
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Numbers
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Numbers
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#extensions-to-numeric-procedures" class="md-nav__link">
+    Extensions to numeric procedures
+  </a>
+  
+    <nav class="md-nav" aria-label="Extensions to numeric procedures">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    =
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    &lt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    &gt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    &lt;=
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    &gt;=
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ieee-floating-point-arithmetic" class="md-nav__link">
+    IEEE floating point arithmetic
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integer-square-root-and-nth-root" class="md-nav__link">
+    Integer square root and nth root
+  </a>
+  
+    <nav class="md-nav" aria-label="Integer square root and nth root">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#integer-sqrt" class="md-nav__link">
+    integer-sqrt
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#integer-nth-root" class="md-nav__link">
+    integer-nth-root
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bitwise-operations-on-exact-integers" class="md-nav__link">
+    Bitwise-operations on exact integers
+  </a>
+  
+    <nav class="md-nav" aria-label="Bitwise-operations on exact integers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#arithmetic-shift" class="md-nav__link">
+    arithmetic-shift
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bitwise-merge" class="md-nav__link">
+    bitwise-merge
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bitwise-and" class="md-nav__link">
+    bitwise-and
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bitwise-andc1" class="md-nav__link">
+    bitwise-andc1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bitwise-andc2" class="md-nav__link">
+    bitwise-andc2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bitwise-eqv" class="md-nav__link">
+    bitwise-eqv
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bitwise-ior" class="md-nav__link">
+    bitwise-ior
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bitwise-nand" class="md-nav__link">
+    bitwise-nand
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bitwise-nor" class="md-nav__link">
+    bitwise-nor
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bitwise-not" class="md-nav__link">
+    bitwise-not
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bitwise-orc1" class="md-nav__link">
+    bitwise-orc1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bitwise-orc2" class="md-nav__link">
+    bitwise-orc2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bitwise-xor" class="md-nav__link">
+    bitwise-xor
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bit-count" class="md-nav__link">
+    bit-count
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#integer-length" class="md-nav__link">
+    integer-length
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bit-set" class="md-nav__link">
+    bit-set?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#any-bits-set" class="md-nav__link">
+    any-bits-set?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#all-bits-set" class="md-nav__link">
+    all-bits-set?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#first-set-bit" class="md-nav__link">
+    first-set-bit
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#extract-bit-field" class="md-nav__link">
+    extract-bit-field
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-bit-field" class="md-nav__link">
+    test-bit-field?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clear-bit-field" class="md-nav__link">
+    clear-bit-field
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#replace-bit-field" class="md-nav__link">
+    replace-bit-field
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#copy-bit-field" class="md-nav__link">
+    copy-bit-field
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fixnum-specific-operations" class="md-nav__link">
+    Fixnum-specific operations
+  </a>
+  
+    <nav class="md-nav" aria-label="Fixnum-specific operations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fixnum" class="md-nav__link">
+    fixnum?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fx" class="md-nav__link">
+    fx*
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fx_1" class="md-nav__link">
+    fx+
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fx-" class="md-nav__link">
+    fx-
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fx_2" class="md-nav__link">
+    fx&lt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fx_3" class="md-nav__link">
+    fx&lt;=
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fx_4" class="md-nav__link">
+    fx=
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fx_5" class="md-nav__link">
+    fx&gt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fx_6" class="md-nav__link">
+    fx&gt;=
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fxabs" class="md-nav__link">
+    fxabs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fxand" class="md-nav__link">
+    fxand
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fxandc1" class="md-nav__link">
+    fxandc1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fxandc2" class="md-nav__link">
+    fxandc2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fxarithmetic-shift" class="md-nav__link">
+    fxarithmetic-shift
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fxarithmetic-shift-left" class="md-nav__link">
+    fxarithmetic-shift-left
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fxarithmetic-shift-right" class="md-nav__link">
+    fxarithmetic-shift-right
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fxbit-count" class="md-nav__link">
+    fxbit-count
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fxbit-set" class="md-nav__link">
+    fxbit-set?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fxeqv" class="md-nav__link">
+    fxeqv
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fxeven" class="md-nav__link">
+    fxeven?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fxfirst-set-bit" class="md-nav__link">
+    fxfirst-set-bit
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fxif" class="md-nav__link">
+    fxif
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fxior" class="md-nav__link">
+    fxior
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fxlength" class="md-nav__link">
+    fxlength
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fxmax" class="md-nav__link">
+    fxmax
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fxmin" class="md-nav__link">
+    fxmin
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fxmodulo" class="md-nav__link">
+    fxmodulo
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fxnegative" class="md-nav__link">
+    fxnegative?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fxnand" class="md-nav__link">
+    fxnand
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fxnor" class="md-nav__link">
+    fxnor
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fxnot" class="md-nav__link">
+    fxnot
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fxodd" class="md-nav__link">
+    fxodd?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fxorc1" class="md-nav__link">
+    fxorc1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fxorc2" class="md-nav__link">
+    fxorc2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fxpositive" class="md-nav__link">
+    fxpositive?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fxquotient" class="md-nav__link">
+    fxquotient
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fxremainder" class="md-nav__link">
+    fxremainder
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fxwrap" class="md-nav__link">
+    fxwrap*
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fxwrap_1" class="md-nav__link">
+    fxwrap+
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fxwrap-" class="md-nav__link">
+    fxwrap-
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fxwrapabs" class="md-nav__link">
+    fxwrapabs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fxwraparithmetic-shift" class="md-nav__link">
+    fxwraparithmetic-shift
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fxwraparithmetic-shift-left" class="md-nav__link">
+    fxwraparithmetic-shift-left
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fxwraplogical-shift-right" class="md-nav__link">
+    fxwraplogical-shift-right
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fxwrapquotient" class="md-nav__link">
+    fxwrapquotient
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fxxor" class="md-nav__link">
+    fxxor
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fxzero" class="md-nav__link">
+    fxzero?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fxsquare" class="md-nav__link">
+    fxsquare
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fxwrapsquare" class="md-nav__link">
+    fxwrapsquare
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixnum-overflow-exception" class="md-nav__link">
+    fixnum-overflow-exception?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixnum-overflow-exception-procedure" class="md-nav__link">
+    fixnum-overflow-exception-procedure
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixnum-overflow-exception-arguments" class="md-nav__link">
+    fixnum-overflow-exception-arguments
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pseudo-random-numbers" class="md-nav__link">
+    Pseudo random numbers
+  </a>
+  
+    <nav class="md-nav" aria-label="Pseudo random numbers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#default-random-source" class="md-nav__link">
+    default-random-source
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#random-integer" class="md-nav__link">
+    random-integer
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#random-real" class="md-nav__link">
+    random-real
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#random-u8vector" class="md-nav__link">
+    random-u8vector
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#random-f64vector" class="md-nav__link">
+    random-f64vector
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#make-random-source" class="md-nav__link">
+    make-random-source
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#random-source" class="md-nav__link">
+    random-source?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#random-source-state-ref" class="md-nav__link">
+    random-source-state-ref
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#random-source-state-set" class="md-nav__link">
+    random-source-state-set!
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#random-source-randomize" class="md-nav__link">
+    random-source-randomize!
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#random-source-pseudo-randomize" class="md-nav__link">
+    random-source-pseudo-randomize!
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#random-source-make-integers" class="md-nav__link">
+    random-source-make-integers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#random-source-make-reals" class="md-nav__link">
+    random-source-make-reals
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#random-source-make-u8vectors" class="md-nav__link">
+    random-source-make-u8vectors
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../booleans/" class="md-nav__link">
+        Booleans
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pairs_and_lists/" class="md-nav__link">
+        Pairs and lists
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../symbols_and_keywords/" class="md-nav__link">
+        Symbols and keywords
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../characters_and_strings/" class="md-nav__link">
+        Characters and strings
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vectors/" class="md-nav__link">
+        Vectors
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../homogeneous_numeric_vectors/" class="md-nav__link">
+        Homogeneous numeric vectors
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hashing_and_weak_references/" class="md-nav__link">
+        Hashing and weak references
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_10" type="checkbox" id="__nav_2_10" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../records/">Records</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Records" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_10">
+          <span class="md-nav__icon md-icon"></span>
+          Records
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_11" type="checkbox" id="__nav_2_11" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../threads/">Threads</a>
+          
+            <label for="__nav_2_11">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Threads" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_11">
+          <span class="md-nav__icon md-icon"></span>
+          Threads
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../threads/introduction/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../threads/thread_objects/" class="md-nav__link">
+        Thread objects
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../threads/mutex_objects/" class="md-nav__link">
+        Mutex objects
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../threads/condvar_objects/" class="md-nav__link">
+        Condition variable objects
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../threads/fairness/" class="md-nav__link">
+        Fairness
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../threads/memory_coherency/" class="md-nav__link">
+        Memory coherency
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../threads/timeouts/" class="md-nav__link">
+        Timeouts
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../threads/primordial_thread/" class="md-nav__link">
+        Primordial thread
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../threads/procedures/" class="md-nav__link">
+        Procedures
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_12" type="checkbox" id="__nav_2_12" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../dynamic_environment/">Dynamic environment</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Dynamic environment" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_12">
+          <span class="md-nav__icon md-icon"></span>
+          Dynamic environment
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_13" type="checkbox" id="__nav_2_13" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../exceptions/">Exceptions</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Exceptions" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_13">
+          <span class="md-nav__icon md-icon"></span>
+          Exceptions
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_14" type="checkbox" id="__nav_2_14" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../host_environment/">Host environment</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Host environment" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_14">
+          <span class="md-nav__icon md-icon"></span>
+          Host environment
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_15" type="checkbox" id="__nav_2_15" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../io_and_ports/">I/O and ports</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="I/O and ports" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_15">
+          <span class="md-nav__icon md-icon"></span>
+          I/O and ports
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_16" type="checkbox" id="__nav_2_16" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../lexical_syntax_and_readtables/">Lexical syntax and readtables</a>
+          
+            <label for="__nav_2_16">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Lexical syntax and readtables" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_16">
+          <span class="md-nav__icon md-icon"></span>
+          Lexical syntax and readtables
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lexical_syntax_and_readtables/readtables/" class="md-nav__link">
+        Readtables
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_17" type="checkbox" id="__nav_2_17" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../c_interface/">C-interface</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="C-interface" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_17">
+          <span class="md-nav__icon md-icon"></span>
+          C-interface
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_18" type="checkbox" id="__nav_2_18" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../system_limitations/">System limitations</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="System limitations" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_18">
+          <span class="md-nav__icon md-icon"></span>
+          System limitations
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_19" type="checkbox" id="__nav_2_19" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../copyright_and_license/">Copyright and license</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Copyright and license" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_19">
+          <span class="md-nav__icon md-icon"></span>
+          Copyright and license
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../howtos/">How-tos</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="How-tos" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          How-tos
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#extensions-to-numeric-procedures" class="md-nav__link">
+    Extensions to numeric procedures
+  </a>
+  
+    <nav class="md-nav" aria-label="Extensions to numeric procedures">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    =
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    &lt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    &gt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    &lt;=
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    &gt;=
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ieee-floating-point-arithmetic" class="md-nav__link">
+    IEEE floating point arithmetic
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integer-square-root-and-nth-root" class="md-nav__link">
+    Integer square root and nth root
+  </a>
+  
+    <nav class="md-nav" aria-label="Integer square root and nth root">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#integer-sqrt" class="md-nav__link">
+    integer-sqrt
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#integer-nth-root" class="md-nav__link">
+    integer-nth-root
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bitwise-operations-on-exact-integers" class="md-nav__link">
+    Bitwise-operations on exact integers
+  </a>
+  
+    <nav class="md-nav" aria-label="Bitwise-operations on exact integers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#arithmetic-shift" class="md-nav__link">
+    arithmetic-shift
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bitwise-merge" class="md-nav__link">
+    bitwise-merge
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bitwise-and" class="md-nav__link">
+    bitwise-and
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bitwise-andc1" class="md-nav__link">
+    bitwise-andc1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bitwise-andc2" class="md-nav__link">
+    bitwise-andc2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bitwise-eqv" class="md-nav__link">
+    bitwise-eqv
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bitwise-ior" class="md-nav__link">
+    bitwise-ior
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bitwise-nand" class="md-nav__link">
+    bitwise-nand
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bitwise-nor" class="md-nav__link">
+    bitwise-nor
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bitwise-not" class="md-nav__link">
+    bitwise-not
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bitwise-orc1" class="md-nav__link">
+    bitwise-orc1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bitwise-orc2" class="md-nav__link">
+    bitwise-orc2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bitwise-xor" class="md-nav__link">
+    bitwise-xor
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bit-count" class="md-nav__link">
+    bit-count
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#integer-length" class="md-nav__link">
+    integer-length
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bit-set" class="md-nav__link">
+    bit-set?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#any-bits-set" class="md-nav__link">
+    any-bits-set?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#all-bits-set" class="md-nav__link">
+    all-bits-set?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#first-set-bit" class="md-nav__link">
+    first-set-bit
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#extract-bit-field" class="md-nav__link">
+    extract-bit-field
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-bit-field" class="md-nav__link">
+    test-bit-field?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clear-bit-field" class="md-nav__link">
+    clear-bit-field
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#replace-bit-field" class="md-nav__link">
+    replace-bit-field
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#copy-bit-field" class="md-nav__link">
+    copy-bit-field
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fixnum-specific-operations" class="md-nav__link">
+    Fixnum-specific operations
+  </a>
+  
+    <nav class="md-nav" aria-label="Fixnum-specific operations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fixnum" class="md-nav__link">
+    fixnum?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fx" class="md-nav__link">
+    fx*
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fx_1" class="md-nav__link">
+    fx+
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fx-" class="md-nav__link">
+    fx-
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fx_2" class="md-nav__link">
+    fx&lt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fx_3" class="md-nav__link">
+    fx&lt;=
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fx_4" class="md-nav__link">
+    fx=
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fx_5" class="md-nav__link">
+    fx&gt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fx_6" class="md-nav__link">
+    fx&gt;=
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fxabs" class="md-nav__link">
+    fxabs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fxand" class="md-nav__link">
+    fxand
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fxandc1" class="md-nav__link">
+    fxandc1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fxandc2" class="md-nav__link">
+    fxandc2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fxarithmetic-shift" class="md-nav__link">
+    fxarithmetic-shift
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fxarithmetic-shift-left" class="md-nav__link">
+    fxarithmetic-shift-left
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fxarithmetic-shift-right" class="md-nav__link">
+    fxarithmetic-shift-right
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fxbit-count" class="md-nav__link">
+    fxbit-count
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fxbit-set" class="md-nav__link">
+    fxbit-set?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fxeqv" class="md-nav__link">
+    fxeqv
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fxeven" class="md-nav__link">
+    fxeven?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fxfirst-set-bit" class="md-nav__link">
+    fxfirst-set-bit
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fxif" class="md-nav__link">
+    fxif
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fxior" class="md-nav__link">
+    fxior
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fxlength" class="md-nav__link">
+    fxlength
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fxmax" class="md-nav__link">
+    fxmax
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fxmin" class="md-nav__link">
+    fxmin
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fxmodulo" class="md-nav__link">
+    fxmodulo
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fxnegative" class="md-nav__link">
+    fxnegative?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fxnand" class="md-nav__link">
+    fxnand
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fxnor" class="md-nav__link">
+    fxnor
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fxnot" class="md-nav__link">
+    fxnot
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fxodd" class="md-nav__link">
+    fxodd?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fxorc1" class="md-nav__link">
+    fxorc1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fxorc2" class="md-nav__link">
+    fxorc2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fxpositive" class="md-nav__link">
+    fxpositive?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fxquotient" class="md-nav__link">
+    fxquotient
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fxremainder" class="md-nav__link">
+    fxremainder
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fxwrap" class="md-nav__link">
+    fxwrap*
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fxwrap_1" class="md-nav__link">
+    fxwrap+
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fxwrap-" class="md-nav__link">
+    fxwrap-
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fxwrapabs" class="md-nav__link">
+    fxwrapabs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fxwraparithmetic-shift" class="md-nav__link">
+    fxwraparithmetic-shift
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fxwraparithmetic-shift-left" class="md-nav__link">
+    fxwraparithmetic-shift-left
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fxwraplogical-shift-right" class="md-nav__link">
+    fxwraplogical-shift-right
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fxwrapquotient" class="md-nav__link">
+    fxwrapquotient
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fxxor" class="md-nav__link">
+    fxxor
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fxzero" class="md-nav__link">
+    fxzero?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fxsquare" class="md-nav__link">
+    fxsquare
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fxwrapsquare" class="md-nav__link">
+    fxwrapsquare
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixnum-overflow-exception" class="md-nav__link">
+    fixnum-overflow-exception?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixnum-overflow-exception-procedure" class="md-nav__link">
+    fixnum-overflow-exception-procedure
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixnum-overflow-exception-arguments" class="md-nav__link">
+    fixnum-overflow-exception-arguments
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pseudo-random-numbers" class="md-nav__link">
+    Pseudo random numbers
+  </a>
+  
+    <nav class="md-nav" aria-label="Pseudo random numbers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#default-random-source" class="md-nav__link">
+    default-random-source
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#random-integer" class="md-nav__link">
+    random-integer
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#random-real" class="md-nav__link">
+    random-real
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#random-u8vector" class="md-nav__link">
+    random-u8vector
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#random-f64vector" class="md-nav__link">
+    random-f64vector
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#make-random-source" class="md-nav__link">
+    make-random-source
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#random-source" class="md-nav__link">
+    random-source?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#random-source-state-ref" class="md-nav__link">
+    random-source-state-ref
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#random-source-state-set" class="md-nav__link">
+    random-source-state-set!
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#random-source-randomize" class="md-nav__link">
+    random-source-randomize!
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#random-source-pseudo-randomize" class="md-nav__link">
+    random-source-pseudo-randomize!
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#random-source-make-integers" class="md-nav__link">
+    random-source-make-integers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#random-source-make-reals" class="md-nav__link">
+    random-source-make-reals
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#random-source-make-u8vectors" class="md-nav__link">
+    random-source-make-u8vectors
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  <a href="https://github.com/gambit/gambit/edit/master/docs/manual/built_in_data_types/numbers.md" title="Edit this page" class="md-content__button md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
+
+
+<h1 id="numbers">Numbers</h1>
+<h2 id="extensions-to-numeric-procedures">Extensions to numeric procedures</h2>
+<h4 id="_1">=</h4>
+<h4 id="_2">&lt;</h4>
+<h4 id="_3">&gt;</h4>
+<h4 id="_4">&lt;=</h4>
+<h4 id="_5">&gt;=</h4>
+<pre class="highlight"><code class="language-scheme">(= z1 ...)  ;; procedure
+(&lt; x1 ...)  ;; procedure
+(&gt; x1 ...)  ;; procedure
+(&lt;= x1 ...) ;; procedure
+(&gt;= x1 ...) ;; procedure</code></pre>
+<p>These procedures take any number of arguments including no argument. This is
+useful to test if the elements of a list are sorted in a particular order. For
+example, testing that the list of numbers <code>lst</code> is sorted in nondecreasing order
+can be done with the call <code>(apply &lt; lst)</code>.</p>
+<h2 id="ieee-floating-point-arithmetic">IEEE floating point arithmetic</h2>
+<p>To better conform to IEEE floating point arithmetic the standard numeric tower
+is extended with these special inexact reals:</p>
+<p><code>+inf.0</code>
+: positive infinity</p>
+<p><code>-inf.0</code>
+: negative infinity</p>
+<p><code>+nan.0</code>
+: "not a number"</p>
+<p><code>-0.</code>
+: negative zero (<code>0.</code> is the positive zero)</p>
+<p>The infinities and "not a number" are reals (i.e. <code>(real? +inf.0)</code> is <code>#t</code>) but
+are not rational (i.e. <code>(rational? +inf.0)</code> is <code>#f</code>).</p>
+<p>Both zeros are numerically equal (i.e. <code>(= -0. 0.)</code> is <code>#t</code>) but are not
+equivalent (i.e. <code>(eqv? -0. 0.)</code> and <code>(equal? -0. 0.)</code> are <code>#f</code>). All numerical
+comparisons with "not a number", including <code>(= +nan.0 +nan.0)</code>, are <code>#f</code>.</p>
+<h2 id="integer-square-root-and-nth-root">Integer square root and nth root</h2>
+<h4 id="integer-sqrt">integer-sqrt</h4>
+<pre class="highlight"><code class="language-scheme">(integer-sqrt n) ;; procedure</code></pre>
+<p>This procedure returns the integer part of the square root of the nonnegative
+exact integer <code>n</code>.</p>
+<p>For example:</p>
+<pre class="highlight"><code class="language-scheme">&gt; (integer-sqrt 123)
+11</code></pre>
+<h4 id="integer-nth-root">integer-nth-root</h4>
+<pre class="highlight"><code class="language-scheme">(integer-nth-root n1 n2) ;; procedure</code></pre>
+<p>This procedure returns the integer part of <code>n1</code> raised to the power <code>1/n2</code>,
+where <code>n1</code> is a nonnegative exact integer and <code>n2</code> is a positive exact integer.</p>
+<p>For example:</p>
+<pre class="highlight"><code class="language-scheme">&gt; (integer-nth-root 100 3)
+4</code></pre>
+<h2 id="bitwise-operations-on-exact-integers">Bitwise-operations on exact integers</h2>
+<p>The procedures defined in this section are compatible with the withdrawn
+"Integer Bitwise-operation Library SRFI" (<a href="https://srfi.schemers.org/srfi-33/">SRFI
+33</a>). Note that some of the procedures
+specified in SRFI 33 are not provided.</p>
+<p>Most procedures in this section are specified in terms of the binary
+representation of exact integers. The two's complement representation is assumed
+where an integer is composed of an infinite number of bits. The upper section of
+an integer (the most significant bits) are either an infinite sequence of ones
+when the integer is negative, or they are an infinite sequence of zeros when the
+integer is nonnegative.</p>
+<h4 id="arithmetic-shift">arithmetic-shift</h4>
+<pre class="highlight"><code class="language-scheme">(arithmetic-shift n1 n2) ;; procedure</code></pre>
+<p>This procedure returns <code>n1</code> shifted to the left by <code>n2</code> bits, that is <code>(floor (*
+n1 (expt 2 n2)))</code>. Both <code>n1</code> and <code>n2</code> must be exact integers.</p>
+<p>For example:</p>
+<pre class="highlight"><code class="language-scheme">&gt; (arithmetic-shift 1000 7)  ; n1=...0000001111101000
+128000
+&gt; (arithmetic-shift 1000 -6) ; n1=...0000001111101000
+15
+&gt; (arithmetic-shift -23 -3)  ; n1=...1111111111101001
+-3</code></pre>
+<h4 id="bitwise-merge">bitwise-merge</h4>
+<pre class="highlight"><code class="language-scheme">(bitwise-merge n1 n2 n3) ;; procedure</code></pre>
+<p>This procedure returns an exact integer whose bits combine the bits from <code>n2</code>
+and <code>n3</code> depending on <code>n1</code>. The bit at index <code>i</code> of the result depends only on
+the bits at index <code>i</code> in <code>n1</code>, <code>n2</code> and <code>n3</code>: it is equal to the bit in <code>n2</code>
+when the bit in <code>n1</code> is 0 and it is equal to the bit in <code>n3</code> when the bit in
+<code>n1</code> is 1. All arguments must be exact integers.</p>
+<p>For example:</p>
+<pre class="highlight"><code class="language-scheme">&gt; (bitwise-merge -4 -11 10) ; ...11111100 ...11110101 ...00001010
+9
+&gt; (bitwise-merge 12 -11 10) ; ...00001100 ...11110101 ...00001010
+-7</code></pre>
+<h4 id="bitwise-and">bitwise-and</h4>
+<pre class="highlight"><code class="language-scheme">(bitwise-and n ...) ;; procedure</code></pre>
+<p>This procedure returns the bitwise "and" of the exact integers <code>n ...</code>. The
+value <code>-1</code> is returned when there are no arguments.</p>
+<p>For example:</p>
+<pre class="highlight"><code class="language-scheme">&gt; (bitwise-and 6 12)  ; ...00000110 ...00001100
+4
+&gt; (bitwise-and 6 -4)  ; ...00000110 ...11111100
+4
+&gt; (bitwise-and -6 -4) ; ...11111010 ...11111100
+-8
+&gt; (bitwise-and)
+-1</code></pre>
+<h4 id="bitwise-andc1">bitwise-andc1</h4>
+<pre class="highlight"><code class="language-scheme">(bitwise-andc1 n1 n2) ;; procedure</code></pre>
+<p>This procedure returns the bitwise "and" of the bitwise complement of the exact
+integer <code>n1</code> and the exact integer <code>n2</code>.</p>
+<p>For example:</p>
+<pre class="highlight"><code class="language-scheme">&gt; (bitwise-andc1 11 26)  ; ...00001011 ...00011010
+16
+&gt; (bitwise-andc1 -12 26) ; ...11110100 ...00011010
+10</code></pre>
+<h4 id="bitwise-andc2">bitwise-andc2</h4>
+<pre class="highlight"><code class="language-scheme">(bitwise-andc2 n1 n2) ;; procedure</code></pre>
+<p>This procedure returns the bitwise "and" of the exact integer <code>n1</code> and the bitwise
+complement of the exact integer <code>n2</code>.</p>
+<p>For example:</p>
+<pre class="highlight"><code class="language-scheme">&gt; (bitwise-andc2 11 26)  ; ...00001011 ...00011010
+1
+&gt; (bitwise-andc2 11 -27) ; ...00001011 ...11100101
+10</code></pre>
+<h4 id="bitwise-eqv">bitwise-eqv</h4>
+<pre class="highlight"><code class="language-scheme">(bitwise-eqv n ...) ;; procedure</code></pre>
+<p>This procedure returns the bitwise complement of the bitwise "exclusive-or" of
+the exact integers <code>n ...</code>. The value <code>-1</code> is returned when there are no
+arguments.</p>
+<p>For example:</p>
+<pre class="highlight"><code class="language-scheme">&gt; (bitwise-eqv 6 12)  ; ...00000110 ...00001100
+-11
+&gt; (bitwise-eqv 6 -4)  ; ...00000110 ...11111100
+5
+&gt; (bitwise-eqv -6 -4) ; ...11111010 ...11111100
+-7
+&gt; (bitwise-eqv)
+-1</code></pre>
+<h4 id="bitwise-ior">bitwise-ior</h4>
+<pre class="highlight"><code class="language-scheme">(bitwise-ior n ...) ;; procedure</code></pre>
+<p>This procedure returns the bitwise "inclusive-or" of the exact integers <code>n ...</code>.
+The value <code>0</code> is returned when there are no arguments.</p>
+<p>For example:</p>
+<pre class="highlight"><code class="language-scheme">&gt; (bitwise-ior 6 12)  ; ...00000110 ...00001100
+14
+&gt; (bitwise-ior 6 -4)  ; ...00000110 ...11111100
+-2
+&gt; (bitwise-ior -6 -4) ; ...11111010 ...11111100
+-2
+&gt; (bitwise-ior)
+0</code></pre>
+<h4 id="bitwise-nand">bitwise-nand</h4>
+<pre class="highlight"><code class="language-scheme">(bitwise-nand n1 n2) ;; procedure</code></pre>
+<p>This procedure returns the bitwise complement of the bitwise "and" of the exact
+integer <code>n1</code> and the exact integer <code>n2</code>.</p>
+<p>For example:</p>
+<pre class="highlight"><code class="language-scheme">&gt; (bitwise-nand 11 26)  ; ...00001011 ...00011010
+-11
+&gt; (bitwise-nand 11 -27) ; ...00001011 ...11100101
+-2</code></pre>
+<h4 id="bitwise-nor">bitwise-nor</h4>
+<pre class="highlight"><code class="language-scheme">(bitwise-nor n1 n2) ;; procedure</code></pre>
+<p>This procedure returns the bitwise complement of the bitwise "inclusive-or" of
+the exact integer <code>n1</code> and the exact integer <code>n2</code>.</p>
+<p>For example:</p>
+<pre class="highlight"><code class="language-scheme">&gt; (bitwise-nor 11 26)  ; ...00001011 ...00011010
+-28
+&gt; (bitwise-nor 11 -27) ; ...00001011 ...11100101
+16</code></pre>
+<h4 id="bitwise-not">bitwise-not</h4>
+<pre class="highlight"><code class="language-scheme">(bitwise-not n) ;; procedure</code></pre>
+<p>This procedure returns the bitwise complement of the exact integer <code>n</code>.</p>
+<p>For example:</p>
+<pre class="highlight"><code class="language-scheme">&gt; (bitwise-not 3)  ; ...00000011
+-4
+&gt; (bitwise-not -1) ; ...11111111
+0</code></pre>
+<h4 id="bitwise-orc1">bitwise-orc1</h4>
+<pre class="highlight"><code class="language-scheme">(bitwise-orc1 n1 n2) ;; procedure</code></pre>
+<p>This procedure returns the bitwise "inclusive-or" of the bitwise complement of
+the exact integer <code>n1</code> and the exact integer <code>n2</code>.</p>
+<p>For example:</p>
+<pre class="highlight"><code class="language-scheme">&gt; (bitwise-orc1 11 26)  ; ...00001011 ...00011010
+-2
+&gt; (bitwise-orc1 -12 26) ; ...11110100 ...00011010
+27</code></pre>
+<h4 id="bitwise-orc2">bitwise-orc2</h4>
+<pre class="highlight"><code class="language-scheme">(bitwise-orc2 n1 n2) ;; procedure</code></pre>
+<p>This procedure returns the bitwise "inclusive-or" of the exact integer <code>n1</code> and
+the bitwise complement of the exact integer <code>n2</code>.</p>
+<p>For example:</p>
+<pre class="highlight"><code class="language-scheme">&gt; (bitwise-orc2 11 26)  ; ...00001011 ...00011010
+-17
+&gt; (bitwise-orc2 11 -27) ; ...00001011 ...11100101
+27</code></pre>
+<h4 id="bitwise-xor">bitwise-xor</h4>
+<pre class="highlight"><code class="language-scheme">(bitwise-xor n ...) ;; procedure</code></pre>
+<p>This procedure returns the bitwise "exclusive-or" of the exact integers <code>n ...</code>.
+The value <code>0</code> is returned when there are no arguments.</p>
+<p>For example:</p>
+<pre class="highlight"><code class="language-scheme">&gt; (bitwise-xor 6 12)  ; ...00000110 ...00001100
+10
+&gt; (bitwise-xor 6 -4)  ; ...00000110 ...11111100
+-6
+&gt; (bitwise-xor -6 -4) ; ...11111010 ...11111100
+6
+&gt; (bitwise-xor)
+0</code></pre>
+<h4 id="bit-count">bit-count</h4>
+<pre class="highlight"><code class="language-scheme">(bit-count n) ;; procedure</code></pre>
+<p>This procedure returns the bit count of the exact integer <code>n</code>. If <code>n</code> is
+nonnegative, the bit count is the number of 1 bits in the two's complement
+representation of <code>n</code>. If <code>n</code> is negative, the bit count is the number of 0 bits
+in the two's complement representation of <code>n</code>.</p>
+<p>For example:</p>
+<pre class="highlight"><code class="language-scheme">&gt; (bit-count 0)   ; ...00000000
+0
+&gt; (bit-count 1)   ; ...00000001
+1
+&gt; (bit-count 2)   ; ...00000010
+1
+&gt; (bit-count 3)   ; ...00000011
+2
+&gt; (bit-count 4)   ; ...00000100
+1
+&gt; (bit-count -23) ; ...11101001
+3</code></pre>
+<h4 id="integer-length">integer-length</h4>
+<pre class="highlight"><code class="language-scheme">(integer-length n) ;; procedure</code></pre>
+<p>This procedure returns the bit length of the exact integer <code>n</code>. If <code>n</code> is a
+positive integer the bit length is one more than the index of the highest 1 bit
+(the least significant bit is at index 0). If <code>n</code> is a negative integer the bit
+length is one more than the index of the highest 0 bit. If <code>n</code> is zero, the bit
+length is 0.</p>
+<p>For example:</p>
+<pre class="highlight"><code class="language-scheme">&gt; (integer-length 0)   ; ...00000000
+0
+&gt; (integer-length 1)   ; ...00000001
+1
+&gt; (integer-length 2)   ; ...00000010
+2
+&gt; (integer-length 3)   ; ...00000011
+2
+&gt; (integer-length 4)   ; ...00000100
+3
+&gt; (integer-length -23) ; ...11101001
+5</code></pre>
+<h4 id="bit-set">bit-set?</h4>
+<pre class="highlight"><code class="language-scheme">(bit-set? n1 n2) ;; procedure</code></pre>
+<p>This procedure returns a boolean indicating if the bit at index <code>n1</code> of <code>n2</code> is
+set (i.e. equal to <code>1</code>) or not. Both <code>n1</code> and <code>n2</code> must be exact integers, and
+<code>n1</code> must be nonnegative.</p>
+<p>For example:</p>
+<pre class="highlight"><code class="language-scheme">&gt; (map (lambda (i) (bit-set? i -23)) ; ...11101001
+       '(7 6 5 4 3 2 1 0))
+(#t #t #t #f #t #f #f #t)</code></pre>
+<h4 id="any-bits-set">any-bits-set?</h4>
+<pre class="highlight"><code class="language-scheme">(any-bits-set? n1 n2) ;; procedure</code></pre>
+<p>This procedure returns a boolean indicating if the bitwise and of <code>n1</code> and <code>n2</code>
+is different from zero or not. This procedure is implemented more efficiently
+than the naive definition:</p>
+<pre class="highlight"><code class="language-scheme">(define (any-bits-set? n1 n2) (not (zero? (bitwise-and n1 n2))))</code></pre>
+<p>For example:</p>
+<pre class="highlight"><code class="language-scheme">&gt; (any-bits-set? 5 10)   ; ...00000101 ...00001010
+#f
+&gt; (any-bits-set? -23 32) ; ...11101001 ...00100000
+#t</code></pre>
+<h4 id="all-bits-set">all-bits-set?</h4>
+<pre class="highlight"><code class="language-scheme">(all-bits-set? n1 n2) ;; procedure</code></pre>
+<p>This procedure returns a boolean indicating if the "bitwise and" of <code>n1</code> and
+<code>n2</code> is equal to <code>n1</code> or not. This procedure is implemented more efficiently
+than the naive definition:</p>
+<pre class="highlight"><code class="language-scheme">(define (all-bits-set? n1 n2) (= n1 (bitwise-and n1 n2)))</code></pre>
+<p>For example:</p>
+<pre class="highlight"><code class="language-scheme">&gt; (all-bits-set? 1 3) ; ...00000001 ...00000011
+#t
+&gt; (all-bits-set? 7 3) ; ...00000111 ...00000011
+#f</code></pre>
+<h4 id="first-set-bit">first-set-bit</h4>
+<pre class="highlight"><code class="language-scheme">(first-set-bit n) ;; procedure</code></pre>
+<p>This procedure returns the bit index of the least significant bit of <code>n</code> equal
+to 1 (which is also the number of 0 bits that are below the least significant 1
+bit). This procedure returns -1 when <code>n</code> is zero.</p>
+<p>For example:</p>
+<pre class="highlight"><code class="language-scheme">&gt; (first-set-bit 24) ; ...00011000
+3
+&gt; (first-set-bit 0)  ; ...00000000
+-1</code></pre>
+<h4 id="extract-bit-field">extract-bit-field</h4>
+<h4 id="test-bit-field">test-bit-field?</h4>
+<h4 id="clear-bit-field">clear-bit-field</h4>
+<h4 id="replace-bit-field">replace-bit-field</h4>
+<h4 id="copy-bit-field">copy-bit-field</h4>
+<pre class="highlight"><code class="language-scheme">(extract-bit-field n1 n2 n3) ;; procedure
+(test-bit-field? n1 n2 n3) ;; procedure
+(clear-bit-field n1 n2 n3) ;; procedure
+(replace-bit-field n1 n2 n3 n4) ;; procedure
+(copy-bit-field n1 n2 n3 n4) ;; procedure</code></pre>
+<p>These procedures operate on a bit-field which is <code>n1</code> bits wide starting at bit
+index <code>n2</code>. All arguments must be exact integers and <code>n1</code> and <code>n2</code> must be
+nonnegative.</p>
+<p>The procedure <code>extract-bit-field</code> returns the bit-field of <code>n3</code> shifted to the
+right so that the least significant bit of the bit-field is the least
+significant bit of the result.</p>
+<p>The procedure <code>test-bit-field?</code> returns <code>#t</code> if any bit in the bit-field of <code>n3</code>
+is equal to <code>1</code>, otherwise <code>#f</code> is returned.</p>
+<p>The procedure <code>clear-bit-field</code> returns <code>n3</code> with all bits in the bit-field
+replaced with <code>0</code>.</p>
+<p>The procedure <code>replace-bit-field</code> returns <code>n4</code> with the bit-field replaced with
+the least-significant <code>n1</code> bits of <code>n3</code>.</p>
+<p>The procedure <code>copy-bit-field</code> returns <code>n4</code> with the bit-field replaced with the
+(same index and size) bit-field in <code>n3</code>.</p>
+<p>For example:</p>
+<pre class="highlight"><code class="language-scheme">&gt; (extract-bit-field 5 2 -37)    ; ...11011011
+22
+&gt; (test-bit-field? 5 2 -37)      ; ...11011011
+#t
+&gt; (test-bit-field? 1 2 -37)      ; ...11011011
+#f
+&gt; (clear-bit-field 5 2 -37)      ; ...11011011
+-125
+&gt; (replace-bit-field 5 2 -6 -37) ; ...11111010 ...11011011
+-21
+&gt; (copy-bit-field 5 2 -6 -37)    ; ...11111010 ...11011011
+-5</code></pre>
+<h2 id="fixnum-specific-operations">Fixnum-specific operations</h2>
+<div class="admonition bug">
+<p class="admonition-title">This documentation needs work, cleanup or clarification.</p>
+</div>
+<h4 id="fixnum">fixnum?</h4>
+<pre class="highlight"><code class="language-scheme">(fixnum? obj) ;; procedure</code></pre>
+<h4 id="fx">fx*</h4>
+<pre class="highlight"><code class="language-scheme">(fx* n1 ...) ;; procedure</code></pre>
+<h4 id="fx_1">fx+</h4>
+<pre class="highlight"><code class="language-scheme">(fx+ n1 ...) ;; procedure</code></pre>
+<h4 id="fx-">fx-</h4>
+<pre class="highlight"><code class="language-scheme">(fx- n1 n2 ...) ;; procedure</code></pre>
+<h4 id="fx_2">fx&lt;</h4>
+<pre class="highlight"><code class="language-scheme">(fx&lt; n1 ...) ;; procedure</code></pre>
+<h4 id="fx_3">fx&lt;=</h4>
+<pre class="highlight"><code class="language-scheme">(fx&lt;= n1 ...) ;; procedure</code></pre>
+<h4 id="fx_4">fx=</h4>
+<pre class="highlight"><code class="language-scheme">(fx= n1 ...) ;; procedure</code></pre>
+<h4 id="fx_5">fx&gt;</h4>
+<pre class="highlight"><code class="language-scheme">(fx&gt; n1 ...) ;; procedure</code></pre>
+<h4 id="fx_6">fx&gt;=</h4>
+<pre class="highlight"><code class="language-scheme">(fx&gt;= n1 ...) ;; procedure</code></pre>
+<h4 id="fxabs">fxabs</h4>
+<pre class="highlight"><code class="language-scheme">(fxabs n) ;; procedure</code></pre>
+<h4 id="fxand">fxand</h4>
+<pre class="highlight"><code class="language-scheme">(fxand n1 ...) ;; procedure</code></pre>
+<h4 id="fxandc1">fxandc1</h4>
+<pre class="highlight"><code class="language-scheme">(fxandc1 n1 n2) ;; procedure</code></pre>
+<h4 id="fxandc2">fxandc2</h4>
+<pre class="highlight"><code class="language-scheme">(fxandc2 n1 n2) ;; procedure</code></pre>
+<h4 id="fxarithmetic-shift">fxarithmetic-shift</h4>
+<pre class="highlight"><code class="language-scheme">(fxarithmetic-shift n1 n2) ;; procedure</code></pre>
+<h4 id="fxarithmetic-shift-left">fxarithmetic-shift-left</h4>
+<pre class="highlight"><code class="language-scheme">(fxarithmetic-shift-left n1 n2) ;; procedure</code></pre>
+<h4 id="fxarithmetic-shift-right">fxarithmetic-shift-right</h4>
+<pre class="highlight"><code class="language-scheme">(fxarithmetic-shift-right n1 n2) ;; procedure</code></pre>
+<h4 id="fxbit-count">fxbit-count</h4>
+<pre class="highlight"><code class="language-scheme">(fxbit-count n) ;; procedure</code></pre>
+<h4 id="fxbit-set">fxbit-set?</h4>
+<pre class="highlight"><code class="language-scheme">(fxbit-set? n1 n2) ;; procedure</code></pre>
+<h4 id="fxeqv">fxeqv</h4>
+<pre class="highlight"><code class="language-scheme">(fxeqv n1 ...) ;; procedure</code></pre>
+<h4 id="fxeven">fxeven?</h4>
+<pre class="highlight"><code class="language-scheme">(fxeven? n) ;; procedure</code></pre>
+<h4 id="fxfirst-set-bit">fxfirst-set-bit</h4>
+<pre class="highlight"><code class="language-scheme">(fxfirst-set-bit n) ;; procedure</code></pre>
+<h4 id="fxif">fxif</h4>
+<pre class="highlight"><code class="language-scheme">(fxif n1 n2 n3) ;; procedure</code></pre>
+<h4 id="fxior">fxior</h4>
+<pre class="highlight"><code class="language-scheme">(fxior n1 ...) ;; procedure</code></pre>
+<h4 id="fxlength">fxlength</h4>
+<pre class="highlight"><code class="language-scheme">(fxlength n) ;; procedure</code></pre>
+<h4 id="fxmax">fxmax</h4>
+<pre class="highlight"><code class="language-scheme">(fxmax n1 n2 ...) ;; procedure</code></pre>
+<h4 id="fxmin">fxmin</h4>
+<pre class="highlight"><code class="language-scheme">(fxmin n1 n2 ...) ;; procedure</code></pre>
+<h4 id="fxmodulo">fxmodulo</h4>
+<pre class="highlight"><code class="language-scheme">(fxmodulo n1 n2) ;; procedure</code></pre>
+<h4 id="fxnegative">fxnegative?</h4>
+<pre class="highlight"><code class="language-scheme">(fxnegative? n) ;; procedure</code></pre>
+<h4 id="fxnand">fxnand</h4>
+<pre class="highlight"><code class="language-scheme">(fxnand n1 n2) ;; procedure</code></pre>
+<h4 id="fxnor">fxnor</h4>
+<pre class="highlight"><code class="language-scheme">(fxnor n1 n2) ;; procedure</code></pre>
+<h4 id="fxnot">fxnot</h4>
+<pre class="highlight"><code class="language-scheme">(fxnot n) ;; procedure</code></pre>
+<h4 id="fxodd">fxodd?</h4>
+<pre class="highlight"><code class="language-scheme">(fxodd? n) ;; procedure</code></pre>
+<h4 id="fxorc1">fxorc1</h4>
+<pre class="highlight"><code class="language-scheme">(fxorc1 n1 n2) ;; procedure</code></pre>
+<h4 id="fxorc2">fxorc2</h4>
+<pre class="highlight"><code class="language-scheme">(fxorc2 n1 n2) ;; procedure</code></pre>
+<h4 id="fxpositive">fxpositive?</h4>
+<pre class="highlight"><code class="language-scheme">(fxpositive? n) ;; procedure</code></pre>
+<h4 id="fxquotient">fxquotient</h4>
+<pre class="highlight"><code class="language-scheme">(fxquotient n1 n2) ;; procedure</code></pre>
+<h4 id="fxremainder">fxremainder</h4>
+<pre class="highlight"><code class="language-scheme">(fxremainder n1 n2) ;; procedure</code></pre>
+<h4 id="fxwrap">fxwrap*</h4>
+<pre class="highlight"><code class="language-scheme">(fxwrap* n1 ...) ;; procedure</code></pre>
+<h4 id="fxwrap_1">fxwrap+</h4>
+<pre class="highlight"><code class="language-scheme">(fxwrap+ n1 ...) ;; procedure</code></pre>
+<h4 id="fxwrap-">fxwrap-</h4>
+<pre class="highlight"><code class="language-scheme">(fxwrap- n1 n2 ...) ;; procedure</code></pre>
+<h4 id="fxwrapabs">fxwrapabs</h4>
+<pre class="highlight"><code class="language-scheme">(fxwrapabs n) ;; procedure</code></pre>
+<h4 id="fxwraparithmetic-shift">fxwraparithmetic-shift</h4>
+<pre class="highlight"><code class="language-scheme">(fxwraparithmetic-shift n1 n2) ;; procedure</code></pre>
+<h4 id="fxwraparithmetic-shift-left">fxwraparithmetic-shift-left</h4>
+<pre class="highlight"><code class="language-scheme">(fxwraparithmetic-shift-left n1 n2) ;; procedure</code></pre>
+<h4 id="fxwraplogical-shift-right">fxwraplogical-shift-right</h4>
+<pre class="highlight"><code class="language-scheme">(fxwraplogical-shift-right n1 n2) ;; procedure</code></pre>
+<h4 id="fxwrapquotient">fxwrapquotient</h4>
+<pre class="highlight"><code class="language-scheme">(fxwrapquotient n1 n2) ;; procedure</code></pre>
+<h4 id="fxxor">fxxor</h4>
+<pre class="highlight"><code class="language-scheme">(fxxor n1 ...) ;; procedure</code></pre>
+<h4 id="fxzero">fxzero?</h4>
+<pre class="highlight"><code class="language-scheme">(fxzero? n) ;; procedure</code></pre>
+<h4 id="fxsquare">fxsquare</h4>
+<pre class="highlight"><code class="language-scheme">(fxsquare n) ;; procedure</code></pre>
+<h4 id="fxwrapsquare">fxwrapsquare</h4>
+<pre class="highlight"><code class="language-scheme">(fxwrapsquare n) ;; procedure</code></pre>
+<h4 id="fixnum-overflow-exception">fixnum-overflow-exception?</h4>
+<pre class="highlight"><code class="language-scheme">(fixnum-overflow-exception? obj) ;; procedure</code></pre>
+<h4 id="fixnum-overflow-exception-procedure">fixnum-overflow-exception-procedure</h4>
+<pre class="highlight"><code class="language-scheme">(fixnum-overflow-exception-procedure exc) ;; procedure</code></pre>
+<h4 id="fixnum-overflow-exception-arguments">fixnum-overflow-exception-arguments</h4>
+<pre class="highlight"><code class="language-scheme">(fixnum-overflow-exception-arguments exc) ;; procedure</code></pre>
+<p>Fixnum-overflow-exception objects are raised by some of the fixnum specific
+procedures when the result is larger than can fit in a fixnum. The parameter <code>exc</code>
+must be a fixnum-overflow-exception object.</p>
+<p>The procedure <code>fixnum-overflow-exception?</code> returns <code>#t</code> when <code>obj</code> is a
+fixnum-overflow-exception object and <code>#f</code> otherwise.</p>
+<p>The procedure <code>fixnum-overflow-exception-procedure</code> returns the procedure that
+raised <code>exc</code>.</p>
+<p>The procedure <code>fixnum-overflow-exception-arguments</code> returns the list of arguments
+of the procedure that raised <code>exc</code>.</p>
+<p>For example:</p>
+<pre class="highlight"><code class="language-scheme">&gt; (define (handler exc)
+    (if (fixnum-overflow-exception? exc)
+        (list (fixnum-overflow-exception-procedure exc)
+              (fixnum-overflow-exception-arguments exc))
+        'not-fixnum-overflow-exception))
+&gt; (with-exception-catcher
+    handler
+    (lambda () (fx* 100000 100000)))
+(#&lt;procedure #2 fx*&gt; (100000 100000))</code></pre>
+<h2 id="pseudo-random-numbers">Pseudo random numbers</h2>
+<p>The procedures and variables defined in this section are compatible with the
+"Sources of Random Bits SRFI" (<a href="https://srfi.schemers.org/srfi-27/">SRFI 27</a>).
+The implementation is based on Pierre L’Ecuyer's MRG32k3a pseudo random number
+generator. At the heart of SRFI 27's interface is the random source type which
+encapsulates the state of a pseudo random number generator. The state of a
+random source object changes every time a pseudo random number is generated from
+this random source object.</p>
+<h4 id="default-random-source">default-random-source</h4>
+<pre class="highlight"><code class="language-scheme">(default-random-source) ;; variable</code></pre>
+<p>The global variable <code>default-random-source</code> is bound to the random source object
+which is used by the <code>random-integer</code>, <code>random-real</code>, <code>random-u8vector</code> and
+<code>random-f64vector</code> procedures.</p>
+<h4 id="random-integer">random-integer</h4>
+<pre class="highlight"><code class="language-scheme">(random-integer n) ;; procedure</code></pre>
+<p>This procedure returns a pseudo random exact integer in the range <code>0</code> to <code>n-1</code>.
+The random source object in the global variable <code>default-random-source</code> is used
+to generate this number. The parameter <code>n</code> must be a positive exact integer.</p>
+<p>For example:</p>
+<pre class="highlight"><code class="language-scheme">&gt; (random-integer 100)
+24
+&gt; (random-integer 100)
+2
+&gt; (random-integer 10000000000000000000000000000000000000000)
+6143360270902284438072426748425263488507</code></pre>
+<h4 id="random-real">random-real</h4>
+<pre class="highlight"><code class="language-scheme">(random-real) ;; procedure</code></pre>
+<p>This procedure returns a pseudo random inexact real between, but not including,
+<code>0</code> and <code>1</code>. The random source object in the global variable
+<code>default-random-source</code> is used to generate this number.</p>
+<p>For example:</p>
+<pre class="highlight"><code class="language-scheme">&gt; (random-real)
+.24230672079133753
+&gt; (random-real)
+.02317001922506932</code></pre>
+<h4 id="random-u8vector">random-u8vector</h4>
+<pre class="highlight"><code class="language-scheme">(random-u8vector n) ;; procedure</code></pre>
+<p>This procedure returns a <code>u8vector</code> of length <code>n</code> containing pseudo random exact
+integers in the range <code>0</code> to <code>255</code>. The random source object in the global
+variable <code>default-random-source</code> is used to generate these numbers. The
+parameter <code>n</code> must be a nonnegative exact integer.</p>
+<p>For example:</p>
+<pre class="highlight"><code class="language-scheme">&gt; (random-u8vector 10)
+#u8(200 53 29 202 3 85 208 187 73 219)</code></pre>
+<h4 id="random-f64vector">random-f64vector</h4>
+<pre class="highlight"><code class="language-scheme">(random-f64vector n) ;; procedure</code></pre>
+<p>This procedure returns a f64vector of length n containing pseudo random inexact
+reals between, but not including, 0 and 1. The random source object in the
+global variable default-random-source is used to generate these numbers. The
+parameter n must be a nonnegative exact integer.</p>
+<p>For example:</p>
+<pre class="highlight"><code class="language-scheme">&gt; (random-f64vector 3)
+#f64(.7145854494613069 .47089632669147946 .5400124875182746)</code></pre>
+<h4 id="make-random-source">make-random-source</h4>
+<pre class="highlight"><code class="language-scheme">(make-random-source) ;; procedure</code></pre>
+<p>This procedure returns a new random source object initialized to a predetermined
+state (to initialize to a pseudo random state the procedure
+<code>random-source-randomize!</code> should be called).</p>
+<p>For example:</p>
+<pre class="highlight"><code class="language-scheme">&gt; (define rs (make-random-source))
+&gt; ((random-source-make-integers rs) 10000000)
+8583952</code></pre>
+<h4 id="random-source">random-source?</h4>
+<pre class="highlight"><code class="language-scheme">(random-source? obj) ;; procedure</code></pre>
+<p>This procedure returns <code>#t</code> when <code>obj</code> is a random source object and <code>#f</code>
+otherwise.</p>
+<p>For example:</p>
+<pre class="highlight"><code class="language-scheme">&gt; (random-source? default-random-source)
+#t
+&gt; (random-source? 123)
+#f</code></pre>
+<h4 id="random-source-state-ref">random-source-state-ref</h4>
+<h4 id="random-source-state-set">random-source-state-set!</h4>
+<p><code>`scheme
+(random-source-state-ref random-source) procedure
+(random-source-state-set! random-source state)  procedure</code></p>
+<p>The procedure <code>random-source-state-ref</code> extracts the state of the random source
+object <code>random-source</code> and returns a vector containing the state.</p>
+<p>The procedure <code>random-source-state-set!</code> restores the state of the random source
+object <code>random-source</code> to <code>state</code> which must be a vector returned from a call to
+the procedure <code>random-source-state-ref</code>.</p>
+<p>For example:</p>
+<p>```scheme</p>
+<blockquote>
+<p>(define s (random-source-state-ref default-random-source))
+(random-integer 10000000000000000000000000000000000000000)
+7583880188903074396261960585615270693321
+(random-source-state-set! default-random-source s)
+(random-integer 10000000000000000000000000000000000000000)
+7583880188903074396261960585615270693321
+```</p>
+</blockquote>
+<h4 id="random-source-randomize">random-source-randomize!</h4>
+<h4 id="random-source-pseudo-randomize">random-source-pseudo-randomize!</h4>
+<p><code>scheme
+(random-source-randomize! random-source) ;; procedure
+(random-source-pseudo-randomize! random-source i j) ;; procedure</code></p>
+<p>These procedures change the state of the random source object <code>random-source</code>.
+The procedure <code>random-source-randomize!</code> sets the random source object to a
+state that depends on the current time (which for typical uses can be considered
+to randomly initialize the state). The procedure
+<code>random-source-pseudo-randomize!</code> sets the random source object to a state that
+is determined only by the current state and the nonnegative exact integers <code>i</code>
+and <code>j</code>. For both procedures the value returned is unspecified.</p>
+<p>For example:</p>
+<p>```scheme</p>
+<blockquote>
+<p>(define s (random-source-state-ref default-random-source))
+(random-source-pseudo-randomize! default-random-source 5 99)
+(random-integer 10000000000000000000000000000000000000000)
+9816755163910623041601722050112674079767
+(random-source-state-set! default-random-source s)
+(random-source-pseudo-randomize! default-random-source 5 99)
+(random-integer 10000000000000000000000000000000000000000)
+9816755163910623041601722050112674079767
+(random-source-pseudo-randomize! default-random-source 5 99)
+(random-integer 10000000000000000000000000000000000000000)
+9816755163910623041601722050112674079767
+(random-source-state-set! default-random-source s)
+(random-source-randomize! default-random-source)
+(random-integer 10000000000000000000000000000000000000000)
+2271441220851914333384493143687768110622
+(random-source-state-set! default-random-source s)
+(random-source-randomize! default-random-source)
+(random-integer 10000000000000000000000000000000000000000)
+6247966138948323029033944059178072366895
+```</p>
+</blockquote>
+<h4 id="random-source-make-integers">random-source-make-integers</h4>
+<p><code>scheme
+(random-source-make-integers random-source) ;; procedure</code></p>
+<p>This procedure returns a procedure for generating pseudo random exact integers
+using the random source object <code>random-source</code>. The returned procedure accepts a
+single parameter <code>n</code>, a positive exact integer, and returns a pseudo random
+exact integer in the range <code>0</code> to <code>n-1</code>.</p>
+<p>For example:</p>
+<p>```scheme</p>
+<blockquote>
+<p>(define rs (make-random-source))
+(define ri (random-source-make-integers rs))
+(ri 10000000)
+8583952
+(ri 10000000)
+2879793
+```</p>
+</blockquote>
+<h4 id="random-source-make-reals">random-source-make-reals</h4>
+<p><code>scheme
+(random-source-make-reals random-source [precision]) ;; procedure</code></p>
+<p>This procedure returns a procedure for generating pseudo random inexact reals
+using the random source object <code>random-source</code>. The returned procedure accepts
+no parameters and returns a pseudo random inexact real between, but not
+including, <code>0</code> and <code>1</code>. The optional parameter <code>precision</code> specifies an upper
+bound on the minimum amount by which two generated pseudo-random numbers can be
+separated.</p>
+<p>For example:</p>
+<p>```scheme</p>
+<blockquote>
+<p>(define rs (make-random-source))
+(define rr (random-source-make-reals rs))
+(rr)
+.857402537562821
+(rr)
+.2876463473845367
+```</p>
+</blockquote>
+<h4 id="random-source-make-u8vectors">random-source-make-u8vectors</h4>
+<p><code>scheme
+(random-source-make-u8vectors random-source) ;; procedure</code></p>
+<p>This procedure returns a procedure for generating pseudo random <code>u8vectors</code> using
+the random source object <code>random-source</code>. The returned procedure accepts a single
+parameter <code>n</code>, a nonnegative exact integer, and returns a <code>u8vector</code> of length <code>n</code>
+containing pseudo random exact integers in the range <code>0</code> to <code>255</code>.</p>
+<p>For example:</p>
+<p>```scheme</p>
+<blockquote>
+<p>(define rs (make-random-source))
+(define rv (random-source-make-u8vectors rs))
+(rv 10)</p>
+</blockquote>
+<h1 id="u8200-53-29-202-3-85-208-187-73-219">u8(200 53 29 202 3 85 208 187 73 219)</h1>
+<blockquote>
+<p>(rv 10)</p>
+</blockquote>
+<h1 id="u8113-8-182-120-138-103-53-192-40-176">u8(113 8 182 120 138 103 53 192 40 176)</h1>
+<p>```</p>
+<h4 id="random-source-make-f64vectors">random-source-make-f64vectors</h4>
+<p><code>scheme
+(random-source-make-f64vectors random-source [precision]) ;; procedure</code></p>
+<p>This procedure returns a procedure for generating pseudo random <code>f64vectors</code>
+using the random source object <code>random-source</code>. The returned procedure accepts a
+single parameter <code>n</code>, a nonnegative exact integer, and returns an <code>f64vector</code> of
+length <code>n</code> containing pseudo random inexact reals between, but not including,
+<code>0</code> and <code>1</code>. The optional parameter <code>precision</code> specifies an upper bound on the
+minimum amount by which two generated pseudo-random numbers can be separated.</p>
+<p>For example:</p>
+<p>```scheme</p>
+<blockquote>
+<p>(define rv (random-source-make-f64vectors rs))
+(rv 3)</p>
+</blockquote>
+<h1 id="f647342236104231586-2876463473845367-8574025375628211">f64(.7342236104231586 .2876463473845367 .8574025375628211)</h1>
+<blockquote>
+<p>(rv 3)</p>
+</blockquote>
+<h1 id="f64013863292728449427-33449296573515447-8162050798467028">f64(.013863292728449427 .33449296573515447 .8162050798467028)</h1>
+<p>```</p>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      Last update:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">November 9, 2022</span>
+      
+        <br>
+        Created:
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">November 9, 2022</span>
+      
+    
+  </small>
+</div>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: Built-in data types" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Built-in data types
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../booleans/" class="md-footer__link md-footer__link--next" aria-label="Next: Booleans" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Booleans
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.indexes", "toc.follow", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d6c3db9e.min.js"></script>
+      
+        <script src="../../../js/codemirror/lib/codemirror.js"></script>
+      
+        <script src="../../../js/codemirror/addon/edit/matchbrackets.js"></script>
+      
+        <script src="../../../js/codemirror/keymap/emacs.js"></script>
+      
+        <script src="../../../js/codemirror/mode/scheme/scheme.js"></script>
+      
+        <script src="../../../js/UI.js"></script>
+      
+        <script src="../../../js/VM.min.js"></script>
+      
+        <script src="../../../js/browserfs.min.js"></script>
+      
+    
+  </body>
+</html>
